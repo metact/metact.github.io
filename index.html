@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metac</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 8px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+      --shadow-lg: 0 12px 24px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: var(--shadow);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -.02em;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .logo small {
+      display: block;
+      font-size: .65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+      margin-top: 2px;
+    }
+    .search-wrap {
+      flex: 1;
+      min-width: 180px;
+      position: relative;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 8px 38px 8px 36px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .875rem;
+      background: var(--bg);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    #searchInput:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      line-height: 1;
+      transition: background .12s, color .12s;
+    }
+    .search-clear:hover { background: #e2e8f0; color: var(--text); }
+    .search-clear.visible { display: inline-flex; }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .lang-group {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 6px 13px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: background .12s, color .12s;
+      letter-spacing: .04em;
+    }
+    .lang-btn.active { background: var(--primary); color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: background .12s, border-color .12s, box-shadow .12s;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--bg); box-shadow: var(--shadow); }
+    .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); justify-content: center; }
+    .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+    .btn-danger { color: #dc2626; border-color: #fca5a5; justify-content: center; }
+    .btn-danger:hover { background: #fee2e2; }
+    .assistant-link {
+      text-decoration: none;
+      max-width: 320px;
+    }
+    .assistant-link-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.96);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+    }
+    .assistant-link img {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .assistant-link span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fav-badge {
+      background: #f59e0b;
+      color: #fff;
+      border-radius: 50%;
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+
+    /* ── Field tabs ── */
+    .field-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      overflow-x: visible;
+    }
+    .field-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 4px;
+      padding: 4px 0;
+    }
+    .field-tab {
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+      border-bottom: 0;
+      border-radius: 999px;
+      transition: color .12s, border-color .12s;
+      flex-shrink: 0;
+    }
+    .field-tab:hover { color: var(--text); }
+    .field-tab.active {
+      color: var(--primary);
+      font-weight: 700;
+      background: #eff6ff;
+      box-shadow: inset 0 0 0 1px #bfdbfe;
+    }
+
+    /* ── Shared banner ── */
+    .shared-banner {
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      padding: 9px 20px;
+      display: none;
+    }
+    .shared-banner.visible { display: block; }
+    .shared-banner-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .shared-banner-inner span { font-size: .875rem; color: #1d4ed8; flex: 1; }
+
+    /* ── Main ── */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 22px 20px;
+    }
+    .results-info {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      transition: box-shadow .15s, transform .1s, border-color .15s;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); border-color: #cbd5e1; }
+    .card.is-fav { border-color: #fcd34d; }
+    .card.is-shared { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37,99,235,.15); }
+    .card.is-selected {
+      border-color: #0f766e;
+      box-shadow: 0 0 0 2px rgba(15,118,110,.18);
+      background: #f0fdfa;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .card-name {
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      flex: 1;
+      display: inline-block;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef4ff 100%);
+      border: 1px solid #dbe7ff;
+      color: #0f172a;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .fav-star {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 1px;
+      line-height: 1;
+      filter: grayscale(1) opacity(0.28);
+      transition: filter .12s, transform .12s;
+      flex-shrink: 0;
+    }
+    .fav-star:hover { filter: grayscale(0) opacity(0.7); transform: scale(1.2); }
+    .fav-star.active { filter: none; }
+
+    .card-prog-icon {
+      display: inline-flex; align-items: center; gap: 3px;
+      font-size: .7rem; color: var(--primary); opacity: .65;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .card:hover .card-prog-icon { opacity: 1; }
+
+    .card-fields { display: flex; flex-wrap: wrap; gap: 5px; }
+    .field-badge {
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      letter-spacing: .02em;
+    }
+    .card-tags { font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
+    .card-select {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: transparent;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: background .12s, border-color .12s, color .12s;
+    }
+    .card-select.active {
+      background: #0f766e;
+      border-color: #0f766e;
+      color: #fff;
+    }
+    .selection-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 350;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      box-shadow: var(--shadow-lg);
+    }
+    .selection-bar-info {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+    .selection-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Empty / Loading ── */
+    .state-box {
+      text-align: center;
+      padding: 70px 20px;
+      color: var(--text-muted);
+    }
+    .state-box .icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .state-box h3 { font-size: 1rem; color: var(--text); margin-bottom: 5px; }
+    .state-box p { font-size: .85rem; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Modal ── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(3px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 700px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(12px) scale(.97);
+      transition: transform .18s;
+    }
+    .overlay.open .modal { transform: none; }
+
+    .modal-head {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .modal-title { font-size: 1.2rem; font-weight: 800; flex: 1; line-height: 1.3; }
+    .modal-head-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .icon-btn {
+      width: 34px; height: 34px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background .12s;
+    }
+    .icon-btn:hover { background: var(--bg); }
+    .icon-btn.fav-active { color: #f59e0b; border-color: #fcd34d; background: #fffbeb; }
+    #modalFavBtn:not(.fav-active) { filter: grayscale(1) opacity(0.35); }
+
+    .modal-meta {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .modal-tags-row { font-size: .78rem; color: var(--text-muted); }
+
+    /* Program links */
+    .modal-programs {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .modal-programs-label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 2px;
+    }
+    .program-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .12s, border-color .12s;
+    }
+    .program-btn:hover { background: #dbeafe; border-color: #93c5fd; }
+    .program-btn svg { flex-shrink: 0; }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+      font-size: .88rem;
+      line-height: 1.75;
+    }
+    .modal-body h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 16px 0 6px;
+    }
+    .modal-body h4:first-child { margin-top: 0; }
+    .modal-body p { margin-bottom: 6px; }
+    .modal-body ol { margin: 6px 0 10px 18px; display: flex; flex-direction: column; gap: 4px; }
+    .section-label { font-weight: 700; color: var(--primary); }
+
+    .modal-foot {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* ── Favorites panel ── */
+    .panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.25);
+      z-index: 400;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s;
+    }
+    .panel-overlay.open { opacity: 1; pointer-events: all; }
+
+    .side-panel {
+      position: fixed;
+      right: 0; top: 0; bottom: 0;
+      width: 360px;
+      max-width: 100vw;
+      background: var(--surface);
+      box-shadow: -4px 0 24px rgba(0,0,0,.12);
+      z-index: 410;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .22s ease;
+    }
+    .panel-overlay.open .side-panel { transform: none; }
+
+    .panel-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-head h2 { font-size: 1rem; font-weight: 800; }
+    .panel-body { flex: 1; overflow-y: auto; padding: 14px; }
+
+    .fav-item {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background .12s;
+    }
+    .fav-item:hover { background: var(--bg); }
+    .fav-item-name { flex: 1; font-size: .875rem; font-weight: 600; }
+    .fav-remove {
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted); font-size: .9rem;
+      padding: 2px 5px; border-radius: 4px;
+      transition: color .12s, background .12s;
+    }
+    .fav-remove:hover { color: #dc2626; background: #fee2e2; }
+
+    .panel-foot {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(70px);
+      background: #1e293b;
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-size: .82rem;
+      z-index: 1000;
+      transition: transform .25s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: var(--shadow-md);
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── Category panel ── */
+    .panel-new-cat {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      cursor: pointer;
+      font-size: .82rem;
+      color: var(--text-muted);
+      transition: border-color .12s, color .12s, background .12s;
+      margin-bottom: 10px;
+    }
+    .panel-new-cat:hover { border-color: var(--primary); color: var(--primary); background: #eff6ff; }
+
+    .cat-section {
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: visible;
+    }
+    .cat-section-head {
+      display: flex;
+      align-items: center;
+      padding: 7px 10px;
+      background: var(--bg);
+      gap: 6px;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+    .cat-title {
+      flex: 1; font-size: .82rem; font-weight: 700;
+      min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .cat-count {
+      font-size: .72rem; color: var(--text-muted);
+      background: var(--border); padding: 1px 6px;
+      border-radius: 50px; flex-shrink: 0;
+    }
+    .cat-actions { display: flex; gap: 3px; flex-shrink: 0; }
+    .cat-act {
+      width: 24px; height: 24px;
+      border: none; background: transparent; cursor: pointer;
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; color: var(--text-muted);
+      transition: background .1s, color .1s;
+    }
+    .cat-act:hover { background: var(--border); color: var(--text); }
+    .cat-act.danger:hover { background: #fee2e2; color: #dc2626; }
+
+    .cat-items { padding: 6px; display: flex; flex-direction: column; gap: 3px; }
+    .cat-items .fav-item { margin-bottom: 0; }
+
+    .fav-tag-btn {
+      background: none; border: 1px solid transparent; cursor: pointer;
+      border-radius: 4px; padding: 3px 5px;
+      color: var(--text-muted); opacity: 0;
+      transition: opacity .15s, background .1s, border-color .1s, color .1s;
+      display: flex; align-items: center;
+    }
+    .fav-item:hover .fav-tag-btn { opacity: 1; }
+    .fav-tag-btn:hover { background: #eff6ff; border-color: #bfdbfe; color: var(--primary) !important; opacity: 1 !important; }
+
+    .cat-picker-wrap { position: relative; }
+    .cat-picker {
+      position: absolute;
+      right: 0; top: calc(100% + 4px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      z-index: 700;
+      min-width: 175px;
+      overflow: hidden;
+    }
+    .cat-picker-title {
+      padding: 6px 10px;
+      font-size: .72rem; font-weight: 700; color: var(--text-muted);
+      background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .cat-picker-row {
+      padding: 6px 10px;
+      display: flex; align-items: center; gap: 7px;
+      font-size: .82rem; cursor: pointer; transition: background .1s;
+    }
+    .cat-picker-row:hover { background: var(--bg); }
+    .cat-picker-row input { cursor: pointer; accent-color: var(--primary); }
+    .cat-picker-add {
+      padding: 6px 10px; border-top: 1px solid var(--border);
+      font-size: .82rem; color: var(--primary); cursor: pointer;
+      display: flex; align-items: center; gap: 5px; transition: background .1s;
+    }
+    .cat-picker-add:hover { background: #eff6ff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .logo small { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .selection-bar { align-items: stretch; flex-direction: column; }
+      .selection-bar-actions { width: 100%; }
+      .side-panel { width: 100%; }
+      .modal { max-height: 95vh; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      Metac
+      <small id="logoSub">Metodologías Activas</small>
+    </div>
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="searchInput" placeholder="Buscar…">
+      <button class="search-clear" id="searchClearBtn" aria-label="Limpiar búsqueda">✕</button>
+    </div>
+    <div class="header-right">
+      <a
+        class="btn btn-primary assistant-link"
+        id="assistantLink"
+        href="https://notebooklm.google.com/notebook/2d3875e6-bff4-4b3e-8210-ecb973ee79af/preview"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Asistente de IA"
+      >
+        <span class="assistant-link-icon" aria-hidden="true">
+          <img src="notebooklm-icon.webp" alt="">
+        </span>
+        <span id="assistantLinkLabel">Asistente de IA</span>
+      </a>
+      <div class="lang-group">
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="ca">CA</button>
+      </div>
+      <button class="btn" id="selectBtn">✓ <span id="selectBtnLabel">Seleccionar</span></button>
+      <button class="btn" id="favBtn">
+        ⭐ <span id="favBtnLabel">Favoritos</span>
+        <span class="fav-badge" id="favBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ FIELD TABS ═══ -->
+<nav class="field-nav">
+  <div class="field-nav-inner" id="fieldTabs"></div>
+</nav>
+
+<!-- ═══ SHARED BANNER ═══ -->
+<div class="shared-banner" id="sharedBanner">
+  <div class="shared-banner-inner">
+    <span id="sharedBannerText"></span>
+    <button class="btn" id="exitSharedBtn">✕ <span id="exitSharedLabel"></span></button>
+  </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+  <div class="state-box">
+    <div class="spinner"></div>
+    <p id="loadingMsg">Cargando…</p>
+  </div>
+</main>
+
+<!-- ═══ MODAL ═══ -->
+<div class="overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-head-actions">
+        <button class="icon-btn" id="modalFavBtn" title="Favorito">⭐</button>
+        <button class="icon-btn" id="modalShareBtn" title="Compartir">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="modalCloseBtn">✕</button>
+      </div>
+    </div>
+    <div class="modal-meta">
+      <div class="card-fields" id="modalFields"></div>
+      <div class="modal-tags-row" id="modalTags"></div>
+    </div>
+    <div class="modal-programs" id="modalPrograms" style="display:none"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot">
+      <button class="btn" id="modalCloseBtnFooter"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FAVORITES PANEL ═══ -->
+<div class="panel-overlay" id="panelOverlay">
+  <div class="side-panel">
+    <div class="panel-head">
+      <h2 id="panelTitle">Favoritos</h2>
+      <button class="icon-btn" id="panelClose">✕</button>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+    <div class="panel-foot">
+      <button class="btn btn-danger" id="clearFavsBtn">
+        🗑 <span id="clearFavsLabel"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+
+const CSV = {
+  es: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSM-sRVuqzd_JSTClv8y8yLJ79TpSS-NsJWDMg4ZHOlTANl005nk-lZ5ENCyUToWnZA-qciQ66-HjNd/pub?output=csv',
+  ca: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNlK5aBVw3rc6u7FtPLJ7b8IfskE9UrL47BFPsHABrvTZLi74Z_4S4dQTin-04G0QF8nHZ6k9vS1dE/pub?output=csv',
+};
+
+const LOCAL_CSV = {
+  es: 'data/metac-es.csv',
+  ca: 'data/metac-ca.csv',
+};
+
+// Field color palette (8 ámbitos)
+const COLORS = [
+  { bg:'#fff7ed', text:'#c2410c', border:'#fed7aa' },
+  { bg:'#f0fdf4', text:'#15803d', border:'#bbf7d0' },
+  { bg:'#faf5ff', text:'#7e22ce', border:'#e9d5ff' },
+  { bg:'#eff6ff', text:'#1d4ed8', border:'#bfdbfe' },
+  { bg:'#f0fdfa', text:'#0f766e', border:'#99f6e4' },
+  { bg:'#fef2f2', text:'#b91c1c', border:'#fecaca' },
+  { bg:'#eef2ff', text:'#4338ca', border:'#c7d2fe' },
+  { bg:'#fffbeb', text:'#b45309', border:'#fde68a' },
+];
+
+// Maps field keywords → color index (works for both ES and CA)
+const FIELD_MAP = [
+  ['activac','activació'],
+  ['cohes'],
+  ['comunic','creativit'],
+  ['construcció','construccion','coneixement','conocimiento'],
+  ['avaluac','evaluac','formativ','feedback','retroaliment'],
+  ['pensament','pensamiento','crític','crítico','metacog'],
+  ['processament','procesamiento','anàlisi','análisis'],
+  ['resoluc','reptes','retos'],
+];
+
+const I18N = {
+  es: {
+    sub:          'Metodologías Activas',
+    search:       'Buscar técnica, tag o descripción…',
+    all:          'Todas',
+    favBtn:       'Favoritos',
+    favPanel:     'Favoritos',
+    shareFavs:    'Compartir favoritos',
+    clearFavs:    'Limpiar favoritos',
+    selectMode:   'Seleccionar',
+    selectOff:    'Cancelar selección',
+    shareSel:     'Compartir selección',
+    selectVisible:'Seleccionar visibles',
+    selectedCount:'seleccionadas',
+    clearSearch:  'Limpiar búsqueda',
+    assistant:    'Asistente de IA',
+    clearConfirm: '¿Eliminar todos los favoritos?',
+    noFavs:       'Sin favoritos aún',
+    noFavsHint:   'Pulsa ⭐ en cualquier técnica',
+    noResults:    'Sin resultados',
+    noResHint:    'Prueba con otros términos',
+    sharedOne:    '📎 Técnica compartida contigo',
+    sharedMany:   '📎 Colección compartida contigo',
+    exitShared:   'Salir de la selección',
+    programs:     'Recursos:',
+    tags:         'Tags:',
+    fields:       'Ámbitos:',
+    share:        'Compartir enlace',
+    close:        'Cerrar',
+    copied:       '¡Enlace copiado!',
+    newCat:       'Nueva categoría',
+    uncategorized:'Sin categoría',
+    addToCat:     'Categorías',
+    shareCat:     'Compartir',
+    deleteCat:    'Eliminar categoría',
+    deleteCatOk:  '¿Eliminar esta categoría?\nLas técnicas permanecerán en favoritos.',
+    renameCat:    'Renombrar',
+    catPrompt:    'Nombre de la categoría:',
+    noCatsYet:    'Sin categorías todavía',
+    rmFromCat:    'Quitar de esta categoría',
+    rmFav:        'Quitar de favoritos',
+    sharedCat:    '📎 Colección:',
+    favAdded:     'Añadido a favoritos',
+    favRemoved:   'Eliminado de favoritos',
+    loading:      'Cargando datos…',
+    error:        'Error al cargar los datos.',
+    techniques:   'técnicas',
+  },
+  ca: {
+    sub:          'Metodologies Actives',
+    search:       'Cercar tècnica, tag o descripció…',
+    all:          'Totes',
+    favBtn:       'Preferits',
+    favPanel:     'Preferits',
+    shareFavs:    'Compartir preferits',
+    clearFavs:    'Netejar preferits',
+    selectMode:   'Seleccionar',
+    selectOff:    'Cancel·lar selecció',
+    shareSel:     'Compartir selecció',
+    selectVisible:'Seleccionar visibles',
+    selectedCount:'seleccionades',
+    clearSearch:  'Netejar cerca',
+    assistant:    "Assistent d'IA",
+    clearConfirm: 'Eliminar tots els preferits?',
+    noFavs:       'Sense preferits encara',
+    noFavsHint:   'Prem ⭐ a qualsevol tècnica',
+    noResults:    'Sense resultats',
+    noResHint:    'Prova amb altres termes',
+    sharedOne:    '📎 Tècnica compartida amb tu',
+    sharedMany:   '📎 Col·lecció compartida amb tu',
+    exitShared:   'Sortir de la selecció',
+    programs:     'Recursos:',
+    tags:         'Tags:',
+    fields:       'Àmbits:',
+    share:        'Compartir enllaç',
+    close:        'Tancar',
+    copied:       'Enllaç copiat!',
+    newCat:       'Nova categoria',
+    uncategorized:'Sense categoria',
+    addToCat:     'Categories',
+    shareCat:     'Compartir',
+    deleteCat:    'Eliminar categoria',
+    deleteCatOk:  "Eliminar aquesta categoria?\nLes tècniques romandran als preferits.",
+    renameCat:    'Reanomenar',
+    catPrompt:    'Nom de la categoria:',
+    noCatsYet:    'Sense categories encara',
+    rmFromCat:    "Treure d'aquesta categoria",
+    rmFav:        'Treure dels preferits',
+    sharedCat:    '📎 Col·lecció:',
+    favAdded:     'Afegit als preferits',
+    favRemoved:   'Eliminat dels preferits',
+    loading:      'Carregant dades…',
+    error:        'Error en carregar les dades.',
+    techniques:   'tècniques',
+  },
+};
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+
+const S = {
+  lang:         'es',
+  data:         { es: null, ca: null },
+  favorites:    new Set(),
+  selected:     new Set(),
+  selectMode:   false,
+  categories:   [],     // [{id, name, indices:[]}]
+  search:       '',
+  field:        null,
+  modal:        null,
+  shared:       null,
+  sharedName:   null,
+};
+
+// ─── CSV PARSER ──────────────────────────────────────────────────────────────
+
+function parseCSV(raw) {
+  const rows = [];
+  let row = [], cell = '', inQ = false;
+  for (let i = 0; i < raw.length; i++) {
+    const c = raw[i];
+    if (c === '"') {
+      if (inQ && raw[i + 1] === '"') { cell += '"'; i++; }
+      else inQ = !inQ;
+    } else if (c === ',' && !inQ) {
+      row.push(cell); cell = '';
+    } else if (c === '\n' && !inQ) {
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else if (c !== '\r') {
+      cell += c;
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
+function toObjects(raw) {
+  const rows = parseCSV(raw);
+  if (rows.length < 2) return [];
+  return rows.slice(1).filter(r => r[0] && r[0].trim()).map(r => {
+    const rawFields = (r[3] || '').split(',').map(s => s.trim()).filter(Boolean);
+    const fields = [], inlineProgs = [];
+    rawFields.forEach(f => f.includes('|') ? inlineProgs.push(f) : fields.push(normField(f)));
+    return {
+      name:     (r[0] || '').trim(),
+      desc:     (r[1] || '').trim(),
+      tags:     (r[2] || '').split(',').map(s => s.trim()).filter(Boolean),
+      fields,
+      programs: [...parsePrograms(r[4] || ''), ...parsePrograms(inlineProgs.join(';'))],
+    };
+  });
+}
+
+// Parse "Label1|url1 ; Label2|url2"
+function parsePrograms(raw) {
+  return raw.split(';').map(s => s.trim()).filter(Boolean).map(entry => {
+    const pipe = entry.indexOf('|');
+    if (pipe === -1) return null;
+    return { label: entry.slice(0, pipe).trim(), url: entry.slice(pipe + 1).trim() };
+  }).filter(Boolean);
+}
+
+// ─── FIELD UTILS ─────────────────────────────────────────────────────────────
+
+// Fix known typos in ES data
+function normField(f) {
+  return f
+    .replace('Pensamiento Crític y Metacognición', 'Pensamiento Crítico y Metacognición')
+    .replace('Evaluación Formativa y Retroalimentación', 'Evaluación Formativa y Feedback');
+}
+
+const colorCache = {};
+function fieldColor(name) {
+  if (colorCache[name]) return colorCache[name];
+  const n = name.toLowerCase();
+  for (let i = 0; i < FIELD_MAP.length; i++) {
+    if (FIELD_MAP[i].some(kw => n.includes(kw))) {
+      return (colorCache[name] = COLORS[i]);
+    }
+  }
+  // hash fallback
+  const h = [...name].reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0);
+  return (colorCache[name] = COLORS[h % COLORS.length]);
+}
+
+function badgeHTML(field) {
+  const c = fieldColor(field);
+  return `<span class="field-badge" style="background:${c.bg};color:${c.text};border-color:${c.border}">${esc(field)}</span>`;
+}
+
+function allFields() {
+  const data = S.data[S.lang] || [];
+  const set = new Set();
+  data.forEach(d => d.fields.forEach(f => set.add(f)));
+  return [...set].sort();
+}
+
+// ─── DESCRIPTION FORMATTER ───────────────────────────────────────────────────
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function formatDesc(text) {
+  const lines = text.split('\n');
+  let html = '', list = [];
+
+  const flush = () => {
+    if (!list.length) return;
+    html += '<ol>' + list.map(i => `<li>${i}</li>`).join('') + '</ol>';
+    list = [];
+  };
+
+  for (let idx = 0; idx < lines.length; idx++) {
+    const raw = lines[idx];
+    const line = raw.trim();
+    if (!line) {
+      if (list.length) {
+        let next = idx + 1;
+        while (next < lines.length && !lines[next].trim()) next++;
+        if (next < lines.length && /^\d+\.\s+/.test(lines[next].trim())) continue;
+      }
+      flush();
+      continue;
+    }
+
+    if (line.startsWith('## ')) {
+      flush();
+      html += `<h4>${esc(line.slice(3))}</h4>`;
+      continue;
+    }
+
+    const num = line.match(/^\d+\.\s+([\s\S]+)/);
+    if (num) { list.push(esc(num[1])); continue; }
+
+    flush();
+
+    // Section header: starts with 2+ uppercase letters then colon
+    const sec = line.match(/^([A-ZÁÉÍÓÚÀÈÌÒÙÜÑÇ][A-ZÁÉÍÓÚÀÈÌÒÙÜÑÇ\s\(\)\/,']+:)\s*(.*)/);
+    if (sec) {
+      html += `<p><span class="section-label">${esc(sec[1])}</span>${sec[2] ? ' ' + esc(sec[2]) : ''}</p>`;
+    } else {
+      html += `<p>${esc(line)}</p>`;
+    }
+  }
+
+  flush();
+  return html;
+}
+
+// ─── DATA FETCH ──────────────────────────────────────────────────────────────
+
+async function loadLang(lang) {
+  if (S.data[lang]) return;
+  try {
+    const res = await fetch(CSV[lang]);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    S.data[lang] = toObjects(await res.text());
+  } catch {
+    const res = await fetch(LOCAL_CSV[lang]);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    S.data[lang] = toObjects(await res.text());
+  }
+}
+
+// ─── SHARING & CLIPBOARD ─────────────────────────────────────────────────────
+
+function shareURL(indices, name = null) {
+  const u = new URL(location.href.split('?')[0]);
+  u.searchParams.set('t', indices.join(','));
+  u.searchParams.set('lang', S.lang);
+  if (name) u.searchParams.set('tname', name);
+  return u.toString();
+}
+
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const t = document.createElement('textarea');
+    t.value = text; t.style.cssText = 'position:fixed;opacity:0';
+    document.body.append(t); t.select();
+    document.execCommand('copy'); t.remove();
+  }
+  toast(i('copied'));
+}
+
+// ─── LOCALSTORAGE ────────────────────────────────────────────────────────────
+
+const LS = 'metec_favs_v1';
+function saveFavs() { localStorage.setItem(LS, JSON.stringify([...S.favorites])); }
+function loadFavs() {
+  try { const r = localStorage.getItem(LS); if (r) S.favorites = new Set(JSON.parse(r)); }
+  catch {}
+}
+
+const LS_CATS = 'metec_cats_v1';
+function saveCats() { localStorage.setItem(LS_CATS, JSON.stringify(S.categories)); }
+function loadCats() {
+  try {
+    const r = localStorage.getItem(LS_CATS);
+    if (r) S.categories = JSON.parse(r).map(c => ({ id: c.id, name: c.name, indices: Array.isArray(c.indices) ? c.indices : [] }));
+  } catch {}
+}
+
+// ─── I18N ────────────────────────────────────────────────────────────────────
+
+function i(k) { return I18N[S.lang][k] || k; }
+
+function updateSearchUI() {
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClearBtn');
+  clearBtn.classList.toggle('visible', !!input.value);
+  clearBtn.setAttribute('aria-label', i('clearSearch'));
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+// ─── RENDER: UI STRINGS ──────────────────────────────────────────────────────
+
+function applyI18N() {
+  document.getElementById('logoSub').textContent       = i('sub');
+  document.getElementById('searchInput').placeholder   = i('search');
+  document.getElementById('assistantLinkLabel').textContent = i('assistant');
+  document.getElementById('assistantLink').title       = i('assistant');
+  document.getElementById('selectBtnLabel').textContent = S.selectMode ? i('selectOff') : i('selectMode');
+  document.getElementById('favBtnLabel').textContent   = i('favBtn');
+  document.getElementById('panelTitle').textContent    = i('favPanel');
+  document.getElementById('clearFavsLabel').textContent = i('clearFavs');
+  document.getElementById('modalCloseBtnFooter').textContent = i('close');
+  document.getElementById('exitSharedLabel').textContent = i('exitShared');
+  document.documentElement.lang = S.lang;
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === S.lang));
+  updateSearchUI();
+}
+
+// ─── RENDER: FIELD TABS ──────────────────────────────────────────────────────
+
+function renderTabs() {
+  const wrap = document.getElementById('fieldTabs');
+  wrap.innerHTML = '';
+  const mkTab = (label, val) => {
+    const b = document.createElement('button');
+    b.className = 'field-tab' + (S.field === val ? ' active' : '');
+    b.textContent = label;
+    b.onclick = () => { S.field = S.field === val ? null : val; renderTabs(); renderCards(); };
+    wrap.appendChild(b);
+  };
+  mkTab(i('all'), null);
+  allFields().forEach(f => mkTab(f, f));
+}
+
+// ─── RENDER: CARDS ───────────────────────────────────────────────────────────
+
+function filteredData() {
+  const data = S.data[S.lang] || [];
+
+  let indexed = S.shared
+    ? S.shared.filter(n => n >= 0 && n < data.length).map(n => ({ item: data[n], idx: n }))
+    : data.map((item, idx) => ({ item, idx }));
+
+  if (!S.shared && S.field)
+    indexed = indexed.filter(({ item }) => item.fields.includes(S.field));
+
+  const q = S.search.toLowerCase().trim();
+  if (q) indexed = indexed.filter(({ item }) =>
+    item.name.toLowerCase().includes(q) ||
+    item.desc.toLowerCase().includes(q) ||
+    item.tags.some(t => t.toLowerCase().includes(q)) ||
+    item.fields.some(f => f.toLowerCase().includes(q))
+  );
+
+  return indexed;
+}
+
+function clearSelection(render = true) {
+  S.selected.clear();
+  S.selectMode = false;
+  if (render) {
+    applyI18N();
+    renderCards();
+  }
+}
+
+function toggleSelectMode() {
+  S.selectMode = !S.selectMode;
+  if (!S.selectMode) S.selected.clear();
+  applyI18N();
+  renderCards();
+}
+
+function toggleCardSelection(idx) {
+  if (S.selected.has(idx)) S.selected.delete(idx);
+  else S.selected.add(idx);
+  renderCards();
+}
+
+function selectVisibleCards() {
+  filteredData().forEach(({ idx }) => S.selected.add(idx));
+  renderCards();
+}
+
+function renderCards() {
+  const main = document.getElementById('main');
+  const rows = filteredData();
+  main.style.paddingBottom = S.selectMode ? '110px' : '';
+
+  if (!rows.length) {
+    main.innerHTML = `<div class="state-box">
+      <div class="icon">🔍</div>
+      <h3>${i('noResults')}</h3><p>${i('noResHint')}</p>
+    </div>`;
+    return;
+  }
+
+  main.innerHTML = '';
+
+  const info = document.createElement('p');
+  info.className = 'results-info';
+  info.textContent = `${rows.length} ${i('techniques')}`;
+  main.appendChild(info);
+
+  if (S.selectMode) {
+    const bar = document.createElement('div');
+    bar.className = 'selection-bar';
+    bar.innerHTML = `
+      <div class="selection-bar-info">${S.selected.size} ${i('selectedCount')}</div>
+      <div class="selection-bar-actions">
+        <button class="btn" id="selectVisibleBtn">✓ ${i('selectVisible')}</button>
+        <button class="btn btn-primary" id="shareSelectedBtn">🔗 ${i('shareSel')}</button>
+        <button class="btn" id="cancelSelectionBtn">✕ ${i('selectOff')}</button>
+      </div>
+    `;
+    main.appendChild(bar);
+
+    bar.querySelector('#selectVisibleBtn').onclick = () => selectVisibleCards();
+    bar.querySelector('#shareSelectedBtn').onclick = () => {
+      if (!S.selected.size) return;
+      copy(shareURL([...S.selected].sort((a, b) => a - b)));
+    };
+    bar.querySelector('#cancelSelectionBtn').onclick = () => clearSelection();
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'cards-grid';
+
+  rows.forEach(({ item, idx }) => {
+    const fav = S.favorites.has(idx);
+    const shared = S.shared && S.shared.includes(idx);
+    const selected = S.selected.has(idx);
+    const card = document.createElement('div');
+    card.className = 'card' + (fav ? ' is-fav' : '') + (shared ? ' is-shared' : '') + (selected ? ' is-selected' : '');
+    const progIcon = item.programs.length
+      ? `<span class="card-prog-icon" title="${item.programs.map(p => esc(p.label)).join(', ')}"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>`
+      : '';
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="card-name">${esc(item.name)}</div>
+        ${progIcon}
+        <span class="card-select ${selected ? 'active' : ''}" style="display:${S.selectMode ? 'inline-flex' : 'none'}">✓</span>
+        <button class="fav-star ${fav ? 'active' : ''}" data-idx="${idx}">⭐</button>
+      </div>
+      <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
+      <div class="card-tags">${item.tags.slice(0, 7).map(esc).join(' · ')}</div>
+    `;
+    card.querySelector('.fav-star').onclick = e => { e.stopPropagation(); toggleFav(idx, e.currentTarget); };
+    card.onclick = () => { if (S.selectMode) toggleCardSelection(idx); else openModal(idx); };
+    grid.appendChild(card);
+  });
+
+  main.appendChild(grid);
+}
+
+// ─── RENDER: MODAL ───────────────────────────────────────────────────────────
+
+function openModal(idx) {
+  const data = S.data[S.lang] || [];
+  const item = data[idx];
+  if (!item) return;
+  S.modal = idx;
+
+  document.getElementById('modalTitle').textContent = item.name;
+  document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
+  document.getElementById('modalTags').innerHTML =
+    `<strong>${i('tags')}</strong> ${item.tags.map(esc).join(' · ')}`;
+  document.getElementById('modalBody').innerHTML = formatDesc(item.desc);
+
+  // Programs
+  const progWrap = document.getElementById('modalPrograms');
+  if (item.programs.length) {
+    progWrap.style.display = 'flex';
+    progWrap.innerHTML = `<span class="modal-programs-label">${i('programs')}</span>` +
+      item.programs.map(p => `
+        <a class="program-btn" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          ${esc(p.label)}
+        </a>`).join('');
+  } else {
+    progWrap.style.display = 'none';
+  }
+
+  const fav = S.favorites.has(idx);
+  document.getElementById('modalFavBtn').classList.toggle('fav-active', fav);
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  S.modal = null;
+}
+
+// ─── FAVORITES ───────────────────────────────────────────────────────────────
+
+function toggleFav(idx, anchorEl = null) {
+  const adding = !S.favorites.has(idx);
+
+  if (!adding) {
+    S.favorites.delete(idx);
+    S.categories.forEach(c => { c.indices = c.indices.filter(i => i !== idx); });
+    saveCats();
+    toast(i('favRemoved'));
+  } else {
+    S.favorites.add(idx);
+    toast(i('favAdded'));
+  }
+  saveFavs();
+  updateFavBadge();
+  renderCards();
+  if (S.modal !== null)
+    document.getElementById('modalFavBtn').classList.toggle('fav-active', S.favorites.has(S.modal));
+
+  if (adding && anchorEl) openCatPicker(idx, anchorEl);
+}
+
+function updateFavBadge() {
+  const n = S.favorites.size;
+  const el = document.getElementById('favBadge');
+  el.textContent = n;
+  el.style.display = n ? 'flex' : 'none';
+}
+
+// ─── FAVORITES PANEL ─────────────────────────────────────────────────────────
+
+function openPanel() { renderPanel(); document.getElementById('panelOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closePanel() { document.getElementById('panelOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+
+let activePicker = null;
+
+function catUID() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+function createCategory(name) {
+  const cat = { id: catUID(), name, indices: [] };
+  S.categories.push(cat);
+  saveCats();
+  return cat;
+}
+
+function deleteCategory(id) {
+  S.categories = S.categories.filter(c => c.id !== id);
+  saveCats();
+}
+
+function addToCategory(idx, catId) {
+  const cat = S.categories.find(c => c.id === catId);
+  if (cat && !cat.indices.includes(idx)) { cat.indices.push(idx); saveCats(); }
+}
+
+function removeFromCategory(idx, catId) {
+  const cat = S.categories.find(c => c.id === catId);
+  if (cat) { cat.indices = cat.indices.filter(i => i !== idx); saveCats(); }
+}
+
+function assignToCategory(idx, catId = null) {
+  S.categories.forEach(cat => {
+    cat.indices = cat.indices.filter(i => i !== idx);
+  });
+  if (catId) {
+    const target = S.categories.find(cat => cat.id === catId);
+    if (target && !target.indices.includes(idx)) target.indices.push(idx);
+  }
+  saveCats();
+}
+
+function promptNewCategory(addIdx = null) {
+  const name = prompt(i('catPrompt'));
+  if (!name || !name.trim()) return;
+  const cat = createCategory(name.trim());
+  if (addIdx !== null) addToCategory(addIdx, cat.id);
+  renderPanel();
+}
+
+function openCatPicker(idx, anchorEl) {
+  if (activePicker) { activePicker.remove(); activePicker = null; }
+  const picker = document.createElement('div');
+  picker.className = 'cat-picker';
+  picker.onclick = e => e.stopPropagation();
+  activePicker = picker;
+
+  const title = document.createElement('div');
+  title.className = 'cat-picker-title';
+  title.textContent = i('addToCat');
+  picker.appendChild(title);
+
+  const currentCat = S.categories.find(cat => cat.indices.includes(idx));
+
+  const noneRow = document.createElement('div');
+  noneRow.className = 'cat-picker-row';
+  const noneRadio = document.createElement('input');
+  noneRadio.type = 'radio';
+  noneRadio.name = `cat-${idx}`;
+  noneRadio.checked = !currentCat;
+  noneRadio.onclick = e => e.stopPropagation();
+  const noneLbl = document.createElement('span');
+  noneLbl.textContent = i('uncategorized');
+  noneRow.onclick = e => {
+    e.stopPropagation();
+    assignToCategory(idx, null);
+    picker.remove();
+    activePicker = null;
+    renderPanel();
+  };
+  noneRow.appendChild(noneRadio);
+  noneRow.appendChild(noneLbl);
+  picker.appendChild(noneRow);
+
+  if (!S.categories.length) {
+    const none = document.createElement('div');
+    none.className = 'cat-picker-row';
+    none.style.color = 'var(--text-muted)';
+    none.textContent = i('noCatsYet');
+    picker.appendChild(none);
+  } else {
+    S.categories.forEach(cat => {
+      const row = document.createElement('div');
+      row.className = 'cat-picker-row';
+      const cb = document.createElement('input');
+      cb.type = 'radio';
+      cb.name = `cat-${idx}`;
+      cb.checked = currentCat ? currentCat.id === cat.id : false;
+      cb.onclick = e => e.stopPropagation();
+      const lbl = document.createElement('span');
+      lbl.textContent = cat.name;
+      row.onclick = e => {
+        e.stopPropagation();
+        assignToCategory(idx, cat.id);
+        picker.remove();
+        activePicker = null;
+        renderPanel();
+      };
+      row.appendChild(cb);
+      row.appendChild(lbl);
+      picker.appendChild(row);
+    });
+  }
+
+  const addRow = document.createElement('div');
+  addRow.className = 'cat-picker-add';
+  addRow.innerHTML = '<span>+</span> ' + i('newCat');
+  addRow.onclick = e => { e.stopPropagation(); picker.remove(); activePicker = null; promptNewCategory(idx); };
+  picker.appendChild(addRow);
+
+  const wrap = anchorEl.closest('.cat-picker-wrap');
+  if (wrap) {
+    wrap.appendChild(picker);
+  } else {
+    picker.style.position = 'fixed';
+    picker.style.right = 'auto';
+    picker.style.top = '0';
+    picker.style.left = '0';
+    document.body.appendChild(picker);
+
+    const rect = anchorEl.getBoundingClientRect();
+    const margin = 8;
+    const maxLeft = Math.max(margin, window.innerWidth - picker.offsetWidth - margin);
+    const left = Math.min(Math.max(margin, rect.right - picker.offsetWidth), maxLeft);
+    const maxTop = Math.max(margin, window.innerHeight - picker.offsetHeight - margin);
+    const preferredTop = rect.bottom + 6;
+    const fallbackTop = rect.top - picker.offsetHeight - 6;
+    const top = preferredTop <= maxTop ? preferredTop : Math.max(margin, fallbackTop);
+    picker.style.left = `${left}px`;
+    picker.style.top = `${top}px`;
+  }
+
+  setTimeout(() => {
+    const close = e => {
+      if (!picker.contains(e.target) && !anchorEl.contains(e.target)) {
+        picker.remove();
+        activePicker = null;
+        document.removeEventListener('click', close);
+      }
+    };
+    document.addEventListener('click', close);
+  }, 0);
+}
+
+function buildFavItem(idx, data, catId) {
+  const item = data[idx];
+  if (!item) return null;
+  const el = document.createElement('div');
+  el.className = 'fav-item';
+
+  const nameSpan = document.createElement('span');
+  nameSpan.className = 'fav-item-name';
+  nameSpan.textContent = item.name;
+
+  const pickerWrap = document.createElement('div');
+  pickerWrap.className = 'cat-picker-wrap';
+  const pickerBtn = document.createElement('button');
+  pickerBtn.className = 'fav-tag-btn';
+  pickerBtn.title = i('addToCat');
+  pickerBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>';
+  pickerBtn.onclick = e => { e.stopPropagation(); openCatPicker(idx, pickerBtn); };
+  pickerWrap.appendChild(pickerBtn);
+
+  const rmBtn = document.createElement('button');
+  rmBtn.className = 'fav-remove';
+  rmBtn.textContent = '✕';
+  if (catId) {
+    rmBtn.title = i('rmFromCat');
+    rmBtn.onclick = e => { e.stopPropagation(); removeFromCategory(idx, catId); renderPanel(); };
+  } else {
+    rmBtn.title = i('rmFav');
+    rmBtn.onclick = e => { e.stopPropagation(); toggleFav(idx); renderPanel(); };
+  }
+
+  el.appendChild(nameSpan);
+  el.appendChild(pickerWrap);
+  el.appendChild(rmBtn);
+  el.onclick = () => { closePanel(); openModal(idx); };
+  return el;
+}
+
+function buildCatSection(cat, label, indices, data) {
+  const valid = indices.filter(idx => idx >= 0 && idx < data.length);
+  const section = document.createElement('div');
+  section.className = 'cat-section';
+
+  const head = document.createElement('div');
+  head.className = 'cat-section-head';
+
+  const titleEl = document.createElement('span');
+  titleEl.className = 'cat-title';
+  titleEl.textContent = label;
+
+  const countEl = document.createElement('span');
+  countEl.className = 'cat-count';
+  countEl.textContent = valid.length;
+
+  const acts = document.createElement('div');
+  acts.className = 'cat-actions';
+
+  if (cat) {
+    const renBtn = document.createElement('button');
+    renBtn.className = 'cat-act';
+    renBtn.title = i('renameCat');
+    renBtn.textContent = '✏️';
+    renBtn.onclick = e => {
+      e.stopPropagation();
+      const name = prompt(i('catPrompt'), cat.name);
+      if (name && name.trim()) { cat.name = name.trim(); saveCats(); renderPanel(); }
+    };
+    acts.appendChild(renBtn);
+  }
+
+  const shareBtn = document.createElement('button');
+  shareBtn.className = 'cat-act';
+  shareBtn.title = i('shareCat');
+  shareBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+  shareBtn.onclick = e => { e.stopPropagation(); copy(shareURL(valid, cat ? cat.name : null)); };
+  acts.appendChild(shareBtn);
+
+  if (cat) {
+    const delBtn = document.createElement('button');
+    delBtn.className = 'cat-act danger';
+    delBtn.title = i('deleteCat');
+    delBtn.textContent = '🗑';
+    delBtn.onclick = e => {
+      e.stopPropagation();
+      if (confirm(i('deleteCatOk'))) { deleteCategory(cat.id); renderPanel(); }
+    };
+    acts.appendChild(delBtn);
+  }
+
+  head.appendChild(titleEl);
+  head.appendChild(countEl);
+  head.appendChild(acts);
+  section.appendChild(head);
+
+  if (valid.length) {
+    const itemsDiv = document.createElement('div');
+    itemsDiv.className = 'cat-items';
+    valid.forEach(idx => {
+      const el = buildFavItem(idx, data, cat ? cat.id : null);
+      if (el) itemsDiv.appendChild(el);
+    });
+    section.appendChild(itemsDiv);
+  }
+
+  return section;
+}
+
+function renderPanel() {
+  const data = S.data[S.lang] || [];
+  const body = document.getElementById('panelBody');
+  body.innerHTML = '';
+
+  const newCatBtn = document.createElement('button');
+  newCatBtn.className = 'panel-new-cat';
+  newCatBtn.innerHTML = '<span style="font-size:1rem;font-weight:700;line-height:1">+</span> ' + i('newCat');
+  newCatBtn.onclick = () => promptNewCategory();
+  body.appendChild(newCatBtn);
+
+  if (!S.favorites.size) {
+    const empty = document.createElement('div');
+    empty.className = 'state-box';
+    empty.style.padding = '30px 0';
+    empty.innerHTML = `<div class="icon">⭐</div><h3>${i('noFavs')}</h3><p>${i('noFavsHint')}</p>`;
+    body.appendChild(empty);
+    return;
+  }
+
+  const inCatSet = new Set(S.categories.flatMap(c => c.indices));
+  const uncatIdxs = [...S.favorites].filter(idx => !inCatSet.has(idx));
+
+  if (uncatIdxs.length) {
+    body.appendChild(buildCatSection(null, i('uncategorized'), uncatIdxs, data));
+  }
+
+  S.categories.forEach(cat => {
+    body.appendChild(buildCatSection(cat, cat.name, cat.indices, data));
+  });
+}
+
+// ─── SHARED BANNER ───────────────────────────────────────────────────────────
+
+function updateSharedBanner() {
+  const el = document.getElementById('sharedBanner');
+  if (!S.shared) { el.classList.remove('visible'); return; }
+  el.classList.add('visible');
+  let txt;
+  if (S.sharedName) {
+    txt = `${i('sharedCat')} ${S.sharedName} (${S.shared.length})`;
+  } else {
+    txt = S.shared.length === 1 ? i('sharedOne') : `${i('sharedMany')} (${S.shared.length})`;
+  }
+  document.getElementById('sharedBannerText').textContent = txt;
+  document.getElementById('exitSharedLabel').textContent = i('exitShared');
+}
+
+// ─── LANGUAGE SWITCH ─────────────────────────────────────────────────────────
+
+async function switchLang(lang) {
+  if (lang === S.lang && S.data[lang]) return;
+  clearSelection(false);
+  S.lang = lang;
+
+  const u = new URL(location.href);
+  u.searchParams.set('lang', lang);
+  history.replaceState({}, '', u);
+
+  applyI18N();
+  updateSharedBanner();
+
+  if (!S.data[lang]) {
+    document.getElementById('main').innerHTML = `<div class="state-box">
+      <div class="spinner"></div><p>${i('loading')}</p>
+    </div>`;
+    try { await loadLang(lang); }
+    catch { document.getElementById('main').innerHTML = `<div class="state-box"><h3>${i('error')}</h3></div>`; return; }
+  }
+
+  S.field = null;
+  renderTabs();
+  renderCards();
+  if (S.modal !== null) openModal(S.modal);
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+async function init() {
+  loadFavs();
+  loadCats();
+  updateFavBadge();
+
+  // Read URL params
+  const p = new URLSearchParams(location.search);
+  if (p.get('lang') === 'ca') S.lang = 'ca';
+  const t = p.get('t');
+  if (t) S.shared = t.split(',').map(Number).filter(n => !isNaN(n) && n >= 0);
+  const tname = p.get('tname');
+  if (tname) S.sharedName = tname;
+
+  applyI18N();
+  updateSharedBanner();
+
+  // Load data
+  try { await loadLang(S.lang); }
+  catch {
+    document.getElementById('main').innerHTML = `<div class="state-box"><h3>${i('error')}</h3></div>`;
+    return;
+  }
+
+  renderTabs();
+  renderCards();
+
+  // Auto-open modal for single shared technique
+  if (S.shared && S.shared.length === 1) openModal(S.shared[0]);
+
+  // ── Event listeners ──────────────────────────────────────────────────────
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    S.search = e.target.value;
+    updateSearchUI();
+    renderCards();
+  });
+  document.getElementById('searchClearBtn').onclick = () => {
+    const input = document.getElementById('searchInput');
+    input.value = '';
+    S.search = '';
+    updateSearchUI();
+    renderCards();
+    input.focus();
+  };
+
+  document.querySelectorAll('.lang-btn').forEach(b => b.onclick = () => switchLang(b.dataset.lang));
+
+  document.getElementById('selectBtn').onclick = toggleSelectMode;
+  document.getElementById('favBtn').onclick = openPanel;
+  document.getElementById('panelClose').onclick = closePanel;
+  document.getElementById('panelOverlay').onclick = e => { if (e.target === e.currentTarget) closePanel(); };
+
+  document.getElementById('modalCloseBtn').onclick = closeModal;
+  document.getElementById('modalCloseBtnFooter').onclick = closeModal;
+  document.getElementById('modalOverlay').onclick = e => { if (e.target === e.currentTarget) closeModal(); };
+
+  document.getElementById('modalFavBtn').onclick = e => { if (S.modal !== null) toggleFav(S.modal, e.currentTarget); };
+  document.getElementById('modalShareBtn').onclick = () => { if (S.modal !== null) copy(shareURL([S.modal])); };
+
+  document.getElementById('clearFavsBtn').onclick = () => {
+    if (!confirm(i('clearConfirm'))) return;
+    S.favorites.clear(); S.categories = []; saveFavs(); saveCats(); updateFavBadge(); renderCards(); renderPanel();
+  };
+
+  document.getElementById('exitSharedBtn').onclick = () => {
+    clearSelection(false);
+    S.shared = null;
+    const u = new URL(location.href);
+    u.searchParams.delete('t');
+    u.searchParams.delete('tname');
+    history.replaceState({}, '', u);
+    updateSharedBanner();
+    applyI18N();
+    renderCards();
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('modalOverlay').classList.contains('open')) closeModal();
+    else if (document.getElementById('panelOverlay').classList.contains('open')) closePanel();
+    else if (S.selectMode) clearSelection();
+  });
+}
+
+init();
+</script>
+</body>
+</html>
