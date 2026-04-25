@@ -27,6 +27,7 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* ── Header ── */
@@ -254,11 +255,60 @@
       margin: 0 auto;
       padding: 22px 20px;
     }
+    .results-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
     .results-info {
       font-size: .8rem;
       color: var(--text-muted);
-      margin-bottom: 14px;
     }
+    .per-page-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 10px;
+    }
+    .per-page-wrap select {
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      font-size: .8rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .page-btn {
+      min-width: 34px;
+      height: 34px;
+      padding: 0 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      font-size: .82rem;
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .12s, border-color .12s;
+      font-weight: 500;
+    }
+    .page-btn:hover:not(:disabled) { background: var(--bg); border-color: #cbd5e1; }
+    .page-btn:disabled { opacity: .35; cursor: default; }
+    .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 700; }
+    .page-ellipsis { font-size: .82rem; color: var(--text-muted); padding: 0 4px; line-height: 34px; }
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -706,6 +756,50 @@
     .cat-picker-add:hover { background: #eff6ff; }
 
     /* ── Responsive ── */
+    /* ── Footer ── */
+    .site-footer {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 28px 20px;
+      text-align: center;
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .site-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .site-footer a:hover { text-decoration: underline; }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 18px;
+      margin-bottom: 8px;
+    }
+    .footer-sep { color: var(--border); }
+    .footer-licenses {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 14px;
+      margin-top: 6px;
+      font-size: .73rem;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: var(--bg);
+    }
+
     @media (max-width: 600px) {
       .logo small { display: none; }
       .cards-grid { grid-template-columns: 1fr; }
@@ -713,6 +807,11 @@
       .selection-bar-actions { width: 100%; }
       .side-panel { width: 100%; }
       .modal { max-height: 95vh; }
+      .overlay { padding: 8px; }
+      #assistantLinkLabel { display: none; }
+      .assistant-link { padding: 7px 10px; }
+      #selectBtnLabel { display: none; }
+      #favBtnLabel { display: none; }
     }
   </style>
 </head>
@@ -910,6 +1009,12 @@ const I18N = {
     loading:      'Cargando datos…',
     error:        'Error al cargar los datos.',
     techniques:   'técnicas',
+    perPage:      'Mostrar:',
+    pageAll:      'Todas',
+    pageFirst:    'Primera',
+    pageLast:     'Última',
+    pagePrev:     'Anterior',
+    pageNext:     'Siguiente',
   },
   ca: {
     sub:          'Metodologies Actives',
@@ -957,6 +1062,12 @@ const I18N = {
     loading:      'Carregant dades…',
     error:        'Error en carregar les dades.',
     techniques:   'tècniques',
+    perPage:      'Mostrar:',
+    pageAll:      'Totes',
+    pageFirst:    'Primera',
+    pageLast:     'Última',
+    pagePrev:     'Anterior',
+    pageNext:     'Següent',
   },
 };
 
@@ -974,6 +1085,8 @@ const S = {
   modal:        null,
   shared:       null,
   sharedName:   null,
+  page:         0,
+  perPage:      25,
 };
 
 // ─── CSV PARSER ──────────────────────────────────────────────────────────────
@@ -1218,7 +1331,7 @@ function renderTabs() {
     const b = document.createElement('button');
     b.className = 'field-tab' + (S.field === val ? ' active' : '');
     b.textContent = label;
-    b.onclick = () => { S.field = S.field === val ? null : val; renderTabs(); renderCards(); };
+    b.onclick = () => { S.field = S.field === val ? null : val; S.page = 0; renderTabs(); renderCards(); };
     wrap.appendChild(b);
   };
   mkTab(i('all'), null);
@@ -1271,16 +1384,27 @@ function toggleCardSelection(idx) {
 }
 
 function selectVisibleCards() {
-  filteredData().forEach(({ idx }) => S.selected.add(idx));
+  pagedRows(filteredData()).forEach(({ idx }) => S.selected.add(idx));
   renderCards();
+}
+
+function pagedRows(rows) {
+  if (!S.perPage) return rows;
+  const start = S.page * S.perPage;
+  return rows.slice(start, start + S.perPage);
+}
+
+function totalPages(total) {
+  return S.perPage ? Math.max(1, Math.ceil(total / S.perPage)) : 1;
 }
 
 function renderCards() {
   const main = document.getElementById('main');
-  const rows = filteredData();
+  const allRows = filteredData();
+  const total = allRows.length;
   main.style.paddingBottom = S.selectMode ? '110px' : '';
 
-  if (!rows.length) {
+  if (!total) {
     main.innerHTML = `<div class="state-box">
       <div class="icon">🔍</div>
       <h3>${i('noResults')}</h3><p>${i('noResHint')}</p>
@@ -1288,17 +1412,42 @@ function renderCards() {
     return;
   }
 
+  // Clamp page to valid range
+  const pages = totalPages(total);
+  if (S.page >= pages) S.page = pages - 1;
+
+  const rows = pagedRows(allRows);
+
   main.innerHTML = '';
 
-  const info = document.createElement('p');
-  info.className = 'results-info';
-  info.textContent = `${rows.length} ${i('techniques')}`;
-  main.appendChild(info);
+  // Results bar: count + per-page selector
+  const bar = document.createElement('div');
+  bar.className = 'results-bar';
+  bar.innerHTML = `
+    <p class="results-info">
+      ${total} ${i('techniques')}
+      <span class="per-page-wrap">
+        <label for="perPageSelect">${i('perPage')}</label>
+        <select id="perPageSelect">
+          <option value="10"  ${S.perPage===10  ?'selected':''}>10</option>
+          <option value="25"  ${S.perPage===25  ?'selected':''}>25</option>
+          <option value="50"  ${S.perPage===50  ?'selected':''}>50</option>
+          <option value="0"   ${S.perPage===0   ?'selected':''}>${i('pageAll')}</option>
+        </select>
+      </span>
+    </p>
+  `;
+  bar.querySelector('#perPageSelect').onchange = e => {
+    S.perPage = Number(e.target.value);
+    S.page = 0;
+    renderCards();
+  };
+  main.appendChild(bar);
 
   if (S.selectMode) {
-    const bar = document.createElement('div');
-    bar.className = 'selection-bar';
-    bar.innerHTML = `
+    const selBar = document.createElement('div');
+    selBar.className = 'selection-bar';
+    selBar.innerHTML = `
       <div class="selection-bar-info">${S.selected.size} ${i('selectedCount')}</div>
       <div class="selection-bar-actions">
         <button class="btn" id="selectVisibleBtn">✓ ${i('selectVisible')}</button>
@@ -1306,14 +1455,13 @@ function renderCards() {
         <button class="btn" id="cancelSelectionBtn">✕ ${i('selectOff')}</button>
       </div>
     `;
-    main.appendChild(bar);
-
-    bar.querySelector('#selectVisibleBtn').onclick = () => selectVisibleCards();
-    bar.querySelector('#shareSelectedBtn').onclick = () => {
+    main.appendChild(selBar);
+    selBar.querySelector('#selectVisibleBtn').onclick = () => selectVisibleCards();
+    selBar.querySelector('#shareSelectedBtn').onclick = () => {
       if (!S.selected.size) return;
       copy(shareURL([...S.selected].sort((a, b) => a - b)));
     };
-    bar.querySelector('#cancelSelectionBtn').onclick = () => clearSelection();
+    selBar.querySelector('#cancelSelectionBtn').onclick = () => clearSelection();
   }
 
   const grid = document.createElement('div');
@@ -1344,6 +1492,54 @@ function renderCards() {
   });
 
   main.appendChild(grid);
+
+  // Pagination controls (only when perPage > 0 and more than one page)
+  if (S.perPage && pages > 1) {
+    main.appendChild(buildPagination(pages));
+  }
+}
+
+function buildPagination(pages) {
+  const wrap = document.createElement('div');
+  wrap.className = 'pagination-bar';
+  const p = S.page;
+
+  const btn = (label, title, disabled, active, onclick) => {
+    const b = document.createElement('button');
+    b.className = 'page-btn' + (active ? ' active' : '');
+    b.innerHTML = label;
+    b.title = title;
+    b.disabled = disabled;
+    if (!disabled) b.onclick = onclick;
+    return b;
+  };
+
+  const ellipsis = () => {
+    const s = document.createElement('span');
+    s.className = 'page-ellipsis';
+    s.textContent = '…';
+    return s;
+  };
+
+  wrap.appendChild(btn('«', i('pageFirst'), p === 0, false, () => { S.page = 0; renderCards(); window.scrollTo(0,0); }));
+  wrap.appendChild(btn('‹', i('pagePrev'),  p === 0, false, () => { S.page--; renderCards(); window.scrollTo(0,0); }));
+
+  // Page number buttons: always show first, last, current ±2, with ellipsis
+  const show = new Set([0, pages - 1]);
+  for (let n = Math.max(0, p - 2); n <= Math.min(pages - 1, p + 2); n++) show.add(n);
+  const nums = [...show].sort((a, b) => a - b);
+
+  let prev = -1;
+  nums.forEach(n => {
+    if (prev !== -1 && n - prev > 1) wrap.appendChild(ellipsis());
+    wrap.appendChild(btn(n + 1, '', false, n === p, () => { S.page = n; renderCards(); window.scrollTo(0,0); }));
+    prev = n;
+  });
+
+  wrap.appendChild(btn('›', i('pageNext'), p === pages - 1, false, () => { S.page++; renderCards(); window.scrollTo(0,0); }));
+  wrap.appendChild(btn('»', i('pageLast'), p === pages - 1, false, () => { S.page = pages - 1; renderCards(); window.scrollTo(0,0); }));
+
+  return wrap;
 }
 
 // ─── RENDER: MODAL ───────────────────────────────────────────────────────────
@@ -1751,6 +1947,7 @@ async function switchLang(lang) {
   }
 
   S.field = null;
+  S.page = 0;
   renderTabs();
   renderCards();
   if (S.modal !== null) openModal(S.modal);
@@ -1791,6 +1988,7 @@ async function init() {
 
   document.getElementById('searchInput').addEventListener('input', e => {
     S.search = e.target.value;
+    S.page = 0;
     updateSearchUI();
     renderCards();
   });
@@ -1798,6 +1996,7 @@ async function init() {
     const input = document.getElementById('searchInput');
     input.value = '';
     S.search = '';
+    S.page = 0;
     updateSearchUI();
     renderCards();
     input.focus();
@@ -1825,6 +2024,7 @@ async function init() {
   document.getElementById('exitSharedBtn').onclick = () => {
     clearSelection(false);
     S.shared = null;
+    S.page = 0;
     const u = new URL(location.href);
     u.searchParams.delete('t');
     u.searchParams.delete('tname');
@@ -1844,5 +2044,30 @@ async function init() {
 
 init();
 </script>
+
+<footer class="site-footer">
+  <div class="footer-row">
+    <span>© <a href="https://bilateria.org" target="_blank" rel="noopener noreferrer">Juan José de Haro</a></span>
+    <span class="footer-sep">·</span>
+    <a href="https://github.com/metact/metact.github.io" target="_blank" rel="noopener noreferrer">Proyecto en GitHub</a>
+    <span class="footer-sep">·</span>
+    <a href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
+  </div>
+  <div class="footer-licenses">
+    <span class="footer-badge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Contenido: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+    <span class="footer-badge" title="Código fuente bajo licencia AGPLv3">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Código: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPLv3</a>
+    </span>
+    <span class="footer-badge" title="Los archivos CSV no pueden ser reproducidos ni redistribuidos sin permiso">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Base de datos CSV: © Juan José de Haro, todos los derechos reservados
+    </span>
+  </div>
+</footer>
+
 </body>
 </html>
