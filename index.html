@@ -1297,6 +1297,14 @@ function loadCats() {
   } catch {}
 }
 
+const LS_LANG = 'metec_lang_v1';
+function saveLang() { localStorage.setItem(LS_LANG, S.lang); }
+function loadLangPref() {
+  const saved = localStorage.getItem(LS_LANG);
+  if (saved === 'es' || saved === 'ca') { S.lang = saved; return; }
+  if (navigator.language.toLowerCase().startsWith('ca')) S.lang = 'ca';
+}
+
 // ─── I18N ────────────────────────────────────────────────────────────────────
 
 function i(k) { return I18N[S.lang][k] || k; }
@@ -1946,6 +1954,7 @@ async function switchLang(lang) {
   if (lang === S.lang && S.data[lang]) return;
   clearSelection(false);
   S.lang = lang;
+  saveLang();
 
   const u = new URL(location.href);
   u.searchParams.set('lang', lang);
@@ -1975,10 +1984,12 @@ async function init() {
   loadFavs();
   loadCats();
   updateFavBadge();
+  loadLangPref();
 
-  // Read URL params
+  // Read URL params (override saved preference)
   const p = new URLSearchParams(location.search);
   if (p.get('lang') === 'ca') S.lang = 'ca';
+  else if (p.get('lang') === 'es') S.lang = 'es';
   const t = p.get('t');
   if (t) S.shared = t.split(',').map(Number).filter(n => !isNaN(n) && n >= 0);
   const tname = p.get('tname');
