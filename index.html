@@ -399,6 +399,9 @@
       letter-spacing: .02em;
     }
     .card-summary { font-size: .78rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-summary.expanded { -webkit-line-clamp: unset; overflow: visible; }
+    .summary-toggle { background: none; border: none; padding: 0; font-size: .72rem; color: var(--primary); cursor: pointer; font-weight: 600; margin-top: 2px; display: none; }
+    .summary-toggle:hover { text-decoration: underline; }
     .card-select {
       width: 22px;
       height: 22px;
@@ -1031,6 +1034,8 @@ const I18N = {
     pageLast:     'Última',
     pagePrev:     'Anterior',
     pageNext:     'Siguiente',
+    more:         'Ver más',
+    less:         'Ver menos',
   },
   ca: {
     sub:          'Metodologies Actives',
@@ -1084,6 +1089,8 @@ const I18N = {
     pageLast:     'Última',
     pagePrev:     'Anterior',
     pageNext:     'Següent',
+    more:         'Veure més',
+    less:         'Veure menys',
   },
 };
 
@@ -1511,13 +1518,27 @@ function renderCards() {
       </div>
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
       <div class="card-summary">${esc(item.summary)}</div>
+      <button class="summary-toggle">${i('more')}</button>
     `;
     card.querySelector('.fav-star').onclick = e => { e.stopPropagation(); toggleFav(idx, e.currentTarget); };
+    card.querySelector('.summary-toggle').onclick = e => {
+      e.stopPropagation();
+      const summary = card.querySelector('.card-summary');
+      const expanded = summary.classList.toggle('expanded');
+      e.currentTarget.textContent = expanded ? i('less') : i('more');
+    };
     card.onclick = () => { if (S.selectMode) toggleCardSelection(idx); else openModal(idx); };
     grid.appendChild(card);
   });
 
   main.appendChild(grid);
+
+  // Show "Ver más" only on actually truncated summaries
+  grid.querySelectorAll('.card-summary').forEach(el => {
+    if (el.scrollHeight > el.clientHeight + 2) {
+      el.nextElementSibling.style.display = 'block';
+    }
+  });
 
   // Pagination controls (only when perPage > 0 and more than one page)
   if (S.perPage && pages > 1) {
