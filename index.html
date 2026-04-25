@@ -398,7 +398,7 @@
       border: 1px solid transparent;
       letter-spacing: .02em;
     }
-    .card-tags { font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
+    .card-summary { font-size: .78rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .card-select {
       width: 22px;
       height: 22px;
@@ -526,7 +526,7 @@
       flex-direction: column;
       gap: 7px;
     }
-    .modal-tags-row { font-size: .78rem; color: var(--text-muted); }
+    .modal-tags-row { font-size: .88rem; color: var(--text-muted); font-style: italic; line-height: 1.6; }
 
     /* Program links */
     .modal-programs {
@@ -1140,6 +1140,7 @@ function toObjects(raw) {
       tags:     (r[2] || '').split(',').map(s => s.trim()).filter(Boolean),
       fields,
       programs: [...parsePrograms(r[4] || ''), ...parsePrograms(inlineProgs.join(';'))],
+      summary:  (r[5] || '').trim(),
     };
   });
 }
@@ -1378,6 +1379,7 @@ function filteredData() {
   if (q) indexed = indexed.filter(({ item }) =>
     item.name.toLowerCase().includes(q) ||
     item.desc.toLowerCase().includes(q) ||
+    item.summary.toLowerCase().includes(q) ||
     item.tags.some(t => t.toLowerCase().includes(q)) ||
     item.fields.some(f => f.toLowerCase().includes(q))
   );
@@ -1508,7 +1510,7 @@ function renderCards() {
         <button class="fav-star ${fav ? 'active' : ''}" data-idx="${idx}">⭐</button>
       </div>
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
-      <div class="card-tags">${item.tags.slice(0, 7).map(esc).join(' · ')}</div>
+      <div class="card-summary">${esc(item.summary)}</div>
     `;
     card.querySelector('.fav-star').onclick = e => { e.stopPropagation(); toggleFav(idx, e.currentTarget); };
     card.onclick = () => { if (S.selectMode) toggleCardSelection(idx); else openModal(idx); };
@@ -1576,8 +1578,8 @@ function openModal(idx) {
 
   document.getElementById('modalTitle').textContent = item.name;
   document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
-  document.getElementById('modalTags').innerHTML =
-    `<strong>${i('tags')}</strong> ${item.tags.map(esc).join(' · ')}`;
+  document.getElementById('modalTags').innerHTML = item.summary ? esc(item.summary) : '';
+  document.getElementById('modalTags').style.display = item.summary ? '' : 'none';
   document.getElementById('modalBody').innerHTML = formatDesc(item.desc);
 
   // Programs
