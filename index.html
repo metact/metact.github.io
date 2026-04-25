@@ -580,6 +580,10 @@
     .modal-body h4:first-child { margin-top: 0; }
     .modal-body p { margin-bottom: 6px; }
     .modal-body ol { margin: 6px 0 10px 18px; display: flex; flex-direction: column; gap: 4px; }
+    .desc-table { border-collapse: collapse; width: 100%; margin: 10px 0 14px; font-size: .82rem; }
+    .desc-table th, .desc-table td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+    .desc-table th { background: #eff6ff; color: var(--primary); font-weight: 700; }
+    .desc-table tr:nth-child(even) td { background: var(--bg); }
     .section-label { font-weight: 700; color: var(--primary); }
 
     .modal-foot {
@@ -1204,19 +1208,52 @@ function esc(s) {
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+function inlineFormat(raw) {
+  return esc(raw).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
 function formatDesc(text) {
   const lines = text.split('\n');
-  let html = '', list = [];
+  let html = '', list = [], tableLines = [];
 
   const flush = () => {
     if (!list.length) return;
-    html += '<ol>' + list.map(i => `<li>${i}</li>`).join('') + '</ol>';
+    html += '<ol>' + list.map(li => `<li>${li}</li>`).join('') + '</ol>';
     list = [];
+  };
+
+  const flushTable = () => {
+    if (!tableLines.length) return;
+    let head = true, tableHtml = '<table class="desc-table"><thead>';
+    tableLines.forEach(line => {
+      const clean = line.replace(/\|h\s*$/, '').trim();
+      if (/^\|[\s\-:|\s]+\|$/.test(clean)) return; // separator row
+      const cells = clean.split('|').slice(1, -1);  // drop first/last empty
+      const tag = head ? 'th' : 'td';
+      if (head) {
+        tableHtml += '<tr>' + cells.map(c => `<th>${inlineFormat(c.trim())}</th>`).join('') + '</tr></thead><tbody>';
+        head = false;
+      } else {
+        tableHtml += '<tr>' + cells.map(c => `<td>${inlineFormat(c.trim())}</td>`).join('') + '</tr>';
+      }
+    });
+    tableHtml += '</tbody></table>';
+    html += tableHtml;
+    tableLines = [];
   };
 
   for (let idx = 0; idx < lines.length; idx++) {
     const raw = lines[idx];
     const line = raw.trim();
+
+    if (line.startsWith('|')) {
+      flush();
+      tableLines.push(line);
+      continue;
+    } else {
+      flushTable();
+    }
+
     if (!line) {
       if (list.length) {
         let next = idx + 1;
@@ -1234,20 +1271,21 @@ function formatDesc(text) {
     }
 
     const num = line.match(/^\d+\.\s+([\s\S]+)/);
-    if (num) { list.push(esc(num[1])); continue; }
+    if (num) { list.push(inlineFormat(num[1])); continue; }
 
     flush();
 
     // Section header: starts with 2+ uppercase letters then colon
     const sec = line.match(/^([A-ZÁÉÍÓÚÀÈÌÒÙÜÑÇ][A-ZÁÉÍÓÚÀÈÌÒÙÜÑÇ\s\(\)\/,']+:)\s*(.*)/);
     if (sec) {
-      html += `<p><span class="section-label">${esc(sec[1])}</span>${sec[2] ? ' ' + esc(sec[2]) : ''}</p>`;
+      html += `<p><span class="section-label">${esc(sec[1])}</span>${sec[2] ? ' ' + inlineFormat(sec[2]) : ''}</p>`;
     } else {
-      html += `<p>${esc(line)}</p>`;
+      html += `<p>${inlineFormat(line)}</p>`;
     }
   }
 
   flush();
+  flushTable();
   return html;
 }
 
