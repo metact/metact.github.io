@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Metac</title>
+  <link rel="icon" type="image/svg+xml" href="metac-logo.svg">
   <style>
     :root {
       --primary: #2563eb;
@@ -55,6 +56,18 @@
       letter-spacing: -.02em;
       flex-shrink: 0;
       line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
     }
     .logo small {
       display: block;
@@ -821,8 +834,11 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      Metac
-      <small id="logoSub">Metodologías Activas</small>
+      <img src="metac-logo.svg" alt="Metac" class="logo-img">
+      <span class="logo-text">
+        Metac
+        <small id="logoSub">Metodologías Activas</small>
+      </span>
     </div>
     <div class="search-wrap">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">

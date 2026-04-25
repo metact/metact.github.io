@@ -1,0 +1,74 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Logo de Metac</title>
+  <desc id="desc">Logo circular para Metac, catálogo de metodologías activas, con una M formada por tarjetas conectadas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="160" y1="120" x2="880" y2="920" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="0.55" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="250" y1="235" x2="775" y2="790" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e7f5f1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#082f49" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="224" fill="#f8fafc"/>
+  <circle cx="512" cy="512" r="390" fill="url(#bg)"/>
+
+  <!-- Red de aprendizaje activo -->
+  <g opacity="0.32" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round">
+    <path d="M286 351 C380 268 480 285 553 360"/>
+    <path d="M690 318 C624 394 630 475 710 544"/>
+    <path d="M303 681 C420 745 562 746 713 655"/>
+  </g>
+  <g fill="#ffffff" opacity="0.55">
+    <circle cx="282" cy="352" r="20"/>
+    <circle cx="553" cy="360" r="18"/>
+    <circle cx="690" cy="318" r="20"/>
+    <circle cx="710" cy="544" r="18"/>
+    <circle cx="303" cy="681" r="20"/>
+    <circle cx="713" cy="655" r="20"/>
+  </g>
+
+  <!-- Tarjeta central -->
+  <g filter="url(#shadow)">
+    <rect x="216" y="240" width="592" height="544" rx="76" fill="url(#card)"/>
+  </g>
+
+  <!-- M de Metac -->
+  <path d="M318 675 V354
+           C318 334 334 318 354 318
+           H393
+           C410 318 425 328 433 343
+           L512 495
+           L591 343
+           C599 328 614 318 631 318
+           H670
+           C690 318 706 334 706 354
+           V675
+           H622
+           V472
+           L545 616
+           C538 629 525 637 512 637
+           C499 637 486 629 479 616
+           L402 472
+           V675
+           Z"
+        fill="#0f172a"/>
+
+  <!-- Filas CSV / catálogo -->
+  <g stroke="#0f766e" stroke-linecap="round" stroke-width="22" opacity="0.9">
+    <path d="M340 738 H684"/>
+    <path d="M390 785 H634"/>
+  </g>
+  <g fill="#16a34a">
+    <circle cx="312" cy="738" r="12"/>
+    <circle cx="358" cy="785" r="12"/>
+    <circle cx="712" cy="738" r="12"/>
+    <circle cx="666" cy="785" r="12"/>
+  </g>
+</svg>
