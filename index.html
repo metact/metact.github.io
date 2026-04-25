@@ -991,7 +991,7 @@ const FIELD_MAP = [
 const I18N = {
   es: {
     sub:          'Metodologías Activas',
-    search:       'Buscar técnica, tag o descripción…',
+    search:       'Buscar técnica, tag, programa o descripción…',
     all:          'Todas',
     favBtn:       'Favoritos',
     favPanel:     'Favoritos',
@@ -1046,7 +1046,7 @@ const I18N = {
   },
   ca: {
     sub:          'Metodologies Actives',
-    search:       'Cercar tècnica, tag o descripció…',
+    search:       'Cercar tècnica, tag, programa o descripció…',
     all:          'Totes',
     favBtn:       'Preferits',
     favPanel:     'Preferits',
@@ -1429,7 +1429,11 @@ function filteredData() {
     item.desc.toLowerCase().includes(q) ||
     item.summary.toLowerCase().includes(q) ||
     item.tags.some(t => t.toLowerCase().includes(q)) ||
-    item.fields.some(f => f.toLowerCase().includes(q))
+    item.fields.some(f => f.toLowerCase().includes(q)) ||
+    item.programs.some(p =>
+      p.label.toLowerCase().includes(q) ||
+      p.url.toLowerCase().includes(q)
+    )
   );
 
   return indexed;
@@ -2268,7 +2272,7 @@ init();
     <span class="footer-sep">·</span>
     <a href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.2.0</span>
+    <span>v0.2.1</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
