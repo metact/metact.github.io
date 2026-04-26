@@ -1,6 +1,6 @@
 # Metac — Metodologías Activas
 
-**Metac** es un catálogo web de técnicas de aprendizaje activo, pensado para docentes que quieren explorar, guardar y compartir metodologías de forma rápida y sencilla.
+**Metac** es un catálogo web de recursos metodológicos de aprendizaje activo, pensado para docentes que quieren explorar, guardar y compartir metodologías de forma rápida y sencilla.
 
 🌐 **[metact.github.io](https://metact.github.io)**
 
@@ -8,13 +8,13 @@
 
 ## Características
 
-- **+100 técnicas** descritas con ámbitos, tags y recursos enlazados
+- **+100 recursos metodológicos** descritos con ámbitos, tags y recursos enlazados
 - **Búsqueda** por nombre, descripción y etiquetas
 - **Filtrado jerárquico** por bloque principal y ámbito temático
-- **Paginación** configurable: 10, 25, 50 o todas las técnicas
+- **Paginación** configurable: 10, 25, 50 o todos los recursos metodológicos
 - **Favoritos** con categorías personalizables, persistentes en el navegador
 - **Compartir** selecciones y colecciones mediante URL
-- **Asistente de IA** (NotebookLM) para consultar dudas sobre las técnicas
+- **Asistente de IA** (NotebookLM) para consultar dudas sobre los recursos metodológicos
 - **Trilingüe**: castellano, catalán e inglés
 - **Responsive**: funciona en móvil, tablet y escritorio
 

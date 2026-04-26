@@ -1,4 +1,4 @@
-ID,Technique,Description,Tags,Fields,Program,Abstract
+ID,Technique,Description,Tags,Fields,Program,Abstract,Block
 metac_001,What makes you say that?,"This thinking routine helps students reflect on their own knowledge. It can be very useful for critical thinking and defending hypotheses.
 
 From the entry Thinking Routines:
@@ -15,7 +15,7 @@ The routine can be adapted for use with almost any topic and can also be useful 
 
 In most cases, the routine is presented to a whole class or discussion group, using a central object or topic as a starting point. However, it can also be used in small groups or pairs. The first time you implement the routine with your students, you can help them by asking questions that guide them through the topic. This way, everyone can interpret and arrive at the routine's objective.
 
-There are many basic questions, and they can be varied in number and form depending on the context. Some examples include: What do you know? What do you see or know that makes you say that? It might also be helpful to work on the students' interpretations of the topic being studied. In this way, we can use questions like: What do you see? or What do you know? Over time, students can begin to automatically support their interpretations with evidence, and eventually, they will begin to internalize the routine.","evidence, interpretation, critical thinking, metacognition, reflection","Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A thinking routine in which students interpret an image, text, object, or situation and justify their response with evidence. It helps develop critical thinking, improve observation skills, substantiate hypotheses, and encourage students to explain the reasoning behind their ideas."
+There are many basic questions, and they can be varied in number and form depending on the context. Some examples include: What do you know? What do you see or know that makes you say that? It might also be helpful to work on the students' interpretations of the topic being studied. In this way, we can use questions like: What do you see? or What do you know? Over time, students can begin to automatically support their interpretations with evidence, and eventually, they will begin to internalize the routine.","evidence, interpretation, critical thinking, metacognition, reflection","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A thinking routine in which students interpret an image, text, object, or situation and justify their response with evidence. It helps develop critical thinking, improve observation skills, substantiate hypotheses, and encourage students to explain the reasoning behind their ideas.",Active Methodologies and Thinking Routines
 metac_002,Who's who?,"This activity aims to help students define themselves, not physically, but by focusing on their character, hobbies, or interests.
 
 1. The teacher tells a short story, for example, that they will receive a visit from a famous person and have to write a letter of introduction.
@@ -24,7 +24,7 @@ metac_002,Who's who?,"This activity aims to help students define themselves, not
 
 3. The letters are read aloud one by one, and the students try to guess who wrote it.
 
-Source: Romero, G.A. (2009). Techniques for working on classroom cohesion.","group cohesion, personal expression, active listening, oral presentation",Cohesion and Cooperation,,"A team-building activity where each student writes a personal description without mentioning their physical appearance, and the group tries to guess who it is. It helps foster mutual understanding, improve self-expression, and create a climate of trust within the class."
+Source: Romero, G.A. (2009). Techniques for working on classroom cohesion.","group cohesion, personal expression, active listening, oral presentation",Cohesion and Cooperation,,"A team-building activity where each student writes a personal description without mentioning their physical appearance, and the group tries to guess who it is. It helps foster mutual understanding, improve self-expression, and create a climate of trust within the class.",Cooperative Learning Organization
 metac_003,1 - 2 - 4,"TEAM SIZE: Pairs and base teams.
 
 OBJECTIVES: Activate prior knowledge, solve problems, review.
@@ -63,7 +63,7 @@ Source: Pérez, M. (2015). Cooperative Dynamics.
 
 1. The two pairs share their writing and discuss the differences and similarities between them. They develop a final answer that includes the contributions of all team members.
 
-1. The teacher reviews the group's final answer and makes any necessary comments or corrections.","activation of prior knowledge, cooperation, pairs, synthesis, problem solving","Activation of Prior Knowledge, Problem Solving and Challenges, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique in which students first think individually, then compare ideas in pairs, and finally agree on a group answer. It helps activate prior knowledge, solve problems, improve participation, and develop more comprehensive answers through progressive comparison."
+1. The teacher reviews the group's final answer and makes any necessary comments or corrections.","activation of prior knowledge, cooperation, pairs, synthesis, problem solving","Activation of Prior Knowledge, Problem Solving and Challenges, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique in which students first think individually, then compare ideas in pairs, and finally agree on a group answer. It helps activate prior knowledge, solve problems, improve participation, and develop more comprehensive answers through progressive comparison.",Cooperative Learning Organization
 metac_004,Analyze and Synthesize,"This thinking routine involves students analyzing a text or image and attempting to synthesize its key points. This routine is useful for helping students better understand the concepts or facts they are studying, and it also helps them develop analysis and synthesis skills. To use this routine, you can follow this process:
 
 - Choose a text or image for students to analyze.
@@ -74,7 +74,7 @@ metac_004,Analyze and Synthesize,"This thinking routine involves students analyz
 
 - Ask students to synthesize the key points in a summary or outline.
 
-- Review the students' summary or outline and provide feedback. You can do this individually or with the whole group, depending on the students' needs.","analysis, synthesis, comprehension, reading, feedback","Information Processing and Analysis, Critical Thinking and Metacognition",,"This routine involves students identifying the main ideas in a text, image, or other content and summarizing them in an organized way. It helps improve comprehension, develop analysis and synthesis skills, and check whether the essential points have been grasped."
+- Review the students' summary or outline and provide feedback. You can do this individually or with the whole group, depending on the students' needs.","analysis, synthesis, comprehension, reading, feedback","Thinking Routines, Information Processing and Analysis, Critical Thinking and Metacognition",,"This routine involves students identifying the main ideas in a text, image, or other content and summarizing them in an organized way. It helps improve comprehension, develop analysis and synthesis skills, and check whether the essential points have been grasped.",Active Methodologies and Thinking Routines
 metac_005,Apply Knowledge,"The ""Apply Knowledge"" thinking routine is a very useful tool to help students actively and reflectively use the knowledge they have acquired. This involves applying knowledge to new situations or problems in order to better understand concepts and use critical thinking to solve problems.
 
 Teacher's Role:
@@ -93,7 +93,7 @@ Student tasks:
 
 2. Reflect on the process of solving the situation or problem. Explain how you used the knowledge you have acquired to do so, and what difficulties or successes you encountered.
 
-3. Review the work you have done to ensure that you have applied the knowledge appropriately and reached reasonable conclusions. If anything is unclear, do not hesitate to ask for help or ask questions.","application of knowledge, problem-solving, critical thinking, reflection, autonomy","Problem Solving and Challenges, Information Processing and Analysis",,"A routine in which students use previously acquired knowledge to solve a new situation or problem. It serves to transfer learning, reinforce understanding, develop critical thinking, and reflect on how knowledge has been used in a specific context."
+3. Review the work you have done to ensure that you have applied the knowledge appropriately and reached reasonable conclusions. If anything is unclear, do not hesitate to ask for help or ask questions.","application of knowledge, problem-solving, critical thinking, reflection, autonomy","Thinking Routines, Problem Solving and Challenges, Information Processing and Analysis",,"A routine in which students use previously acquired knowledge to solve a new situation or problem. It serves to transfer learning, reinforce understanding, develop critical thinking, and reflect on how knowledge has been used in a specific context.",Active Methodologies and Thinking Routines
 metac_006,Case-Based Learning (CBL),"It is a flexible model in which the teacher presents a case that students can read, explore, or discuss, allowing each student to develop their own opinion.
 
 The cases are concrete situations or events from real life or simulated, but realistic. Students must analyze them or provide solutions.
@@ -173,7 +173,7 @@ Secondary school students are studying economics and have to work on the case of
 
 1. Level of contribution to the discussion
 
-","case studies, analysis, decision making, argumentation, teamwork","Problem Solving and Challenges, Knowledge Building, Communication and Creativity",,"This methodology presents students with a realistic case study for analysis, discussion, and proposed solutions. It helps develop decision-making, argumentation, understanding of complex situations, and teamwork skills."
+","case studies, analysis, decision making, argumentation, teamwork","Problem Solving and Challenges, Knowledge Building, Communication and Creativity",,"This methodology presents students with a realistic case study for analysis, discussion, and proposed solutions. It helps develop decision-making, argumentation, understanding of complex situations, and teamwork skills.",Active Methodologies and Thinking Routines
 metac_007,Game-Based Learning (GBL),"Game-based learning (GBL) is based on the **use of educational games** to improve student motivation and the acquisition of knowledge and skills during their learning process. Specifically, it refers to digital or computer-based games, although it also includes traditional games, with the aim of supporting education, learning, or assessment. It is considered an effective way to motivate students and engage them in active learning experiences.
 
 The games used in GBL are typically created specifically for educational purposes.
@@ -200,7 +200,7 @@ Adapted from Wikipedia.
 
 An example of game-based learning (GBL) in secondary education could be the following:
 
-Imagine that secondary school students are studying history and the teacher wants to use GBL to help them improve their understanding of historical events. The teacher can use a digital or traditional game in which students have to answer questions about the period they are studying and complete related activities. For example, the game could consist of a series of levels in which students answer questions about key historical events, complete crossword puzzles or games related to the period they are studying, or use resources such as maps or images to help them better understand the historical context. The game can incorporate various motivating elements, such as points, levels, or badges, to encourage students and make learning more active.","play, motivation, active learning, cooperation, creativity","Knowledge Building, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",QPlay: Interactive Contest|https://jjdeharo.github.io/qplay/,"A methodology that uses educational games, both digital and analog, with defined learning objectives. It serves to increase motivation, encourage active participation, and develop content or skills through playful activities with an educational purpose."
+Imagine that secondary school students are studying history and the teacher wants to use GBL to help them improve their understanding of historical events. The teacher can use a digital or traditional game in which students have to answer questions about the period they are studying and complete related activities. For example, the game could consist of a series of levels in which students answer questions about key historical events, complete crossword puzzles or games related to the period they are studying, or use resources such as maps or images to help them better understand the historical context. The game can incorporate various motivating elements, such as points, levels, or badges, to encourage students and make learning more active.","play, motivation, active learning, cooperation, creativity","Knowledge Building, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",QPlay: Interactive Contest|https://jjdeharo.github.io/qplay/,"A methodology that uses educational games, both digital and analog, with defined learning objectives. It serves to increase motivation, encourage active participation, and develop content or skills through playful activities with an educational purpose.",Active Methodologies and Thinking Routines
 metac_008,Inquiry-Based Learning,"## Description
 A methodology in which learning is organized around questions, observations, or problems that students must investigate. This can be a teacher-guided inquiry or a more open-ended one, depending on the group's autonomy.
 
@@ -225,7 +225,7 @@ A methodology in which learning is organized around questions, observations, or 
 - To connect data, explanations, and conclusions.
 
 ## Example
-In biology, students investigate why some seeds germinate better than others. They design a small test with different light or humidity conditions, collect data, and justify their conclusions.","inquiry, questions, hypotheses, research, evidence, scientific thinking","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition",,"A methodology in which learning begins with questions, observations, or problems that students must investigate. It serves to develop scientific thinking, formulate hypotheses, gather evidence, and construct reasoned explanations from data."
+In biology, students investigate why some seeds germinate better than others. They design a small test with different light or humidity conditions, collect data, and justify their conclusions.","inquiry, questions, hypotheses, research, evidence, scientific thinking","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition",,"A methodology in which learning begins with questions, observations, or problems that students must investigate. It serves to develop scientific thinking, formulate hypotheses, gather evidence, and construct reasoned explanations from data.",Active Methodologies and Thinking Routines
 metac_009,Action-Based Learning (ABL),"Action-Based Learning (ABL) is understood as a teaching and learning strategy or methodology based on cooperative work around activities that meet the following criteria: **adequate instrumental and social mediation** and **an intellectual, emotional, and territorial connection**.
 
 Teaching and learning processes are generated through collaborative work, guided by the teacher, around a combination of **contextualized situations, outside the classroom**, and **decontextualized situations, within the classroom**.
@@ -246,7 +246,7 @@ Adapted from: Esteban, M. (2011). From “Problem-Based Learning” (PBL) to “
 
 An example of action-based learning (ABL) in secondary education could be the following:
 
-Imagine that secondary school students are studying the environment and the teacher wants to use ABL to help them better understand the importance of protecting natural resources. The teacher can plan an activity in which students work collaboratively to research a specific environmental problem, such as water degradation or air pollution, in their community. They then design an awareness campaign to promote the preservation of natural resources and present it to the rest of the class. This activity includes both contextualized tasks, such as conducting interviews or making field observations, and decontextualized tasks, such as using digital resources or creating promotional materials. At the end of the activity, the students reflect on the process they followed and share the results of their campaign with the class. This example shows how ABL can use a combination of contextualized and decontextualized situations to help students connect with their environment and develop skills and knowledge in a meaningful way.","situated learning, action, environment, cooperation, reflection","Knowledge Building, Problem Solving and Challenges, Cohesion and Cooperation",,"A methodology based on activities linked to the students' real-world environment. It serves to connect learning with contextualized situations, promote cooperation, encourage reflection, and give practical meaning to the content covered."
+Imagine that secondary school students are studying the environment and the teacher wants to use ABL to help them better understand the importance of protecting natural resources. The teacher can plan an activity in which students work collaboratively to research a specific environmental problem, such as water degradation or air pollution, in their community. They then design an awareness campaign to promote the preservation of natural resources and present it to the rest of the class. This activity includes both contextualized tasks, such as conducting interviews or making field observations, and decontextualized tasks, such as using digital resources or creating promotional materials. At the end of the activity, the students reflect on the process they followed and share the results of their campaign with the class. This example shows how ABL can use a combination of contextualized and decontextualized situations to help students connect with their environment and develop skills and knowledge in a meaningful way.","situated learning, action, environment, cooperation, reflection","Knowledge Building, Problem Solving and Challenges, Cohesion and Cooperation",,"A methodology based on activities linked to the students' real-world environment. It serves to connect learning with contextualized situations, promote cooperation, encourage reflection, and give practical meaning to the content covered.",Active Methodologies and Thinking Routines
 metac_010,Research-Based Learning (RBL),"Research-based learning (RBL) involves conducting or participating in research processes, applying the methodology to verify or refute a hypothesis, to solve a problem, or to answer a posed question, with guidance and supervision throughout the process.
 
 It is, therefore, about applying the scientific method to investigate.
@@ -329,7 +329,7 @@ We can also use a simpler structure for the same problem:
 
 1. Hypothesis testing. Students conduct experiments with different groups of plants fertilized with organic or chemical fertilizers and measure their growth each week to verify whether the hypothesis is correct.
 
-2. Results analysis and presentation to the class. Students analyze the collected data and draw conclusions about the effect of different types of fertilizers on plant growth. They then present their research findings to the class clearly and with scientific rigor.","research, scientific method, hypothesis, data, critical thinking, presentation","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition",,"A methodology in which students investigate a question or problem following procedures of the scientific method. It serves to formulate hypotheses, analyze data, draw conclusions, and develop critical thinking and rigor in the search for answers."
+2. Results analysis and presentation to the class. Students analyze the collected data and draw conclusions about the effect of different types of fertilizers on plant growth. They then present their research findings to the class clearly and with scientific rigor.","research, scientific method, hypothesis, data, critical thinking, presentation","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students investigate a question or problem following procedures of the scientific method. It serves to formulate hypotheses, analyze data, draw conclusions, and develop critical thinking and rigor in the search for answers.",Active Methodologies and Thinking Routines
 metac_011,Laboratory-Based Learning,"This type of learning is based on the fact that if students can observe and manipulate aspects of science firsthand, they will be able to understand and grasp the content better than with other methods. With this model, we give students the opportunity to practice science in the same way as professionals. For this type of learning to be effective, students must understand how the experiment is conducted and why it is worthwhile, in addition to knowing that it will provide them with a deeper understanding of the concept.
 
 ABL can be considered a specific case of the more general approach: Inquiry-Based Learning.
@@ -360,7 +360,7 @@ This method provides students with skills such as research and information manag
 
 4. Communication:
 
-1. How will I present my findings?","laboratory, experimentation, data, hypothesis, scientific thinking, communication","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students learn science through observation, manipulation, and experimental design. It helps them better understand scientific concepts, formulate hypotheses, collect data, analyze it, and communicate results in a reasoned manner."
+1. How will I present my findings?","laboratory, experimentation, data, hypothesis, scientific thinking, communication","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students learn science through observation, manipulation, and experimental design. It helps them better understand scientific concepts, formulate hypotheses, collect data, analyze it, and communicate results in a reasoned manner.",Active Methodologies and Thinking Routines
 metac_012,Question-Based Learning (QBL),"**Question-Based Learning for Understanding** consists of:
 
 Developing a unit through structured and prioritized questions to achieve meaningful learning.
@@ -402,7 +402,7 @@ In a unit on the history of Western music, the teacher has decided to use questi
 
 The teacher has divided the students into groups of three and assigned each group one of the periods of Western music. The students must work in teams to develop a set of questions using the three categories mentioned above for their assigned period. Then, each group will present their questions to the rest of the class, who will answer them. In this way, learning will develop collaboratively and metacognitively, as students must use their prior knowledge, synthesize the information they have acquired, organize and prioritize it, and apply their knowledge to new situations.
 
-","questions, comprehension, synthesis, application, teamwork, formative assessment","Information Processing and Analysis, Formative Assessment and Feedback",,"This methodology organizes a unit using hierarchical questions of knowledge, reasoning, and creativity. It serves to guide understanding, activate prior knowledge, promote synthesis, and help students apply what they have learned in new situations."
+","questions, comprehension, synthesis, application, teamwork, formative assessment","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This methodology organizes a unit using hierarchical questions of knowledge, reasoning, and creativity. It serves to guide understanding, activate prior knowledge, promote synthesis, and help students apply what they have learned in new situations.",Active Methodologies and Thinking Routines
 metac_013,Problem-Based Learning (PBL),"TEAM SIZE: Small groups (typically 3 to 5 students).
 
 OBJECTIVES:
@@ -443,7 +443,7 @@ In the Technology subject, the challenge is to design an automatic irrigation sy
 
 4. The groups assemble a prototype and conduct functional tests in the classroom.
 
-5. Finally, they install the system in the garden and present the final result, explaining how they overcame the technical problems that arose during the process.","problem-solving, research, autonomy, cooperation, presentation, reflection","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This methodology begins with an open-ended and meaningful problem that students must solve. It helps develop autonomy, information literacy, critical thinking, cooperation, and the ability to formulate justified solutions."
+5. Finally, they install the system in the garden and present the final result, explaining how they overcame the technical problems that arose during the process.","problem-solving, research, autonomy, cooperation, presentation, reflection","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This methodology begins with an open-ended and meaningful problem that students must solve. It helps develop autonomy, information literacy, critical thinking, cooperation, and the ability to formulate justified solutions.",Active Methodologies and Thinking Routines
 metac_014,Project-Based Learning (PjBL),"Project-based learning involves creating a tangible final product, which is usually linked to the real world and is typically a fairly large-scale, group project.
 
 To design a project, we start with the end goal in mind. We first decide what we want our students to learn and plan from there, working backward.
@@ -479,7 +479,7 @@ Once they have gathered enough information, the students have to design an actio
 
 Finally, the students have to create a tangible final product that demonstrates their learning and their commitment to energy and environmental conservation. This product could be a written report with their research and recommendations, a model of the improvements they propose to make at the school, or even a promotional video to raise awareness among other students about the importance of saving energy.
 
-Through the development of this project, the students have learned about energy conservation and climate change in a much deeper and more meaningful way than with traditional teaching methods.","projects, final product, research, formative assessment, creativity, cooperation","Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students develop a final product linked to a question or challenge. It serves to integrate content, research, creativity, cooperation, and formative assessment into a meaningful task with a tangible outcome."
+Through the development of this project, the students have learned about energy conservation and climate change in a much deeper and more meaningful way than with traditional teaching methods.","projects, final product, research, formative assessment, creativity, cooperation","Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students develop a final product linked to a question or challenge. It serves to integrate content, research, creativity, cooperation, and formative assessment into a meaningful task with a tangible outcome.",Active Methodologies and Thinking Routines
 metac_015,Challenge-Based Learning (ChBL),"Challenge-based learning involves solving a real-world problem through concrete action; it is not a problem designed for the classroom.
 
 It may have many points in common with Action-Based Learning (ABL).
@@ -518,7 +518,7 @@ Example of applying Challenge-Based Learning to solve this problem:
 
 - Dissemination of the Work: Students can create a video or presentation to explain the proposed solutions and the results obtained. They can also write an article for a local magazine or give a presentation to the community.
 
-- Evaluation: Students will conduct a self-evaluation to reflect on the process followed and the results obtained. An evaluation will also be carried out by the teacher(s) involved. If deemed necessary, external evaluations can be requested from other stakeholders in the neighborhood to obtain a broader perspective on the work undertaken.","challenges, real problem, action, research, dissemination, evaluation","Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This methodology involves students tackling a real-world challenge and proposing a concrete action to address it. It serves to connect learning with social needs, investigate solutions, test them in context, and disseminate the results."
+- Evaluation: Students will conduct a self-evaluation to reflect on the process followed and the results obtained. An evaluation will also be carried out by the teacher(s) involved. If deemed necessary, external evaluations can be requested from other stakeholders in the neighborhood to obtain a broader perspective on the work undertaken.","challenges, real problem, action, research, dissemination, evaluation","Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This methodology involves students tackling a real-world challenge and proposing a concrete action to address it. It serves to connect learning with social needs, investigate solutions, test them in context, and disseminate the results.",Active Methodologies and Thinking Routines
 metac_016,Experiential Learning,"Experiential learning is a methodology based on learning through direct experience and reflection upon it. This methodology is based on the idea that learning can be enhanced if students participate directly in activities that allow them to experience the concepts they are studying firsthand.
 
 In this methodology, students not only acquire theoretical knowledge but also learn through experience and reflection upon it. This allows them to connect concepts to real life and better understand how to apply them to real-world situations.
@@ -531,7 +531,7 @@ This type of learning can be included in the category of discovery learning.
 
 An example of experiential learning could be an activity in which biology students visit a nature reserve to observe different species of animals and plants firsthand, as well as their habitat and behavior. This activity will allow them to experience firsthand the concepts they are studying in class, such as biodiversity, ecosystems, and the life cycles of living things.
 
-After the visit, the students can reflect on their observations and experiences and discuss the concepts they have learned. This will allow them to connect theoretical concepts with real life and better understand how to apply them to real-life situations.","direct experience, reflection, application, environment, metacognition","Knowledge Building, Critical Thinking and Metacognition",,"A methodology based on learning from direct experiences and subsequent reflection. It serves to connect theory and reality, promote the practical understanding of concepts, and help students apply what they have learned in real-life situations."
+After the visit, the students can reflect on their observations and experiences and discuss the concepts they have learned. This will allow them to connect theoretical concepts with real life and better understand how to apply them to real-life situations.","direct experience, reflection, application, environment, metacognition","Knowledge Building, Critical Thinking and Metacognition",,"A methodology based on learning from direct experiences and subsequent reflection. It serves to connect theory and reality, promote the practical understanding of concepts, and help students apply what they have learned in real-life situations.",Pedagogical Models
 metac_017,Discovery Learning,"Discovery learning is developed through a process of searching for and solving problems (Psicocode, 2020).
 
 It involves students finding solutions to problems on their own and with the help of the teacher, but without having the definitive answer.
@@ -560,7 +560,7 @@ Discovery learning can be divided into two main categories: **guided discovery l
 
 --
 
-Other sources consulted: Jimenez Pierre, O. et al. (2007). Discovery learning model for students of basic experimental chemistry.","discovery, exploration, research, problem-solving, autonomy","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition",,"A methodology in which students construct knowledge through exploration, questioning, and research, with varying degrees of teacher guidance. It fosters autonomy, curiosity, problem-solving skills, and meaningful understanding."
+Other sources consulted: Jimenez Pierre, O. et al. (2007). Discovery learning model for students of basic experimental chemistry.","discovery, exploration, research, problem-solving, autonomy","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition",,"A methodology in which students construct knowledge through exploration, questioning, and research, with varying degrees of teacher guidance. It fosters autonomy, curiosity, problem-solving skills, and meaningful understanding.",Pedagogical Models
 metac_018,Chain of Questions,"This structure is suitable for reviewing the topic(s) covered so far and preparing for the exam, or simply for conducting a formative assessment to check the extent to which the planned objectives have been achieved, and to correct or adjust the curriculum if necessary.
 
 1. For approximately three minutes, each team thinks of a question about the topic(s) studied so far, which they will pose to the team next to them, following a specific order (for example, clockwise). These are fundamental questions (that they believe could appear on an exam) about topics covered in class, designed to help the other teams.
@@ -584,7 +584,7 @@ The biology teacher has been working on the concepts of blood circulation with h
 
 1. Once the first round is over, three more minutes are given to think of new questions, and a second round begins in reverse: Team D asks a question to Team A, who answers it and asks a question to Team B, and so on until the last team, Team C, asks a question to Team D.
 
-1. At the end of the activity, the teacher summarizes the students' understanding and identifies areas that need further work. The teacher also reviews the key concepts of blood circulation to ensure that all students have grasped them.","questions, review, formative assessment, cooperation, feedback","Formative Assessment and Feedback, Activation of Prior Knowledge, Cohesion and Cooperation",,"A cooperative structure in which teams develop and answer questions about a topic covered. It serves to review content, prepare assessments, identify doubts, and promote peer support through a series of linked questions."
+1. At the end of the activity, the teacher summarizes the students' understanding and identifies areas that need further work. The teacher also reviews the key concepts of blood circulation to ensure that all students have grasped them.","questions, review, formative assessment, cooperation, feedback","Formative Assessment and Feedback, Activation of Prior Knowledge, Cohesion and Cooperation",,"A cooperative structure in which teams develop and answer questions about a topic covered. It serves to review content, prepare assessments, identify doubts, and promote peer support through a series of linked questions.",Cooperative Learning Organization
 metac_019,Circle of Viewpoints,"A Routine for Exploring Other Perspectives
 
 ## Purpose: What kind of thinking does this routine encourage?
@@ -614,7 +614,7 @@ CIRCLE OF POINTS OF VIEW
 **CONCLUSIONS**
 What new ideas do you have about the topic that you didn't have before? What new questions do you have?
 
----","perspective, empathy, critical thinking, reflection, debate","Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine in which students analyze a topic from different points of view. It helps develop empathy, critical thinking, understanding of diverse perspectives, and the ability to formulate new questions about complex situations."
+---","perspective, empathy, critical thinking, reflection, debate","Thinking Routines, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine in which students analyze a topic from different points of view. It helps develop empathy, critical thinking, understanding of diverse perspectives, and the ability to formulate new questions about complex situations.",Active Methodologies and Thinking Routines
 metac_020,CO-OP CO-OP,"This method involves structuring the class so that students work in teams with the goal of achieving a common objective that benefits other students.
 
 1. First, the topics are introduced to encourage participation.
@@ -649,7 +649,7 @@ Adapted from: Research Group on Peer Learning. (2019). Cooperative Learning Meth
 
 - Individual contributions to the group are also peer-assessed, where each student evaluates their own participation and input.
 
-- Finally, the materials produced by the group, such as notes, images, or diagrams used in the presentation, are evaluated.","cooperation, research, presentation, peer evaluation, individual responsibility","Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning method in which teams choose a topic, divide it into subtopics, and present it to the class. It fosters individual responsibility, cooperation, research, and peer evaluation of contributions and products."
+- Finally, the materials produced by the group, such as notes, images, or diagrams used in the presentation, are evaluated.","cooperation, research, presentation, peer evaluation, individual responsibility","Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning method in which teams choose a topic, divide it into subtopics, and present it to the class. It fosters individual responsibility, cooperation, research, and peer evaluation of contributions and products.",Cooperative Learning Organization
 metac_021,Getting to Know Each Other,"## Objective
 
 For the group members to get to know each other and exchange tastes, preferences, ideas, and opinions.
@@ -677,7 +677,7 @@ Conclusions
 
 It's interesting to get to know the people we live with every day because it allows us to understand them better and cooperate in achieving common goals.
 
-Source: ECO. (2007). Group Dynamics.","group cohesion, personal knowledge, communication, questions","Cohesion and Cooperation, Communication and Creativity",,"A group activity in which participants seek partners who meet certain criteria or answer specific questions. It helps foster mutual understanding, build group cohesion, and improve interaction among students."
+Source: ECO. (2007). Group Dynamics.","group cohesion, personal knowledge, communication, questions","Cohesion and Cooperation, Communication and Creativity",,"A group activity in which participants seek partners who meet certain criteria or answer specific questions. It helps foster mutual understanding, build group cohesion, and improve interaction among students.",Cooperative Learning Organization
 metac_022,Compare and Contrast,"The Contrast and Compare thinking routine is a technique that can be used to help students improve their understanding and deepen their grasp of the concepts or facts they are studying. This routine can be applied at the beginning, during, or at the end of a topic, depending on the learning needs and objectives.
 
 TEACHER:
@@ -728,7 +728,7 @@ Objective: To improve students' understanding of the French Revolution
 - Ask questions
 
 - Provide feedback on the quality of the comparisons
-- Outcome: Improved student understanding of the French Revolution and development of critical thinking and communication skills.","comparison, contrast, analysis, reading, critical thinking, feedback","Information Processing and Analysis, Critical Thinking and Metacognition",,"A routine in which students compare different sources, ideas, or phenomena, identifying similarities and differences. It serves to improve comprehension, develop critical thinking, and justify comparisons based on relevant evidence or information."
+- Outcome: Improved student understanding of the French Revolution and development of critical thinking and communication skills.","comparison, contrast, analysis, reading, critical thinking, feedback","Thinking Routines, Information Processing and Analysis, Critical Thinking and Metacognition",,"A routine in which students compare different sources, ideas, or phenomena, identifying similarities and differences. It serves to improve comprehension, develop critical thinking, and justify comparisons based on relevant evidence or information.",Active Methodologies and Thinking Routines
 metac_023,Learning Contract,"## Description
 An explicit agreement between student and teacher regarding objectives, tasks, timelines, resources, and assessment criteria. It helps organize independent work and empowers students to take ownership of their learning process.
 
@@ -751,7 +751,7 @@ An explicit agreement between student and teacher regarding objectives, tasks, t
 - To improve self-regulation and formative assessment.
 
 ## Example
-In a research project, each student agrees with the teacher on the research question, the sources to be consulted, the final product, and the deadlines for partial submissions.","autonomy, planning, monitoring, formative assessment, metacognition","Formative Assessment and Feedback, Critical Thinking and Metacognition",,"An agreement between student and teacher regarding objectives, tasks, resources, deadlines, and evaluation criteria. It serves to promote autonomy, planning, personal responsibility, and monitoring of one's own learning."
+In a research project, each student agrees with the teacher on the research question, the sources to be consulted, the final product, and the deadlines for partial submissions.","autonomy, planning, monitoring, formative assessment, metacognition","Formative Assessment and Feedback, Critical Thinking and Metacognition",,"An agreement between student and teacher regarding objectives, tasks, resources, deadlines, and evaluation criteria. It serves to promote autonomy, planning, personal responsibility, and monitoring of one's own learning.",Educational Frameworks
 metac_024,Structured Academic Controversy,"OBJECTIVES: To improve understanding of different viewpoints on a topic, develop debate skills, and enhance argumentation and communication abilities.
 
 METHOD
@@ -780,7 +780,7 @@ OBSERVATIONS AND PRACTICAL TIPS:
 
 - It is recommended to create a final summary of the ideas presented by each team to facilitate understanding of the different points of view and further exploration of the topic.
 
-Source: *Structuring Academic Controversy*, Johnson and Johnson, 1994 in Grup de recerca sobre aprenentatge entre iguals. (2016).","debate, argumentation, perspective, critical thinking, cooperation, synthesis","Activation of Prior Knowledge, Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students defending opposing viewpoints on a topic and then switching perspectives. It helps improve argumentation skills, understand the complexity of the issues debated, listen to opposing arguments, and develop balanced summaries."
+Source: *Structuring Academic Controversy*, Johnson and Johnson, 1994 in Grup de recerca sobre aprenentatge entre iguals. (2016).","debate, argumentation, perspective, critical thinking, cooperation, synthesis","Activation of Prior Knowledge, Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students defending opposing viewpoints on a topic and then switching perspectives. It helps improve argumentation skills, understand the complexity of the issues debated, listen to opposing arguments, and develop balanced summaries.",Cooperative Learning Organization
 metac_025,Timed Pair Share,"1. The teacher proposes a topic and sets a specific time limit for each student to speak.
 
 1. Students are paired up, and the time is divided equally between them.
@@ -810,7 +810,7 @@ Sources:
 
 1. After 5 minutes, B shares their opinion on the topic with A, while A listens actively.
 
-1. Once all the students have spoken, a brief summary of each pair's viewpoints is created.","couples, active listening, synthesis, participation, communication","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in pairs with defined times for speaking and listening. This helps ensure balanced participation, improve active listening, share ideas, and develop a common synthesis based on the contributions of both students."
+1. Once all the students have spoken, a brief summary of each pair's viewpoints is created.","couples, active listening, synthesis, participation, communication","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in pairs with defined times for speaking and listening. This helps ensure balanced participation, improve active listening, share ideas, and develop a common synthesis based on the contributions of both students.",Cooperative Learning Organization
 metac_026,"CSI: Color, Symbol, Image","A Routine for Extracting the Essence of Nonverbal Ideas
 
 ## Purpose: What type of thinking does this routine foster?
@@ -875,7 +875,7 @@ COMMENTS
 
 - What are the implications of each idea for the world today?
 
-This routine can be useful in helping students improve their understanding of a complex topic and develop critical thinking and reflection skills.","visual synthesis, creativity, communication, comprehension, reflection","Critical Thinking and Metacognition, Communication and Creativity",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A routine in which students represent ideas using a color, a symbol, and an image. It helps to identify the essence of a topic, develop visual synthesis, stimulate creativity, and facilitate discussion about meanings."
+This routine can be useful in helping students improve their understanding of a complex topic and develop critical thinking and reflection skills.","visual synthesis, creativity, communication, comprehension, reflection","Thinking Routines, Critical Thinking and Metacognition, Communication and Creativity",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A routine in which students represent ideas using a color, a symbol, and an image. It helps to identify the essence of a topic, develop visual synthesis, stimulate creativity, and facilitate discussion about meanings.",Active Methodologies and Thinking Routines
 metac_027,Design Thinking,"## Description
 An active methodology focused on solving problems through a people-centered creative process. It begins with understanding a need, generates ideas, builds prototypes, and tests them for improvement.
 
@@ -898,7 +898,7 @@ An active methodology focused on solving problems through a people-centered crea
 - Learn to improve a solution based on testing and feedback.
 
 ## Example
-In a digitalization class, students design a solution to improve the organization of tasks within the class group. They interview classmates, define needs, propose ideas, create a prototype of a digital template, and test it for a week.","design, empathy, prototyping, creativity, feedback, problem solving","Problem Solving and Challenges, Communication and Creativity, Cohesion and Cooperation, Formative Assessment and Feedback",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html,"A methodology focused on solving problems through empathy, defining the challenge, ideation, prototyping, and testing. It helps develop applied creativity, teamwork, improvement through feedback, and solutions centered on people's needs."
+In a digitalization class, students design a solution to improve the organization of tasks within the class group. They interview classmates, define needs, propose ideas, create a prototype of a digital template, and test it for a week.","design, empathy, prototyping, creativity, feedback, problem solving","Problem Solving and Challenges, Communication and Creativity, Cohesion and Cooperation, Formative Assessment and Feedback",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html,"A methodology focused on solving problems through empathy, defining the challenge, ideation, prototyping, and testing. It helps develop applied creativity, teamwork, improvement through feedback, and solutions centered on people's needs.",Educational Frameworks
 metac_028,Detect Patterns,"The ""detect patterns"" thinking routine involves searching for and identifying relationships or patterns between different concepts or facts. This routine can be very useful in helping students better understand concepts and make connections with their existing knowledge. Here are some steps to effectively implement this routine:
 
 TEACHER:
@@ -927,7 +927,7 @@ STUDENT:
 
 1. Listen carefully to your classmates' ideas and consider their contributions. Ask them questions to clarify any doubts or to obtain more information.
 
-2. Summarize the most important ideas that emerged from the discussion and reflect on what you have learned. What relationships or patterns have you identified? What new ideas have you learned? How can you apply these ideas to other situations or problems?","patterns, analysis, relationships, critical thinking, communication","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Communication and Creativity",,"A routine in which students look for relationships or regularities between concepts, data, or facts. It serves to improve understanding, connect ideas, justify interpretations, and develop critical thinking through the identification of patterns."
+2. Summarize the most important ideas that emerged from the discussion and reflect on what you have learned. What relationships or patterns have you identified? What new ideas have you learned? How can you apply these ideas to other situations or problems?","patterns, analysis, relationships, critical thinking, communication","Thinking Routines, Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Communication and Creativity",,"A routine in which students look for relationships or regularities between concepts, data, or facts. It serves to improve understanding, connect ideas, justify interpretations, and develop critical thinking through the identification of patterns.",Active Methodologies and Thinking Routines
 metac_029,Assessment Target,"## Description
 A visual self-assessment or peer-assessment tool that allows for the evaluation of different criteria on a scale represented as a target. The closer to the center, the greater the degree of achievement or agreement.
 
@@ -950,7 +950,7 @@ A visual self-assessment or peer-assessment tool that allows for the evaluation 
 - To help formulate proposals for improvement.
 
 ## Example
-After an oral presentation, each student evaluates clarity, mastery of the content, use of visual aids, and team participation. They then write a specific action for improvement.","self-assessment, peer assessment, criteria, feedback, visual","Formative Assessment and Feedback, Critical Thinking and Metacognition, Communication and Creativity",Rating scale|https://jjdeharo.github.io/directo/escala.html,"A visual self-assessment or peer-assessment tool that evaluates various criteria on a target. It serves to highlight the level of achievement, compare perceptions, justify assessments, and propose improvements."
+After an oral presentation, each student evaluates clarity, mastery of the content, use of visual aids, and team participation. They then write a specific action for improvement.","self-assessment, peer assessment, criteria, feedback, visual","Formative Assessment and Feedback, Critical Thinking and Metacognition, Communication and Creativity",Rating scale|https://jjdeharo.github.io/directo/escala.html,"A visual self-assessment or peer-assessment tool that evaluates various criteria on a target. It serves to highlight the level of achievement, compare perceptions, justify assessments, and propose improvements.",Active Methodologies and Thinking Routines
 metac_030,Learning Journal,"A learning journal is a tool where students periodically record their experiences in the learning process. While it's most common for it to be some type of text document, there's no problem with it being audio (podcast) or video, as long as the timeframe for its creation is respected.
 
 In this type of journal, students express the difficulties they encounter, what they like or dislike, problems they might have with classmates, etc.
@@ -1005,7 +1005,7 @@ Of all the concepts in the unit, the practical problems were the most challengin
 
 One of the things I enjoyed most this week was working as a team with my classmates to solve the problems. I also helped my classmates understand the unit's theoretical concepts.
 
-I completed all the homework and reviewed the unit's concepts every day to be prepared for the assessments. I'm keeping up with my work.","learning journal, reflection, metacognition, monitoring, self-assessment","Critical Thinking and Metacognition, Formative Assessment and Feedback",,"This tool allows students to regularly record their learning experiences, difficulties, and progress. It promotes metacognition, work tracking, self-assessment, and awareness of their own learning process."
+I completed all the homework and reviewed the unit's concepts every day to be prepared for the assessments. I'm keeping up with my work.","learning journal, reflection, metacognition, monitoring, self-assessment","Critical Thinking and Metacognition, Formative Assessment and Feedback",,"This tool allows students to regularly record their learning experiences, difficulties, and progress. It promotes metacognition, work tracking, self-assessment, and awareness of their own learning process.",Active Methodologies and Thinking Routines
 metac_031,Digital Storytelling,"Digital storytelling involves combining narratives and digital content, including images, sound, and video, to create a short film, usually with strong emotional content (Educause, 2011). Seven Essential Elements of Digital Storytelling.
 
 The planning and development of multimedia projects in the form of a story (digital storytelling, DST) seeks to leverage new digital technologies to enhance this educational resource. Originally, DST focused primarily on narratives of personal experiences in video format, with voiceovers or interviews, lasting less than 5 minutes. Currently, digital storytelling can also integrate narrative and informational resources, typical of a more documentary-style genre.
@@ -1014,7 +1014,7 @@ Digital stories can be created by teachers, but with appropriate guidance, stude
 
 ---
 
-Source: Digital Storytelling in De Haro, J.J. (2022). Open ICT Tools and Services for Education.","digital storytelling, communication, creativity, project, multimedia","Knowledge Building, Communication and Creativity",,"This activity involves students creating digital stories by combining narration, images, audio, or video. It serves to communicate learning, develop creativity, organize information, and produce multimedia materials with expressive or explanatory intent."
+Source: Digital Storytelling in De Haro, J.J. (2022). Open ICT Tools and Services for Education.","digital storytelling, communication, creativity, project, multimedia","Knowledge Building, Communication and Creativity",,"This activity involves students creating digital stories by combining narration, images, audio, or video. It serves to communicate learning, develop creativity, organize information, and produce multimedia materials with expressive or explanatory intent.",Active Methodologies and Thinking Routines
 metac_032,Roundtable,"TEAM SIZE: Base team.
 
 OBJECTIVES: To activate prior knowledge, generate new ideas based on existing ones, and assess comprehension of content.
@@ -1046,7 +1046,7 @@ Source: Pérez, M. (2015). Cooperative Dynamics.
 
 **Explanation of the technique:**
 
-**Application of the technique:**","activation of prior knowledge, cooperation, synthesis, participation, writing","Activation of Prior Knowledge, Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in which a sheet of paper circulates among the team and each member adds a contribution. It serves to activate prior knowledge, generate ideas, build collective responses, and encourage everyone's participation."
+**Application of the technique:**","activation of prior knowledge, cooperation, synthesis, participation, writing","Activation of Prior Knowledge, Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in which a sheet of paper circulates among the team and each member adds a contribution. It serves to activate prior knowledge, generate ideas, build collective responses, and encourage everyone's participation.",Cooperative Learning Organization
 metac_033,Word Game,"1. The teacher writes a few keywords on the board related to the topic they are working on or have just finished working on.
 
 1. In each of the base groups, the students have to write a sentence using these words—each student starting with one of the keywords—or express the idea behind these words. To make them easy to handle, they write the sentence on a small piece of paper.
@@ -1076,7 +1076,7 @@ Adapted from Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate 
 
 3. Then, they arrange the sentences on the table according to a logical order, creating a kind of summary outline or concept map of the topic.
 
-4. Once the teacher has approved the order they have established, they number the sentences and, in pairs (one pair at a time, and the other pair the next), they rewrite them neatly and make a copy for each member of the team.","keywords, synthesis, concept map, cooperation, understanding","Information Processing and Analysis, Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",Word cloud|https://jjdeharo.github.io/directo/nube.html,"This technique involves students creating sentences from keywords and then organizing them into a diagram or map. It serves to review content, develop summaries, build shared meaning, and strengthen cooperation."
+4. Once the teacher has approved the order they have established, they number the sentences and, in pairs (one pair at a time, and the other pair the next), they rewrite them neatly and make a copy for each member of the team.","keywords, synthesis, concept map, cooperation, understanding","Information Processing and Analysis, Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",Word cloud|https://jjdeharo.github.io/directo/nube.html,"This technique involves students creating sentences from keywords and then organizing them into a diagram or map. It serves to review content, develop summaries, build shared meaning, and strengthen cooperation.",Cooperative Learning Organization
 metac_034,5E Instructional Model,"The 5E Model promotes collaborative and active learning in which students work together to solve problems and investigate new concepts by asking questions, observing, analyzing, and drawing conclusions (Teacher's Guide MX, 2019).
 
 The 5E model consists of five phases: Engage, Explore, Explain, Elaborate, and Evaluate.
@@ -1114,7 +1114,7 @@ From a cognitive perspective, evaluation is not only useful for assessing learni
 
 Therefore, the 5E evaluation phase is also a learning phase, especially if it is applied not only at the end, but throughout the entire learning sequence.
 
-Adapted from Ruiz, H. & Bybee, Rodger W. (2022). The cognitive principles of learning behind the 5E teaching model.","5E model, inquiry, prior knowledge, application, formative assessment, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A teaching model based on the phases of engaging, exploring, explaining, elaborating, and evaluating. It serves to structure active learning sequences, activate prior knowledge, promote inquiry, apply concepts, and evaluate throughout the process."
+Adapted from Ruiz, H. & Bybee, Rodger W. (2022). The cognitive principles of learning behind the 5E teaching model.","5E model, inquiry, prior knowledge, application, formative assessment, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A teaching model based on the phases of engaging, exploring, explaining, elaborating, and evaluating. It serves to structure active learning sequences, activate prior knowledge, promote inquiry, apply concepts, and evaluate throughout the process.",Educational Frameworks
 metac_035,Jigsaw,"This technique is especially useful for areas of knowledge where the content can be broken down into different parts (for example: literature, social sciences, natural sciences, etc.). In short, the development or implementation of this technique involves the following steps:
 
 - Divide the class into heterogeneous groups of 4 or 5 members each.
@@ -1139,7 +1139,7 @@ Source: Pérez, M. (2015). Cooperative Dynamics.
 
 **Explanation of the technique:**
 
-**Application of the technique:**","puzzles, experts, cooperation, reading, synthesis","Cohesion and Cooperation, Information Processing and Analysis",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique in which each student works on a part of a topic and then teaches it to their team. It helps to foster positive interdependence, individual responsibility, reading comprehension, and shared synthesis."
+**Application of the technique:**","puzzles, experts, cooperation, reading, synthesis","Cohesion and Cooperation, Information Processing and Analysis",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique in which each student works on a part of a topic and then teaches it to their team. It helps to foster positive interdependence, individual responsibility, reading comprehension, and shared synthesis.",Cooperative Learning Organization
 metac_036,The Sack of Doubts,"1. Each team member writes a question that has arisen while studying a particular topic on a third of a sheet of paper (including their name and the team name).
 
 2. After a few minutes to allow everyone time to write their question, each member shares it with the rest of their team so that, if anyone can answer it, they can do so. If someone knows the answer, the student who had the question writes it down in their notebook. If no one on the team knows the answer, they give it to the teacher, who adds it to the class's ""question bank.""
@@ -1148,7 +1148,7 @@ metac_036,The Sack of Doubts,"1. Each team member writes a question that has ari
 
 This structure is especially useful for highlighting the interaction (in this case, in the form of solidarity or mutual support) that must exist throughout the entire class, not just within a single team, since different teams help each other resolve doubts that a particular team has been unable to answer.
 
-Source: Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate to learn/learn to cooperate”) for teaching team learning: Implementing cooperative learning in the classroom.","questions, mutual help, formative assessment, cooperation, feedback","Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",Interactive wall|https://jjdeharo.github.io/directo/muro.html,"A structure in which students write down their questions, try to solve them as a team, and then put the unanswered questions in a common container. This helps to identify difficulties, promote mutual support, and guide the teacher's explanation."
+Source: Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate to learn/learn to cooperate”) for teaching team learning: Implementing cooperative learning in the classroom.","questions, mutual help, formative assessment, cooperation, feedback","Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",Interactive wall|https://jjdeharo.github.io/directo/muro.html,"A structure in which students write down their questions, try to solve them as a team, and then put the unanswered questions in a common container. This helps to identify difficulties, promote mutual support, and guide the teacher's explanation.",Cooperative Learning Organization
 metac_037,Traffic Light,"This routine allows for critical reflection on what has been understood from an explanation or topic. It is done using three columns that can be filled out individually or in pairs:
 
 - **Green**: What have I understood?
@@ -1157,7 +1157,7 @@ metac_037,Traffic Light,"This routine allows for critical reflection on what has
 
 - **Red**: What haven't I understood?
 
-You can use a template similar to this:","comprehension, doubts, metacognition, self-assessment, feedback","Formative Assessment and Feedback, Critical Thinking and Metacognition",Rating scale|https://jjdeharo.github.io/directo/escala.html,"A three-level self-assessment routine: what is understood, what is doubtful, and what is not understood. It serves to highlight difficulties, regulate learning, guide clarifications, and encourage reflection on understanding."
+You can use a template similar to this:","comprehension, doubts, metacognition, self-assessment, feedback","Thinking Routines, Formative Assessment and Feedback, Critical Thinking and Metacognition",Rating scale|https://jjdeharo.github.io/directo/escala.html,"A three-level self-assessment routine: what is understood, what is doubtful, and what is not understood. It serves to highlight difficulties, regulate learning, guide clarifications, and encourage reflection on understanding.",Active Methodologies and Thinking Routines
 metac_038,Team-Pair-Solo,"This technique is based on the gradual withdrawal of support.
 
 1. Students receive three problems of similar difficulty.
@@ -1172,7 +1172,7 @@ metac_038,Team-Pair-Solo,"This technique is based on the gradual withdrawal of s
 
 If necessary in steps 3 and 4, students can ask for help from the other pair or their partner, respectively.
 
-Source: *Team-Pair-Solo, Cuseu*, 2002 in Grup de recerca sobre aprenentatge entre iguals. (2016).","withdrawal of support, cooperation, couples, problem-solving, autonomy","Problem Solving and Challenges, Cohesion and Cooperation",,"This technique involves gradually withdrawing support: first, the problem is solved as a team, then in pairs, and finally individually. It helps develop autonomy, consolidate procedures, and improve confidence when facing similar problems."
+Source: *Team-Pair-Solo, Cuseu*, 2002 in Grup de recerca sobre aprenentatge entre iguals. (2016).","withdrawal of support, cooperation, couples, problem-solving, autonomy","Problem Solving and Challenges, Cohesion and Cooperation",,"This technique involves gradually withdrawing support: first, the problem is solved as a team, then in pairs, and finally individually. It helps develop autonomy, consolidate procedures, and improve confidence when facing similar problems.",Cooperative Learning Organization
 metac_039,Listener Teams,"Small Grouping
 
 Objectives
@@ -1209,7 +1209,7 @@ Tips:
 
 - Distribute the different roles among the members of each team. Reach a consensus within the group on the final proposal.
 
-Source: Varas, M. & Zariquiey, F. (2011). Formal and informal techniques of cooperative learning.","active listening, roles, questions, analysis, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This structure involves teams taking on listening roles during a presentation, such as asking questions, agreeing, disagreeing, or giving examples. It helps to increase attention, process information, and generate active participation during explanations."
+Source: Varas, M. & Zariquiey, F. (2011). Formal and informal techniques of cooperative learning.","active listening, roles, questions, analysis, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This structure involves teams taking on listening roles during a presentation, such as asking questions, agreeing, disagreeing, or giving examples. It helps to increase attention, process information, and generate active participation during explanations.",Cooperative Learning Organization
 metac_040,Metacognition Ladder,"## Description
 This routine guides students to reflect on their own learning through a sequence of questions. It allows them to move from identifying what they have learned to transferring that learning to new situations.
 
@@ -1230,7 +1230,7 @@ This routine guides students to reflect on their own learning through a sequence
 - To develop self-regulation and reflective thinking.
 
 ## Example
-After completing a laboratory exercise, students fill in the ladder, indicating what they have learned about experimental design, how they controlled variables, and in what other experiments they could apply that procedure.","metacognition, transfer, reflection, self-assessment, application","Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A metacognitive routine that guides students with questions about what they have learned, how, why, and where they can apply it. It serves to promote reflection, transfer of knowledge, self-regulation, and awareness of one's own learning."
+After completing a laboratory exercise, students fill in the ladder, indicating what they have learned about experimental design, how they controlled variables, and in what other experiments they could apply that procedure.","metacognition, transfer, reflection, self-assessment, application","Thinking Routines, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A metacognitive routine that guides students with questions about what they have learned, how, why, and where they can apply it. It serves to promote reflection, transfer of knowledge, self-regulation, and awareness of one's own learning.",Active Methodologies and Thinking Routines
 metac_041,Learning Stations,"## Description
 Classroom organization into different stations or workspaces. At each station, students perform a different task related to the same content or competency. This allows for combining hands-on, digital, reading, guided practice, and assessment activities.
 
@@ -1253,7 +1253,7 @@ Classroom organization into different stations or workspaces. At each station, s
 - To gather varied evidence of learning.
 
 ## Example
-In biology, one station involves observing samples, another image analysis, another answering questions, and another creating a diagram. All groups rotate through all the stations.","stations, rotation, autonomy, cooperation, formative assessment","Knowledge Building, Information Processing and Analysis, Cohesion and Cooperation, Formative Assessment and Feedback",,"Organizing the classroom into stations with different tasks related to the same content helps to diversify activities, cater to different learning paces, promote cooperation, gather varied evidence, and foster student autonomy."
+In biology, one station involves observing samples, another image analysis, another answering questions, and another creating a diagram. All groups rotate through all the stations.","stations, rotation, autonomy, cooperation, formative assessment","Knowledge Building, Information Processing and Analysis, Cohesion and Cooperation, Formative Assessment and Feedback",,"Organizing the classroom into stations with different tasks related to the same content helps to diversify activities, cater to different learning paces, promote cooperation, gather varied evidence, and foster student autonomy.",Active Methodologies and Thinking Routines
 metac_042,Fishbowl (Aquarium),"## Description
 A discussion technique in which a small group engages in dialogue in the center while the rest observes with a specific task. Afterward, the roles are reversed, or a general discussion begins.
 
@@ -1276,7 +1276,7 @@ A discussion technique in which a small group engages in dialogue in the center 
 - Encourage peer evaluation of oral communication.
 
 ## Example
-In social sciences, the central group debates whether a city should limit private vehicle traffic. The observers note arguments based on data, relevant questions, and moments when others are or are not being listened to.","debate, observation, active listening, peer evaluation, argumentation","Communication and Creativity, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A discussion technique in which a small group engages in dialogue while the rest observes with a specific task. It serves to improve the quality of debate, listening, argumentation, and peer evaluation of oral communication."
+In social sciences, the central group debates whether a city should limit private vehicle traffic. The observers note arguments based on data, relevant questions, and moments when others are or are not being listened to.","debate, observation, active listening, peer evaluation, argumentation","Communication and Creativity, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A discussion technique in which a small group engages in dialogue while the rest observes with a specific task. It serves to improve the quality of debate, listening, argumentation, and peer evaluation of oral communication.",Active Methodologies and Thinking Routines
 metac_043,Flipped Classroom,"The flipped classroom is a methodology where the teacher's theoretical explanation is transferred from the classroom to the student's home.
 
 In the flipped classroom, the teacher's theoretical explanation is transferred from the classroom to the student's home. This explanation is usually in video format, preferably short to avoid loss of interest.
@@ -1303,7 +1303,7 @@ Source: Basso-Aránguiz et al. (2018). Proposal of a technological model for Fli
 
 The following video, although a bit long, explains in considerable detail what it consists of, both in its pedagogical foundations and its development.
 
-Software Selection for the Flipped Classroom.","flipped classroom, autonomy, prior knowledge, feedback, application","Activation of Prior Knowledge, Knowledge Building, Problem Solving and Challenges, Formative Assessment and Feedback",,"This methodology involves covering theoretical explanations outside of class, while class time is dedicated to questions and activities. It fosters autonomy, allows for tailored instruction, and frees up in-person sessions for applying knowledge and solving problems."
+Software Selection for the Flipped Classroom.","flipped classroom, autonomy, prior knowledge, feedback, application","Activation of Prior Knowledge, Knowledge Building, Problem Solving and Challenges, Formative Assessment and Feedback",,"This methodology involves covering theoretical explanations outside of class, while class time is dedicated to questions and activities. It fosters autonomy, allows for tailored instruction, and frees up in-person sessions for applying knowledge and solving problems.",Active Methodologies and Thinking Routines
 metac_044,Gallery Walk,"## Description
 Technique for the presentation and review of group work.
 
@@ -1317,7 +1317,7 @@ Technique for the presentation and review of group work.
 4. The authors return to their posters and review the feedback received.
 
 ## Objectives
-To promote peer assessment and visual communication.","gallery, peer evaluation, feedback, visual communication, cooperation","Communication and Creativity, Formative Assessment and Feedback, Information Processing and Analysis",Interactive wall|https://jjdeharo.github.io/directo/muro.html,"This technique involves teams presenting their work, while others rotate through to observe and provide feedback. It fosters peer evaluation, constructive feedback, visual communication, and the review of student work."
+To promote peer assessment and visual communication.","gallery, peer evaluation, feedback, visual communication, cooperation","Communication and Creativity, Formative Assessment and Feedback, Information Processing and Analysis",Interactive wall|https://jjdeharo.github.io/directo/muro.html,"This technique involves teams presenting their work, while others rotate through to observe and provide feedback. It fosters peer evaluation, constructive feedback, visual communication, and the review of student work.",Active Methodologies and Thinking Routines
 metac_045,Generate Hypotheses,"The ""Generate Hypotheses"" thinking routine can be very useful in helping students reflect on the concepts or facts they are studying and test their ideas with data or evidence. This routine can be applied both at the beginning of a topic and during its development, as it can be used as a starting point to begin exploring a new concept or as a tool to deepen the understanding of a concept already studied.
 
 Teacher:
@@ -1342,7 +1342,7 @@ This can be done individually or in groups, depending on the learning needs and 
 
 If done individually, students can use this routine to reflect on the concepts or facts they are studying and test their ideas with data or evidence. This can help them better understand the concepts and develop critical thinking and reflection skills.
 
-If done in groups, they can use this routine to debate and discuss their ideas with their classmates. This can help them better understand different perspectives and develop communication and teamwork skills. It can also help them enrich their research with the ideas and information of others.","hypothesis, evidence, research, critical thinking, reflection","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A routine in which students formulate hypotheses about a fact or concept and seek evidence to test them. It helps develop critical thinking, research skills, argumentation, and reflection on the validity of their own ideas."
+If done in groups, they can use this routine to debate and discuss their ideas with their classmates. This can help them better understand different perspectives and develop communication and teamwork skills. It can also help them enrich their research with the ideas and information of others.","hypothesis, evidence, research, critical thinking, reflection","Thinking Routines, Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A routine in which students formulate hypotheses about a fact or concept and seek evidence to test them. It helps develop critical thinking, research skills, argumentation, and reflection on the validity of their own ideas.",Active Methodologies and Thinking Routines
 metac_046,Generate Solutions,"The ""Generate Solutions"" thinking routine is a very useful tool to help students develop **analysis and problem-solving** skills. This routine can be used at different points in the learning process, whether at the beginning, during, or at the end of a topic.
 
 Here are the steps to use this routine effectively:
@@ -1365,7 +1365,7 @@ Students' role:
 
 3. Evaluate the different solutions you have generated, using the criteria established by the teacher.
 
-4. Select the best solution from those you have evaluated.","solutions, problem-solving, decision-making, critical thinking, cooperation","Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html,"A routine in which students propose, evaluate, and select solutions to a situation or problem. It helps develop analysis, decision-making, critical thinking, and cooperation in the search for viable answers."
+4. Select the best solution from those you have evaluated.","solutions, problem-solving, decision-making, critical thinking, cooperation","Thinking Routines, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html,"A routine in which students propose, evaluate, and select solutions to a situation or problem. It helps develop analysis, decision-making, critical thinking, and cooperation in the search for viable answers.",Active Methodologies and Thinking Routines
 metac_048,Cooperative Graffiti,"## Description
 Rotating written brainstorming.
 
@@ -1379,7 +1379,7 @@ Rotating written brainstorming.
 4. The new group reads what the previous group has written and adds new ideas or refines existing ones.
 
 ## Objectives
-To generate a large number of ideas collaboratively and quickly.","brainstorming, cooperation, creativity, synthesis, rotation","Knowledge Building, Communication and Creativity, Information Processing and Analysis",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html; Interactive wall|https://jjdeharo.github.io/directo/muro.html,"A collaborative, written, and rotating brainstorming activity. It serves to generate many contributions in a short time, enrich ideas with those of other groups, and build a collective synthesis."
+To generate a large number of ideas collaboratively and quickly.","brainstorming, cooperation, creativity, synthesis, rotation","Knowledge Building, Communication and Creativity, Information Processing and Analysis",Brainstorming and voting|https://jjdeharo.github.io/directo/ideas.html; Interactive wall|https://jjdeharo.github.io/directo/muro.html,"A collaborative, written, and rotating brainstorming activity. It serves to generate many contributions in a short time, enrich ideas with those of other groups, and build a collective synthesis.",Cooperative Learning Organization
 metac_049,Exchange difficulties,"After an explanation or a topic previously covered in class, the teacher asks the students to write a question or problem on a card.
 
 1. The students work in teams to find the answers to the questions or problems they have written.
@@ -1406,12 +1406,12 @@ For example, imagine that you want to carry out an activity about the water cycl
 
 Then, the students would work in teams to find the answers to the questions or problems they formulated. Once they found the answers, they would write them on the back of the card. Finally, the teams would exchange the cards with another team and try to solve the problems or questions written on them. If they found a correct answer, they would move on to the next one; if not, they would review their process to make the necessary corrections.
 
-In this way, with this technique, all students would have had the opportunity to reflect on the topic of the water cycle and to work as a team to find the answers to their difficulties. Furthermore, they would have been able to review and correct their problem-solving processes related to this topic.","difficulties, problem-solving, peer assessment, feedback, cooperation","Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students formulating difficulties or questions, solving them in teams, and exchanging cards with other teams. It helps to identify comprehension problems, foster cooperation, and practice revising answers."
+In this way, with this technique, all students would have had the opportunity to reflect on the topic of the water cycle and to work as a team to find the answers to their difficulties. Furthermore, they would have been able to review and correct their problem-solving processes related to this topic.","difficulties, problem-solving, peer assessment, feedback, cooperation","Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students formulating difficulties or questions, solving them in teams, and exchanging cards with other teams. It helps to identify comprehension problems, foster cooperation, and practice revising answers.",Cooperative Learning Organization
 metac_050,Role Play,"This technique involves having participants take on the role of a specific character and engage in an activity or situation where they must make decisions and solve problems. This technique promotes collaboration and communication among group members, as they must work together to resolve the role-playing challenges. Furthermore, it can also foster reflection and understanding of different topics or concepts, because participants must empathize with a character and understand their motivations and decisions.
 
 An example of the role-playing technique could be the following:
 
-Imagine that the group is studying World War II. Participants can divide themselves into different roles, such as political leaders, military personnel, or ordinary citizens from the various countries involved in the war. The group will then have to resolve a series of problems or dilemmas related to the war, such as what decisions each role would make in certain situations or what the consequences of those decisions would be. Thus, participants will have to work together to solve the role-playing challenges while simultaneously reflecting on the different perspectives and motivations of the various characters.","role, perspective, decision-making, communication, problem-solving","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A technique in which students adopt a role or character to deal with a situation. It helps develop empathy, communication, understanding of perspectives, decision-making, and problem-solving in simulated contexts."
+Imagine that the group is studying World War II. Participants can divide themselves into different roles, such as political leaders, military personnel, or ordinary citizens from the various countries involved in the war. The group will then have to resolve a series of problems or dilemmas related to the war, such as what decisions each role would make in certain situations or what the consequences of those decisions would be. Thus, participants will have to work together to solve the role-playing challenges while simultaneously reflecting on the different perspectives and motivations of the various characters.","role, perspective, decision-making, communication, problem-solving","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A technique in which students adopt a role or character to deal with a situation. It helps develop empathy, communication, understanding of perspectives, decision-making, and problem-solving in simulated contexts.",Active Methodologies and Thinking Routines
 metac_051,"KWL (I know, I want to know, I have learned)","## Description
 This routine organizes learning into three stages: what students know, what they want to know, and what they have learned. It helps activate prior knowledge, formulate questions, and review progress at the end of the activity or unit.
 
@@ -1432,7 +1432,7 @@ This routine organizes learning into three stages: what students know, what they
 - Promote metacognition and final synthesis.
 
 ## Example
-Before studying ecosystems, students write what they know about food chains, what questions they have about the relationships between organisms, and, at the end, what they have learned about food webs and ecological balance.","prior knowledge, questions, metacognition, synthesis, follow-up","Activation of Prior Knowledge, Critical Thinking and Metacognition, Formative Assessment and Feedback",Word cloud|https://jjdeharo.github.io/directo/nube.html,"A three-stage routine: what students know, what they want to know, and what they have learned. It serves to activate prior knowledge, formulate questions, guide learning, and review progress at the end."
+Before studying ecosystems, students write what they know about food chains, what questions they have about the relationships between organisms, and, at the end, what they have learned about food webs and ecological balance.","prior knowledge, questions, metacognition, synthesis, follow-up","Thinking Routines, Activation of Prior Knowledge, Critical Thinking and Metacognition, Formative Assessment and Feedback",Word cloud|https://jjdeharo.github.io/directo/nube.html,"A three-stage routine: what students know, what they want to know, and what they have learned. It serves to activate prior knowledge, formulate questions, guide learning, and review progress at the end.",Active Methodologies and Thinking Routines
 metac_052,Compass Points,"This technique is used to introduce a topic, idea, or proposal. It involves using cardinal points to express your opinion.
 
 - E: Enthusiasm. What excites you about this idea or proposal? What advantage does it have?
@@ -1455,7 +1455,7 @@ The teacher presents the following idea or proposal: ""The school is considering
 
 3. **Needs**. They explain what else they would need to know or discover about this idea or proposal to be able to evaluate it more accurately. Some may ask for more information about what types of waste can be recycled and how collection will be carried out, others may ask about the resources needed to implement this new system, or they may ask for examples from other schools that have already implemented a similar waste collection system.
 
-1. **Suggestions**. Students offer their suggestions or positions on how to move forward with this idea or proposal and explain what the next step should be to evaluate it. Some may say that a meeting with all students is necessary to explain the new waste collection system and ask for their commitment to following it. Others may say that a survey is needed to assess the level of knowledge about recycling and how it could be improved.","opinion, analysis, decision making, communication, formative assessment","Information Processing and Analysis, Knowledge Building, Formative Assessment and Feedback, Communication and Creativity",Simple voting|https://jjdeharo.github.io/directo/vota.html,"A routine that uses cardinal points to analyze an idea: enthusiasm, obstacles, needs, and suggestions. It helps evaluate proposals, organize opinions, identify doubts, and decide on next steps in a structured way."
+1. **Suggestions**. Students offer their suggestions or positions on how to move forward with this idea or proposal and explain what the next step should be to evaluate it. Some may say that a meeting with all students is necessary to explain the new waste collection system and ask for their commitment to following it. Others may say that a survey is needed to assess the level of knowledge about recycling and how it could be improved.","opinion, analysis, decision making, communication, formative assessment","Thinking Routines, Activation of Prior Knowledge, Critical Thinking and Metacognition, Formative Assessment and Feedback",Simple voting|https://jjdeharo.github.io/directo/vota.html,"A routine that uses cardinal points to analyze an idea: enthusiasm, obstacles, needs, and suggestions. It helps evaluate proposals, organize opinions, identify doubts, and decide on next steps in a structured way.",Active Methodologies and Thinking Routines
 metac_053,The Box,"This technique is also known as the **suitcase**.
 
 ## Objective
@@ -1476,7 +1476,7 @@ Conclusions
 
 Sharing aspects of our personality fosters mutual trust and develops empathy.
 
-Source: ECO. (2007). Group Dynamics.","group cohesion, personal expression, empathy, oral presentation","Cohesion and Cooperation, Communication and Creativity",,"A team-building activity in which students present personal objects that represent their own characteristics. It helps to foster mutual understanding, build trust, develop empathy, and improve self-expression."
+Source: ECO. (2007). Group Dynamics.","group cohesion, personal expression, empathy, oral presentation","Cohesion and Cooperation, Communication and Creativity",,"A team-building activity in which students present personal objects that represent their own characteristics. It helps to foster mutual understanding, build trust, develop empathy, and improve self-expression.",Cooperative Learning Organization
 metac_054,Interview,"This technique allows for a deeper understanding among classmates.
 
 1. Students form pairs or groups of three randomly (see, for example, Sporadic Groups with Flippity).
@@ -1489,7 +1489,7 @@ metac_054,Interview,"This technique allows for a deeper understanding among clas
 
 1. Finally, each student reads their sentence to the rest of the group.
 
-Adapted from Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate to learn/learn to cooperate”) for teaching team learning: Implementing cooperative learning in the classroom.","interview, personal knowledge, couples, communication, summary","Information Processing and Analysis, Cohesion and Cooperation",,"This technique involves students interviewing each other in pairs or small groups and then presenting a summary about their partner. It helps improve interpersonal skills, listening, communication, and group cohesion."
+Adapted from Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate to learn/learn to cooperate”) for teaching team learning: Implementing cooperative learning in the classroom.","interview, personal knowledge, couples, communication, summary","Information Processing and Analysis, Cohesion and Cooperation",,"This technique involves students interviewing each other in pairs or small groups and then presenting a summary about their partner. It helps improve interpersonal skills, listening, communication, and group cohesion.",Cooperative Learning Organization
 metac_055,Round Table,"The round table is a group work technique based on the active participation of all group members. It is conducted by gathering participants around a table so that everyone can see and hear each other. A question is then posed or a problem is presented to the group, and each person has the opportunity to give their opinion or contribute.
 
 The purpose of the round table is to promote communication and dialogue within the group, so that everyone can express their ideas and opinions respectfully. Furthermore, participants work collaboratively to reach an agreement or a common solution that takes into account the ideas and perspectives of all group members.
@@ -1514,7 +1514,7 @@ To carry it out, we can do the following:
 
 1. Finally, summarize the agreements and solutions reached in the roundtable discussion, and assign responsibilities for their implementation.
 
-Application of the technique:","debate, communication, consensus, perspective, problem solving","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A group dialogue technique focused on a question or problem. It serves to promote participation, listen to different perspectives, build consensus, improve communication, and seek shared solutions."
+Application of the technique:","debate, communication, consensus, perspective, problem solving","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A group dialogue technique focused on a question or problem. It serves to promote participation, listen to different perspectives, build consensus, improve communication, and seek shared solutions.",Cooperative Learning Organization
 metac_056,Pencils in the Middle,"TEAM SIZE: Base teams.
 
 OBJECTIVES: To solve problems, review what they have learned, debate and argue, share and reach consensus on opinions.
@@ -1539,7 +1539,7 @@ It is very useful for promoting the equal participation of each and every member
 
 It will be very important to keep in mind and apply here one of the basic principles governing cooperative teamwork: the economy of resources. This concept refers to the fact that we don't give each student a sheet with the questions; instead, we provide only one sheet per base team. This significantly improves the active listening process, as students must pay attention to the coordinator's answer for each question; otherwise, they won't be able to successfully complete the task. Furthermore, it prevents some students from rushing ahead of the rest of the team in completing tasks.
 
-Source: Pérez, M. (2015). Cooperative Dynamics.","argumentation, consensus, cooperation, problem-solving, participation","Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative technique in which pencils are left in the center while an answer is discussed before being written down. It helps to promote equitable participation, argumentation, consensus, and collaborative task completion."
+Source: Pérez, M. (2015). Cooperative Dynamics.","argumentation, consensus, cooperation, problem-solving, participation","Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative technique in which pencils are left in the center while an answer is discussed before being written down. It helps to promote equitable participation, argumentation, consensus, and collaborative task completion.",Cooperative Learning Organization
 metac_057,Shared Reading,"Excerpt from Santiago Moll's article, ""Cooperative Learning: Shared Reading"":
 
 The activity consists of four rounds of three steps each.
@@ -1564,7 +1564,7 @@ The activity consists of four rounds of three steps each.
 
 Explanation of the technique (simplified version):
 
-Application of the technique with 1-2-4:","reading, comprehension, summarizing, cooperation, active listening","Information Processing and Analysis, Cohesion and Cooperation, Communication and Creativity",,"A cooperative reading technique in which students take turns reading, explaining, and evaluating excerpts from a text. It helps improve reading comprehension, active listening, oral expression, and the shared construction of meaning."
+Application of the technique with 1-2-4:","reading, comprehension, summarizing, cooperation, active listening","Information Processing and Analysis, Cohesion and Cooperation, Communication and Creativity",,"A cooperative reading technique in which students take turns reading, explaining, and evaluating excerpts from a text. It helps improve reading comprehension, active listening, oral expression, and the shared construction of meaning.",Cooperative Learning Organization
 metac_058,Ghost Reading,"Ghost reading is a technique that can be used with any type of text and aims to improve students' reading comprehension and oral expression. Furthermore, this technique fosters active listening and respect among group members.
 
 It involves reading a text together; when one person finishes, another begins voluntarily.
@@ -1575,7 +1575,7 @@ It involves reading a text together; when one person finishes, another begins vo
 
 3. When they feel ready, this student also stops reading, and another student begins. In this way, everyone reads the text together.
 
-This technique is worth practicing more than once, as skills improve significantly over time.","reading, comprehension, oral expression, active listening, cooperation","Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A collective oral reading technique in which students spontaneously continue reading when another student stops. It helps improve comprehension, reading fluency, oral expression, attention, and respect within the group."
+This technique is worth practicing more than once, as skills improve significantly over time.","reading, comprehension, oral expression, active listening, cooperation","Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"A collective oral reading technique in which students spontaneously continue reading when another student stops. It helps improve comprehension, reading fluency, oral expression, attention, and respect within the group.",Cooperative Learning Organization
 metac_059,What I know and what we know,"This activity aims to guide students toward the content and develop creativity.
 
 1. The teacher announces the topic that will be covered during the session and asks the students to write a few lines about what it suggests to them. To do this, the teacher gives each student a worksheet. The worksheet has two sections: individual (""What I know..."") and collaborative (""What we know..."").
@@ -1594,7 +1594,7 @@ TIPS
 
 - Utilize student contributions when developing the topic.
 
-Source: CRA Los Olivos. (2017). Cooperative learning techniques.","prior knowledge, pairs, synthesis, sharing, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Cohesion and Cooperation, Communication and Creativity",,"This activity involves participants first writing down what they know about a topic individually, and then collaboratively developing a response. It serves to activate prior knowledge, compare ideas, and guide the development of the session."
+Source: CRA Los Olivos. (2017). Cooperative learning techniques.","prior knowledge, pairs, synthesis, sharing, cooperation","Activation of Prior Knowledge, Information Processing and Analysis, Cohesion and Cooperation, Communication and Creativity",,"This activity involves participants first writing down what they know about a topic individually, and then collaboratively developing a response. It serves to activate prior knowledge, compare ideas, and guide the development of the session.",Cooperative Learning Organization
 metac_060,5 Whys,"The ""5 Whys"" technique can be used to delve deeper into the concepts and ideas being studied and to help students better understand different topics. For example, consecutive questions such as ""Why is this concept important?"" or ""Why is this concept related to others?"" can be asked to help students reflect on the different concepts and their relationships.
 
 This can be done by using consecutive questions (initially five, but this is not a strict rule; ask as many as necessary) that help students reflect on the different concepts and their relationships.
@@ -1613,7 +1613,7 @@ To use the ""5 Whys"" technique, teachers can follow these steps:
 
 1. Use different strategies to stimulate reflection and discussion among students, such as role-playing or debates.
 
-1. Once students have learned to use the technique, they may find it helpful to use this strategy to reflect on other topics or subjects of study to improve their understanding and learning.","questions, critical thinking, comprehension, metacognition, relationships","Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A routine based on chaining together ""why"" questions to delve deeper into a concept or problem. It helps improve understanding, identify causes, connect ideas, and develop critical thinking."
+1. Once students have learned to use the technique, they may find it helpful to use this strategy to reflect on other topics or subjects of study to improve their understanding and learning.","questions, critical thinking, comprehension, metacognition, relationships","Thinking Routines, Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A routine based on chaining together ""why"" questions to delve deeper into a concept or problem. It helps improve understanding, identify causes, connect ideas, and develop critical thinking.",Active Methodologies and Thinking Routines
 metac_061,Four Wise Students,"This is a simplified version of the jigsaw puzzle technique.
 
 1. The teacher selects four participants from the group who are experts in a particular subject, skill, or procedure (who are ""wise"" in a specific area). They are asked to prepare well, as they will have to teach their knowledge to the rest of the group.
@@ -1627,8 +1627,8 @@ metac_061,Four Wise Students,"This is a simplified version of the jigsaw puzzle 
 Source: Pujolàs, P. & Lago, J. R. (2011). The CA/AC program (“cooperate to learn/learn to cooperate”) for teaching team learning: Implementing cooperative learning in the classroom.
 
 ## Example
-For example, imagine that you want to carry out an activity on the use of weak pronouns in Catalan. You could select four students who consider themselves to have already mastered this topic and ask them to prepare to explain it to the others. Next, the group would be divided into teams of four students, and one student from each team would visit one of the ""wise men"" to receive instruction on the use of weak pronouns. After this initial phase, each student would return to their team and explain to their classmates what they had learned from the ""wise man"" they visited. In this way, all students would have learned about the use of weak pronouns thanks to the explanations provided by the different ""wise men.""","experts, cooperation, peer teaching, communication, synthesis","Knowledge Building, Cohesion and Cooperation, Communication and Creativity",,"This technique involves a group of expert students teaching different aspects of a topic to the rest of the group. It promotes peer teaching, responsibility, communication, and cooperative learning."
-metac_062,Group Investigation,See the section Problem-based learning (PBL).,"research, problem-solving, cooperation, teamwork","Problem Solving and Challenges, Cohesion and Cooperation",,"This refers to a working method based on research groups or problem-solving situations. It serves to organize learning around problems, cooperation, and shared research."
+For example, imagine that you want to carry out an activity on the use of weak pronouns in Catalan. You could select four students who consider themselves to have already mastered this topic and ask them to prepare to explain it to the others. Next, the group would be divided into teams of four students, and one student from each team would visit one of the ""wise men"" to receive instruction on the use of weak pronouns. After this initial phase, each student would return to their team and explain to their classmates what they had learned from the ""wise man"" they visited. In this way, all students would have learned about the use of weak pronouns thanks to the explanations provided by the different ""wise men.""","experts, cooperation, peer teaching, communication, synthesis","Knowledge Building, Cohesion and Cooperation, Communication and Creativity",,"This technique involves a group of expert students teaching different aspects of a topic to the rest of the group. It promotes peer teaching, responsibility, communication, and cooperative learning.",Cooperative Learning Organization
+metac_062,Group Investigation,See the section Problem-based learning (PBL).,"research, problem-solving, cooperation, teamwork","Problem Solving and Challenges, Cohesion and Cooperation",,"This refers to a working method based on research groups or problem-solving situations. It serves to organize learning around problems, cooperation, and shared research.",Cooperative Learning Organization
 metac_063,Four-Part Concept Map,"At the end of a topic, as a final synthesis, each team can create a concept map or diagram summarizing everything covered in class on that topic.
 
 1. The teacher will guide the students in deciding together which sections should be included in the map or diagram.
@@ -1643,7 +1643,7 @@ Source: Pujolàs, P. & Lago, J. R. (2011). The CA/AC (“cooperate to learn/lear
 
 **Explanation of the technique:**
 
-**Application of the technique:**","Concept map, synthesis, cooperation, information organization, visual communication","Information Processing and Analysis, Knowledge Building, Cohesion and Cooperation, Communication and Creativity",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A technique in which a team collaboratively constructs a final concept map or outline. It serves to organize information, synthesize content, distribute responsibilities, and create shared study materials."
+**Application of the technique:**","Concept map, synthesis, cooperation, information organization, visual communication","Information Processing and Analysis, Knowledge Building, Cohesion and Cooperation, Communication and Creativity",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A technique in which a team collaboratively constructs a final concept map or outline. It serves to organize information, synthesize content, distribute responsibilities, and create shared study materials.",Cooperative Learning Organization
 metac_064,Problem Matrix,"The ""problem matrix"" technique can be used to help students identify different possible solutions to a problem and evaluate which options are best based on their potential effects or consequences. A table can be created with different possible solutions to a problem in one column and the potential effects or consequences of these solutions in another column. Students can then compare the different options to decide which is the best solution.
 
 The following steps can be followed:
@@ -1681,7 +1681,7 @@ This table summarizes ideas related to ""how to improve academic performance"":
 
 |Eliminate distractions |Improves concentration|
 
-This matrix allows you to compare different solutions and assess which are the best options based on their potential effects or consequences.","matrix, problem-solving, decision-making, consequences, analysis","Problem Solving and Challenges, Information Processing and Analysis",,"A technique that organizes possible solutions and consequences in a table or matrix. It is used to analyze alternatives, compare effects, make informed decisions, and work on problem-solving in an organized way."
+This matrix allows you to compare different solutions and assess which are the best options based on their potential effects or consequences.","matrix, problem-solving, decision-making, consequences, analysis","Problem Solving and Challenges, Information Processing and Analysis",,"A technique that organizes possible solutions and consequences in a table or matrix. It is used to analyze alternatives, compare effects, make informed decisions, and work on problem-solving in an organized way.",Active Methodologies and Thinking Routines
 metac_065,I like it / I don't like it,"This technique allows for group understanding.
 
 Draw an imaginary line in the classroom and ask participants to stand on one side of it (let's say, the left). The facilitator will ask those who enjoy something (for example, dancing) to stand on the other side. They will have to suggest things they might like or dislike (some for most and others for only a few), for example, singing, going to the dentist, etc.
@@ -1701,7 +1701,7 @@ Afterward, we share and discuss the activity:
 Sources: 
 
 - Dipsalut. (2016). Dynamics of group cohesion and acceptance.
-- Group dynamics. (2021). Dynamic Likes and Dislikes.","group cohesion, personal expression, empathy, participation","Cohesion and Cooperation, Communication and Creativity",,"This activity involves students physically positioning themselves according to their tastes, preferences, or opinions. It helps foster mutual understanding, express shared interests, accept differences, and strengthen group cohesion."
+- Group dynamics. (2021). Dynamic Likes and Dislikes.","group cohesion, personal expression, empathy, participation","Cohesion and Cooperation, Communication and Creativity",,"This activity involves students physically positioning themselves according to their tastes, preferences, or opinions. It helps foster mutual understanding, express shared interests, accept differences, and strengthen group cohesion.",Cooperative Learning Organization
 metac_066,Minute Paper,"## Description
 A very brief formative assessment technique that allows for the quick collection of information about what students have understood and any remaining questions. It can be used at the end of an explanation, an activity, or a session.
 
@@ -1724,7 +1724,7 @@ A very brief formative assessment technique that allows for the quick collection
 - What question would you ask to check if someone has understood?
 
 ## Example
-After studying mitosis, students write on a card the most important difference between mitosis and meiosis and one question they still have.","formative assessment, doubts, synthesis, feedback, metacognition","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"A brief formative assessment technique in which students answer one or two questions at the end of an activity. It serves to detect understanding, identify doubts, and adjust the next session."
+After studying mitosis, students write on a card the most important difference between mitosis and meiosis and one question they still have.","formative assessment, doubts, synthesis, feedback, metacognition","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"A brief formative assessment technique in which students answer one or two questions at the end of an activity. It serves to detect understanding, identify doubts, and adjust the next session.",Active Methodologies and Thinking Routines
 metac_067,Muddiest Point,"## Description
 Formative assessment technique focused on identifying the aspect that students found most difficult or confusing. It is useful for adjusting explanations, preparing reinforcement activities, or detecting conceptual errors.
 
@@ -1744,7 +1744,7 @@ Formative assessment technique focused on identifying the aspect that students f
 - To adjust teaching based on quick observations.
 
 ## Example
-After explaining exponential functions, several students indicate that the most confusing point was interpreting the meaning of the base. The teacher prepares a short activity with comparative graphs.","doubts, difficulties, formative assessment, feedback, understanding","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"Formative assessment technique focused on identifying the most confusing point in an explanation or activity. It serves to highlight difficulties, prepare clarifications, and adjust instruction to real needs."
+After explaining exponential functions, several students indicate that the most confusing point was interpreting the meaning of the base. The teacher prepares a short activity with comparative graphs.","doubts, difficulties, formative assessment, feedback, understanding","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"Formative assessment technique focused on identifying the most confusing point in an explanation or activity. It serves to highlight difficulties, prepare clarifications, and adjust instruction to real needs.",Active Methodologies and Thinking Routines
 metac_068,Numbered Heads Together,"TEAM SIZE: Base teams.
 
 OBJECTIVES: To activate prior knowledge, answer questions, complete activities and problems, promote peer support and assistance, review what they learn, share and reach consensus on opinions, and assess learning.
@@ -1767,7 +1767,7 @@ Source: Pérez, M. (2015). Cooperative Dynamics.
 
 **Explanation of the technique:**
 
-**Application of the technique:**","individual responsibility, cooperation, formative assessment, review, participation","Activation of Prior Knowledge, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in which all members prepare a task and one is chosen at random to respond. It serves to reinforce individual responsibility, mutual support, review, and formative assessment."
+**Application of the technique:**","individual responsibility, cooperation, formative assessment, review, participation","Activation of Prior Knowledge, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative structure in which all members prepare a task and one is chosen at random to respond. It serves to reinforce individual responsibility, mutual support, review, and formative assessment.",Cooperative Learning Organization
 metac_069,Word-Phrase-Sentence,"A cooperative routine for capturing the essence and exploring the meaning of a text from a variety of perspectives.
 
 ## Purpose: What kind of thinking does this routine encourage?
@@ -1831,7 +1831,7 @@ What aspects of the text were overlooked in the group discussion? What leads you
 
 ---
 
-**Explanation of the technique:**","reading, synthesis, interpretation, discussion, reflection","Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",Word cloud|https://jjdeharo.github.io/directo/nube.html,"A routine in which students select a significant word, idea, and phrase from a text. It helps them grasp the essence, share interpretations, identify common themes, and improve reading comprehension."
+**Explanation of the technique:**","reading, synthesis, interpretation, discussion, reflection","Thinking Routines, Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",Word cloud|https://jjdeharo.github.io/directo/nube.html,"A routine in which students select a significant word, idea, and phrase from a text. It helps them grasp the essence, share interpretations, identify common themes, and improve reading comprehension.",Active Methodologies and Thinking Routines
 metac_070,Three-Minute Pause,"Base Teams
 
 OBJECTIVES: To assess understanding of the material covered, to share and reach consensus on opinions, and to develop summaries.
@@ -1849,7 +1849,7 @@ It is very useful for assessing what students have understood from the explanati
 The three questions can be replaced with writing three sentences that reflect the most important points of what has been explained previously.
 We can combine this structure with the 1-2-4 structure to ensure equal participation from all members of the base team. The completion of the task by the teams can be accompanied by a reward from the group and the teacher, such as praise, a good grade, etc.
 
-Source: Pérez, M. (2015). Cooperative Dynamics.","questions, comprehension, formative assessment, synthesis, feedback","Formative Assessment and Feedback, Information Processing and Analysis",,"This structure involves the teacher interrupting the explanation to allow teams to formulate questions or summaries. It serves to check understanding, stimulate reflection, and adjust instruction during the session."
+Source: Pérez, M. (2015). Cooperative Dynamics.","questions, comprehension, formative assessment, synthesis, feedback","Formative Assessment and Feedback, Information Processing and Analysis",,"This structure involves the teacher interrupting the explanation to allow teams to formulate questions or summaries. It serves to check understanding, stimulate reflection, and adjust instruction during the session.",Cooperative Learning Organization
 metac_071,Detective Pairs,"1. When you begin a teaching unit, pose a complex question or issue that sparks students' interest and curiosity about the topic.
 
 1. Students reflect on the question and try to establish two different ways to answer it.
@@ -1874,7 +1874,7 @@ metac_071,Detective Pairs,"1. When you begin a teaching unit, pose a complex que
 
 1. Finally, the teacher begins explaining the unit, starting with the initial question and the chosen solutions.
 
-Source: CRA Los Olivos. (2017). Cooperative Learning Techniques","hypotheses, prior knowledge, pairs, problem-solving, curiosity","Knowledge Building, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students formulating initial hypotheses in response to a complex question and then comparing them in pairs. It serves to spark curiosity, activate prior knowledge, and demonstrate that a problem can have multiple approaches."
+Source: CRA Los Olivos. (2017). Cooperative Learning Techniques","hypotheses, prior knowledge, pairs, problem-solving, curiosity","Knowledge Building, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students formulating initial hypotheses in response to a complex question and then comparing them in pairs. It serves to spark curiosity, activate prior knowledge, and demonstrate that a problem can have multiple approaches.",Cooperative Learning Organization
 metac_072,Discussion Pairs,"Objectives:
 
 - To activate prior knowledge.
@@ -1891,7 +1891,7 @@ Development
 
 3. The teacher randomly asks for some answers from the pairs.
 
-Source: CRA Los Olivos. (2017). Cooperative Learning Techniques.","prior knowledge, pairs, dialogue, consensus, participation","Activation of Prior Knowledge, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students answering questions in pairs during a session. It serves to activate prior knowledge, encourage dialogue, generate diverse responses, and promote participation before the group discussion."
+Source: CRA Los Olivos. (2017). Cooperative Learning Techniques.","prior knowledge, pairs, dialogue, consensus, participation","Activation of Prior Knowledge, Cohesion and Cooperation, Communication and Creativity",,"This technique involves students answering questions in pairs during a session. It serves to activate prior knowledge, encourage dialogue, generate diverse responses, and promote participation before the group discussion.",Cooperative Learning Organization
 metac_073,Peer Instruction,"## Description
 A technique developed by Eric Mazur in which students first answer a conceptual question individually and then discuss their answer with their classmates. It is especially suitable for detecting misconceptions and improving the understanding of difficult concepts.
 
@@ -1914,7 +1914,7 @@ A technique developed by Eric Mazur in which students first answer a conceptual 
 - To improve conceptual understanding through peer explanation.
 
 ## Example
-In mathematics, the teacher poses a question about conditional probability with four options. After the first individual answer, students compare arguments with a partner and vote again before discussing the solution.","conceptual questions, discussion, understanding, feedback, peer teaching","Formative Assessment and Feedback, Critical Thinking and Metacognition, Information Processing and Analysis",Simple voting|https://jjdeharo.github.io/directo/vota.html,"This technique involves students individually answering a conceptual question and then discussing it with their peers. It helps to identify misconceptions, improve understanding, and strengthen argumentation among classmates."
+In mathematics, the teacher poses a question about conditional probability with four options. After the first individual answer, students compare arguments with a partner and vote again before discussing the solution.","conceptual questions, discussion, understanding, feedback, peer teaching","Formative Assessment and Feedback, Critical Thinking and Metacognition, Information Processing and Analysis",Simple voting|https://jjdeharo.github.io/directo/vota.html,"This technique involves students individually answering a conceptual question and then discussing it with their peers. It helps to identify misconceptions, improve understanding, and strengthen argumentation among classmates.",Cooperative Learning Organization
 metac_074,I Used to Think... Now I Think,"This routine is especially useful for students to reflect on what they have learned and become aware of their own learning through personal cognitive changes.
 
 After presenting specific content, students write down what they thought before and what they think now, emphasizing what has changed their perspective. Afterward, they can share this with their classmates, discuss it in class, create a poster, etc.
@@ -1925,7 +1925,7 @@ After presenting specific content, students write down what they thought before 
 ---
 ### *Now I think:*
 
----","Conceptual change, metacognition, reflection, prior knowledge","Critical Thinking and Metacognition, Activation of Prior Knowledge",,"This routine involves students comparing their previous understanding with their current understanding. It helps them become aware of conceptual change, develop metacognition, and reflect on how their comprehension has evolved."
+---","Conceptual change, metacognition, reflection, prior knowledge","Thinking Routines, Critical Thinking and Metacognition, Activation of Prior Knowledge",,"This routine involves students comparing their previous understanding with their current understanding. It helps them become aware of conceptual change, develop metacognition, and reflect on how their comprehension has evolved.",Active Methodologies and Thinking Routines
 metac_075,"Think, Puzzle, Explore","A Routine for Connecting New Ideas with Prior Knowledge
 
 ## Purpose: What type of thinking does this routine foster?
@@ -1965,7 +1965,7 @@ Finally, the teacher asked the students to share their ideas on how to research 
 - ""We could interview an expert on energy sources to get more information.""
 - ""We could do an experiment to see how energy consumption affects different situations.""
 
-After sharing their ideas about ""I Investigate,"" the teacher guided the students in selecting one or more research questions to investigate during the rest of the unit.","prior knowledge, curiosity, research, questions, metacognition","Activation of Prior Knowledge, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine for introducing a topic by connecting prior knowledge, interests, and potential research. It serves to stimulate curiosity, formulate working questions, and guide independent or guided research."
+After sharing their ideas about ""I Investigate,"" the teacher guided the students in selecting one or more research questions to investigate during the rest of the unit.","prior knowledge, curiosity, research, questions, metacognition","Thinking Routines, Activation of Prior Knowledge, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine for introducing a topic by connecting prior knowledge, interests, and potential research. It serves to stimulate curiosity, formulate working questions, and guide independent or guided research.",Active Methodologies and Thinking Routines
 metac_076,Placemat consensus,"This technique is very easy to apply. With this technique, students can be encouraged to solve situations or problems they have never encountered before.
 
 1. A question is posed to the students, and each one writes down their answer.
@@ -1974,7 +1974,7 @@ metac_076,Placemat consensus,"This technique is very easy to apply. With this te
 
 3. The teacher asks the spokesperson how they reached this consensus, what it is, and if they made any mistakes.
 
-Adapted from: Ártica School. (2018). We build our own learning.","consensus, cooperation, problem-solving, decision-making, argumentation","Problem Solving and Challenges, Cohesion and Cooperation",,"This technique involves each member writing a response, and the team then agrees on a common solution. It promotes individual participation, debate, consensus, and cooperative problem-solving."
+Adapted from: Ártica School. (2018). We build our own learning.","consensus, cooperation, problem-solving, decision-making, argumentation","Problem Solving and Challenges, Cohesion and Cooperation",,"This technique involves each member writing a response, and the team then agrees on a common solution. It promotes individual participation, debate, consensus, and cooperative problem-solving.",Cooperative Learning Organization
 metac_077,Portfolio (learning dossier),"A learning portfolio (also known as an e-portfolio or digital portfolio) is a personal digital collection of information that describes and illustrates an individual's learning, professional experience, and goals, providing evidence of learning and reflections on it.
 
 The evidence may include writing samples, photos, videos, research papers, observations of teachers and peers, and/or reflections. The fundamental aspect of a portfolio is reflecting on the evidence, why it was selected, and what was learned from the process of developing the learning portfolio (Guilana, S., 2009).
@@ -1989,7 +1989,7 @@ The structure of the learning portfolio should be clearly defined by the instruc
 
 4. Self-assessment: reflection on the process.
 
-Adapted from: Liarte, R. (2015). The portfolio as an assessment tool.","portfolio, evidence, reflection, self-assessment, monitoring","Formative Assessment and Feedback, Critical Thinking and Metacognition",,"A tool for collecting evidence, student work, and reflections on learning. It serves to document the learning process, select significant work, justify learning outcomes, and facilitate self-assessment and monitoring."
+Adapted from: Liarte, R. (2015). The portfolio as an assessment tool.","portfolio, evidence, reflection, self-assessment, monitoring","Formative Assessment and Feedback, Critical Thinking and Metacognition",,"A tool for collecting evidence, student work, and reflections on learning. It serves to document the learning process, select significant work, justify learning outcomes, and facilitate self-assessment and monitoring.",Educational Frameworks
 metac_078,Ask Why,"The ""ask why"" thinking routine can be used at any point in the learning process, whether at the beginning, during, or at the end of a topic. The steps in this routine are:
 
 TEACHER:
@@ -2014,7 +2014,7 @@ STUDENT:
 
 - Interpret the answers found and reflect on them.
 
-- Present the answers found to the group or the teacher.","questions, research, critical thinking, understanding, reflection","Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"This routine involves students asking ""why"" questions and seeking answers through resources or research. It helps them delve deeper into concepts, develop critical thinking, and improve reasoned understanding."
+- Present the answers found to the group or the teacher.","questions, research, critical thinking, understanding, reflection","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"This routine involves students asking ""why"" questions and seeking answers through resources or research. It helps them delve deeper into concepts, develop critical thinking, and improve reasoned understanding.",Active Methodologies and Thinking Routines
 metac_079,Ask and Answer,"This thinking routine involves students asking themselves a question and trying to answer it using the knowledge they have acquired. This routine is useful for helping students better understand the concepts or facts they are studying, and it also helps them develop critical thinking and reflection skills. To use this routine, you can follow this process:
 
 1. Choose a concept or fact that students need to understand.
@@ -2023,7 +2023,7 @@ metac_079,Ask and Answer,"This thinking routine involves students asking themsel
 
 3. Give students enough time to answer the questions individually or in groups.
 
-4. Review the students' answers and provide feedback. You can do this individually or with the whole group, depending on the students' needs.","questions, comprehension, critical thinking, feedback, formative assessment","Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",Simple voting|https://jjdeharo.github.io/directo/vota.html,"A routine in which students answer questions about a concept or fact studied. It serves to check understanding, promote critical thinking, organize ideas, and provide formative feedback."
+4. Review the students' answers and provide feedback. You can do this individually or with the whole group, depending on the students' needs.","questions, comprehension, critical thinking, feedback, formative assessment","Thinking Routines, Information Processing and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",Simple voting|https://jjdeharo.github.io/directo/vota.html,"A routine in which students answer questions about a concept or fact studied. It serves to check understanding, promote critical thinking, organize ideas, and provide formative feedback.",Active Methodologies and Thinking Routines
 metac_080,Service-Learning,"## What is a Service-Learning Project?
 
 Service-Learning is sometimes also called **Service-Based Learning** or SBL and can also be considered a type of Problem-Based Learning (PBL).
@@ -2116,14 +2116,14 @@ Creation of a community garden in a neighborhood with few green spaces and a hig
 
 1. The results and conclusions would be disseminated through social media or the local press.
 
-1. Potential collaborations with other similar initiatives would be explored to expand the program.","service-learning, community, project, reflection, evaluation, cooperation","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"This project combines curricular learning with community service to address a real need in the local area. It serves to educate students through social action, reflection, cooperation, and evaluation of results."
+1. Potential collaborations with other similar initiatives would be explored to expand the program.","service-learning, community, project, reflection, evaluation, cooperation","Information Processing and Analysis, Problem Solving and Challenges, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"This project combines curricular learning with community service to address a real need in the local area. It serves to educate students through social action, reflection, cooperation, and evaluation of results.",Active Methodologies and Thinking Routines
 metac_081,3-2-1 Bridge,"This routine is performed twice, once at the beginning of a topic and once at the end, allowing students to reflect on their learning.
 
 1. Before the lesson begins, students write down three ideas or words related to what the topic suggests to them, two questions, and an analogy or metaphor (which can also be an image).
 
 2. At the end, they repeat the process and compare their answers, reflecting on how their ideas have changed and why.
 
-3. Finally, each student shares their conclusions with the rest of the class.","prior knowledge, conceptual change, metacognition, questions, analogy","Critical Thinking and Metacognition, Activation of Prior Knowledge",,"This routine, performed before and after a topic, consists of three ideas, two questions, and an analogy. It serves to activate prior knowledge, observe changes in thinking, and promote metacognition."
+3. Finally, each student shares their conclusions with the rest of the class.","prior knowledge, conceptual change, metacognition, questions, analogy","Thinking Routines, Critical Thinking and Metacognition, Activation of Prior Knowledge",,"This routine, performed before and after a topic, consists of three ideas, two questions, and an analogy. It serves to activate prior knowledge, observe changes in thinking, and promote metacognition.",Active Methodologies and Thinking Routines
 metac_082,Quiz-Quiz-Trade,"## Description
 A very dynamic Kagan structure for reviewing content.
 
@@ -2139,7 +2139,7 @@ A very dynamic Kagan structure for reviewing content.
 5. They exchange cards and find a new partner.
 
 ## Objectives
-To review content in a fun and interactive way.","review, questions, feedback, game, interaction","Formative Assessment and Feedback, Activation of Prior Knowledge, Critical Thinking and Metacognition",,"A review structure in which students ask and answer questions using cards, which they then exchange. It serves to review content dynamically, receive immediate feedback, and encourage interaction."
+To review content in a fun and interactive way.","review, questions, feedback, game, interaction","Formative Assessment and Feedback, Activation of Prior Knowledge, Critical Thinking and Metacognition",,"A review structure in which students ask and answer questions using cards, which they then exchange. It serves to review content dynamically, receive immediate feedback, and encourage interaction.",Cooperative Learning Organization
 metac_083,RallyRobin,"This method is used for activities that can be completed quickly, to answer questions with multiple answers, or where it's necessary to share an idea or phrase and where each student can contribute: brainstorming, reviewing, creating lists of items, and creating lists of procedures.
 Students share orally in pairs.
 
@@ -2152,7 +2152,7 @@ During this structure, each student takes a turn offering an answer to create an
 Sources:
 
 - Clowes, G. (2011). The Essential 5: A Starting Point for Kagan Cooperative Learning
-- Carolina, H. L. K., Tamara, O. L. M., & Wendy, S. (2016). Cooperative Learning at the University","brainstorming, pairing, participation, communication, cooperation","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative oral structure in pairs where participants alternate brief answers on a topic. It serves to generate ideas, review content, ensure participation, and improve communication."
+- Carolina, H. L. K., Tamara, O. L. M., & Wendy, S. (2016). Cooperative Learning at the University","brainstorming, pairing, participation, communication, cooperation","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative oral structure in pairs where participants alternate brief answers on a topic. It serves to generate ideas, review content, ensure participation, and improve communication.",Cooperative Learning Organization
 metac_084,Appointment Clock,"This technique encourages students to explain concepts to each other.
 
 The activity involves distributing a sheet of paper with a clock showing the hours, but without hands, or having each student draw the clock on their own sheet of paper.
@@ -2171,7 +2171,7 @@ Adapted from Orientacionandujar. (2017). Cooperative Learning: The Appointment C
 
 **Explanation of the technique:**
 
-**Application of the technique:**","dating, couples, communication, review, interaction","Activation of Prior Knowledge, Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",Appointment Clock|https://reloj-citas.github.io/,"This activity involves students scheduling meetings with classmates to answer questions or explain concepts. It fosters interaction, review, peer communication, and organized movement within the classroom."
+**Application of the technique:**","dating, couples, communication, review, interaction","Activation of Prior Knowledge, Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",Appointment Clock|https://reloj-citas.github.io/,"This activity involves students scheduling meetings with classmates to answer questions or explain concepts. It fosters interaction, review, peer communication, and organized movement within the classroom.",Cooperative Learning Organization
 metac_085,Distribute Points,"This is a technique for **graded assessment** involving teachers and class groups.
 
 When a grade is assigned to a group, they are given points that they distribute among themselves based on the work they have done. The rule is that everyone must have a different grade.
@@ -2180,7 +2180,7 @@ For example, if a group of 4 receives a 7.5, then they are given 7.5 x 4 = 30 po
 
 This technique is used with the rating scale: Distribute points, which they will have to fill out before grading, so that the grades are as objective as possible.
 
-Source: Pérez-Pueyo, A. & Hortigüela, D. & Hernando, A. (2014)","rating, peer assessment, self-assessment, individual responsibility, group",Formative Assessment and Feedback,,"A grading technique in which a group distributes points among its members based on their contributions. It serves to promote individual accountability, peer evaluation, and reflection on teamwork."
+Source: Pérez-Pueyo, A. & Hortigüela, D. & Hernando, A. (2014)","rating, peer assessment, self-assessment, individual responsibility, group",Formative Assessment and Feedback,,"A grading technique in which a group distributes points among its members based on their contributions. It serves to promote individual accountability, peer evaluation, and reflection on teamwork.",Cooperative Learning Organization
 metac_086,Review the Consequences,"The ""Review the Consequences"" thinking routine is a technique that can be used to encourage students to reflect on the implications or consequences of the concepts or facts they are studying. This routine can be used at the beginning, middle, or end of a topic, depending on the needs and learning objectives.
 
 Teacher's Role:
@@ -2205,7 +2205,7 @@ Student's Role:
 
 1. Review and adjust your ideas about the consequences based on the reflections of other students and the evidence you have found.
 
-This routine involves interaction between the teacher and students, with students reflecting on the consequences or implications of the concepts or facts they have learned and sharing their reflections with the group or the teacher. This routine can be used to encourage students to reflect on any type of concept or fact, and it is especially useful for promoting critical thinking and reflection on complex issues or relevant problems in daily life.","consequences, critical thinking, reflection, evidence, perspective","Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine in which students analyze the consequences or implications of a situation, event, or concept. It helps develop critical thinking, anticipate effects, justify ideas, and evaluate problems from different perspectives."
+This routine involves interaction between the teacher and students, with students reflecting on the consequences or implications of the concepts or facts they have learned and sharing their reflections with the group or the teacher. This routine can be used to encourage students to reflect on any type of concept or fact, and it is especially useful for promoting critical thinking and reflection on complex issues or relevant problems in daily life.","consequences, critical thinking, reflection, evidence, perspective","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A routine in which students analyze the consequences or implications of a situation, event, or concept. It helps develop critical thinking, anticipate effects, justify ideas, and evaluate problems from different perspectives.",Active Methodologies and Thinking Routines
 metac_087,Role on the Wall (Character Silhouette),"## Description
 A visual technique for analyzing a personified character, social group, organization, institution, or concept. A silhouette is drawn, and internal and external aspects are differentiated: what it thinks or feels, and what it does or shows.
 
@@ -2228,7 +2228,7 @@ A visual technique for analyzing a personified character, social group, organiza
 - To visually represent complex information.
 
 ## Example
-In literature, students analyze a character from a novel. Inside the silhouette, they write the character's fears and desires; outside, they write the character's actions and how other characters perceive them.","character, perspective, evidence, analysis, visual representation","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A visual technique that analyzes a character or concept using a silhouette with internal and external features. It is useful for working on perspective, evidence, interpretation, and the visual representation of complex information."
+In literature, students analyze a character from a novel. Inside the silhouette, they write the character's fears and desires; outside, they write the character's actions and how other characters perceive them.","character, perspective, evidence, analysis, visual representation","Thinking Routines, Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A visual technique that analyzes a character or concept using a silhouette with internal and external features. It is useful for working on perspective, evidence, interpretation, and the visual representation of complex information.",Active Methodologies and Thinking Routines
 metac_088,RoundRobin,"It's like Rally Robin but in groups of four. It's used when answers are longer or ideas are more complex.
 
 It's used for activities that can be done quickly, to answer questions with multiple answers, or where it's necessary to share an idea or phrase and where each student can contribute: generating ideas (brainstorming), reviewing, making lists of items, making lists of procedures.
@@ -2243,7 +2243,7 @@ During this structure, each student takes a turn offering an answer to create an
 Sources:
 
 - Clowes, G. (2011). The Essential 5: A Starting Point for Kagan Cooperative Learning
-- Carolina, H. L. K., Tamara, O. L. M., & Wendy, S. (2016). Cooperative learning in the university","brainstorming, group, participation, communication, cooperation","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative oral group structure in which students take turns contributing answers. It serves to generate ideas, review content, ensure balanced participation, and share knowledge quickly."
+- Carolina, H. L. K., Tamara, O. L. M., & Wendy, S. (2016). Cooperative learning in the university","brainstorming, group, participation, communication, cooperation","Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback, Cohesion and Cooperation",,"A cooperative oral group structure in which students take turns contributing answers. It serves to generate ideas, review content, ensure balanced participation, and share knowledge quickly.",Cooperative Learning Organization
 metac_089,Follow the trail,"## Objective
 
 To share significant aspects of our lives with the other members of the group in a creative and playful way.
@@ -2270,7 +2270,7 @@ Conclusions
 
 There are significant elements in our lives. Sharing them allows us to recognize and value other people and ourselves.
 
-Source: ECO. (2007). Group building activities.","group cohesion, personal knowledge, questions, creativity, pairs","Cohesion and Cooperation, Communication and Creativity",,"A team-building activity in which students offer personal clues for others to discover their meaning. It fosters mutual understanding, creativity, active listening, and interaction in pairs or groups."
+Source: ECO. (2007). Group building activities.","group cohesion, personal knowledge, questions, creativity, pairs","Cohesion and Cooperation, Communication and Creativity",,"A team-building activity in which students offer personal clues for others to discover their meaning. It fosters mutual understanding, creativity, active listening, and interaction in pairs or groups.",Cooperative Learning Organization
 metac_090,Socratic Seminar,"## Description
 A structured dialogue technique centered around a text, image, problem, or open question. The goal is not to win a debate, but to build understanding through questions, active listening, and argumentation.
 
@@ -2293,7 +2293,7 @@ A structured dialogue technique centered around a text, image, problem, or open 
 - Encourage open-ended questions and critical thinking.
 
 ## Example
-In philosophy or biology, the group analyzes a text on bioethics. Students prepare questions and during the seminar they discuss what criteria should guide a scientific decision with social implications.","dialogue, argumentation, active listening, critical thinking, text","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis",,"A structured dialogue technique focused on a text, image, problem, or dilemma. It helps to build understanding, formulate questions, listen actively, argue with evidence, and reflect on the quality of the dialogue."
+In philosophy or biology, the group analyzes a text on bioethics. Students prepare questions and during the seminar they discuss what criteria should guide a scientific decision with social implications.","dialogue, argumentation, active listening, critical thinking, text","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis",,"A structured dialogue technique focused on a text, image, problem, or dilemma. It helps to build understanding, formulate questions, listen actively, argue with evidence, and reflect on the quality of the dialogue.",Active Methodologies and Thinking Routines
 metac_091,Problem Situation,"- Students are presented with a problem situation that highlights some of the aspects covered in the unit.
 
 - Students individually spend a few minutes looking for a possible solution.
@@ -2319,7 +2319,7 @@ The teacher presents the following problem situation: ""Your school is located i
 
 Each student spends a few minutes thinking about a possible solution to this problem and then divides into small groups. In these groups, they discuss the different solutions and work towards a consensus.
 
-Finally, the teacher randomly selects one member from each group to explain the solution(s) they have come up with. Some of the solutions that might emerge from this technique include: promoting the use of public transportation or bicycles instead of private vehicles, improving the quality of vehicle filters, promoting awareness campaigns about pollution, planting trees in the neighborhood to improve air quality, etc.","problem situation, problem solving, consensus, critical thinking, cooperation","Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation",,"This technique involves presenting a problem related to a unit of study, and students then propose solutions. It helps to activate critical thinking, cooperation, consensus building, and the application of content to relatable problems."
+Finally, the teacher randomly selects one member from each group to explain the solution(s) they have come up with. Some of the solutions that might emerge from this technique include: promoting the use of public transportation or bicycles instead of private vehicles, improving the quality of vehicle filters, promoting awareness campaigns about pollution, planting trees in the neighborhood to improve air quality, etc.","problem situation, problem solving, consensus, critical thinking, cooperation","Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation",,"This technique involves presenting a problem related to a unit of study, and students then propose solutions. It helps to activate critical thinking, cooperation, consensus building, and the application of content to relatable problems.",Active Methodologies and Thinking Routines
 metac_092,STAD (Student Teams Achievement Divisions),"## Description
 Technique developed by Robert Slavin. Students are divided into heterogeneous teams of 4-5 members. The goal is for all team members to learn the material.
 
@@ -2333,7 +2333,7 @@ Technique developed by Robert Slavin. Students are divided into heterogeneous te
 4. The team's success is based on individual improvement: points are awarded for exceeding the average score.
 
 ## Objectives
-To improve individual academic performance through shared responsibility.","teams, individual improvement, responsibility, cooperation, evaluation","Formative Assessment and Feedback, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative technique for heterogeneous teams where individual progress contributes to the team's outcome. It helps improve performance, shared responsibility, mutual support, and academic motivation."
+To improve individual academic performance through shared responsibility.","teams, individual improvement, responsibility, cooperation, evaluation","Formative Assessment and Feedback, Cohesion and Cooperation",GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative technique for heterogeneous teams where individual progress contributes to the team's outcome. It helps improve performance, shared responsibility, mutual support, and academic motivation.",Cooperative Learning Organization
 metac_093,Talking Chips,"## Description
 A technique to ensure equitable participation in group discussions.
 
@@ -2347,7 +2347,7 @@ A technique to ensure equitable participation in group discussions.
 4. The process then restarts.
 
 ## Objectives
-To regulate participation, prevent one student from dominating the conversation, and encourage more reserved students to participate.","equitable participation, debate, communication, cooperation, roles","Cohesion and Cooperation, Communication and Creativity",,"This technique regulates participation in debates using cards that each student uses to participate. It helps prevent monopolies, encourages more reserved students, and ensures equitable communication."
+To regulate participation, prevent one student from dominating the conversation, and encourage more reserved students to participate.","equitable participation, debate, communication, cooperation, roles","Cohesion and Cooperation, Communication and Creativity",,"This technique regulates participation in debates using cards that each student uses to participate. It helps prevent monopolies, encourages more reserved students, and ensures equitable communication.",Cooperative Learning Organization
 metac_094,Teams-Games-Tournament (TGT),"## Description
 Similar to STAD, but replaces individual tests with weekly tournaments.
 
@@ -2359,7 +2359,7 @@ Similar to STAD, but replaces individual tests with weekly tournaments.
 3. Earn points for their original base team by competing against peers of comparable skill.
 
 ## Objectives
-Increase motivation and ensure that all students (high or low skill level) have an equal opportunity to succeed.","game, tournament, motivation, cooperation, review","Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",QPlay: Interactive Contest|https://jjdeharo.github.io/qplay/; GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique using game tournaments between students of similar ability who accumulate points for their team. It serves to motivate, review material, and promote cooperation through balanced competition."
+Increase motivation and ensure that all students (high or low skill level) have an equal opportunity to succeed.","game, tournament, motivation, cooperation, review","Problem Solving and Challenges, Cohesion and Cooperation, Communication and Creativity",QPlay: Interactive Contest|https://jjdeharo.github.io/qplay/; GeCo - Cooperative Team Generator|https://jjdeharo.github.io/geco/,"A cooperative learning technique using game tournaments between students of similar ability who accumulate points for their team. It serves to motivate, review material, and promote cooperation through balanced competition.",Cooperative Learning Organization
 metac_095,Think-Pair-Share,"## Description
 A brief cooperative learning technique that combines individual reflection, paired discussion, and whole-class sharing. It is useful for activating prior knowledge, preparing for debates, checking understanding, or generating answers before sharing them with the whole group.
 
@@ -2382,7 +2382,7 @@ A brief cooperative learning technique that combines individual reflection, pair
 - To improve the quality of responses through peer review.
 
 ## Example
-In biology, before explaining natural selection, the teacher asks: **Why do some bacteria become resistant to antibiotics?** Each student proposes an explanation, then compares it with their partner, and finally, several answers are gathered to begin the explanation.","prior knowledge, pairs, communication, critical thinking, synthesis","Activation of Prior Knowledge, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A brief technique in which students think individually, compare their ideas in pairs, and then share with the group. It helps to activate ideas, improve responses, encourage participation, and prepare for debates or explanations."
+In biology, before explaining natural selection, the teacher asks: **Why do some bacteria become resistant to antibiotics?** Each student proposes an explanation, then compares it with their partner, and finally, several answers are gathered to begin the explanation.","prior knowledge, pairs, communication, critical thinking, synthesis","Activation of Prior Knowledge, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A brief technique in which students think individually, compare their ideas in pairs, and then share with the group. It helps to activate ideas, improve responses, encourage participation, and prepare for debates or explanations.",Cooperative Learning Organization
 metac_096,Exit Ticket,"This activity allows the teacher to understand what students have learned during a class session. It is done before leaving the classroom.
 
 It consists of answering questions like these:
@@ -2393,7 +2393,7 @@ It consists of answering questions like these:
 
 - One observation or opinion about the class.
 
-There are many possible variations; you can see more examples in editable format at Orientacionandujar. (2019). Editable Exit Tickets to Evaluate the Process.","formative assessment, summary, questions, feedback, closure","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"A closing activity in which students briefly answer what they learned, what questions they still have, or how they evaluate the session. This serves to gather quick feedback, adjust the teaching, and encourage final reflection."
+There are many possible variations; you can see more examples in editable format at Orientacionandujar. (2019). Editable Exit Tickets to Evaluate the Process.","formative assessment, summary, questions, feedback, closure","Formative Assessment and Feedback, Critical Thinking and Metacognition",Exit tickets|https://jjdeharo.github.io/directo/ticket.html,"A closing activity in which students briefly answer what they learned, what questions they still have, or how they evaluate the session. This serves to gather quick feedback, adjust the teaching, and encourage final reflection.",Active Methodologies and Thinking Routines
 metac_097,Headlines,"A Routine for Capturing the Essence
 
 ## Purpose: What kind of thinking does this routine encourage?
@@ -2437,14 +2437,14 @@ Initial headline: ""Single-use plastic is very convenient, but it has a huge env
 
 Final headline: ""Single-use plastic is an environmental problem that needs to be addressed urgently.""
 
-Changes in thinking: The students started with a much more positive view of single-use plastic, but as they learned more about the negative consequences for the environment, they realized that this type of plastic is indeed a problem that needs to be solved.","synthesis, headline, comprehension, communication, metacognition","Information Processing and Analysis, Communication and Creativity",,"A routine in which students formulate a headline that captures the essence of a topic or discussion. It serves to synthesize ideas, communicate preliminary conclusions, and review how understanding changes."
+Changes in thinking: The students started with a much more positive view of single-use plastic, but as they learned more about the negative consequences for the environment, they realized that this type of plastic is indeed a problem that needs to be solved.","synthesis, headline, comprehension, communication, metacognition","Thinking Routines, Information Processing and Analysis, Communication and Creativity",,"A routine in which students formulate a headline that captures the essence of a topic or discussion. It serves to synthesize ideas, communicate preliminary conclusions, and review how understanding changes.",Active Methodologies and Thinking Routines
 metac_098,One for All,"1. The teacher presents a problem or situation that the students must solve.
 
 2. The teams ensure they have answered the exercises correctly within their groups.
 
 3. The teacher randomly selects one solution from each group, and that solution becomes the grade for the entire team.
 
-Source: Educational Innovation Laboratory of the José Ramón Otero Cooperative. (2016). Cooperative Learning.","group responsibility, cooperation, evaluation, problem-solving, consensus","Activation of Prior Knowledge, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A structure in which the team solves a task and a randomly chosen answer counts for everyone. It serves to promote group responsibility, mutual support, consensus, and shared preparation."
+Source: Educational Innovation Laboratory of the José Ramón Otero Cooperative. (2016). Cooperative Learning.","group responsibility, cooperation, evaluation, problem-solving, consensus","Activation of Prior Knowledge, Problem Solving and Challenges, Formative Assessment and Feedback, Cohesion and Cooperation",,"A structure in which the team solves a task and a randomly chosen answer counts for everyone. It serves to promote group responsibility, mutual support, consensus, and shared preparation.",Cooperative Learning Organization
 metac_099,See-Think-Wonder,"This thinking routine is typically applied with images and aims to promote meaningful learning by encouraging students to reflect on what they will learn. It therefore precedes the acquisition of knowledge through content.
 
 The Princippia blog post, ""Teach Your Students to Be Good Observers,"" details the method:
@@ -2461,7 +2461,7 @@ Share with the whole group using a virtual bulletin board. Working on the routin
 
 Templates for this routine.
 
----","observation, interpretation, questions, critical thinking, prior knowledge","Critical Thinking and Metacognition, Activation of Prior Knowledge",,"An observation routine in which students distinguish what they see, what they think, and what they wonder. It serves to activate prior knowledge, formulate hypotheses, develop critical thinking, and prepare for learning."
+---","observation, interpretation, questions, critical thinking, prior knowledge","Thinking Routines, Critical Thinking and Metacognition, Activation of Prior Knowledge",,"An observation routine in which students distinguish what they see, what they think, and what they wonder. It serves to activate prior knowledge, formulate hypotheses, develop critical thinking, and prepare for learning.",Active Methodologies and Thinking Routines
 metac_100,Visual Thinking,"Visual thinking involves representing ideas and thoughts with simple drawings. It's a technique that can be used for many things: connecting ideas, setting goals, discovering problems and solutions, or generating new ideas.
 
 ## Steps and Elements for Using Visual Thinking in Education
@@ -2499,7 +2499,7 @@ Here are some steps you can follow to use visual thinking in education:
 
 1. Repeat this process with different topics and concepts to help students develop their visual thinking skills.
 
---","Visual thinking, visual communication, synthesis, creativity, organization of ideas","Communication and Creativity, Information Processing and Analysis",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A technique that represents ideas through drawings, diagrams, arrows, and simple graphic elements. It serves to organize information, synthesize concepts, promote understanding, and communicate ideas visually."
+--","Visual thinking, visual communication, synthesis, creativity, organization of ideas","Communication and Creativity, Information Processing and Analysis",BoardLive: Collaborative whiteboard|https://boardlive.github.io/,"A technique that represents ideas through drawings, diagrams, arrows, and simple graphic elements. It serves to organize information, synthesize concepts, promote understanding, and communicate ideas visually.",Active Methodologies and Thinking Routines
 metac_101,World Café,"## Description
 A collaborative dialogue activity in small groups that rotate through several tables or stations. Each table addresses a question related to a common theme, so that ideas are expanded upon with the contributions of different groups.
 
@@ -2522,4 +2522,317 @@ A collaborative dialogue activity in small groups that rotate through several ta
 - Build a collective synthesis on a broad topic.
 
 ## Example
-In a unit on sustainability, each table addresses one question: water consumption, energy, waste, mobility, and food. The groups rotate, complete the ideas, and finally develop proposals for the center.","dialogue, rotation, collective synthesis, cooperation, creativity","Knowledge Building, Communication and Creativity, Cohesion and Cooperation",,"A dynamic dialogue in rotating tables where groups answer questions and expand on previous ideas. It serves to generate a collective synthesis, connect perspectives, promote participation, and build shared proposals."
+In a unit on sustainability, each table addresses one question: water consumption, energy, waste, mobility, and food. The groups rotate, complete the ideas, and finally develop proposals for the center.","dialogue, rotation, collective synthesis, cooperation, creativity","Knowledge Building, Communication and Creativity, Cohesion and Cooperation",,"A dynamic dialogue in rotating tables where groups answer questions and expand on previous ideas. It serves to generate a collective synthesis, connect perspectives, promote participation, and build shared proposals.",Cooperative Learning Organization
+metac_102,Understanding by Design (UbD),"## Description
+A curriculum design model that proposes planning backward. Instead of starting with activities, it begins by defining the desired learning outcomes and the evidence that will show whether they have been achieved.
+
+## How it Works
+1. The desired learning outcomes are identified.
+2. Acceptable evidence of learning is determined, such as products, tasks, tests, or performances.
+3. Activities, resources, and learning experiences are planned to help students reach those outcomes.
+4. The alignment between objectives, assessment, and activities is reviewed.
+
+## Objectives
+- To align objectives, evidence, and activities.
+- To avoid planning based only on isolated tasks.
+- To improve clarity about what students are expected to learn.
+
+## Example
+Before designing a unit on ecosystems, the teacher defines that students should explain food-web relationships and justify imbalances. Then the teacher decides what task will serve as evidence and finally plans practical activities, readings, and discussions.","planning, curriculum design, evidence, objectives, assessment","Educational Design and Analysis, Formative Assessment and Feedback, Knowledge Building, Critical Thinking and Metacognition",,"A backward-planning model in which learning outcomes are defined first, then evidence, and finally activities. It helps align objectives, assessment, and learning experiences.",Educational Frameworks
+metac_103,Depth of Knowledge (DOK),"## Description
+A framework for analyzing the cognitive complexity of a task. It does not measure whether an activity is easy or difficult, but the type of mental processing students need to complete it.
+
+## How it Works
+1. The task is reviewed to determine what students actually have to do.
+2. It is identified whether the activity requires recall, procedural application, strategic reasoning, or extended thinking.
+3. The task is adjusted so that its cognitive level is coherent with the learning objectives.
+4. It is used to support the design of questions, activities, and assessments.
+
+## Objectives
+- To distinguish difficulty from cognitive complexity.
+- To design tasks with greater depth of thinking.
+- To check whether activities require the expected level of reasoning.
+
+## Example
+Memorizing a formula may have a low DOK level, whereas choosing which mathematical model to apply to a real situation and justifying the decision requires more complex processing.","cognitive complexity, thinking, tasks, assessment, reasoning","Educational Design and Analysis, Critical Thinking and Metacognition, Formative Assessment and Feedback, Information Processing and Analysis",,"A framework for analyzing the cognitive complexity of tasks. It helps distinguish the type of mental processing required, from simple reproduction to strategic or extended thinking.",Educational Frameworks
+metac_104,SOLO Taxonomy,"## Description
+A model that helps assess the quality of understanding shown by students in their responses. It focuses on the structure of demonstrated learning, from isolated or partial answers to integrated and transferable understanding.
+
+## How it Works
+1. The student's response or product is analyzed.
+2. It is identified whether it shows superficial understanding, one relevant aspect, several unconnected aspects, an organized relationship between ideas, or transfer to new contexts.
+3. This information is used to provide feedback and guide improvement.
+4. It can be used to create rubrics or assessment criteria.
+
+## Objectives
+- To assess the depth of understanding.
+- To provide more precise feedback on the quality of responses.
+- To help students move from isolated ideas to relationships and transfer.
+
+## Example
+When answering a question about natural selection, a student may mention only one factor, relate several factors, or apply the concept to a new situation. SOLO Taxonomy helps distinguish these levels.","understanding, rubric, feedback, response quality, transfer","Educational Design and Analysis, Formative Assessment and Feedback, Critical Thinking and Metacognition, Information Processing and Analysis",,"A model for assessing the quality of understanding shown by students. It helps distinguish superficial, partial, integrated, or transferred responses to new contexts.",Educational Frameworks
+metac_105,Bloom's Taxonomy,"## Description
+A framework for classifying cognitive processes that helps formulate objectives, activities, and assessment tasks. It organizes learning into categories such as remembering, understanding, applying, analyzing, evaluating, and creating.
+
+## How it Works
+1. The cognitive process to be developed is identified.
+2. Learning objectives are written using suitable verbs.
+3. Activities and evidence are designed in line with that cognitive level.
+4. It is checked whether assessment asks for the same kind of thinking that has been taught and practiced.
+
+## Objectives
+- To clarify the type of thinking expected from students.
+- To design varied and progressive tasks.
+- To align objectives, activities, and assessment.
+
+## Example
+In a biology unit, students may remember terms, explain processes, apply a model, analyze data, evaluate a conclusion, or create an experimental proposal.","objectives, cognitive processes, planning, assessment, tasks","Educational Design and Analysis, Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"A taxonomy that classifies cognitive processes such as remembering, understanding, applying, analyzing, evaluating, and creating. It helps formulate objectives and design tasks aligned with the expected thinking.",Educational Frameworks
+metac_106,Authentic Assessment,"## Description
+An assessment approach based on meaningful, contextualized tasks close to real or plausible situations. It focuses on the functional application of learning, not only on reproducing information.
+
+## How it Works
+1. A meaningful situation or context is defined for students.
+2. A task is proposed that requires applying knowledge, skills, and quality criteria.
+3. Observable evidence of learning is established.
+4. Rubrics, feedback, and revision are used to improve the product or performance.
+
+## Objectives
+- To assess realistic application of learning.
+- To integrate knowledge, skills, and decision-making.
+- To make assessment formative and contextualized.
+
+## Example
+Instead of only answering questions about nutrition, students design a healthy menu proposal for a specific situation and justify their decisions using scientific criteria.","authentic assessment, context, application, rubric, evidence","Educational Design and Analysis, Formative Assessment and Feedback, Problem Solving and Challenges, Critical Thinking and Metacognition",,An assessment approach based on meaningful and contextualized tasks. It checks the functional application of learning in situations close to real or plausible contexts.,Educational Frameworks
+metac_107,Visible Learning,"## Description
+An approach that guides teaching decisions toward practices with visible impact on learning. It focuses on clarity of objectives, feedback, evidence of progress, and students' ability to know what they are learning and how to improve.
+
+## How it Works
+1. Objectives and success criteria are made explicit.
+2. Frequent evidence of learning is collected.
+3. Useful feedback is provided to support progress.
+4. Teaching is adjusted according to the information obtained.
+5. Students are encouraged to identify their progress and next steps.
+
+## Objectives
+- To focus teaching on its impact on learning.
+- To improve clarity and feedback.
+- To make decisions based on evidence.
+
+## Example
+In a writing activity, the teacher shares clear criteria, reviews drafts, gives specific feedback, and asks students to state one concrete improvement they will apply in the next version.","evidence, feedback, progress, clarity, impact","Educational Design and Analysis, Formative Assessment and Feedback, Critical Thinking and Metacognition, Knowledge Building",,"An approach focused on teaching practices with visible impact on learning. It helps prioritize feedback, clarity, evidence of progress, and teaching decisions based on observable results.",Educational Frameworks
+metac_108,TPACK,"## Description
+A model that helps integrate content knowledge, pedagogy, and technology coherently. It is not just about using digital tools, but about choosing them according to what is being taught and how it can be learned best.
+
+## How it Works
+1. The content to be taught is identified.
+2. The most appropriate pedagogical approach is selected.
+3. The technology that adds real value to the activity is chosen.
+4. It is checked that the three elements are balanced and support one another.
+
+## Objectives
+- To avoid superficial use of technology.
+- To connect digital tools with objectives and methodology.
+- To design more coherent learning experiences.
+
+## Example
+To work on statistics, the teacher combines mathematical content, a methodology based on real data analysis, and a spreadsheet that allows students to represent, compare, and interpret results.","technology, pedagogy, content, design, digital integration","Educational Design and Analysis, Communication and Creativity, Information Processing and Analysis, Knowledge Building",,"A model for integrating content, pedagogy, and technology coherently. It helps balance what is taught, how it is taught, and which tools best support learning.",Educational Frameworks
+metac_109,SAMR Model,"## Description
+A model for analyzing the level of technology integration in a task. It distinguishes whether technology substitutes a previous tool, improves the activity, allows it to be redesigned, or significantly transforms the task.
+
+## How it Works
+1. The role of technology in the activity is reviewed.
+2. It is identified as substitution, augmentation, modification, or redefinition.
+3. It is assessed whether it provides a real improvement to learning.
+4. The task is adjusted so that technology is used more intentionally and coherently.
+
+## Objectives
+- To analyze the quality of educational technology use.
+- To avoid using digital tools without a pedagogical purpose.
+- To redesign tasks to expand learning possibilities.
+
+## Example
+Writing a text in a word processor may be substitution; collaborating in a shared document with comments and peer review may modify the task.","technology, digital integration, redesign, transformation, tasks","Educational Design and Analysis, Communication and Creativity, Information Processing and Analysis, Formative Assessment and Feedback",,"A model for analyzing the level of technology integration. It helps check whether technology substitutes, improves, redesigns, or truly transforms a learning task.",Educational Frameworks
+metac_110,Universal Design for Learning (UDL),"## Description
+A planning framework that addresses learner diversity from the beginning of instructional design. It proposes offering multiple means of engagement, representation, action, and expression to reduce barriers to learning.
+
+## How it Works
+1. Possible barriers to access, participation, or expression are anticipated.
+2. Different ways of presenting information are offered.
+3. Several ways of participating and showing learning are allowed.
+4. Supports, resources, and options are adjusted without waiting for difficulties to appear.
+
+## Objectives
+- To design inclusive proposals from the start.
+- To increase participation among diverse learners.
+- To offer alternatives for accessing, understanding, and expressing learning.
+
+## Example
+In a research task, students can consult texts, videos, or diagrams, work with graduated supports, and present the result through a report, presentation, infographic, or audio.","inclusion, diversity, accessibility, expression, participation","Educational Design and Analysis, Cohesion and Cooperation, Communication and Creativity, Formative Assessment and Feedback",,"An inclusive design framework that addresses learner diversity from the beginning. It offers multiple means of access, engagement, representation, and expression of learning.",Educational Frameworks
+metac_111,The 4Cs of Learning,"## Description
+A competency framework that highlights four transversal capacities: critical thinking, creativity, communication, and collaboration. It helps review whether a task includes opportunities to think, create, express ideas, and work with others.
+
+## How it Works
+1. The planned task is analyzed.
+2. It is checked whether it requires critical thinking, such as interpreting, justifying, or making decisions.
+3. It is reviewed whether it allows creativity and the generation of products or ideas.
+4. Moments of communication and collaboration are included when they add value to learning.
+
+## Objectives
+- To integrate transversal competencies into activities.
+- To design more complete and participatory tasks.
+- To foster critical thinking, creativity, communication, and cooperation.
+
+## Example
+In a sustainability project, students analyze data, design proposals, communicate them through a presentation, and work in teams to review and improve the final product.","critical thinking, creativity, communication, collaboration, competencies","Educational Design and Analysis, Critical Thinking and Metacognition, Communication and Creativity, Cohesion and Cooperation",,"A framework that groups critical thinking, creativity, communication, and collaboration. It helps incorporate these competencies transversally into the design of tasks and projects.",Educational Frameworks
+metac_112,Nominal Group Technique,"## Description
+A structured technique for generating and prioritizing ideas that supports balanced participation from all students. It is especially useful when gathering information, viewpoints, or proposals without allowing the most outspoken students to dominate.
+
+## How it Works
+1. The teacher presents a question, problem, or decision.
+2. Each student thinks and writes ideas individually.
+3. Ideas are shared in turns and recorded without initial debate.
+4. The group clarifies the meaning of the proposals.
+5. Finally, ideas are voted on or prioritized to reach a shared decision.
+
+## Objectives
+- To encourage participation from all students.
+- To gather ideas in an orderly and equitable way.
+- To support more balanced group decision-making.
+
+## Example
+Before choosing a project topic, each student proposes several options. All ideas are then collected, clarified, and voted on to select the proposal that best represents the group.","participation, decision-making, consensus, ideas, cooperation","Cohesion and Cooperation, Communication and Creativity, Critical Thinking and Metacognition",,"A structured technique for gathering and prioritizing students' ideas. It supports balanced participation, prevents excessive dominance, and helps reach consensual decisions.",Cooperative Learning Organization
+metac_113,Two-Column Method,"## Description
+A simple routine for analyzing a proposal, alternative, or previous experience using two columns: positive aspects and negative aspects. It helps visualize advantages, disadvantages, and possible consequences before making a decision.
+
+## How it Works
+1. A proposal, problem, or experience to be assessed is presented.
+2. Students identify positive aspects and write them in one column.
+3. They then identify negative aspects and write them in the other column.
+4. Both lists are compared and their implications are discussed.
+5. The group can formulate a decision, improvement, or conclusion.
+
+## Objectives
+- To analyze alternatives using clear criteria.
+- To distinguish advantages and disadvantages.
+- To support argumentation and decision-making.
+
+## Example
+Before deciding whether an activity will be done individually or in groups, the class creates two columns with pros and cons for each option and justifies which organization seems most appropriate.","pros and cons, analysis, decision-making, argumentation, reflection","Thinking Routines, Critical Thinking and Metacognition, Information Processing and Analysis, Problem Solving and Challenges",,"An analysis routine that compares pros and cons of a proposal or problem. It helps assess alternatives, review previous experiences, and support reasoned decisions.",Active Methodologies and Thinking Routines
+metac_114,Peer Tutoring,"## Description
+A cooperative learning structure in pairs in which one student acts as a tutor for another. The tutor does not give the finished solution, but provides explanations, hints, and guidance so the partner can move forward in the process.
+
+## How it Works
+1. Pairs are formed with defined roles: tutor and tutee.
+2. The student tutor reviews the process followed by the partner.
+3. When needed, the tutor provides detailed explanations, questions, or graduated support.
+4. The tutee tries to solve the task independently with that support.
+5. Roles may be maintained or alternated depending on the objective of the activity.
+
+## Objectives
+- To promote peer support.
+- To improve understanding through explanation and guidance.
+- To develop responsibility, listening, and communication.
+
+## Example
+In mathematics, a student tutor supports a partner in solving a problem. The tutor asks what data are available, what operation may be needed, and why, but does not write the final answer.","tutoring, peer support, pairs, explanation, cooperation","Cohesion and Cooperation, Communication and Creativity, Knowledge Building, Formative Assessment and Feedback",,"A pair structure in which one student acts as tutor for another. It provides explanations, hints, and support during problem solving without giving the finished solution.",Cooperative Learning Organization
+metac_115,Team Assisted Individualization (TAI),"## Description
+A cooperative structure that combines heterogeneous team work with individualized instruction. Each student follows a plan adapted to their level, while the team provides support, monitoring, and mutual assistance.
+
+## How it Works
+1. Heterogeneous teams are organized.
+2. Each student works with materials or tasks adapted to their level and pace.
+3. Peers review, help, and answer questions before the teacher is consulted.
+4. Individual progress is combined with team responsibility.
+5. Assessment takes into account personal progress and collaboration.
+
+## Objectives
+- To personalize learning without losing cooperation.
+- To promote mutual assistance and individual responsibility.
+- To address different paces and levels of competence.
+
+## Example
+In arithmetic, each student works through a sequence of exercises adapted to their level. Before asking the teacher for help, the student checks with the team, which provides guidance and reviews the procedure.","mutual assistance, personalization, heterogeneous teams, cooperation, individual pace","Cohesion and Cooperation, Formative Assessment and Feedback, Knowledge Building",,"A structure that combines heterogeneous teams and individualized instruction. It helps each student progress at their level with support, review, and mutual assistance from the team.",Cooperative Learning Organization
+metac_116,Parallel Teams,"## Description
+A cooperative structure in which different groups specialize in different practical tasks, assignments, or contents. Teams are then reorganized so students can share what they have learned and tutor one another.
+
+## How it Works
+1. The class is divided into groups working on different tasks, such as practical task A and practical task B.
+2. Each group learns and documents its initial task well.
+3. New teams are formed with students from the different original tasks.
+4. Each student explains to the others what was learned in the original group.
+5. The team integrates the information and may produce a shared synthesis.
+
+## Objectives
+- To take advantage of different groups' specialization.
+- To encourage peer tutoring.
+- To share complementary learning cooperatively.
+
+## Example
+In biology, half the class carries out a practical task observing plant cells and the other half observes animal cells. Mixed teams are then formed to compare results and produce a joint conclusion.","specialization, peer tutoring, practical tasks, cooperation, synthesis","Cohesion and Cooperation, Communication and Creativity, Knowledge Building, Information Processing and Analysis",,A structure in which different groups specialize in different tasks and are later reorganized to teach one another. It helps share complementary learning.,Cooperative Learning Organization
+metac_117,NASA Game,"## Description
+A decision-making activity that demonstrates the effectiveness of cooperative work in a practical and experiential way. Students first solve a ranking problem individually and then as a team, comparing the results with an expert answer.
+
+## How it Works
+1. A problem situation is presented with a list of items that must be ranked by importance.
+2. Each student completes an individual ranking.
+3. The team then discusses and produces a consensual ranking.
+4. Individual and group results are compared with the expert answer.
+5. The group reflects on the quality of decisions made collaboratively.
+
+## Objectives
+- To demonstrate the value of cooperative work.
+- To develop argumentation, listening, and consensus.
+- To analyze how decision-making improves when ideas are compared.
+
+## Example
+The group must rank the most important objects for survival after a moon landing. Each student decides first, then the team, and finally the result is compared with the expert solution.","decision-making, consensus, cooperation, argumentation, comparison","Cohesion and Cooperation, Critical Thinking and Metacognition, Problem Solving and Challenges",,"A decision-making activity that compares individual, group, and expert answers. It demonstrates the effectiveness of cooperative work.",Cooperative Learning Organization
+metac_118,Yellow Pages,"## Description
+A group-cohesion activity in which each student creates a personal advertisement offering something they know how to do and can teach others. The set of advertisements forms a class directory of skills and resources.
+
+## How it Works
+1. Each student identifies a skill, knowledge area, or procedure they master.
+2. They prepare a short advertisement explaining what they can teach and how they can help.
+3. The advertisements are gathered on a wall display, document, or shared directory.
+4. The group consults the Yellow Pages when help is needed or when someone wants to learn something specific.
+5. The directory can be reviewed and expanded during the school year.
+
+## Objectives
+- To promote mutual knowledge within the group.
+- To make each student's strengths visible.
+- To encourage peer support and group cohesion.
+
+## Example
+One student offers help with spreadsheets, another with drawing diagrams, and another with explaining the rules of a game. The class creates a directory to consult when support is needed.","group cohesion, skills, peer support, directory, communication","Cohesion and Cooperation, Communication and Creativity",,"An activity in which each student advertises something they know how to do and can teach. It creates a skill directory, promotes mutual knowledge, and encourages peer support.",Cooperative Learning Organization
+metac_119,Centers of Interest (Decroly Approach),"## Description
+A globalizing approach that organizes learning around students' needs, interests, and direct experiences. It starts from practical situations in everyday life to connect content from different subject areas.
+
+## How it Works
+1. A center of interest close to students' experience is identified.
+2. Situations, objects, or problems related to that interest are observed.
+3. Knowledge from different areas is connected to understand it better.
+4. Practical, expressive, or inquiry activities are carried out.
+5. Learning is communicated through products, discussions, or explanations.
+
+## Objectives
+- To connect learning with everyday life.
+- To globalize content from several subject areas.
+- To start from direct experience and students' needs.
+
+## Example
+Starting from the center of interest “food”, students observe daily habits, analyze labels, calculate proportions, study nutrients, and develop improvement proposals.","interests, direct experience, globalization, everyday life, meaningful learning","Knowledge Building, Information Processing and Analysis, Communication and Creativity",,"An approach that organizes learning around students' interests, needs, and direct experiences. It globalizes content through practical everyday-life situations.",Pedagogical Models
+metac_120,Co-teaching,"## Description
+A shared teaching model in which two teachers work together in planning, delivering, and assessing instruction. They share classroom authority and collaborate to improve teaching and the learning environment.
+
+## How it Works
+1. Teachers plan objectives, activities, and supports together.
+2. During the lesson, they may teach together, divide the group, alternate roles, or address specific needs.
+3. They share observations about students' learning and participation.
+4. They review the lesson and adjust the next intervention.
+
+## Objectives
+- To improve support for students through teacher collaboration.
+- To enrich teaching strategies.
+- To promote mentoring, observation, and support inside the classroom.
+
+## Example
+In an inclusive classroom, one teacher leads the explanation while another observes difficulties, provides targeted support, and later both reorganize the activity according to the needs detected.","shared teaching, teacher collaboration, mentoring, inclusion, support","Cohesion and Cooperation, Formative Assessment and Feedback, Communication and Creativity",,"A shared teaching model in which two teachers plan, teach, and assess together. It improves instruction, mentoring, and support inside the classroom.",Educational Frameworks
