@@ -1,4 +1,33 @@
 ID,Technique,Description,Tags,Fields,Program,Abstract
+metac_001,Què et fa dir això?,"Aquesta rutina de pensament ajuda a reflexionar sobre el propi coneixement. Pot ser molt útil per al desenvolupament crític i la defensa d'hipòtesis.
+
+De l'entrada Rutines de pensament:
+
+## COM S'APLICA:
+
+En aquesta rutina de pensament es demana als estudiants que descriguin alguna cosa: com a objecte o concepte. I després han de donar suport a la interpretació amb l'evidència.
+
+És útil quan s'utilitza en objectes com obres d'art o artefactes històrics, però també pot ser utilitzat per explorar un poema, fer observacions científiques i hipòtesis, o investigar les idees més conceptuals (és a dir: la democràcia…,).
+
+La rutina es pot adaptar per ser utilitzada amb gairebé qualsevol tema i també pot ser útil per a la recopilació d'informació o saber els conceptes generals dels estudiants en la introducció d'un nou tema.
+
+## DESENVOLUPAMENT DE LA RUTINA:
+
+En la majoria dels casos, la rutina pren la forma presentant-la a tota una classe o grup de conversa, usant com a inici un objecte o tema central, però també es pot utilitzar en petits grups o per parelles. La primera vegada que es poses en pràctica la rutina amb els teus alumnes, pots ajudar els/les alumnes fent preguntes i que els ajudin a canalitzar el tema i així entre tots van interpretant i concloent amb l'objectiu de la rutina.
+
+Les preguntes bàsiques poden ser moltes i es poden variar en un nombre i maneres, depenent del context, alguns exemples poden ser: Què sap vostè? Què és el que veus o saps que et fa dir això?, encara que també és possible que ens vinguin bé treballar les interpretacions que els alumnes fan del tema que s'està treballant i d'aquesta manera podem fer servir preguntes com: Què veus? o Què sap vostè? Amb el temps els estudiants poden començar a donar suport automàticament a les seves interpretacions amb evidències i, finalment, els estudiants començaran a interioritzar la rutina.
+
+---
+
+","evidències, interpretació, pensament crític, metacognició, reflexió","Processament i Anàlisi de la informació, Construcció de coneixement, Pensament Crític i Metacognició, Cohesió i Cooperació",,"Rutina de pensament en què l'alumnat interpreta una imatge, text, objecte o situació i justifica la resposta amb evidències. Serveix per desenvolupar pensament crític, millorar l'observació, fonamentar hipòtesis i explicar per què se sosté una idea."
+metac_002,Qui és qui?,"En aquesta dinàmica es tracta que els alumnes es defineixin a si mateixos, però no físicament sinó el seu caràcter, aficions o gustos.
+
+1. El professor/a explica una breu història, per exemple, que rebran la visita d'un personatge famós i han d'escriure una carta de presentació.
+1. Els alumnes escriuen una carta on parlin dels seus gustos, aficions, el seu caràcter, etc., però no sobre el seu aspecte físic ni com van vestits. És bo que el professorat s'impliqui i escrigui també la seva pròpia descripció.
+1. Es van llegint les cartes una a una i els alumnes intenten esbrinar qui l'ha escrit.
+
+Font: Romero, G.A. (2009). Técnicas para trabajar la cohesión de una clase.
+","cohesió de grup, expressió personal, escolta activa, presentació oral",Cohesió i Cooperació,,"Dinàmica de cohesió en què cada alumne escriu una descripció personal sense mencionar l'aspecte físic i el grup intenta endevinar de qui es tracta. Serveix per afavorir el coneixement mutu, millorar l'expressió personal i crear confiança."
 metac_003,1 - 2 - 4,"Mida de L'EQUIP: Parelles i equips base. 
 
 OBJECTIUS: Activar coneixements previs, resoldre problemes, repassar 
@@ -145,7 +174,7 @@ Adaptat de Viquipèdia.
 
 Un exemple d'aprenentatge basat en el joc (ABJ) en educació secundària podria ser el següent:
 
-Imagineu que els estudiants de l'ESO estan estudiant la història i el professor vol utilitzar l'ABJ per ajudar-los a millorar la seva comprensió dels fets històrics. El professor pot fer servir un joc digital o tradicional en el qual els estudiants han de respondre a preguntes sobre l'època que estan estudiant i completar activitats relacionades amb aquesta. Per exemple, el joc podria consistir en una sèrie de nivells en els quals els estudiants han de respondre a preguntes sobre els fets històrics més importants, completar mots encreuats o jocs de relació amb l'època que estan estudiant, o fer servir recursos com ara mapes o imatges per ajudar-los a comprendre millor el context històric. El joc pot utilitzar diferents elements motivadors, com ara punts, nivells o insígnies per ajudar a motivar els estudiants i fer que l'aprenentatge sigui més actiu.","joc, motivació, aprenentatge actiu, cooperació, creativitat","Cohesió i Cooperació, Comunicació i Creativitat",QPlay: Concurs interactiu|https://jjdeharo.github.io/qplay/,"Metodologia que utilitza jocs educatius, digitals o analògics, amb objectius d'aprenentatge definits. Serveix per augmentar la motivació, afavorir la participació activa i treballar continguts o competències mitjançant dinàmiques lúdiques amb finalitat formativa."
+Imagineu que els estudiants de l'ESO estan estudiant la història i el professor vol utilitzar l'ABJ per ajudar-los a millorar la seva comprensió dels fets històrics. El professor pot fer servir un joc digital o tradicional en el qual els estudiants han de respondre a preguntes sobre l'època que estan estudiant i completar activitats relacionades amb aquesta. Per exemple, el joc podria consistir en una sèrie de nivells en els quals els estudiants han de respondre a preguntes sobre els fets històrics més importants, completar mots encreuats o jocs de relació amb l'època que estan estudiant, o fer servir recursos com ara mapes o imatges per ajudar-los a comprendre millor el context històric. El joc pot utilitzar diferents elements motivadors, com ara punts, nivells o insígnies per ajudar a motivar els estudiants i fer que l'aprenentatge sigui més actiu.","joc, motivació, aprenentatge actiu, cooperació, creativitat","Construcció de coneixement, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",QPlay: Concurs interactiu|https://jjdeharo.github.io/qplay/,"Metodologia que utilitza jocs educatius, digitals o analògics, amb objectius d'aprenentatge definits. Serveix per augmentar la motivació, afavorir la participació activa i treballar continguts o competències mitjançant dinàmiques lúdiques amb finalitat formativa."
 metac_008,Aprenentatge basat en indagació,"## Descripció
 Metodologia en què l'aprenentatge s'organitza a partir de preguntes, observacions o problemes que l'alumnat ha d'investigar. Pot ser una indagació guiada pel professor o una indagació més oberta, segons l'autonomia del grup.
 
@@ -185,7 +214,7 @@ Adaptat de: Esteban, M. (2011). Del “Aprendizaje Basado En Problemas” (ABP) 
 
 Un exemple d'aprenentatge basat en l'acció (ABA) en educació secundària podria ser el següent:
 
-Imagineu que els estudiants de l'ESO estan estudiant el medi ambient i el professor vol utilitzar l'ABA per ajudar-los a comprendre millor la importància de protegir els recursos naturals. El professor pot planificar una activitat en la qual els estudiants han de treballar col·laborativament per investigar sobre un problema ambiental específic, com ara la degradació de les aigües o la contaminació de l'aire, a la seva localitat. Després, han de dissenyar una campanya de conscienciació per promoure la preservació dels recursos naturals i presentar-la a la resta de la classe. Aquesta activitat inclou tant treballs contextualitzats, com ara fer entrevistes o fer observacions de camp, com treballs descontextualitzats, com ara fer servir recursos digitals o elaborar materials de promoció. A la fi de l'activitat, els estudiants reflexionen sobre el procés que han seguit i comparteixen els resultats de la seva campanya amb la resta de la classe. Aquest exemple mostra com l'ABA pot utilitzar la combinació de situacions contextualitzades i descontextualitzades per ajudar els estudiants a connectar amb el seu entorn i desenvolupar habilitats i coneixements de manera significativa.","aprenentatge situat, acció, entorn, cooperació, reflexió","Construcció de coneixement, Resolució de problemes i Reptes",,"Metodologia basada en activitats vinculades amb l'entorn real de l'alumnat. Serveix per connectar l'aprenentatge amb situacions contextualitzades, promoure la cooperació, afavorir la reflexió i donar sentit pràctic als continguts treballats."
+Imagineu que els estudiants de l'ESO estan estudiant el medi ambient i el professor vol utilitzar l'ABA per ajudar-los a comprendre millor la importància de protegir els recursos naturals. El professor pot planificar una activitat en la qual els estudiants han de treballar col·laborativament per investigar sobre un problema ambiental específic, com ara la degradació de les aigües o la contaminació de l'aire, a la seva localitat. Després, han de dissenyar una campanya de conscienciació per promoure la preservació dels recursos naturals i presentar-la a la resta de la classe. Aquesta activitat inclou tant treballs contextualitzats, com ara fer entrevistes o fer observacions de camp, com treballs descontextualitzats, com ara fer servir recursos digitals o elaborar materials de promoció. A la fi de l'activitat, els estudiants reflexionen sobre el procés que han seguit i comparteixen els resultats de la seva campanya amb la resta de la classe. Aquest exemple mostra com l'ABA pot utilitzar la combinació de situacions contextualitzades i descontextualitzades per ajudar els estudiants a connectar amb el seu entorn i desenvolupar habilitats i coneixements de manera significativa.","aprenentatge situat, acció, entorn, cooperació, reflexió","Construcció de coneixement, Resolució de problemes i Reptes, Cohesió i Cooperació",,"Metodologia basada en activitats vinculades amb l'entorn real de l'alumnat. Serveix per connectar l'aprenentatge amb situacions contextualitzades, promoure la cooperació, afavorir la reflexió i donar sentit pràctic als continguts treballats."
 metac_010,Aprenentatge basat en la investigació (ABI),"L'aprenentatge basat en investigació (ABI), en anglès *Research Based Learning*, consisteix a realitzar o participar en processos de recerca, aplicant la metodologia per comprovar o no la veracitat d'una hipòtesi, per donar resposta a un problema o per respondre una pregunta plantejada, acompanyant-los i supervisant tot el procés.
 
 Es tracta, doncs, d'aplicar el mètode científic per investigar.
@@ -256,7 +285,7 @@ També podem utilitzar una estructura més simple pel mateix problema:
 1. Elaboració de resultats i presentació a la resta de la classe. Els estudiants analitzen les dades recollides i elaboruen resultats i conclusions sobre l'efecte dels diferents tipus de fertilitzants en el creixement de les plantes. A continuació, presenten els resultats de la investigació a la resta de la classe de manera clara i amb rigor científic.
 
 ","investigació, mètode científic, hipòtesis, dades, pensament crític, presentació","Construcció de coneixement, Processament i Anàlisi de la informació, Pensament Crític i Metacognició",,"Metodologia en què l'alumnat investiga una pregunta o problema seguint procediments propis del mètode científic. Serveix per formular hipòtesis, analitzar dades, obtenir conclusions i desenvolupar pensament crític i rigor en la cerca de respostes."
-metac_011,Aprenentatge basat en laboratori (ABL),"Aquest tipus d’aprenentatge es basa en el fet que si l’alumne pot observar i manipular de primera mà alguns aspectes de la ciència, ha de ser capaç d’entendre i assolir millor el contingut que amb altres mètodes. Amb aquest model donem a l’alumne l’opció de practicar amb la ciència de la mateixa manera que si fossin professionals. Per tal que aquest tipus d’aprenentatge sigui efectiu, els estudiants han d’entendre com es fa l’experiment i per què val la pena fer-lo, a part de saber que els proporcionarà més enteniment del concepte.
+metac_011,Aprenentatge basat en preguntes (ABPC),"Aquest tipus d’aprenentatge es basa en el fet que si l’alumne pot observar i manipular de primera mà alguns aspectes de la ciència, ha de ser capaç d’entendre i assolir millor el contingut que amb altres mètodes. Amb aquest model donem a l’alumne l’opció de practicar amb la ciència de la mateixa manera que si fossin professionals. Per tal que aquest tipus d’aprenentatge sigui efectiu, els estudiants han d’entendre com es fa l’experiment i per què val la pena fer-lo, a part de saber que els proporcionarà més enteniment del concepte.
 
 L'ABL es pot considerar un cas particular del més general: Aprenentatge basat en Investigació.
 
@@ -388,7 +417,7 @@ Quan els estudiants han acabat el seu producte final, els professors poden avalu
 En resum, l'aprenentatge basat en projectes implica la creació d'un producte final tangible que està relacionat amb el món real i que es desenvolupa a partir d'una pregunta generadora que requereix l'exercici del pensament crític. A través de la realització d'aquest projecte, els estudiants poden adquirir coneixements i habilitats de manera molt més profunda i significativa que amb una rutina clàssica d'ensenyament.
 
 Aquí es pot consultar un desenvolupament més detallat d'aquest projecte.
-","projectes, producte final, investigació, avaluació formativa, creativitat, cooperació","Construcció de coneixement, Resolució de problemes i Reptes, Comunicació i Creativitat",,"Metodologia en què l'alumnat desenvolupa un producte final vinculat amb una pregunta o repte. Serveix per integrar continguts, investigació, creativitat, cooperació i avaluació formativa en una tasca amb sentit i resultat tangible."
+","projectes, producte final, investigació, avaluació formativa, creativitat, cooperació","Construcció de coneixement, Resolució de problemes i Reptes, Pensament Crític i Metacognició, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",,"Metodologia en què l'alumnat desenvolupa un producte final vinculat amb una pregunta o repte. Serveix per integrar continguts, investigació, creativitat, cooperació i avaluació formativa en una tasca amb sentit i resultat tangible."
 metac_015,Aprenentatge basat en reptes (ABR),"L'aprenentatge basat en reptes suposa la resolució d'un problema real mitjançant una acció concreta; no és un problema dissenyat per a l'aula. 
 
 Pot tenir molts punts en comú amb l'Aprenentatge basat en l'acció (ABA).
@@ -422,7 +451,7 @@ Exemple d'aplicació d'ABR per a resoldre aquest problema:
 - Desenvolupament del repte: Els alumnes buscaran informació sobre les possibles solucions per millorar la presència de bancs o banquets al barri, com ara demanar al consistori que instali més mobiliari urbà o col·laborar amb els comerços del barri per posar tamborets o banquets a la vora dels establiments. També es poden fer entrevistes amb veïns i autoritats del barri per obtenir més informació sobre el tema.
 - Comprovació en context: Els alumnes posaran en pràctica les solucions que hagin proposat, com ara organitzant una campanya de neteja de bancs o parlant amb els comerços del barri per aconseguir que posin tamborets o banquets a la vora dels establiments.
 - Difusió de la feina: Els alumnes poden crear un vídeo o una exposició per explicar les solucions proposades i els resultats obtinguts. També poden escriure un article per a una revista del barri o fer una presentació a la comunitat.
-- Avaluació: Els alumnes es faran una autoavaluació per reflexionar sobre el procés seguit i els resultats obtinguts, i també es farà una avaluació per part del docent o docents implicats. Si es considera necessari, es poden demanar avaluacions externes a altres agents del barri per obtenir una visió més àmplia del treball realitzat.","reptes, problema real, acció, investigació, difusió, avaluació","Resolució de problemes i Reptes, Construcció de coneixement",,"Metodologia en què l'alumnat afronta un repte real i proposa una acció concreta per respondre-hi. Serveix per connectar l'aprenentatge amb necessitats socials, investigar solucions, provar-les en context i difondre els resultats."
+- Avaluació: Els alumnes es faran una autoavaluació per reflexionar sobre el procés seguit i els resultats obtinguts, i també es farà una avaluació per part del docent o docents implicats. Si es considera necessari, es poden demanar avaluacions externes a altres agents del barri per obtenir una visió més àmplia del treball realitzat.","reptes, problema real, acció, investigació, difusió, avaluació","Construcció de coneixement, Resolució de problemes i Reptes, Pensament Crític i Metacognició, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",,"Metodologia en què l'alumnat afronta un repte real i proposa una acció concreta per respondre-hi. Serveix per connectar l'aprenentatge amb necessitats socials, investigar solucions, provar-les en context i difondre els resultats."
 metac_016,Aprenentatge experiencial,"L'aprenentatge experiencial és una metodologia que es basa en l'aprenentatge a través de l'experiència directa i la reflexió sobre aquesta. Aquesta metodologia es basa en la idea que l'aprenentatge es pot millorar si els estudiants participen directament en activitats que els permetin experimentar de primera mà els conceptes que estan estudiant.
 
 En aquesta metodologia, els alumnes no només adquireixen coneixements teòrics, sinó que també aprenen a través de l'experiència i la reflexió sobre aquesta. Això els permet connectar els conceptes amb la vida real i comprendre millor com aplicar-los a situacions reals.
@@ -471,7 +500,7 @@ L'aprenentatge per descobriment es pot dividir en dues categories principals: l*
 
 Altres fonts consultades: Jimenez Pierre,O.et al. (2007). Modelo de aprendizaje por descubrimiento para alumnos de química básica experimental.
 
-","descobriment, exploració, investigació, resolució de problemes, autonomia",Construcció de coneixement,,"Metodologia en què l'alumnat construeix coneixements mitjançant exploració, preguntes i investigació, amb més o menys guia docent. Serveix per afavorir l'autonomia, la curiositat, la resolució de problemes i la comprensió significativa."
+","descobriment, exploració, investigació, resolució de problemes, autonomia","Processament i Anàlisi de la informació, Construcció de coneixement, Resolució de problemes i Reptes, Pensament Crític i Metacognició",,"Metodologia en què l'alumnat construeix coneixements mitjançant exploració, preguntes i investigació, amb més o menys guia docent. Serveix per afavorir l'autonomia, la curiositat, la resolució de problemes i la comprensió significativa."
 metac_018,Cadena de Preguntes,"Es tracta d'una estructura apta per repassar el tema o temes treballats fins al moment i preparar l'examen o simplement per fer una avaluació formativa i comprovar fins a quin punt s'han aconseguit els objectius previstos, i rectificar o ajustar, si cal, la programació.
 
 1. Durant tres minuts aproximadament cada equip pensa una pregunta sobre el tema o els temes estudiats fins al moment, que plantejarà l'equip que hi ha al seu costat, seguint un ordre determinat (per exemple, la direcció de les agulles del rellotge). Es tracta de preguntes fonamentals (que considerin que podrien sortir en un examen) sobre qüestions treballades a classe, pensades per ajudar la resta d'equips.
@@ -493,7 +522,7 @@ Font: Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para apr
 1. Una vegada passats els tres minuts, el portaveu de l'equip A planteja la seva pregunta a l'equip B, que la respon i, a continuació, planteja una pregunta a l'equip C. Així successivament fins que l'últim equip, l'equip D, fa la pregunta a l'equip A.
 1. Un cop acabada la primera ronda, es deixen tres minuts més per  pensar noves preguntes, i es comença una segona ronda en direcció contrària: l'equip D fa la pregunta a l'equip A, que la respon i planteja una pregunta a l'equip B, i així successivament fins que l'últim equip, l'equip C, fa la pregunta a l'equip D.
 
-1. Al final de l'activitat, el professor fa un resum dels coneixements dels estudiants i determina quines àrees necessiten més treball. També fa una revisió dels conceptes clau de la circulació sanguínia per assegurar que tots els alumnes els han entès de manera adequada.","preguntes, repàs, avaluació formativa, cooperació, feedback","Avaluació Formativa i Feedback, Activació de coneixements previs",,"Estructura cooperativa en què els equips elaboren i responen preguntes sobre un tema treballat. Serveix per repassar continguts, preparar avaluacions, detectar dubtes i promoure l'ajuda entre equips mitjançant una dinàmica de preguntes encadenades."
+1. Al final de l'activitat, el professor fa un resum dels coneixements dels estudiants i determina quines àrees necessiten més treball. També fa una revisió dels conceptes clau de la circulació sanguínia per assegurar que tots els alumnes els han entès de manera adequada.","preguntes, repàs, avaluació formativa, cooperació, feedback","Avaluació Formativa i Feedback, Activació de coneixements previs, Cohesió i Cooperació",,"Estructura cooperativa en què els equips elaboren i responen preguntes sobre un tema treballat. Serveix per repassar continguts, preparar avaluacions, detectar dubtes i promoure l'ajuda entre equips mitjançant una dinàmica de preguntes encadenades."
 metac_019,Cercle de punts de vista,"Una rutina per explorar altres perspectives
 
 ## Finalitat: Quin tipus de pensament fomenta aquesta rutina?
@@ -597,24 +626,7 @@ Conclusions
 
 És interessant conèixer les persones amb qui convivim dia a dia perquè així les podem comprendre millor i cooperar en la consecució d'objectius comuns.
 
-Font: ECO. (2007). Dinámicas para hacer grupo.","cohesió de grup, coneixement personal, comunicació, preguntes",Cohesió i Cooperació,,"Dinàmica de grup en què els participants busquen companys que compleixin determinades característiques o responguin certes preguntes. Serveix per afavorir el coneixement mutu, iniciar la cohesió del grup i millorar la interacció entre alumnes."
-metac_023,Contracte d'aprenentatge,"## Descripció
-Acord explícit entre alumne i professor sobre objectius, tasques, temps, recursos i criteris d'avaluació. Ajuda a organitzar el treball autònom i a responsabilitzar l'alumnat del seu propi procés.
-
-## Funcionament
-1. Es defineix què ha d'aprendre o aconseguir l'alumne.
-2. S'acorden tasques, productes o evidències.
-3. S'estableixen terminis i recursos disponibles.
-4. Es concreten criteris d'avaluació i seguiment.
-5. Al final, l'alumne revisa el grau de compliment i reflexiona sobre el procés.
-
-## Objectius
-- Afavorir l'autonomia i la planificació.
-- Fer visibles els compromisos de treball.
-- Millorar l'autoregulació i l'avaluació formativa.
-
-## Exemple
-En un projecte d'investigació, cada alumne acorda amb el professor la pregunta que treballarà, les fonts que consultarà, el producte final i les dates de lliurament parcials.","autonomia, planificació, seguiment, avaluació formativa, metacognició","Avaluació Formativa i Feedback, Pensament Crític i Metacognició",,"Acord entre alumne i professor sobre objectius, tasques, recursos, terminis i criteris d'avaluació. Serveix per afavorir l'autonomia, la planificació, la responsabilitat personal i el seguiment del propi aprenentatge."
+Font: ECO. (2007). Dinámicas para hacer grupo.","cohesió de grup, coneixement personal, comunicació, preguntes","Cohesió i Cooperació, Comunicació i Creativitat",,"Dinàmica de grup en què els participants busquen companys que compleixin determinades característiques o responguin certes preguntes. Serveix per afavorir el coneixement mutu, iniciar la cohesió del grup i millorar la interacció entre alumnes."
 metac_022,Contrasta i compara,"La rutina de pensament ""Contrasta i compara"" és una tècnica que es pot fer servir per ajudar als alumnes a millorar la seva comprensió i aprofundiment en els conceptes o fets que estan estudiant. Aquesta rutina es pot aplicar tant al començament d'un tema com durant o al finalitzar-lo, depenent de les necessitats i objectius de l'aprenentatge.
 
 PROFESSOR:
@@ -659,6 +671,23 @@ Objectiu: Millorar la comprensió dels alumnes sobre la Revolució Francesa
   - Fer preguntes
   - Proporcionar *feedback* sobre la qualitat de les comparacions
 - Resultat: Millora de la comprensió dels alumnes sobre la Revolució Francesa i desenvolupament d'habilitats de pensament crític i comunicació.","comparació, contrast, anàlisi, lectura, pensament crític, feedback","Processament i Anàlisi de la informació, Pensament Crític i Metacognició",,"Rutina en què l'alumnat compara diferents fonts, idees o fenòmens, identificant semblances i diferències. Serveix per millorar la comprensió, desenvolupar pensament crític i justificar comparacions a partir d'evidències o informació rellevant."
+metac_023,Contracte d'aprenentatge,"## Descripció
+Acord explícit entre alumne i professor sobre objectius, tasques, temps, recursos i criteris d'avaluació. Ajuda a organitzar el treball autònom i a responsabilitzar l'alumnat del seu propi procés.
+
+## Funcionament
+1. Es defineix què ha d'aprendre o aconseguir l'alumne.
+2. S'acorden tasques, productes o evidències.
+3. S'estableixen terminis i recursos disponibles.
+4. Es concreten criteris d'avaluació i seguiment.
+5. Al final, l'alumne revisa el grau de compliment i reflexiona sobre el procés.
+
+## Objectius
+- Afavorir l'autonomia i la planificació.
+- Fer visibles els compromisos de treball.
+- Millorar l'autoregulació i l'avaluació formativa.
+
+## Exemple
+En un projecte d'investigació, cada alumne acorda amb el professor la pregunta que treballarà, les fonts que consultarà, el producte final i les dates de lliurament parcials.","autonomia, planificació, seguiment, avaluació formativa, metacognició","Avaluació Formativa i Feedback, Pensament Crític i Metacognició",,"Acord entre alumne i professor sobre objectius, tasques, recursos, terminis i criteris d'avaluació. Serveix per afavorir l'autonomia, la planificació, la responsabilitat personal i el seguiment del propi aprenentatge."
 metac_024,Controvèrsia acadèmica,"OBJECTIUS: Millorar la comprensió dels diferents punts de vista sobre un tema, desenvolupar habilitats de debat, millorar les capacitats d'argumentació i de comunicació.
 
 MÈTODE
@@ -994,43 +1023,6 @@ Per tant, la fase d’avaluació de les 5E és també una fase d’aprenentatge,
 Adaptat de Ruiz, H. &  Bybee, Rodger W. (2022). Els principis cognitius de l’aprenentatge després del model d’ensenyament 5E.
 
 ","model 5E, indagació, coneixements previs, aplicació, avaluació formativa, cooperació","Activació de coneixements previs, Processament i Anàlisi de la informació, Construcció de coneixement, Resolució de problemes i Reptes, Pensament Crític i Metacognició, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",,"Model didàctic basat en les fases d'enganxar, explorar, explicar, elaborar i avaluar. Serveix per estructurar seqüències d'aprenentatge actiu, activar coneixements previs, promoure indagació, aplicar conceptes i avaluar durant el procés."
-metac_059,El que sé i el que sabem,"Aquesta activitat té com a objectius orientar cap als continguts i desenvolupar la creativitat.
-
-1. El docent anuncia el tema que es tractarà durant la sessió i sol·licita als alumnes que escriguin unes quantes línies sobre el que els suggereix. Per això, entre una fitxa de treball a cada alumne. La fitxa consta de dos apartats: individual (""el que sé..."") i cooperatiu (""el que sabem..."").
-
-1. Els alumnes, de forma individual, escriuen al primer apartat el que saben sobre el tema.
-
-1. Un cop recollides les idees de tots dos, els alumnes formen parelles amb el company que tenen més a prop i construeixen un text que reculli les aportacions de tots dos. Tots dos escriuen el text al segon apartat i signen les dues fitxes. Lliuren una al professor i es queden amb l'altra per a la posada en comú.
-
-
-1. Es fa una posada en comú en gran grup. En acabar, lliuren la segona fitxa.
-
-CONSELLS
-
-- Establir i controlar el temps de cadascuna de les fases.
-- Valorar la generació de respostes per sobre fins i tot de la correcció d'aquestes.
-- Utilitzar les aportacions dels alumnes a l'hora de desenvolupar el tema.
-
-Font: CRA Los Olivos. (2017). Técnicas de aprendizaje cooperativo.","coneixements previs, parelles, síntesi, posada en comú, cooperació","Activació de coneixements previs, Processament i Anàlisi de la informació, Cohesió i Cooperació, Comunicació i Creativitat",,"Activitat en què primer s'escriu individualment el que se sap sobre un tema i després es construeix una resposta compartida. Serveix per activar coneixements previs, contrastar idees i orientar el desenvolupament de la sessió."
-metac_036,El Sac de Dubtes,"1. Cada component de l'equip escriu en un terç de foli (amb el nom i el nom del vostre equip) un dubte que us hagi sorgit en l'estudi d'un tema determinat.
-1. A continuació, passats uns minuts perquè tothom hagi tingut temps d'escriure el seu dubte, l'exposa a la resta del seu equip perquè, si algú pot respondre el seu dubte, ho faci. Si algú sap respondre-la, l'alumne o l'alumna que la tenia anota la resposta al quadern. Si ningú de l'equip sap respondre el seu dubte, l'entreguen al mestre o mestra que el col·loca dins del “sac de dubtes” del grup classe.
-1. A la segona part de la sessió, el mestre o la mestra treuen un dubte del “sac de dubtes” i demana si algú d'un altre equip sap resoldre'l. Si no hi ha ningú que ho sàpiga, resol el dubte el mestre/a. 
-
-Aquesta estructura és especialment útil per posar en relleu la interacció (en aquest cas, en forma de solidaritat o ajuda mútua) que hi ha d'haver a tot el grup de classe, no només dins d'un mateix equip, ja que els diferents equips s'ajuden a l'hora de resoldre els dubtes que un equip concret no ha sabut resoldre.
-
-
-Font: Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
-
-","dubtes, ajuda mútua, avaluació formativa, cooperació, feedback","Resolució de problemes i Reptes, Avaluació Formativa i Feedback, Cohesió i Cooperació",Mur interactiu|https://jjdeharo.github.io/directo/muro.html,"Estructura en què l'alumnat escriu dubtes, intenta resoldre'ls en equip i diposita els no resolts en un sac comú. Serveix per detectar dificultats, promoure ajuda mútua i orientar l'explicació docent."
-metac_037,El semàfor,"Aquesta rutina permet fer una reflexió crítica sobre el que s'ha entès en una explicació o tema. Es fa mitjançant tres columnes que poden emplenar individualment o en parelles:
-
-- **Verda**: què he entès?
-- **Groga**: què em genera dubtes?
-- **Vermella**: què no he entès?
-
-Es pot fer servir una plantilla similar a aquesta:
-
-","comprensió, dubtes, metacognició, autoavaluació, feedback","Avaluació Formativa i Feedback, Pensament Crític i Metacognició",Escala de valoració|https://jjdeharo.github.io/directo/escala.html,"Rutina d'autoavaluació en tres nivells: el que s'ha entès, el que genera dubtes i el que no s'ha comprès. Serveix per fer visibles dificultats, regular l'aprenentatge, orientar aclariments i afavorir la reflexió."
 metac_035,"El Trencaclosques (""Jigsaw"")","Aquesta tècnica és especialment útil per a les àrees de coneixement en què els continguts són susceptibles de ser ""fragmentats"" en diferents parts (per exemple: literatura, ciències socials, ciències de la naturalesa ...). En síntesi, el desenvolupament o posada en pràctica d'aquesta tècnica comporta els següents passos: 
 
 - Dividim la classe en grups heterogenis de 4 o 5 membres cadascun. 
@@ -1062,37 +1054,25 @@ Font: Pérez, M. (2015). Dinámicas cooperativas.
 **Aplicació de la tècnica:**
 
 ","trencaclosques, experts, cooperació, lectura, síntesi","Cohesió i Cooperació, Processament i Anàlisi de la informació",GeCo - Generador d'Equips Cooperatius|https://jjdeharo.github.io/geco/,"Tècnica cooperativa en què cada alumne treballa una part d'un contingut i després l'ensenya al seu equip. Serveix per fomentar interdependència positiva, responsabilitat individual, comprensió de textos i síntesi compartida."
-metac_060,Els 5 per què,"La tècnica de les ""5 per què"" es pot utilitzar  per a aprofundir en els conceptes i idees que s'estan estudiant, i per a ajudar els alumnes a comprendre millor els diferents temes. Per exemple, es poden fer preguntes consecutives com ""per què és important aquest concepte?"", ""per què es relaciona aquest concepte amb altres?"", etc., per a ajudar els alumnes a reflexionar sobre els diferents conceptes i les seves relacions.
+metac_036,El Sac de Dubtes,"1. Cada component de l'equip escriu en un terç de foli (amb el nom i el nom del vostre equip) un dubte que us hagi sorgit en l'estudi d'un tema determinat.
+1. A continuació, passats uns minuts perquè tothom hagi tingut temps d'escriure el seu dubte, l'exposa a la resta del seu equip perquè, si algú pot respondre el seu dubte, ho faci. Si algú sap respondre-la, l'alumne o l'alumna que la tenia anota la resposta al quadern. Si ningú de l'equip sap respondre el seu dubte, l'entreguen al mestre o mestra que el col·loca dins del “sac de dubtes” del grup classe.
+1. A la segona part de la sessió, el mestre o la mestra treuen un dubte del “sac de dubtes” i demana si algú d'un altre equip sap resoldre'l. Si no hi ha ningú que ho sàpiga, resol el dubte el mestre/a. 
 
- Això es pot fer mitjançant l'ús de preguntes consecutives (en principi són 5, però això no ha de ser estricte i es faran les que calgui) que ajudin als alumnes a reflexionar sobre els diferents conceptes i les seves relacions.
+Aquesta estructura és especialment útil per posar en relleu la interacció (en aquest cas, en forma de solidaritat o ajuda mútua) que hi ha d'haver a tot el grup de classe, no només dins d'un mateix equip, ja que els diferents equips s'ajuden a l'hora de resoldre els dubtes que un equip concret no ha sabut resoldre.
 
-Per utilitzar la tècnica de les ""5 per què"", el professorat pot seguir els següents passos:
-
-1. Seleccionar el tema o concepte que es vol estudiar.
-
-1. Fer una pregunta oberta sobre el tema, com ""per què és important aquest concepte?""
-
-1. Animar als alumnes a fer més preguntes sobre el tema, utilitzant la pregunta ""per què?"" per a aprofundir en els diferents conceptes.
-
-1. Orientar als alumnes a fer preguntes rellevants i que ajudin a comprendre millor els conceptes, i a evitar donar respostes tancades o directes.
-
-1. Anotar les preguntes i les respostes en una llista o en un mapa conceptual per ajudar als alumnes a visualitzar les relacions entre els diferents conceptes.
-
-1. Fer servir diferents estratègies per a estimular la reflexió i la discussió entre els alumnes, com ara fer servir jocs de rol o debats.
-
-1. Una vegada que els alumnes hagin après a fer servir la tècnica, els pot ser útil fer servir aquesta estratègia per a reflexionar sobre altres temes o matèries d'estudi per a millorar la seva comprensió i el seu aprenentatge.","preguntes, pensament crític, comprensió, metacognició, relacions","Processament i Anàlisi de la informació, Pensament Crític i Metacognició, Avaluació Formativa i Feedback",,"Rutina basada a encadenar preguntes de “per què” per aprofundir en un concepte o problema. Serveix per millorar la comprensió, identificar causes, relacionar idees i desenvolupar pensament crític."
-metac_062,Els Grups de Recerca,Veieu la secció Aprenentatge basat en situacions problematitzades (ABP).,"investigació, resolució de problemes, cooperació, treball en equip","Resolució de problemes i Reptes, Cohesió i Cooperació",,"Referència a una modalitat de treball basada en grups de recerca o situacions problematitzades. Serveix per organitzar l'aprenentatge al voltant de problemes, cooperació i investigació compartida."
-metac_061,Els quatre savis,"Es tracta d'una simplificació de la tècnica del trencaclosques.
-
-1. El mestre/a selecciona quatre participants del grup que dominin un determinat tema, habilitat o procediment (que siguin “savis” en una determinada cosa). Se'ls demana que es preparin bé, ja que hauran d'ensenyar què saben als seus companys i companyes de tot el grup.
-1. Un dia s'organitza una sessió, durant la qual els alumnes i les alumnes (excepte els que exerceixen el paper de “savi”) estaran distribuïts en equips esporàdics de quatre membres cadascun.
-1. A la primera fase de la sessió cada membre de cada equip haurà d'acudir a un dels “4 savis” perquè, juntament amb els components dels altres equips que han acudit al mateix “savi”, aquest els expliqui o els ensenyi el que sap.
-1. Després, a la segona fase de la sessió, cada alumne torna al seu equip d'origen, i cadascú haurà d'explicar o ensenyar a la resta dels seus companys o companyes de l'equip allò que els respectius “savis” els han ensenyat. D'aquesta manera, a cada equip de base s'intercanvien allò que cadascú, per separat, ha après del “savi” corresponent.
 
 Font: Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
 
-## Exemple
-Per exemple, imagineu que es vol fer una activitat sobre l'ús dels pronoms febles en català. Es podrien seleccionar quatre estudiants que considerin que ja dominen aquest tema i se'ls demana que es preparin per explicar-ho als altres. Després, es dividiria el grup en equips de quatre estudiants i un alumne de cada grup aniria a veure un dels ""savis"" per a rebre instruccions sobre l'ús dels pronoms febles. Després de la primera fase, cada estudiant tornaria al seu equip i explicaria als seus companys el que ha après del ""savi"" que ha visitat. Així, tots els estudiants haurien après sobre l'ús dels pronoms febles gràcies a les explicacions dels diferents ""savis"".","experts, cooperació, ensenyament entre iguals, comunicació, síntesi","Cohesió i Cooperació, Comunicació i Creativitat",,"Tècnica en què alguns alumnes experts ensenyen diferents aspectes d'un contingut a la resta del grup. Serveix per promoure ensenyament entre iguals, responsabilitat, comunicació i aprenentatge cooperatiu."
+","dubtes, ajuda mútua, avaluació formativa, cooperació, feedback","Resolució de problemes i Reptes, Avaluació Formativa i Feedback, Cohesió i Cooperació",Mur interactiu|https://jjdeharo.github.io/directo/muro.html,"Estructura en què l'alumnat escriu dubtes, intenta resoldre'ls en equip i diposita els no resolts en un sac comú. Serveix per detectar dificultats, promoure ajuda mútua i orientar l'explicació docent."
+metac_037,El semàfor,"Aquesta rutina permet fer una reflexió crítica sobre el que s'ha entès en una explicació o tema. Es fa mitjançant tres columnes que poden emplenar individualment o en parelles:
+
+- **Verda**: què he entès?
+- **Groga**: què em genera dubtes?
+- **Vermella**: què no he entès?
+
+Es pot fer servir una plantilla similar a aquesta:
+
+","comprensió, dubtes, metacognició, autoavaluació, feedback","Avaluació Formativa i Feedback, Pensament Crític i Metacognició",Escala de valoració|https://jjdeharo.github.io/directo/escala.html,"Rutina d'autoavaluació en tres nivells: el que s'ha entès, el que genera dubtes i el que no s'ha comprès. Serveix per fer visibles dificultats, regular l'aprenentatge, orientar aclariments i afavorir la reflexió."
 metac_038,Equip-parella-individual,"Aquesta tècnica es basa en la retirada progressiva de suport.
 
 1. Els alumnes reben tres problemes de dificultat similar.
@@ -1103,7 +1083,7 @@ metac_038,Equip-parella-individual,"Aquesta tècnica es basa en la retirada prog
 
 Si es considera necessari en les passes 3 i 4, poden demanar ajuda a l'altra parella o la seva parella, respectivament.
 
-Font:  *Team-Pair-Solo, Cuseu*, 2002  en Grup de recerca sobre aprenentatge entre iguals. (2016).","retirada de suport, cooperació, parelles, resolució de problemes, autonomia",Cohesió i Cooperació,,"Tècnica basada a retirar progressivament el suport: primer es resol en equip, després en parella i finalment de manera individual. Serveix per desenvolupar autonomia, consolidar procediments i millorar la seguretat davant problemes similars."
+Font:  *Team-Pair-Solo, Cuseu*, 2002  en Grup de recerca sobre aprenentatge entre iguals. (2016).","retirada de suport, cooperació, parelles, resolució de problemes, autonomia","Resolució de problemes i Reptes, Cohesió i Cooperació",,"Tècnica basada a retirar progressivament el suport: primer es resol en equip, després en parella i finalment de manera individual. Serveix per desenvolupar autonomia, consolidar procediments i millorar la seguretat davant problemes similars."
 metac_039,Equips d'oients,"Agrupament Petit grup
 
 Objectius
@@ -1273,11 +1253,6 @@ Aquí tenim els passos per fer servir aquesta rutina de forma efectiva:
 1. Valora les diferents solucions que has generat, fent servir els criteris establerts pel professor.
 
 1. Selecciona la millor solució entre les que has valorat.","solucions, resolució de problemes, presa de decisions, pensament crític, cooperació","Resolució de problemes i Reptes, Pensament Crític i Metacognició, Cohesió i Cooperació",Pluja d'idees i vots|https://jjdeharo.github.io/directo/ideas.html,"Rutina en què l'alumnat proposa, valora i selecciona solucions davant una situació o problema. Serveix per desenvolupar anàlisi, presa de decisions, pensament crític i cooperació en la cerca de respostes viables."
-metac_047,GPT Maria: La IA experta en metodologies actives,"Hem creat un GPT (un GPT és un ChatGPT amb les seves pròpies instruccions i documentació), anomenat Maria, amb tot el coneixement d'aquesta web i el llibre de Pujolàs i Lago El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
-
-Pots demanar-li tècniques per aplicar en situacions concretes, idees per fer a classe i qualsevol dubte que tinguis en relació amb les metodologies actives.
-
-# Parla amb Maria","metodologies actives, recomanador, IA, cooperació, resolució de problemes","Resolució de problemes i Reptes, Cohesió i Cooperació",,"Recurs informatiu que presenta un GPT expert en metodologies actives. Serveix per oferir suport en l'elecció de tècniques, idees d'aplicació a l'aula i respostes a dubtes sobre aprenentatge cooperatiu i metodologies actives."
 metac_048,Graffiti Cooperatiu,"## Descripció
 Pluja d'idees rotativa per escrit.
 
@@ -1334,20 +1309,6 @@ Rutina que organitza l'aprenentatge en tres moments: allò que l'alumnat sap, al
 
 ## Exemple
 Abans d'estudiar els ecosistemes, els alumnes escriuen què saben sobre cadenes tròfiques, quines preguntes tenen sobre les relacions entre organismes i, al final, què han après sobre xarxes alimentàries i equilibri ecològic.","coneixements previs, preguntes, metacognició, síntesi, seguiment","Activació de coneixements previs, Pensament Crític i Metacognició, Avaluació Formativa i Feedback",Núvol de paraules|https://jjdeharo.github.io/directo/nube.html,"Rutina en tres moments: el que l'alumnat sap, el que vol saber i el que ha après. Serveix per activar coneixements previs, formular preguntes, orientar l'aprenentatge i revisar el progrés al final."
-metac_054,L'entrevista,"Aquesta tècnica permet un coneixement més profund entre els companys i companyes.
-
-1. Es formen parelles o grups de 3 de forma aleatòria (vegeu, per exemple, Grups esporàdics amb flippity).
-
-1. En primer lloc, consensuen una entrevista sobre les seves habilitats, aptituds i defectes que els permeti conèixer-se millor entre ells.
-
-1. Després, per torns, es fan l'entrevista uns als altres.
-
-1. En la segona fase, cada alumne escriu una frase que resumeixi com és el seu company.
-
-1. Per finalitzar cada alumne llegeix la frase a la resta del grup.
-
-Adaptat de Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
-","entrevista, coneixement personal, parelles, comunicació, síntesi","Processament i Anàlisi de la informació, Cohesió i Cooperació",,"Tècnica en què l'alumnat s'entrevista per parelles o petits grups i després presenta una síntesi sobre el company. Serveix per millorar el coneixement interpersonal, l'escolta, la comunicació i la cohesió del grup."
 metac_052,La brúixola (punts cardinals),"Aquesta tècnica es fa servir per introduir un tema, una idea o una proposta. Es tracta de fer servir els punts cardinals per donar l'opinió.
 
 - E: Entusiasme. Què us entusiasma d'aquesta idea o proposta? Quin avantatge té?
@@ -1391,6 +1352,20 @@ Conclusions
 El fet de donar a conèixer alguns trets de la nostra personalitat genera confiança mútua i desenvolupa la empatia.
 
 Font: ECO. (2007). Dinámicas para hacer grupo.","cohesió de grup, expressió personal, empatia, presentació oral","Cohesió i Cooperació, Comunicació i Creativitat",,"Dinàmica de cohesió en què l'alumnat presenta objectes personals que representen trets propis. Serveix per afavorir el coneixement mutu, generar confiança, desenvolupar empatia i millorar l'expressió personal."
+metac_054,L'entrevista,"Aquesta tècnica permet un coneixement més profund entre els companys i companyes.
+
+1. Es formen parelles o grups de 3 de forma aleatòria (vegeu, per exemple, Grups esporàdics amb flippity).
+
+1. En primer lloc, consensuen una entrevista sobre les seves habilitats, aptituds i defectes que els permeti conèixer-se millor entre ells.
+
+1. Després, per torns, es fan l'entrevista uns als altres.
+
+1. En la segona fase, cada alumne escriu una frase que resumeixi com és el seu company.
+
+1. Per finalitzar cada alumne llegeix la frase a la resta del grup.
+
+Adaptat de Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
+","entrevista, coneixement personal, parelles, comunicació, síntesi","Processament i Anàlisi de la informació, Cohesió i Cooperació",,"Tècnica en què l'alumnat s'entrevista per parelles o petits grups i després presenta una síntesi sobre el company. Serveix per millorar el coneixement interpersonal, l'escolta, la comunicació i la cohesió del grup."
 metac_055,La taula rodona,"La taula rodona és una tècnica de treball en grup que es basa en la participació activa de tots els membres del grup. Es realitza reunint els participants al voltant d'una taula, de manera que tothom pugui veure i escoltar els altres. Després, es fa una pregunta o es presenta un problema al grup, i cada persona té l'oportunitat de donar la seva opinió o de fer una aportació.
 
 El propòsit de la taula rodona és promoure la comunicació i el diàleg en grup, de manera que tothom pugui expressar les seves idees i opinions de manera respectuosa. A més, es treballa de manera col·laborativa per a arribar a un acord o a una solució comuna, que tingui en compte les idees i les perspectives de tots els membres del grup.
@@ -1418,6 +1393,31 @@ Per portar-la a terme podem fer el següent:
 Aplicació de la tècnica:
 
 ","debat, comunicació, consens, perspectiva, resolució de problemes","Processament i Anàlisi de la informació, Resolució de problemes i Reptes, Pensament Crític i Metacognició, Cohesió i Cooperació, Comunicació i Creativitat",,"Tècnica de diàleg grupal al voltant d'una pregunta o problema. Serveix per promoure la participació, escoltar perspectives diferents, construir acords, millorar la comunicació i buscar solucions compartides."
+metac_056,Llapis al centre,"MIDA DE L'EQUIP: Equips base. 
+
+OBJECTIUS: Resoldre problemes, repassar el que han après, debatre i argumentar, compartir i consensuar opinions. 
+
+PASSOS: 
+
+1. Els llapis de tots es col·loquen al centre de la taula: només es pot parlar i escoltar, no escriure. 
+1. El professor reparteix a cada equip un full amb tantes preguntes o exercicis com a membres tingui el grup. 
+1. Cada un dels membres serà responsable d'una de les qüestions, és a dir, serà l'encarregat de llegir-la en veu alta i coordinar les intervencions de la resta dels companys és a l'hora d'aportar la possible resposta. 
+1. Cadascun dels membres de l'equip ha de donar una resposta, argumentant les seves raons. Entre tots debaten i decideixen quina és la resposta correcta. 
+1. Quan s'arriba al consens, procedim a agafar el llapis que era al centre de la taula (d'aquí li ve el nom a la tècnica) i a realitzar l'exercici (tots alhora, el que ens garanteix la simultaneïtat). 
+1. Un cop resolt el primer exercici, serà torn per al company de la dreta, que es convertirà en l'encarregat de dirigir la resolució del segon exercici i així successivament. 
+
+OBSERVACIONS I CONSELLS PRÀCTICS: 
+Es pot combinar amb l'estructura Nombres iguals junts. 
+
+És molt útil per promoure la participació igualitària de tots i cada un dels membres, ja que tots han de participar com a coordinadors del procés i a més han d'intervenir en la producció de respostes per a totes i cadascuna de les qüestions plantejades (participació igualitària i interacció simultània). 
+
+Serà molt important tenir en compte i aplicar aquí un dels principis bàsics reguladors de la feina en equip cooperatiu: l'economia de recursos. Aquest concepte fa referència al fet que no li donem una fitxa amb les preguntes a cada un dels alumnes, sinó que vam lliurar només un full per equip de base. Aquest fet provoca una millora considerable en el procés d'escolta activa, ja que els alumnes han d'estar pendents de coordinador de cada qüestió, perquè en cas contrari no podran dur a feliç terme la tasca. A més, evita que hi hagi alumnes que per motiu de velocitat d'execució s'anticipin a la resta de l'equip en la realització de tasques.
+
+
+Font: Pérez, M. (2015). Dinámicas cooperativas.
+
+
+","argumentació, consens, cooperació, resolució de problemes, participació","Resolució de problemes i Reptes, Avaluació Formativa i Feedback, Cohesió i Cooperació",,"Tècnica cooperativa en què els llapis es deixen al centre mentre es debat una resposta abans d'escriure-la. Serveix per afavorir la participació equitativa, l'argumentació, el consens i la resolució conjunta de tasques."
 metac_057,Lectura compartida,"Extracte de l'article de Santiago Moll Aprendizaje cooperativo. La lectura compartida:
 
 L'activitat consta de quatre rondes de tres passes cadascuna.
@@ -1457,50 +1457,55 @@ Es tracta de llegir un text entre varis, quan un acaba comença un altre de form
 1. Quan li sembla, aquest alumne para també de llegir i comença un altre. D'aquesta forma es va llegint el text entre tots.
 
 És una tècnica que convé fer més d'una vegada, ja que milloren notablement amb el temps.","lectura, comprensió, expressió oral, escolta activa, cooperació","Processament i Anàlisi de la informació, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",,"Tècnica de lectura oral col·lectiva en què els alumnes continuen espontàniament la lectura quan un altre s'atura. Serveix per millorar comprensió, fluïdesa lectora, expressió oral, atenció i respecte dins del grup."
-metac_056,Llapis al centre,"MIDA DE L'EQUIP: Equips base. 
+metac_059,El que sé i el que sabem,"Aquesta activitat té com a objectius orientar cap als continguts i desenvolupar la creativitat.
 
-OBJECTIUS: Resoldre problemes, repassar el que han après, debatre i argumentar, compartir i consensuar opinions. 
+1. El docent anuncia el tema que es tractarà durant la sessió i sol·licita als alumnes que escriguin unes quantes línies sobre el que els suggereix. Per això, entre una fitxa de treball a cada alumne. La fitxa consta de dos apartats: individual (""el que sé..."") i cooperatiu (""el que sabem..."").
 
-PASSOS: 
+1. Els alumnes, de forma individual, escriuen al primer apartat el que saben sobre el tema.
 
-1. Els llapis de tots es col·loquen al centre de la taula: només es pot parlar i escoltar, no escriure. 
-1. El professor reparteix a cada equip un full amb tantes preguntes o exercicis com a membres tingui el grup. 
-1. Cada un dels membres serà responsable d'una de les qüestions, és a dir, serà l'encarregat de llegir-la en veu alta i coordinar les intervencions de la resta dels companys és a l'hora d'aportar la possible resposta. 
-1. Cadascun dels membres de l'equip ha de donar una resposta, argumentant les seves raons. Entre tots debaten i decideixen quina és la resposta correcta. 
-1. Quan s'arriba al consens, procedim a agafar el llapis que era al centre de la taula (d'aquí li ve el nom a la tècnica) i a realitzar l'exercici (tots alhora, el que ens garanteix la simultaneïtat). 
-1. Un cop resolt el primer exercici, serà torn per al company de la dreta, que es convertirà en l'encarregat de dirigir la resolució del segon exercici i així successivament. 
-
-OBSERVACIONS I CONSELLS PRÀCTICS: 
-Es pot combinar amb l'estructura Nombres iguals junts. 
-
-És molt útil per promoure la participació igualitària de tots i cada un dels membres, ja que tots han de participar com a coordinadors del procés i a més han d'intervenir en la producció de respostes per a totes i cadascuna de les qüestions plantejades (participació igualitària i interacció simultània). 
-
-Serà molt important tenir en compte i aplicar aquí un dels principis bàsics reguladors de la feina en equip cooperatiu: l'economia de recursos. Aquest concepte fa referència al fet que no li donem una fitxa amb les preguntes a cada un dels alumnes, sinó que vam lliurar només un full per equip de base. Aquest fet provoca una millora considerable en el procés d'escolta activa, ja que els alumnes han d'estar pendents de coordinador de cada qüestió, perquè en cas contrari no podran dur a feliç terme la tasca. A més, evita que hi hagi alumnes que per motiu de velocitat d'execució s'anticipin a la resta de l'equip en la realització de tasques.
+1. Un cop recollides les idees de tots dos, els alumnes formen parelles amb el company que tenen més a prop i construeixen un text que reculli les aportacions de tots dos. Tots dos escriuen el text al segon apartat i signen les dues fitxes. Lliuren una al professor i es queden amb l'altra per a la posada en comú.
 
 
-Font: Pérez, M. (2015). Dinámicas cooperativas.
+1. Es fa una posada en comú en gran grup. En acabar, lliuren la segona fitxa.
 
+CONSELLS
 
-","argumentació, consens, cooperació, resolució de problemes, participació","Resolució de problemes i Reptes, Avaluació Formativa i Feedback, Cohesió i Cooperació",,"Tècnica cooperativa en què els llapis es deixen al centre mentre es debat una resposta abans d'escriure-la. Serveix per afavorir la participació equitativa, l'argumentació, el consens i la resolució conjunta de tasques."
-metac_065,"M'agrada, no m'agrada","Aquesta tècnica permet el coneixement del grup.
+- Establir i controlar el temps de cadascuna de les fases.
+- Valorar la generació de respostes per sobre fins i tot de la correcció d'aquestes.
+- Utilitzar les aportacions dels alumnes a l'hora de desenvolupar el tema.
 
-Traçar una línia imaginària a la classe i sol·licitar als participants que es posin drets a un dels costats de la mateixa (suposem, a l'esquerra). Qui coordini demanarà als que els agradi alguna cosa (per exemple, ballar) que es posin a l'altre costat. Haurà d'anar dient coses que els poden agradar o no (algunes a la majoria i altres a uns pocs), per exemple si els agrada cantar, anar al dentista, etc.
+Font: CRA Los Olivos. (2017). Técnicas de aprendizaje cooperativo.","coneixements previs, parelles, síntesi, posada en comú, cooperació","Activació de coneixements previs, Processament i Anàlisi de la informació, Cohesió i Cooperació, Comunicació i Creativitat",,"Activitat en què primer s'escriu individualment el que se sap sobre un tema i després es construeix una resposta compartida. Serveix per activar coneixements previs, contrastar idees i orientar el desenvolupament de la sessió."
+metac_060,Els 5 per què,"La tècnica de les ""5 per què"" es pot utilitzar  per a aprofundir en els conceptes i idees que s'estan estudiant, i per a ajudar els alumnes a comprendre millor els diferents temes. Per exemple, es poden fer preguntes consecutives com ""per què és important aquest concepte?"", ""per què es relaciona aquest concepte amb altres?"", etc., per a ajudar els alumnes a reflexionar sobre els diferents conceptes i les seves relacions.
 
-D'aquesta forma hi haurà vegades que uns estaran amb la majoria del grup, però altres vegades no.
+ Això es pot fer mitjançant l'ús de preguntes consecutives (en principi són 5, però això no ha de ser estricte i es faran les que calgui) que ajudin als alumnes a reflexionar sobre els diferents conceptes i les seves relacions.
 
-Un cop realitzat, convidarà els participants que acordin amb aquell que també passin cap a aquest costat, i oferirà la possibilitat d'acostar-se a la línia, però sense creuar-la, als que acordin en part.
+Per utilitzar la tècnica de les ""5 per què"", el professorat pot seguir els següents passos:
 
-Després compartim i posem en
-comú la dinàmica:
+1. Seleccionar el tema o concepte que es vol estudiar.
 
-- Com em sento manifestant els meus sentiments?
-- A vegades podem veure que altres persones se senten com nosaltres?
-- Com ens fa sentir quan veiem que altres persones senten el mateix?
+1. Fer una pregunta oberta sobre el tema, com ""per què és important aquest concepte?""
 
-Fonts: 
+1. Animar als alumnes a fer més preguntes sobre el tema, utilitzant la pregunta ""per què?"" per a aprofundir en els diferents conceptes.
 
-- Dipsalut. (2016). Dinàmiques curtes de cohesió de grup i acceptació.
-- Dinámicas grupales. (2021). Dinámica Me Gusta y No Me Gusta.","cohesió de grup, expressió personal, empatia, participació","Construcció de coneixement, Cohesió i Cooperació",,"Dinàmica en què l'alumnat es posiciona físicament segons gustos, preferències o opinions. Serveix per afavorir el coneixement mutu, expressar afinitats, acceptar diferències i reforçar la cohesió del grup."
+1. Orientar als alumnes a fer preguntes rellevants i que ajudin a comprendre millor els conceptes, i a evitar donar respostes tancades o directes.
+
+1. Anotar les preguntes i les respostes en una llista o en un mapa conceptual per ajudar als alumnes a visualitzar les relacions entre els diferents conceptes.
+
+1. Fer servir diferents estratègies per a estimular la reflexió i la discussió entre els alumnes, com ara fer servir jocs de rol o debats.
+
+1. Una vegada que els alumnes hagin après a fer servir la tècnica, els pot ser útil fer servir aquesta estratègia per a reflexionar sobre altres temes o matèries d'estudi per a millorar la seva comprensió i el seu aprenentatge.","preguntes, pensament crític, comprensió, metacognició, relacions","Processament i Anàlisi de la informació, Pensament Crític i Metacognició, Avaluació Formativa i Feedback",,"Rutina basada a encadenar preguntes de “per què” per aprofundir en un concepte o problema. Serveix per millorar la comprensió, identificar causes, relacionar idees i desenvolupar pensament crític."
+metac_061,Els quatre savis,"Es tracta d'una simplificació de la tècnica del trencaclosques.
+
+1. El mestre/a selecciona quatre participants del grup que dominin un determinat tema, habilitat o procediment (que siguin “savis” en una determinada cosa). Se'ls demana que es preparin bé, ja que hauran d'ensenyar què saben als seus companys i companyes de tot el grup.
+1. Un dia s'organitza una sessió, durant la qual els alumnes i les alumnes (excepte els que exerceixen el paper de “savi”) estaran distribuïts en equips esporàdics de quatre membres cadascun.
+1. A la primera fase de la sessió cada membre de cada equip haurà d'acudir a un dels “4 savis” perquè, juntament amb els components dels altres equips que han acudit al mateix “savi”, aquest els expliqui o els ensenyi el que sap.
+1. Després, a la segona fase de la sessió, cada alumne torna al seu equip d'origen, i cadascú haurà d'explicar o ensenyar a la resta dels seus companys o companyes de l'equip allò que els respectius “savis” els han ensenyat. D'aquesta manera, a cada equip de base s'intercanvien allò que cadascú, per separat, ha après del “savi” corresponent.
+
+Font: Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para aprender/aprender a cooperar”) para enseñar a aprender en equipo Implementación del aprendizaje cooperativo en el aula.
+
+## Exemple
+Per exemple, imagineu que es vol fer una activitat sobre l'ús dels pronoms febles en català. Es podrien seleccionar quatre estudiants que considerin que ja dominen aquest tema i se'ls demana que es preparin per explicar-ho als altres. Després, es dividiria el grup en equips de quatre estudiants i un alumne de cada grup aniria a veure un dels ""savis"" per a rebre instruccions sobre l'ús dels pronoms febles. Després de la primera fase, cada estudiant tornaria al seu equip i explicaria als seus companys el que ha après del ""savi"" que ha visitat. Així, tots els estudiants haurien après sobre l'ús dels pronoms febles gràcies a les explicacions dels diferents ""savis"".","experts, cooperació, ensenyament entre iguals, comunicació, síntesi","Construcció de coneixement, Cohesió i Cooperació, Comunicació i Creativitat",,"Tècnica en què alguns alumnes experts ensenyen diferents aspectes d'un contingut a la resta del grup. Serveix per promoure ensenyament entre iguals, responsabilitat, comunicació i aprenentatge cooperatiu."
+metac_062,Els Grups de Recerca,Veieu la secció Aprenentatge basat en situacions problematitzades (ABP).,"investigació, resolució de problemes, cooperació, treball en equip","Resolució de problemes i Reptes, Cohesió i Cooperació",,"Referència a una modalitat de treball basada en grups de recerca o situacions problematitzades. Serveix per organitzar l'aprenentatge al voltant de problemes, cooperació i investigació compartida."
 metac_063,Mapa conceptual a quatre bandes,"En acabar un tema, com a síntesi final, cada equip pot elaborar un mapa conceptual o un esquema que resumeixi tot el que s'ha treballat a classe sobre el tema en qüestió.
 
 1. El mestre o la mestra guiarà els estudiants a l'hora de decidir entre tots quins apartats s'hauran d'incloure en el mapa o esquema.
@@ -1517,7 +1522,7 @@ Font: Pujolàs, P. & Lago, J. R. (2011). El programa CA/AC (“cooperar para apr
 
 **Aplicació de la tècnica:**
 
-","mapa conceptual, síntesi, cooperació, organització de la informació, comunicació visual","Processament i Anàlisi de la informació, Comunicació i Creativitat",BoardLive: Pissarra col·laborativa|https://boardlive.github.io/,"Tècnica en què un equip construeix de manera cooperativa un mapa conceptual o esquema final. Serveix per organitzar informació, sintetitzar continguts, repartir responsabilitats i crear material d'estudi compartit."
+","mapa conceptual, síntesi, cooperació, organització de la informació, comunicació visual","Processament i Anàlisi de la informació, Construcció de coneixement, Cohesió i Cooperació, Comunicació i Creativitat",BoardLive: Pissarra col·laborativa|https://boardlive.github.io/,"Tècnica en què un equip construeix de manera cooperativa un mapa conceptual o esquema final. Serveix per organitzar informació, sintetitzar continguts, repartir responsabilitats i crear material d'estudi compartit."
 metac_064,Matriu de problemes,"La tècnica de la ""matriu de problemes"" es pot utilitzar per a ajudar els estudiants a identificar les diferents solucions possibles a un problema i valorar quines són les millors opcions en funció dels seus possibles efectes o conseqüències. Així, es pot fer una taula amb diferents possibles solucions a un problema en una de les columnes, i els possibles efectes o conseqüències d'aquestes solucions en una altra columna, i després els estudiants poden comparar les diferents opcions per a decidir quina és la millor solució.
 
 Es poden seguir els següents passos:
@@ -1549,6 +1554,25 @@ Aquesta taula recull les idees referent a ""com millorar el rendiment escolar"":
 |Eliminar distraccions	|Millora la concentració|
 
 Amb aquesta matriu, es poden comparar les diferents solucions i valorar quines són les millors opcions en funció dels seus possibles efectes o conseqüències. ","matriu, resolució de problemes, presa de decisions, conseqüències, anàlisi","Resolució de problemes i Reptes, Processament i Anàlisi de la informació",,"Tècnica que organitza possibles solucions i conseqüències en una taula o matriu. Serveix per analitzar alternatives, comparar efectes, prendre decisions justificades i treballar la resolució de problemes de manera ordenada."
+metac_065,"M'agrada, no m'agrada","Aquesta tècnica permet el coneixement del grup.
+
+Traçar una línia imaginària a la classe i sol·licitar als participants que es posin drets a un dels costats de la mateixa (suposem, a l'esquerra). Qui coordini demanarà als que els agradi alguna cosa (per exemple, ballar) que es posin a l'altre costat. Haurà d'anar dient coses que els poden agradar o no (algunes a la majoria i altres a uns pocs), per exemple si els agrada cantar, anar al dentista, etc.
+
+D'aquesta forma hi haurà vegades que uns estaran amb la majoria del grup, però altres vegades no.
+
+Un cop realitzat, convidarà els participants que acordin amb aquell que també passin cap a aquest costat, i oferirà la possibilitat d'acostar-se a la línia, però sense creuar-la, als que acordin en part.
+
+Després compartim i posem en
+comú la dinàmica:
+
+- Com em sento manifestant els meus sentiments?
+- A vegades podem veure que altres persones se senten com nosaltres?
+- Com ens fa sentir quan veiem que altres persones senten el mateix?
+
+Fonts: 
+
+- Dipsalut. (2016). Dinàmiques curtes de cohesió de grup i acceptació.
+- Dinámicas grupales. (2021). Dinámica Me Gusta y No Me Gusta.","cohesió de grup, expressió personal, empatia, participació","Cohesió i Cooperació, Comunicació i Creativitat",,"Dinàmica en què l'alumnat es posiciona físicament segons gustos, preferències o opinions. Serveix per afavorir el coneixement mutu, expressar afinitats, acceptar diferències i reforçar la cohesió del grup."
 metac_066,Minute Paper (Paper d'un minut),"## Descripció
 Tècnica d'avaluació formativa molt breu que permet recollir informació ràpida sobre allò que l'alumnat ha comprès i sobre els dubtes que manté. Es pot utilitzar al final d'una explicació, d'una activitat o d'una sessió.
 
@@ -1606,27 +1630,7 @@ Font Pérez, M. (2015). Dinámicas cooperativas.
 
 **Aplicació de la tècnica:**
 
-","responsabilitat individual, cooperació, avaluació formativa, repàs, participació","Avaluació Formativa i Feedback, Cohesió i Cooperació",,"Estructura cooperativa en què tots els membres preparen una tasca i un és triat a l'atzar per respondre. Serveix per reforçar la responsabilitat individual, l'ajuda mútua, el repàs i l'avaluació formativa."
-metac_070,Parada de tres minuts," Equips base.
-
-OBJECTIUS: Detectar comprensió sobre el que s'ha treballat, compartir i consensuar opinions, elaborar síntesi.
-
-PASSOS: 
-
-1. Quan el professor està realitzant una explicació a tot el grup, de tant en tant fa una parada de 3 minuts perquè cada equip de base pensi i reflexioni sobre el que els ha explicat fins llavors, i elaborin tres preguntes, que hauran de plantejar després, sobre el tema en qüestió. 
-1. Passats els 3 minuts cada equip planteja una de les tres preguntes pensades (una per equip en cada volta). Si la pregunta és semblant o igual a una altra ja plantejada, se la salten.
-1. Un cop plantejades totes les preguntes el professor prossegueix l'explicació fins a nova parada.
-OBSERVACIONS I CONSELLS PRÀCTICS:
-Es pot fer de forma oral o per escrit.
-És molt útil per detectar el que els alumnes han anat assimilant sobre el que nosaltres hem anat explicant. Ens dona un *feedback* molt interessant a nosaltres com a docents, alhora que ens permet detectar els errors cognitius subjacents en els diferents grups.
-Es pot canviar l'elaboració de les tres preguntes per l'escriptura de tres oracions que reflecteixin el més important del que s'ha explicat amb anterioritat.
-Podem combinar aquesta estructura amb l'estructura 1 - 2- 4, de manera que ens garantim la participació igualitària de tots els membres de l'equip base.
-La resolució de la tasca per part dels equips pot anar acompanyada d'una recompensa del grup i del professor, en forma d'elogi, bona nota, etc.
-
-Font: Pérez, M. (2015). Dinámicas cooperativas.
-
-
-","preguntes, comprensió, avaluació formativa, síntesi, feedback","Avaluació Formativa i Feedback, Processament i Anàlisi de la informació",,"Estructura en què el professor interromp l'explicació perquè els equips formulin preguntes o síntesis. Serveix per comprovar comprensió, activar la reflexió i ajustar l'ensenyament durant la sessió."
+","responsabilitat individual, cooperació, avaluació formativa, repàs, participació","Activació de coneixements previs, Resolució de problemes i Reptes, Avaluació Formativa i Feedback, Cohesió i Cooperació",,"Estructura cooperativa en què tots els membres preparen una tasca i un és triat a l'atzar per respondre. Serveix per reforçar la responsabilitat individual, l'ajuda mútua, el repàs i l'avaluació formativa."
 metac_069,"Paraula, idea, frase","Una rutina cooperativa per capturar l'essència i explorar el significat d'un text des d'una gran varietat de punts de vista.
 
 ## Finalitat: Quin tipus de pensament fomenta aquesta rutina?
@@ -1692,6 +1696,26 @@ Quins aspectes del text s'han oblidat en la discussió del grup? Què us porta a
 **Explicació de la tècnica:**
 
 ","lectura, síntesi, interpretació, discussió, reflexió","Processament i Anàlisi de la informació, Pensament Crític i Metacognició, Avaluació Formativa i Feedback, Cohesió i Cooperació, Comunicació i Creativitat",Núvol de paraules|https://jjdeharo.github.io/directo/nube.html,"Rutina en què l'alumnat selecciona una paraula, una idea i una frase significatives d'un text. Serveix per captar l'essència, compartir interpretacions, detectar temes comuns i millorar la comprensió lectora."
+metac_070,Parada de tres minuts," Equips base.
+
+OBJECTIUS: Detectar comprensió sobre el que s'ha treballat, compartir i consensuar opinions, elaborar síntesi.
+
+PASSOS: 
+
+1. Quan el professor està realitzant una explicació a tot el grup, de tant en tant fa una parada de 3 minuts perquè cada equip de base pensi i reflexioni sobre el que els ha explicat fins llavors, i elaborin tres preguntes, que hauran de plantejar després, sobre el tema en qüestió. 
+1. Passats els 3 minuts cada equip planteja una de les tres preguntes pensades (una per equip en cada volta). Si la pregunta és semblant o igual a una altra ja plantejada, se la salten.
+1. Un cop plantejades totes les preguntes el professor prossegueix l'explicació fins a nova parada.
+OBSERVACIONS I CONSELLS PRÀCTICS:
+Es pot fer de forma oral o per escrit.
+És molt útil per detectar el que els alumnes han anat assimilant sobre el que nosaltres hem anat explicant. Ens dona un *feedback* molt interessant a nosaltres com a docents, alhora que ens permet detectar els errors cognitius subjacents en els diferents grups.
+Es pot canviar l'elaboració de les tres preguntes per l'escriptura de tres oracions que reflecteixin el més important del que s'ha explicat amb anterioritat.
+Podem combinar aquesta estructura amb l'estructura 1 - 2- 4, de manera que ens garantim la participació igualitària de tots els membres de l'equip base.
+La resolució de la tasca per part dels equips pot anar acompanyada d'una recompensa del grup i del professor, en forma d'elogi, bona nota, etc.
+
+Font: Pérez, M. (2015). Dinámicas cooperativas.
+
+
+","preguntes, comprensió, avaluació formativa, síntesi, feedback","Avaluació Formativa i Feedback, Processament i Anàlisi de la informació",,"Estructura en què el professor interromp l'explicació perquè els equips formulin preguntes o síntesis. Serveix per comprovar comprensió, activar la reflexió i ajustar l'ensenyament durant la sessió."
 metac_071,Parelles de detectius,"1. Quan inicieu una unitat didàctica, plantegeu una pregunta o qüestió complexa, que desperti l'interès i la curiositat dels alumnes sobre el tema a tractar.
 
 1. Els alumnes reflexionen sobre la qüestió i intenten establir dues vies diferents de donar-hi resposta.
@@ -1732,7 +1756,7 @@ Desenvolupament
 
 Font: CRA Los Olivos. (2017). Técnicas de aprendizaje cooperativo.
 
-","coneixements previs, parelles, diàleg, consens, participació","Activació de coneixements previs, Cohesió i Cooperació",,"Tècnica en què l'alumnat respon preguntes per parelles durant una sessió. Serveix per activar coneixements previs, fomentar diàleg, generar respostes diverses i afavorir la participació abans de la posada en comú."
+","coneixements previs, parelles, diàleg, consens, participació","Activació de coneixements previs, Cohesió i Cooperació, Comunicació i Creativitat",,"Tècnica en què l'alumnat respon preguntes per parelles durant una sessió. Serveix per activar coneixements previs, fomentar diàleg, generar respostes diverses i afavorir la participació abans de la posada en comú."
 metac_073,Peer Instruction (Instrucció entre iguals),"## Descripció
 Tècnica desenvolupada per Eric Mazur en què l'alumnat respon primer de forma individual a una pregunta conceptual i després discuteix la resposta amb els seus companys. És especialment adequada per detectar idees errònies i millorar la comprensió de conceptes difícils.
 
@@ -1826,17 +1850,6 @@ metac_076,Placemat consensus,"Aquesta tècnica és molt senzilla d'aplicar. Amb 
 1. El professor pregunta al portaveu com han arribat a aquest consens i quin és, també si han comès errors.
 
 Adaptat de: Colegio Ártica. (2018). Construimos nuestro propio aprendizaje.","consens, cooperació, resolució de problemes, presa de decisions, argumentació","Resolució de problemes i Reptes, Cohesió i Cooperació",,"Tècnica en què cada membre escriu una resposta i l'equip consensua una solució comuna. Serveix per promoure participació individual, debat, consens i resolució cooperativa de problemes."
-metac_081,Pont 3 - 2 - 1,"Aquesta rutina es fa dues vegades, una en començar un tema i altre en acabar-lo, d'aquesta forma poden reflexionar sobre el seu aprenentatge.
-
-1. Els alumnes, abans de començar la sessió docent, escriuen 3 idees o paraules sobre el que els suggereix el tema, 2 preguntes i una analogia o metàfora, aquest últim pot ser també una imatge.
-
-1. En acabar, tornen a fer el mateix i comparen les seves respostes reflexionant com han canviat les seves idees i per què.
-
-1. Després es comparteixen les conclusions de cada un amb la resta de la classe.
-
-
-
-","coneixements previs, canvi conceptual, metacognició, preguntes, analogia","Pensament Crític i Metacognició, Activació de coneixements previs",,"Rutina que es fa abans i després d'un tema amb tres idees, dues preguntes i una analogia. Serveix per activar coneixements previs, observar canvis de pensament i afavorir la metacognició."
 metac_077,Portfolio (dossier d'aprenentatge),"El dossier d'aprenentatge (portfolio, eportfolio o dossier digital) és una col·lecció digital personal d'informació que descriu i il·lustra l'aprenentatge d'una persona, l'experiència professional i les seves fites aportant evidències de l'aprenentatge i reflexions sobre aquestes.
 
 Les evidències poden incloure mostres d'escrits, fotos, vídeos, treballs de recerca, observacions de professorat i companys, i /o reflexions.** L'aspecte fonamental d'un portfolio és la reflexió sobre les evidències**, perquè s'han seleccionat i què s'ha après del procés de desenvolupar el dossier d'aprenentatge (Guilana, S., 2009).
@@ -1967,35 +1980,17 @@ Creació d'un hort comunitari en un barri amb pocs espais verds i alta concentra
    1. Es buscarien possibles col·laboracions amb altres iniciatives similars per estendre el program.
 
 ","aprenentatge servei, comunitat, projecte, reflexió, avaluació, cooperació","Processament i Anàlisi de la informació, Resolució de problemes i Reptes, Pensament Crític i Metacognició, Avaluació Formativa i Feedback, Cohesió i Cooperació",,"Projecte que combina aprenentatge curricular i servei a la comunitat en una necessitat real de l'entorn. Serveix per formar l'alumnat mitjançant acció social, reflexió, cooperació i avaluació de resultats."
-metac_001,Què et fa dir això?,"Aquesta rutina de pensament ajuda a reflexionar sobre el propi coneixement. Pot ser molt útil per al desenvolupament crític i la defensa d'hipòtesis.
+metac_081,Pont 3 - 2 - 1,"Aquesta rutina es fa dues vegades, una en començar un tema i altre en acabar-lo, d'aquesta forma poden reflexionar sobre el seu aprenentatge.
 
-De l'entrada Rutines de pensament:
+1. Els alumnes, abans de començar la sessió docent, escriuen 3 idees o paraules sobre el que els suggereix el tema, 2 preguntes i una analogia o metàfora, aquest últim pot ser també una imatge.
 
-## COM S'APLICA:
+1. En acabar, tornen a fer el mateix i comparen les seves respostes reflexionant com han canviat les seves idees i per què.
 
-En aquesta rutina de pensament es demana als estudiants que descriguin alguna cosa: com a objecte o concepte. I després han de donar suport a la interpretació amb l'evidència.
+1. Després es comparteixen les conclusions de cada un amb la resta de la classe.
 
-És útil quan s'utilitza en objectes com obres d'art o artefactes històrics, però també pot ser utilitzat per explorar un poema, fer observacions científiques i hipòtesis, o investigar les idees més conceptuals (és a dir: la democràcia…,).
 
-La rutina es pot adaptar per ser utilitzada amb gairebé qualsevol tema i també pot ser útil per a la recopilació d'informació o saber els conceptes generals dels estudiants en la introducció d'un nou tema.
 
-## DESENVOLUPAMENT DE LA RUTINA:
-
-En la majoria dels casos, la rutina pren la forma presentant-la a tota una classe o grup de conversa, usant com a inici un objecte o tema central, però també es pot utilitzar en petits grups o per parelles. La primera vegada que es poses en pràctica la rutina amb els teus alumnes, pots ajudar els/les alumnes fent preguntes i que els ajudin a canalitzar el tema i així entre tots van interpretant i concloent amb l'objectiu de la rutina.
-
-Les preguntes bàsiques poden ser moltes i es poden variar en un nombre i maneres, depenent del context, alguns exemples poden ser: Què sap vostè? Què és el que veus o saps que et fa dir això?, encara que també és possible que ens vinguin bé treballar les interpretacions que els alumnes fan del tema que s'està treballant i d'aquesta manera podem fer servir preguntes com: Què veus? o Què sap vostè? Amb el temps els estudiants poden començar a donar suport automàticament a les seves interpretacions amb evidències i, finalment, els estudiants començaran a interioritzar la rutina.
-
----
-
-","evidències, interpretació, pensament crític, metacognició, reflexió","Processament i Anàlisi de la informació, Construcció de coneixement, Pensament Crític i Metacognició, Cohesió i Cooperació",,"Rutina de pensament en què l'alumnat interpreta una imatge, text, objecte o situació i justifica la resposta amb evidències. Serveix per desenvolupar pensament crític, millorar l'observació, fonamentar hipòtesis i explicar per què se sosté una idea."
-metac_002,Qui és qui?,"En aquesta dinàmica es tracta que els alumnes es defineixin a si mateixos, però no físicament sinó el seu caràcter, aficions o gustos.
-
-1. El professor/a explica una breu història, per exemple, que rebran la visita d'un personatge famós i han d'escriure una carta de presentació.
-1. Els alumnes escriuen una carta on parlin dels seus gustos, aficions, el seu caràcter, etc., però no sobre el seu aspecte físic ni com van vestits. És bo que el professorat s'impliqui i escrigui també la seva pròpia descripció.
-1. Es van llegint les cartes una a una i els alumnes intenten esbrinar qui l'ha escrit.
-
-Font: Romero, G.A. (2009). Técnicas para trabajar la cohesión de una clase.
-","cohesió de grup, expressió personal, escolta activa, presentació oral",Cohesió i Cooperació,,"Dinàmica de cohesió en què cada alumne escriu una descripció personal sense mencionar l'aspecte físic i el grup intenta endevinar de qui es tracta. Serveix per afavorir el coneixement mutu, millorar l'expressió personal i crear confiança."
+","coneixements previs, canvi conceptual, metacognició, preguntes, analogia","Pensament Crític i Metacognició, Activació de coneixements previs",,"Rutina que es fa abans i després d'un tema amb tres idees, dues preguntes i una analogia. Serveix per activar coneixements previs, observar canvis de pensament i afavorir la metacognició."
 metac_082,Quiz-Quiz-Trade (Intercanvi de targetes),"## Descripció
 Una estructura de Kagan molt dinàmica per al repàs de continguts.
 
@@ -2131,7 +2126,7 @@ Conclusions
 
 A la nostra vida hi ha elements significatius. Si es comparteixen s'està reconeixent i valorant a les altres persones i també a nosaltres mateixos.
 
-Font: ECO. (2007). Dinámicas para hacer grupo.","cohesió de grup, coneixement personal, preguntes, creativitat, parelles","Construcció de coneixement, Cohesió i Cooperació",,"Dinàmica de cohesió en què l'alumnat ofereix pistes personals perquè altres descobreixin el seu significat. Serveix per afavorir el coneixement mutu, la creativitat, l'escolta i la interacció en parelles o grup."
+Font: ECO. (2007). Dinámicas para hacer grupo.","cohesió de grup, coneixement personal, preguntes, creativitat, parelles","Cohesió i Cooperació, Comunicació i Creativitat",,"Dinàmica de cohesió en què l'alumnat ofereix pistes personals perquè altres descobreixin el seu significat. Serveix per afavorir el coneixement mutu, la creativitat, l'escolta i la interacció en parelles o grup."
 metac_090,Seminari socràtic,"## Descripció
 Tècnica de diàleg estructurat al voltant d'un text, una imatge, un problema o una qüestió oberta. L'objectiu no és guanyar un debat, sinó construir comprensió mitjançant preguntes, escolta i argumentació.
 
@@ -2227,7 +2222,7 @@ Consisteix a contestar unes preguntes d'aquest estil:
 - Una apreciació o opinió sobre la classe.
 
 Hi ha moltes variacions possibles, podeu veure més exemples en format editable a Orientacionandujar. (2019). EXIT TICKET editables PARA EVALUAR EL PROCESO.
-","avaluació formativa, síntesi, dubtes, feedback, tancament",Activació de coneixements previs,Tiquets de sortida|https://jjdeharo.github.io/directo/ticket.html,"Activitat de tancament en què l'alumnat respon breument què ha après, quin dubte manté o com valora la sessió. Serveix per recollir evidències ràpides, ajustar l'ensenyament i afavorir la reflexió final."
+","avaluació formativa, síntesi, dubtes, feedback, tancament","Avaluació Formativa i Feedback, Pensament Crític i Metacognició",Tiquets de sortida|https://jjdeharo.github.io/directo/ticket.html,"Activitat de tancament en què l'alumnat respon breument què ha après, quin dubte manté o com valora la sessió. Serveix per recollir evidències ràpides, ajustar l'ensenyament i afavorir la reflexió final."
 metac_097,Titulars,"Una rutina per capturar l'essència
 
 ## Finalitat: Quin tipus de pensament fomenta aquesta rutina?
