@@ -10,7 +10,7 @@
 
 - **+100 técnicas** descritas con ámbitos, tags y recursos enlazados
 - **Búsqueda** por nombre, descripción y etiquetas
-- **Filtrado por ámbito** (Pensamiento Crítico, Cohesión y Cooperación, etc.)
+- **Filtrado jerárquico** por bloque principal y ámbito temático
 - **Paginación** configurable: 10, 25, 50 o todas las técnicas
 - **Favoritos** con categorías personalizables, persistentes en el navegador
 - **Compartir** selecciones y colecciones mediante URL

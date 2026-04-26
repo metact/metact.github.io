@@ -211,14 +211,20 @@
       font-weight: 800;
     }
 
-    /* ── Field tabs ── */
+    /* ── Filter tabs ── */
+    .block-nav,
     .field-nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       padding: 0 20px;
       overflow-x: visible;
     }
-    .field-nav-inner {
+    .block-nav {
+      background: #fff7ed;
+      border-bottom-color: #fed7aa;
+    }
+    .field-nav-inner,
+    .block-nav-inner {
       max-width: 1400px;
       margin: 0 auto;
       display: flex;
@@ -226,7 +232,9 @@
       gap: 2px 4px;
       padding: 4px 0;
     }
-    .field-tab {
+    .block-nav-inner { padding: 7px 0 5px; }
+    .field-tab,
+    .block-tab {
       padding: 8px 12px;
       border: none;
       background: transparent;
@@ -240,12 +248,27 @@
       transition: color .12s, border-color .12s;
       flex-shrink: 0;
     }
+    .block-tab {
+      font-size: .84rem;
+      font-weight: 650;
+      color: #9a3412;
+    }
     .field-tab:hover { color: var(--text); }
+    .block-tab:hover {
+      color: #7c2d12;
+      background: #ffedd5;
+    }
     .field-tab.active {
       color: var(--primary);
       font-weight: 700;
       background: #eff6ff;
       box-shadow: inset 0 0 0 1px #bfdbfe;
+    }
+    .block-tab.active {
+      color: #fff;
+      font-weight: 800;
+      background: #ea580c;
+      box-shadow: inset 0 0 0 1px #c2410c;
     }
 
     /* ── Shared banner ── */
@@ -393,12 +416,23 @@
     .card:hover .card-prog-icon { opacity: 1; }
 
     .card-fields { display: flex; flex-wrap: wrap; gap: 5px; }
+    .card-block { display: flex; flex-wrap: wrap; gap: 5px; }
     .field-badge {
       font-size: .68rem;
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 50px;
       border: 1px solid transparent;
+      letter-spacing: .02em;
+    }
+    .block-badge {
+      font-size: .68rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 50px;
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      color: #9a3412;
       letter-spacing: .02em;
     }
     .card-summary { font-size: .78rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -890,6 +924,11 @@
   </div>
 </header>
 
+<!-- ═══ BLOCK TABS ═══ -->
+<nav class="block-nav">
+  <div class="block-nav-inner" id="blockTabs"></div>
+</nav>
+
 <!-- ═══ FIELD TABS ═══ -->
 <nav class="field-nav">
   <div class="field-nav-inner" id="fieldTabs"></div>
@@ -928,6 +967,7 @@
       </div>
     </div>
     <div class="modal-meta">
+      <div class="card-block" id="modalBlock"></div>
       <div class="card-fields" id="modalFields"></div>
       <div class="modal-tags-row" id="modalTags"></div>
     </div>
@@ -975,7 +1015,7 @@ const LOCAL_CSV = {
   en: 'data/metac - en.csv',
 };
 
-// Field color palette (8 ámbitos)
+// Field color palette
 const COLORS = [
   { bg:'#fff7ed', text:'#c2410c', border:'#fed7aa' },
   { bg:'#f0fdf4', text:'#15803d', border:'#bbf7d0' },
@@ -985,6 +1025,8 @@ const COLORS = [
   { bg:'#fef2f2', text:'#b91c1c', border:'#fecaca' },
   { bg:'#eef2ff', text:'#4338ca', border:'#c7d2fe' },
   { bg:'#fffbeb', text:'#b45309', border:'#fde68a' },
+  { bg:'#ecfeff', text:'#0e7490', border:'#a5f3fc' },
+  { bg:'#fdf2f8', text:'#be185d', border:'#fbcfe8' },
 ];
 
 // Maps field keywords → color index (works for ES, CA and EN)
@@ -997,6 +1039,212 @@ const FIELD_MAP = [
   ['pensament','pensamiento','crític','crítico','critical','metacog'],
   ['processament','procesamiento','processing','anàlisi','análisis','analysis'],
   ['resoluc','reptes','retos','problem solving','challenges'],
+  ['marcos pedagogicos','marcs pedagogics','pedagogical frameworks'],
+  ['rutinas de pensamiento','rutines de pensament','thinking routines'],
+];
+
+const BLOCK_DEFS = [
+  {
+    id: 'pedagogical-models',
+    labels: {
+      es: 'Modelos pedagógicos',
+      ca: 'Models pedagògics',
+      en: 'Pedagogical Models',
+    },
+    descriptions: {
+      es: 'Enfoques generales que orientan cómo se entiende y organiza la enseñanza y el aprendizaje.',
+      ca: 'Enfocaments generals que orienten com s’entén i s’organitza l’ensenyament i l’aprenentatge.',
+      en: 'General approaches that guide how teaching and learning are understood and organized.',
+    },
+  },
+  {
+    id: 'educational-frameworks',
+    labels: {
+      es: 'Marcos educativos',
+      ca: 'Marcs educatius',
+      en: 'Educational Frameworks',
+    },
+    descriptions: {
+      es: 'Marcos amplios que estructuran principios, competencias o maneras de diseñar experiencias educativas.',
+      ca: 'Marcs amplis que estructuren principis, competències o maneres de dissenyar experiències educatives.',
+      en: 'Broad frameworks that structure principles, competencies, or ways to design learning experiences.',
+    },
+  },
+  {
+    id: 'active-methodologies',
+    labels: {
+      es: 'Metodologías activas y rutinas de pensamiento',
+      ca: 'Metodologies actives i rutines de pensament',
+      en: 'Active Methodologies and Thinking Routines',
+    },
+    descriptions: {
+      es: 'Técnicas y rutinas que implican al alumnado de forma activa en pensar, investigar, crear o resolver.',
+      ca: 'Tècniques i rutines que impliquen l’alumnat de forma activa en pensar, investigar, crear o resoldre.',
+      en: 'Techniques and routines that actively involve students in thinking, investigating, creating, or solving.',
+    },
+  },
+  {
+    id: 'cooperative-learning',
+    labels: {
+      es: 'Organización del aprendizaje cooperativo',
+      ca: 'Organització de l’aprenentatge cooperatiu',
+      en: 'Cooperative Learning Organization',
+    },
+    descriptions: {
+      es: 'Estructuras para organizar equipos, interacción, roles y responsabilidad compartida en el aprendizaje cooperativo.',
+      ca: 'Estructures per organitzar equips, interacció, rols i responsabilitat compartida en l’aprenentatge cooperatiu.',
+      en: 'Structures for organizing teams, interaction, roles, and shared responsibility in cooperative learning.',
+    },
+    aliases: {
+      ca: ['Organització de l\'aprenentatge cooperatiu'],
+    },
+  },
+];
+
+const FIELD_DEFS = [
+  {
+    id: 'prior-knowledge',
+    labels: {
+      es: 'Activación de conocimientos previos',
+      ca: 'Activació de coneixements previs',
+      en: 'Activation of Prior Knowledge',
+    },
+    descriptions: {
+      es: 'Técnicas para hacer emerger ideas iniciales, experiencias y conocimientos antes de aprender algo nuevo.',
+      ca: 'Tècniques per fer emergir idees inicials, experiències i coneixements abans d’aprendre alguna cosa nova.',
+      en: 'Techniques for eliciting initial ideas, experiences, and knowledge before learning something new.',
+    },
+    aliases: {
+      en: ['Activating prior knowledge'],
+    },
+  },
+  {
+    id: 'information-processing',
+    labels: {
+      es: 'Procesamiento y Análisis de la información',
+      ca: 'Processament i Anàlisi de la informació',
+      en: 'Information Processing and Analysis',
+    },
+    descriptions: {
+      es: 'Técnicas para organizar, comparar, interpretar, resumir o analizar información.',
+      ca: 'Tècniques per organitzar, comparar, interpretar, resumir o analitzar informació.',
+      en: 'Techniques for organizing, comparing, interpreting, summarizing, or analyzing information.',
+    },
+  },
+  {
+    id: 'knowledge-building',
+    labels: {
+      es: 'Construcción de conocimiento',
+      ca: 'Construcció de coneixement',
+      en: 'Knowledge Building',
+    },
+    descriptions: {
+      es: 'Técnicas orientadas a elaborar comprensión nueva, conectar ideas y construir explicaciones.',
+      ca: 'Tècniques orientades a elaborar comprensió nova, connectar idees i construir explicacions.',
+      en: 'Techniques for building new understanding, connecting ideas, and constructing explanations.',
+    },
+    aliases: {
+      en: ['Knowledge Construction'],
+    },
+  },
+  {
+    id: 'problem-solving',
+    labels: {
+      es: 'Resolución de problemas y Retos',
+      ca: 'Resolució de problemes i Reptes',
+      en: 'Problem Solving and Challenges',
+    },
+    descriptions: {
+      es: 'Técnicas centradas en afrontar problemas, retos, decisiones o situaciones abiertas.',
+      ca: 'Tècniques centrades a afrontar problemes, reptes, decisions o situacions obertes.',
+      en: 'Techniques focused on problems, challenges, decisions, or open-ended situations.',
+    },
+  },
+  {
+    id: 'critical-thinking',
+    labels: {
+      es: 'Pensamiento Crítico y Metacognición',
+      ca: 'Pensament Crític i Metacognició',
+      en: 'Critical Thinking and Metacognition',
+    },
+    descriptions: {
+      es: 'Técnicas para justificar ideas, revisar el propio pensamiento, reflexionar y autorregular el aprendizaje.',
+      ca: 'Tècniques per justificar idees, revisar el propi pensament, reflexionar i autoregular l’aprenentatge.',
+      en: 'Techniques for justifying ideas, reviewing thinking, reflecting, and self-regulating learning.',
+    },
+    aliases: {
+      es: ['Pensamiento Crític y Metacognición'],
+      en: ['Critical Thinking', 'and metacognition'],
+    },
+  },
+  {
+    id: 'formative-assessment',
+    labels: {
+      es: 'Evaluación Formativa y Feedback',
+      ca: 'Avaluació Formativa i Feedback',
+      en: 'Formative Assessment and Feedback',
+    },
+    descriptions: {
+      es: 'Técnicas para recoger evidencias, dar retroalimentación y mejorar durante el proceso de aprendizaje.',
+      ca: 'Tècniques per recollir evidències, donar retroalimentació i millorar durant el procés d’aprenentatge.',
+      en: 'Techniques for gathering evidence, giving feedback, and improving during the learning process.',
+    },
+    aliases: {
+      es: ['Evaluación Formativa y Retroalimentación'],
+    },
+  },
+  {
+    id: 'cohesion-cooperation',
+    labels: {
+      es: 'Cohesión y Cooperación',
+      ca: 'Cohesió i Cooperació',
+      en: 'Cohesion and Cooperation',
+    },
+    descriptions: {
+      es: 'Técnicas para crear grupo, trabajar en equipo, compartir responsabilidades y cooperar.',
+      ca: 'Tècniques per crear grup, treballar en equip, compartir responsabilitats i cooperar.',
+      en: 'Techniques for building group cohesion, teamwork, shared responsibility, and cooperation.',
+    },
+  },
+  {
+    id: 'communication-creativity',
+    labels: {
+      es: 'Comunicación y Creatividad',
+      ca: 'Comunicació i Creativitat',
+      en: 'Communication and Creativity',
+    },
+    descriptions: {
+      es: 'Técnicas para expresar, dialogar, presentar, crear ideas o producir respuestas originales.',
+      ca: 'Tècniques per expressar, dialogar, presentar, crear idees o produir respostes originals.',
+      en: 'Techniques for expression, dialogue, presentation, idea generation, or original responses.',
+    },
+  },
+  {
+    id: 'pedagogical-frameworks',
+    labels: {
+      es: 'Marcos pedagógicos',
+      ca: 'Marcs pedagògics',
+      en: 'Pedagogical Frameworks',
+    },
+    descriptions: {
+      es: 'Ámbito para técnicas vinculadas con enfoques pedagógicos generales o marcos de diseño didáctico.',
+      ca: 'Àmbit per a tècniques vinculades amb enfocaments pedagògics generals o marcs de disseny didàctic.',
+      en: 'Field for techniques linked to general pedagogical approaches or instructional design frameworks.',
+    },
+  },
+  {
+    id: 'thinking-routines',
+    labels: {
+      es: 'Rutinas de pensamiento',
+      ca: 'Rutines de pensament',
+      en: 'Thinking Routines',
+    },
+    descriptions: {
+      es: 'Ámbito para rutinas breves y transferibles que hacen visible el pensamiento del alumnado.',
+      ca: 'Àmbit per a rutines breus i transferibles que fan visible el pensament de l’alumnat.',
+      en: 'Field for short, transferable routines that make students’ thinking visible.',
+    },
+  },
 ];
 
 const I18N = {
@@ -1005,6 +1253,10 @@ const I18N = {
     sub:          'Metodologías Activas',
     search:       'Buscar técnica, tag, programa o descripción…',
     all:          'Todas',
+    allBlocks:    'Todos los bloques',
+    allBlocksHint:'Mostrar técnicas de cualquier bloque principal',
+    allFields:    'Todos los ámbitos',
+    allFieldsHint:'Mostrar técnicas de cualquier ámbito temático dentro del bloque seleccionado',
     favBtn:       'Favoritos',
     favPanel:     'Favoritos',
     shareFavs:    'Compartir favoritos',
@@ -1070,6 +1322,10 @@ const I18N = {
     sub:          'Metodologies Actives',
     search:       'Cercar tècnica, tag, programa o descripció…',
     all:          'Totes',
+    allBlocks:    'Tots els blocs',
+    allBlocksHint:'Mostrar tècniques de qualsevol bloc principal',
+    allFields:    'Tots els àmbits',
+    allFieldsHint:'Mostrar tècniques de qualsevol àmbit temàtic dins del bloc seleccionat',
     favBtn:       'Preferits',
     favPanel:     'Preferits',
     shareFavs:    'Compartir preferits',
@@ -1135,6 +1391,10 @@ const I18N = {
     sub:          'Active Methodologies',
     search:       'Search technique, tag, resource or description…',
     all:          'All',
+    allBlocks:    'All blocks',
+    allBlocksHint:'Show techniques from any main block',
+    allFields:    'All fields',
+    allFieldsHint:'Show techniques from any thematic field within the selected block',
     favBtn:       'Favorites',
     favPanel:     'Favorites',
     shareFavs:    'Share favorites',
@@ -1208,6 +1468,7 @@ const S = {
   selectMode:   false,
   categories:   [],     // [{id, name, itemIds:[]}]
   search:       '',
+  block:        null,
   field:        null,
   modal:        null,
   shared:       null,
@@ -1238,7 +1499,7 @@ function parseCSV(raw) {
   return rows;
 }
 
-function toObjects(raw) {
+function toObjects(raw, lang = DEFAULT_LANG) {
   const rows = parseCSV(raw);
   if (rows.length < 2) return [];
   const headers = rows[0].map(h => h.trim().toLowerCase());
@@ -1251,25 +1512,33 @@ function toObjects(raw) {
     fields:  colIndex(headers, ['fields'], hasId ? 4 : 3),
     program: colIndex(headers, ['program'], hasId ? 5 : 4),
     summary: colIndex(headers, ['abstract', 'resumen', 'resum'], hasId ? 6 : 5),
+    block:   colIndex(headers, ['block', 'bloque', 'bloc'], hasId ? 7 : 6),
   };
 
   return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
     const rawFields = (r[col.fields] || '').split(',').map(s => s.trim()).filter(Boolean);
-    const fields = [], inlineProgs = [];
+    const block = normalizeBlock(r[col.block] || '', lang);
+    const fields = [], fieldIds = [], inlineProgs = [];
     rawFields.forEach(f => {
       if (f.includes('|')) {
         inlineProgs.push(f);
         return;
       }
-      const field = normField(f);
-      if (field && !fields.includes(field)) fields.push(field);
+      const field = normalizeField(f, lang);
+      if (field.id && !fieldIds.includes(field.id)) {
+        fieldIds.push(field.id);
+        fields.push(field.label);
+      }
     });
     return {
       id:       normalizeId(col.id >= 0 ? r[col.id] : '') || `row_${rowIndex + 1}`,
       name:     (r[col.name] || '').trim(),
       desc:     (r[col.desc] || '').trim(),
       tags:     (r[col.tags] || '').split(',').map(s => s.trim()).filter(Boolean),
+      block:    block.label,
+      blockId:  block.id,
       fields,
+      fieldIds,
       programs: [...parsePrograms(r[col.program] || ''), ...parsePrograms(inlineProgs.join(';'))],
       summary:  (r[col.summary] || '').trim(),
     };
@@ -1369,33 +1638,67 @@ function parsePrograms(raw) {
 
 // ─── FIELD UTILS ─────────────────────────────────────────────────────────────
 
-const FIELD_ALIASES = {
-  'evaluación formativa y retroalimentación': 'Evaluación Formativa y Feedback',
-  'pensamiento crític y metacognición': 'Pensamiento Crítico y Metacognición',
-  'activating prior knowledge': 'Activation of Prior Knowledge',
-  'activation of prior knowledge': 'Activation of Prior Knowledge',
-  'cohesion and cooperation': 'Cohesion and Cooperation',
-  'communication and creativity': 'Communication and Creativity',
-  'critical thinking': 'Critical Thinking and Metacognition',
-  'and metacognition': 'Critical Thinking and Metacognition',
-  'critical thinking and metacognition': 'Critical Thinking and Metacognition',
-  'formative assessment and feedback': 'Formative Assessment and Feedback',
-  'information processing and analysis': 'Information Processing and Analysis',
-  'knowledge building': 'Knowledge Construction',
-  'knowledge construction': 'Knowledge Construction',
-  'problem solving and challenges': 'Problem Solving and Challenges',
-};
+function canonicalKey(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[’`´]/g, "'")
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ');
+}
 
-// Normalize known field variants so tabs stay stable across languages.
-function normField(f) {
-  const value = String(f || '').trim();
-  return FIELD_ALIASES[value.toLowerCase()] || value;
+function taxonomyLabel(def, lang = S.lang) {
+  return def.labels[lang] || def.labels[DEFAULT_LANG] || def.id;
+}
+
+function taxonomyDescription(def, lang = S.lang) {
+  return (def.descriptions && (def.descriptions[lang] || def.descriptions[DEFAULT_LANG])) || '';
+}
+
+function taxonomyHint(label, description) {
+  return description ? `${label}: ${description}` : label;
+}
+
+function buildTaxonomyIndex(defs) {
+  const map = new Map();
+  defs.forEach(def => {
+    Object.values(def.labels).forEach(label => map.set(canonicalKey(label), def));
+    Object.values(def.aliases || {}).flat().forEach(alias => map.set(canonicalKey(alias), def));
+  });
+  return map;
+}
+
+const BLOCK_INDEX = buildTaxonomyIndex(BLOCK_DEFS);
+const FIELD_INDEX = buildTaxonomyIndex(FIELD_DEFS);
+
+function customTaxonomyId(prefix, value) {
+  const key = canonicalKey(value);
+  return key ? `${prefix}:${key}` : '';
+}
+
+function normalizeBlock(value, lang = S.lang) {
+  const raw = String(value || '').trim();
+  if (!raw) return { id: '', label: '' };
+  const def = BLOCK_INDEX.get(canonicalKey(raw));
+  return def
+    ? { id: def.id, label: taxonomyLabel(def, lang) }
+    : { id: customTaxonomyId('block', raw), label: raw };
+}
+
+function normalizeField(value, lang = S.lang) {
+  const raw = String(value || '').trim();
+  if (!raw) return { id: '', label: '' };
+  const def = FIELD_INDEX.get(canonicalKey(raw));
+  return def
+    ? { id: def.id, label: taxonomyLabel(def, lang) }
+    : { id: customTaxonomyId('field', raw), label: raw };
 }
 
 const colorCache = {};
 function fieldColor(name) {
   if (colorCache[name]) return colorCache[name];
-  const n = name.toLowerCase();
+  const n = canonicalKey(name);
   for (let i = 0; i < FIELD_MAP.length; i++) {
     if (FIELD_MAP[i].some(kw => n.includes(kw))) {
       return (colorCache[name] = COLORS[i]);
@@ -1411,11 +1714,67 @@ function badgeHTML(field) {
   return `<span class="field-badge" style="background:${c.bg};color:${c.text};border-color:${c.border}">${esc(field)}</span>`;
 }
 
-function allFields() {
+function blockBadgeHTML(block) {
+  return block ? `<span class="block-badge">${esc(block)}</span>` : '';
+}
+
+function knownOrder(defs, id) {
+  const idx = defs.findIndex(def => def.id === id);
+  return idx === -1 ? defs.length : idx;
+}
+
+function taxonomyDescriptionById(defs, id, lang = S.lang) {
+  const def = defs.find(item => item.id === id);
+  return def ? taxonomyDescription(def, lang) : '';
+}
+
+function blockDescription(id, lang = S.lang) {
+  return taxonomyDescriptionById(BLOCK_DEFS, id, lang);
+}
+
+function fieldDescription(id, lang = S.lang) {
+  return taxonomyDescriptionById(FIELD_DEFS, id, lang);
+}
+
+function blockScopedData() {
   const data = S.data[S.lang] || [];
-  const set = new Set();
-  data.forEach(d => d.fields.forEach(f => set.add(f)));
-  return [...set].sort();
+  return S.block ? data.filter(item => item.blockId === S.block) : data;
+}
+
+function allBlocks() {
+  const map = new Map();
+  (S.data[S.lang] || []).forEach(item => {
+    if (item.blockId && !map.has(item.blockId)) map.set(item.blockId, {
+      id: item.blockId,
+      label: item.block,
+      description: blockDescription(item.blockId),
+    });
+  });
+  return [...map.values()]
+    .sort((a, b) => knownOrder(BLOCK_DEFS, a.id) - knownOrder(BLOCK_DEFS, b.id) || a.label.localeCompare(b.label));
+}
+
+function allFields() {
+  const map = new Map();
+  blockScopedData().forEach(item => {
+    item.fieldIds.forEach((id, idx) => {
+      if (id && !map.has(id)) map.set(id, {
+        id,
+        label: item.fields[idx],
+        description: fieldDescription(id),
+      });
+    });
+  });
+  return [...map.values()]
+    .sort((a, b) => knownOrder(FIELD_DEFS, a.id) - knownOrder(FIELD_DEFS, b.id) || a.label.localeCompare(b.label));
+}
+
+function syncActiveFilters() {
+  if (S.block && !allBlocks().some(block => block.id === S.block)) {
+    S.block = null;
+    S.field = null;
+  }
+  if (S.field && !allFields().some(field => field.id === S.field)) S.field = null;
 }
 
 // ─── DESCRIPTION FORMATTER ───────────────────────────────────────────────────
@@ -1522,7 +1881,7 @@ async function loadLang(lang) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     raw = await res.text();
   }
-  S.data[lang] = toObjects(raw);
+  S.data[lang] = toObjects(raw, lang);
   S.byId[lang] = buildIdMap(S.data[lang]);
   normalizeStoredRefs(lang);
 }
@@ -1653,20 +2012,45 @@ function applyI18N() {
   updateSearchUI();
 }
 
-// ─── RENDER: FIELD TABS ──────────────────────────────────────────────────────
+// ─── RENDER: FILTER TABS ─────────────────────────────────────────────────────
+
+function renderBlockTabs() {
+  const wrap = document.getElementById('blockTabs');
+  wrap.innerHTML = '';
+  const mkTab = (label, val, hint = label) => {
+    const b = document.createElement('button');
+    b.className = 'block-tab' + (S.block === val ? ' active' : '');
+    b.textContent = label;
+    b.title = hint;
+    b.setAttribute('aria-label', hint);
+    b.onclick = () => {
+      S.block = S.block === val ? null : val;
+      S.field = null;
+      S.page = 0;
+      renderBlockTabs();
+      renderTabs();
+      renderCards();
+    };
+    wrap.appendChild(b);
+  };
+  mkTab(i('allBlocks'), null, i('allBlocksHint'));
+  allBlocks().forEach(block => mkTab(block.label, block.id, taxonomyHint(block.label, block.description)));
+}
 
 function renderTabs() {
   const wrap = document.getElementById('fieldTabs');
   wrap.innerHTML = '';
-  const mkTab = (label, val) => {
+  const mkTab = (label, val, hint = label) => {
     const b = document.createElement('button');
     b.className = 'field-tab' + (S.field === val ? ' active' : '');
     b.textContent = label;
+    b.title = hint;
+    b.setAttribute('aria-label', hint);
     b.onclick = () => { S.field = S.field === val ? null : val; S.page = 0; renderTabs(); renderCards(); };
     wrap.appendChild(b);
   };
-  mkTab(i('all'), null);
-  allFields().forEach(f => mkTab(f, f));
+  mkTab(i('allFields'), null, i('allFieldsHint'));
+  allFields().forEach(field => mkTab(field.label, field.id, taxonomyHint(field.label, field.description)));
 }
 
 // ─── RENDER: CARDS ───────────────────────────────────────────────────────────
@@ -1681,8 +2065,11 @@ function filteredData() {
     }).filter(Boolean)
     : data.map((item, idx) => ({ item, id: item.id, idx }));
 
-  if (!S.shared && S.field)
-    indexed = indexed.filter(({ item }) => item.fields.includes(S.field));
+  if (S.block)
+    indexed = indexed.filter(({ item }) => item.blockId === S.block);
+
+  if (S.field)
+    indexed = indexed.filter(({ item }) => item.fieldIds.includes(S.field));
 
   const q = S.search.toLowerCase().trim();
   if (q) indexed = indexed.filter(({ item }) =>
@@ -1690,6 +2077,7 @@ function filteredData() {
     item.name.toLowerCase().includes(q) ||
     item.desc.toLowerCase().includes(q) ||
     item.summary.toLowerCase().includes(q) ||
+    item.block.toLowerCase().includes(q) ||
     item.tags.some(t => t.toLowerCase().includes(q)) ||
     item.fields.some(f => f.toLowerCase().includes(q)) ||
     item.programs.some(p =>
@@ -1825,6 +2213,7 @@ function renderCards() {
           <button class="fav-star ${fav ? 'active' : ''}" data-id="${esc(id)}">⭐</button>
         </div>
       </div>
+      ${item.block ? `<div class="card-block">${blockBadgeHTML(item.block)}</div>` : ''}
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
       <div class="card-summary">${esc(item.summary)}</div>
       <button class="summary-toggle">${i('more')}</button>
@@ -1906,6 +2295,8 @@ function openModal(itemId) {
   S.modal = item.id;
 
   document.getElementById('modalTitle').textContent = item.name;
+  document.getElementById('modalBlock').innerHTML = blockBadgeHTML(item.block);
+  document.getElementById('modalBlock').style.display = item.block ? '' : 'none';
   document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
   document.getElementById('modalTags').innerHTML = item.summary ? esc(item.summary) : '';
   document.getElementById('modalTags').style.display = item.summary ? '' : 'none';
@@ -2321,10 +2712,11 @@ async function switchLang(lang) {
 
   if (S.shared) S.shared = refsToItemIds(S.shared, lang);
   normalizeStoredRefs(lang);
+  syncActiveFilters();
   updateFavBadge();
   updateSharedBanner();
-  S.field = null;
   S.page = 0;
+  renderBlockTabs();
   renderTabs();
   renderCards();
   if (S.modal !== null) openModal(S.modal);
@@ -2357,9 +2749,11 @@ async function init() {
     return;
   }
   if (S.shared) S.shared = refsToItemIds(S.shared);
+  syncActiveFilters();
   updateFavBadge();
   updateSharedBanner();
 
+  renderBlockTabs();
   renderTabs();
   renderCards();
 
