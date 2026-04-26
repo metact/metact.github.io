@@ -1,4 +1,4 @@
-# Metac — Metodologías Activas
+# Metac — Recursos metodológicos para el aula
 
 **Metac** es un catálogo web de recursos metodológicos de aprendizaje activo, pensado para docentes que quieren explorar, guardar y compartir metodologías de forma rápida y sencilla.
 
