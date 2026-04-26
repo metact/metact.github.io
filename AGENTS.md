@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is a zero-dependency static web app. The whole application lives in `index.html`, with CSS in `<style>`, markup in the HTML body, and all behavior in an inline `<script>`. Runtime data also exists in `data/metac-ca.csv` and `data/metac-es.csv`, which mirror the Catalan and Spanish sources and act as local fallback files.
+This repository is a zero-dependency static web app. The whole application lives in `index.html`, with CSS in `<style>`, markup in the HTML body, and all behavior in an inline `<script>`. Runtime data also exists in `data/metac - ca.csv` and `data/metac - es.csv`, which mirror the Catalan and Spanish sources and act as local fallback files.
 
 Keep the file organized by responsibility: theme/layout styles first, structural HTML next, then JavaScript sections such as config, i18n, state, parsing, rendering, and initialization. When adding features, preserve that order instead of scattering logic.
 
@@ -20,7 +20,7 @@ Use `camelCase` for variables and functions, `UPPER_SNAKE_CASE` for configuratio
 ## Testing Guidelines
 There is no automated test suite yet. Validate changes manually in both languages and check the main flows: search, field filters, favorites, modal details, shared URLs, and CSV loading fallback.
 
-When editing CSV files, keep row order aligned across both language files because favorites and shared links depend on positional indices.
+When editing CSV files, keep the `ID` values stable and aligned across both language files. Favorites, categories, and shared links depend on those IDs, not on row order.
 
 ## Commit & Pull Request Guidelines
 The repository currently has no commit history, so use a simple convention: short imperative subjects such as `Add offline CSV fallback` or `Fix modal close behavior`. Keep commits focused on one change.

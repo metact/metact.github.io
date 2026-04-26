@@ -955,13 +955,13 @@
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 
 const CSV = {
-  es: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSM-sRVuqzd_JSTClv8y8yLJ79TpSS-NsJWDMg4ZHOlTANl005nk-lZ5ENCyUToWnZA-qciQ66-HjNd/pub?output=csv',
-  ca: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNlK5aBVw3rc6u7FtPLJ7b8IfskE9UrL47BFPsHABrvTZLi74Z_4S4dQTin-04G0QF8nHZ6k9vS1dE/pub?output=csv',
+  es: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=1081869626&single=true&output=csv',
+  ca: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=317882471&single=true&output=csv',
 };
 
 const LOCAL_CSV = {
-  es: 'data/metac-es.csv',
-  ca: 'data/metac-ca.csv',
+  es: 'data/metac - es.csv',
+  ca: 'data/metac - ca.csv',
 };
 
 // Field color palette (8 ámbitos)
@@ -1106,10 +1106,11 @@ const I18N = {
 const S = {
   lang:         'es',
   data:         { es: null, ca: null },
+  byId:         { es: null, ca: null },
   favorites:    new Set(),
   selected:     new Set(),
   selectMode:   false,
-  categories:   [],     // [{id, name, indices:[]}]
+  categories:   [],     // [{id, name, itemIds:[]}]
   search:       '',
   field:        null,
   modal:        null,
@@ -1144,19 +1145,114 @@ function parseCSV(raw) {
 function toObjects(raw) {
   const rows = parseCSV(raw);
   if (rows.length < 2) return [];
-  return rows.slice(1).filter(r => r[0] && r[0].trim()).map(r => {
-    const rawFields = (r[3] || '').split(',').map(s => s.trim()).filter(Boolean);
+  const headers = rows[0].map(h => h.trim().toLowerCase());
+  const hasId = headers.includes('id');
+  const col = {
+    id:      colIndex(headers, ['id'], hasId ? 0 : -1),
+    name:    colIndex(headers, ['technique'], hasId ? 1 : 0),
+    desc:    colIndex(headers, ['description'], hasId ? 2 : 1),
+    tags:    colIndex(headers, ['tags'], hasId ? 3 : 2),
+    fields:  colIndex(headers, ['fields'], hasId ? 4 : 3),
+    program: colIndex(headers, ['program'], hasId ? 5 : 4),
+    summary: colIndex(headers, ['abstract', 'resumen', 'resum'], hasId ? 6 : 5),
+  };
+
+  return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
+    const rawFields = (r[col.fields] || '').split(',').map(s => s.trim()).filter(Boolean);
     const fields = [], inlineProgs = [];
     rawFields.forEach(f => f.includes('|') ? inlineProgs.push(f) : fields.push(normField(f)));
     return {
-      name:     (r[0] || '').trim(),
-      desc:     (r[1] || '').trim(),
-      tags:     (r[2] || '').split(',').map(s => s.trim()).filter(Boolean),
+      id:       normalizeId(col.id >= 0 ? r[col.id] : '') || `row_${rowIndex + 1}`,
+      name:     (r[col.name] || '').trim(),
+      desc:     (r[col.desc] || '').trim(),
+      tags:     (r[col.tags] || '').split(',').map(s => s.trim()).filter(Boolean),
       fields,
-      programs: [...parsePrograms(r[4] || ''), ...parsePrograms(inlineProgs.join(';'))],
-      summary:  (r[5] || '').trim(),
+      programs: [...parsePrograms(r[col.program] || ''), ...parsePrograms(inlineProgs.join(';'))],
+      summary:  (r[col.summary] || '').trim(),
     };
   });
+}
+
+function colIndex(headers, names, fallback) {
+  const idx = names.map(n => headers.indexOf(n)).find(i => i !== -1);
+  return idx === undefined ? fallback : idx;
+}
+
+function normalizeId(value) {
+  return value === null || value === undefined ? '' : String(value).trim();
+}
+
+function buildIdMap(data) {
+  const map = new Map();
+  data.forEach((item, idx) => {
+    if (!item.id) return;
+    if (map.has(item.id)) console.warn(`Duplicate technique ID: ${item.id}`);
+    else map.set(item.id, { item, idx });
+  });
+  return map;
+}
+
+function rowById(itemId, lang = S.lang) {
+  return (S.byId[lang] || new Map()).get(normalizeId(itemId)) || null;
+}
+
+function itemById(itemId, lang = S.lang) {
+  const row = rowById(itemId, lang);
+  return row ? row.item : null;
+}
+
+function uniqueIds(ids) {
+  const seen = new Set();
+  const out = [];
+  ids.forEach(value => {
+    const id = normalizeId(value);
+    if (id && !seen.has(id)) {
+      seen.add(id);
+      out.push(id);
+    }
+  });
+  return out;
+}
+
+function validItemIds(ids, lang = S.lang) {
+  const map = S.byId[lang] || new Map();
+  return uniqueIds(ids).filter(id => map.has(id));
+}
+
+function sortedItemIds(ids, lang = S.lang) {
+  const map = S.byId[lang] || new Map();
+  return validItemIds(ids, lang).sort((a, b) => map.get(a).idx - map.get(b).idx);
+}
+
+function refsToItemIds(refs, lang = S.lang) {
+  const data = S.data[lang] || [];
+  const map = S.byId[lang] || new Map();
+  return uniqueIds(refs).map(ref => {
+    if (map.has(ref)) return ref;
+    if (/^\d+$/.test(ref)) {
+      const legacyItem = data[Number(ref)];
+      return legacyItem ? legacyItem.id : '';
+    }
+    return '';
+  }).filter(id => id && map.has(id));
+}
+
+function normalizeStoredRefs(lang = S.lang) {
+  if (!S.data[lang]) return;
+
+  const favs = refsToItemIds([...S.favorites], lang);
+  const favsChanged = favs.length !== S.favorites.size || favs.some(id => !S.favorites.has(id));
+  S.favorites = new Set(favs);
+  if (favsChanged) saveFavs();
+
+  let catsChanged = false;
+  S.categories = S.categories.map(cat => {
+    const rawIds = Array.isArray(cat.itemIds) ? cat.itemIds : [];
+    const itemIds = refsToItemIds(rawIds, lang);
+    if (itemIds.length !== rawIds.length || itemIds.some((id, idx) => id !== rawIds[idx])) catsChanged = true;
+    return { id: cat.id, name: cat.name, itemIds };
+  });
+  if (catsChanged) saveCats();
 }
 
 // Parse "Label1|url1 ; Label2|url2"
@@ -1296,22 +1392,26 @@ function formatDesc(text) {
 
 async function loadLang(lang) {
   if (S.data[lang]) return;
+  let raw;
   try {
     const res = await fetch(CSV[lang]);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    S.data[lang] = toObjects(await res.text());
+    raw = await res.text();
   } catch {
     const res = await fetch(LOCAL_CSV[lang]);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    S.data[lang] = toObjects(await res.text());
+    raw = await res.text();
   }
+  S.data[lang] = toObjects(raw);
+  S.byId[lang] = buildIdMap(S.data[lang]);
+  normalizeStoredRefs(lang);
 }
 
 // ─── SHARING & CLIPBOARD ─────────────────────────────────────────────────────
 
-function shareURL(indices, name = null) {
+function shareURL(itemIds, name = null) {
   const u = new URL(location.href.split('?')[0]);
-  u.searchParams.set('t', indices.join(','));
+  u.searchParams.set('t', sortedItemIds(itemIds).join(','));
   u.searchParams.set('lang', S.lang);
   if (name) u.searchParams.set('tname', name);
   return u.toString();
@@ -1342,7 +1442,11 @@ function saveCats() { localStorage.setItem(LS_CATS, JSON.stringify(S.categories)
 function loadCats() {
   try {
     const r = localStorage.getItem(LS_CATS);
-    if (r) S.categories = JSON.parse(r).map(c => ({ id: c.id, name: c.name, indices: Array.isArray(c.indices) ? c.indices : [] }));
+    if (r) S.categories = JSON.parse(r).map(c => ({
+      id: c.id,
+      name: c.name,
+      itemIds: Array.isArray(c.itemIds) ? c.itemIds : (Array.isArray(c.indices) ? c.indices : []),
+    }));
   } catch {}
 }
 
@@ -1417,14 +1521,18 @@ function filteredData() {
   const data = S.data[S.lang] || [];
 
   let indexed = S.shared
-    ? S.shared.filter(n => n >= 0 && n < data.length).map(n => ({ item: data[n], idx: n }))
-    : data.map((item, idx) => ({ item, idx }));
+    ? refsToItemIds(S.shared).map(id => {
+      const row = rowById(id);
+      return row ? { item: row.item, id, idx: row.idx } : null;
+    }).filter(Boolean)
+    : data.map((item, idx) => ({ item, id: item.id, idx }));
 
   if (!S.shared && S.field)
     indexed = indexed.filter(({ item }) => item.fields.includes(S.field));
 
   const q = S.search.toLowerCase().trim();
   if (q) indexed = indexed.filter(({ item }) =>
+    item.id.toLowerCase().includes(q) ||
     item.name.toLowerCase().includes(q) ||
     item.desc.toLowerCase().includes(q) ||
     item.summary.toLowerCase().includes(q) ||
@@ -1455,14 +1563,14 @@ function toggleSelectMode() {
   renderCards();
 }
 
-function toggleCardSelection(idx) {
-  if (S.selected.has(idx)) S.selected.delete(idx);
-  else S.selected.add(idx);
+function toggleCardSelection(itemId) {
+  if (S.selected.has(itemId)) S.selected.delete(itemId);
+  else S.selected.add(itemId);
   renderCards();
 }
 
 function selectVisibleCards() {
-  pagedRows(filteredData()).forEach(({ idx }) => S.selected.add(idx));
+  pagedRows(filteredData()).forEach(({ id }) => S.selected.add(id));
   renderCards();
 }
 
@@ -1537,7 +1645,7 @@ function renderCards() {
     selBar.querySelector('#selectVisibleBtn').onclick = () => selectVisibleCards();
     selBar.querySelector('#shareSelectedBtn').onclick = () => {
       if (!S.selected.size) return;
-      copy(shareURL([...S.selected].sort((a, b) => a - b)));
+      copy(shareURL([...S.selected]));
     };
     selBar.querySelector('#cancelSelectionBtn').onclick = () => clearSelection();
   }
@@ -1545,10 +1653,10 @@ function renderCards() {
   const grid = document.createElement('div');
   grid.className = 'cards-grid';
 
-  rows.forEach(({ item, idx }) => {
-    const fav = S.favorites.has(idx);
-    const shared = S.shared && S.shared.includes(idx);
-    const selected = S.selected.has(idx);
+  rows.forEach(({ item, id }) => {
+    const fav = S.favorites.has(id);
+    const shared = S.shared && S.shared.includes(id);
+    const selected = S.selected.has(id);
     const card = document.createElement('div');
     card.className = 'card' + (fav ? ' is-fav' : '') + (shared ? ' is-shared' : '') + (selected ? ' is-selected' : '');
     const progIcon = item.programs.length
@@ -1559,20 +1667,20 @@ function renderCards() {
         <div class="card-name">${esc(item.name)}</div>
         ${progIcon}
         <span class="card-select ${selected ? 'active' : ''}" style="display:${S.selectMode ? 'inline-flex' : 'none'}">✓</span>
-        <button class="fav-star ${fav ? 'active' : ''}" data-idx="${idx}">⭐</button>
+        <button class="fav-star ${fav ? 'active' : ''}" data-id="${esc(id)}">⭐</button>
       </div>
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
       <div class="card-summary">${esc(item.summary)}</div>
       <button class="summary-toggle">${i('more')}</button>
     `;
-    card.querySelector('.fav-star').onclick = e => { e.stopPropagation(); toggleFav(idx, e.currentTarget); };
+    card.querySelector('.fav-star').onclick = e => { e.stopPropagation(); toggleFav(id, e.currentTarget); };
     card.querySelector('.summary-toggle').onclick = e => {
       e.stopPropagation();
       const summary = card.querySelector('.card-summary');
       const expanded = summary.classList.toggle('expanded');
       e.currentTarget.textContent = expanded ? i('less') : i('more');
     };
-    card.onclick = () => { if (S.selectMode) toggleCardSelection(idx); else openModal(idx); };
+    card.onclick = () => { if (S.selectMode) toggleCardSelection(id); else openModal(id); };
     grid.appendChild(card);
   });
 
@@ -1636,11 +1744,10 @@ function buildPagination(pages) {
 
 // ─── RENDER: MODAL ───────────────────────────────────────────────────────────
 
-function openModal(idx) {
-  const data = S.data[S.lang] || [];
-  const item = data[idx];
+function openModal(itemId) {
+  const item = itemById(itemId);
   if (!item) return;
-  S.modal = idx;
+  S.modal = item.id;
 
   document.getElementById('modalTitle').textContent = item.name;
   document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
@@ -1665,7 +1772,7 @@ function openModal(idx) {
     progWrap.style.display = 'none';
   }
 
-  const fav = S.favorites.has(idx);
+  const fav = S.favorites.has(item.id);
   document.getElementById('modalFavBtn').classList.toggle('fav-active', fav);
 
   document.getElementById('modalOverlay').classList.add('open');
@@ -1680,16 +1787,18 @@ function closeModal() {
 
 // ─── FAVORITES ───────────────────────────────────────────────────────────────
 
-function toggleFav(idx, anchorEl = null) {
-  const adding = !S.favorites.has(idx);
+function toggleFav(itemId, anchorEl = null) {
+  itemId = normalizeId(itemId);
+  if (!itemById(itemId)) return;
+  const adding = !S.favorites.has(itemId);
 
   if (!adding) {
-    S.favorites.delete(idx);
-    S.categories.forEach(c => { c.indices = c.indices.filter(i => i !== idx); });
+    S.favorites.delete(itemId);
+    S.categories.forEach(c => { c.itemIds = c.itemIds.filter(id => id !== itemId); });
     saveCats();
     toast(i('favRemoved'));
   } else {
-    S.favorites.add(idx);
+    S.favorites.add(itemId);
     toast(i('favAdded'));
   }
   saveFavs();
@@ -1698,7 +1807,7 @@ function toggleFav(idx, anchorEl = null) {
   if (S.modal !== null)
     document.getElementById('modalFavBtn').classList.toggle('fav-active', S.favorites.has(S.modal));
 
-  if (adding && anchorEl) openCatPicker(idx, anchorEl);
+  if (adding && anchorEl) openCatPicker(itemId, anchorEl);
 }
 
 function updateFavBadge() {
@@ -1718,7 +1827,7 @@ let activePicker = null;
 function catUID() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
 
 function createCategory(name) {
-  const cat = { id: catUID(), name, indices: [] };
+  const cat = { id: catUID(), name, itemIds: [] };
   S.categories.push(cat);
   saveCats();
   return cat;
@@ -1729,36 +1838,40 @@ function deleteCategory(id) {
   saveCats();
 }
 
-function addToCategory(idx, catId) {
+function addToCategory(itemId, catId) {
+  itemId = normalizeId(itemId);
   const cat = S.categories.find(c => c.id === catId);
-  if (cat && !cat.indices.includes(idx)) { cat.indices.push(idx); saveCats(); }
+  if (cat && itemById(itemId) && !cat.itemIds.includes(itemId)) { cat.itemIds.push(itemId); saveCats(); }
 }
 
-function removeFromCategory(idx, catId) {
+function removeFromCategory(itemId, catId) {
+  itemId = normalizeId(itemId);
   const cat = S.categories.find(c => c.id === catId);
-  if (cat) { cat.indices = cat.indices.filter(i => i !== idx); saveCats(); }
+  if (cat) { cat.itemIds = cat.itemIds.filter(id => id !== itemId); saveCats(); }
 }
 
-function assignToCategory(idx, catId = null) {
+function assignToCategory(itemId, catId = null) {
+  itemId = normalizeId(itemId);
   S.categories.forEach(cat => {
-    cat.indices = cat.indices.filter(i => i !== idx);
+    cat.itemIds = cat.itemIds.filter(id => id !== itemId);
   });
   if (catId) {
     const target = S.categories.find(cat => cat.id === catId);
-    if (target && !target.indices.includes(idx)) target.indices.push(idx);
+    if (target && itemById(itemId) && !target.itemIds.includes(itemId)) target.itemIds.push(itemId);
   }
   saveCats();
 }
 
-function promptNewCategory(addIdx = null) {
+function promptNewCategory(addItemId = null) {
   const name = prompt(i('catPrompt'));
   if (!name || !name.trim()) return;
   const cat = createCategory(name.trim());
-  if (addIdx !== null) addToCategory(addIdx, cat.id);
+  if (addItemId !== null) addToCategory(addItemId, cat.id);
   renderPanel();
 }
 
-function openCatPicker(idx, anchorEl) {
+function openCatPicker(itemId, anchorEl) {
+  itemId = normalizeId(itemId);
   if (activePicker) { activePicker.remove(); activePicker = null; }
   const picker = document.createElement('div');
   picker.className = 'cat-picker';
@@ -1770,20 +1883,20 @@ function openCatPicker(idx, anchorEl) {
   title.textContent = i('addToCat');
   picker.appendChild(title);
 
-  const currentCat = S.categories.find(cat => cat.indices.includes(idx));
+  const currentCat = S.categories.find(cat => cat.itemIds.includes(itemId));
 
   const noneRow = document.createElement('div');
   noneRow.className = 'cat-picker-row';
   const noneRadio = document.createElement('input');
   noneRadio.type = 'radio';
-  noneRadio.name = `cat-${idx}`;
+  noneRadio.name = `cat-${itemId}`;
   noneRadio.checked = !currentCat;
   noneRadio.onclick = e => e.stopPropagation();
   const noneLbl = document.createElement('span');
   noneLbl.textContent = i('uncategorized');
   noneRow.onclick = e => {
     e.stopPropagation();
-    assignToCategory(idx, null);
+    assignToCategory(itemId, null);
     picker.remove();
     activePicker = null;
     renderPanel();
@@ -1804,14 +1917,14 @@ function openCatPicker(idx, anchorEl) {
       row.className = 'cat-picker-row';
       const cb = document.createElement('input');
       cb.type = 'radio';
-      cb.name = `cat-${idx}`;
+      cb.name = `cat-${itemId}`;
       cb.checked = currentCat ? currentCat.id === cat.id : false;
       cb.onclick = e => e.stopPropagation();
       const lbl = document.createElement('span');
       lbl.textContent = cat.name;
       row.onclick = e => {
         e.stopPropagation();
-        assignToCategory(idx, cat.id);
+        assignToCategory(itemId, cat.id);
         picker.remove();
         activePicker = null;
         renderPanel();
@@ -1825,7 +1938,7 @@ function openCatPicker(idx, anchorEl) {
   const addRow = document.createElement('div');
   addRow.className = 'cat-picker-add';
   addRow.innerHTML = '<span>+</span> ' + i('newCat');
-  addRow.onclick = e => { e.stopPropagation(); picker.remove(); activePicker = null; promptNewCategory(idx); };
+  addRow.onclick = e => { e.stopPropagation(); picker.remove(); activePicker = null; promptNewCategory(itemId); };
   picker.appendChild(addRow);
 
   const wrap = anchorEl.closest('.cat-picker-wrap');
@@ -1862,8 +1975,9 @@ function openCatPicker(idx, anchorEl) {
   }, 0);
 }
 
-function buildFavItem(idx, data, catId) {
-  const item = data[idx];
+function buildFavItem(itemId, catId) {
+  itemId = normalizeId(itemId);
+  const item = itemById(itemId);
   if (!item) return null;
   const el = document.createElement('div');
   el.className = 'fav-item';
@@ -1878,7 +1992,7 @@ function buildFavItem(idx, data, catId) {
   pickerBtn.className = 'fav-tag-btn';
   pickerBtn.title = i('addToCat');
   pickerBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>';
-  pickerBtn.onclick = e => { e.stopPropagation(); openCatPicker(idx, pickerBtn); };
+  pickerBtn.onclick = e => { e.stopPropagation(); openCatPicker(itemId, pickerBtn); };
   pickerWrap.appendChild(pickerBtn);
 
   const rmBtn = document.createElement('button');
@@ -1886,21 +2000,21 @@ function buildFavItem(idx, data, catId) {
   rmBtn.textContent = '✕';
   if (catId) {
     rmBtn.title = i('rmFromCat');
-    rmBtn.onclick = e => { e.stopPropagation(); removeFromCategory(idx, catId); renderPanel(); };
+    rmBtn.onclick = e => { e.stopPropagation(); removeFromCategory(itemId, catId); renderPanel(); };
   } else {
     rmBtn.title = i('rmFav');
-    rmBtn.onclick = e => { e.stopPropagation(); toggleFav(idx); renderPanel(); };
+    rmBtn.onclick = e => { e.stopPropagation(); toggleFav(itemId); renderPanel(); };
   }
 
   el.appendChild(nameSpan);
   el.appendChild(pickerWrap);
   el.appendChild(rmBtn);
-  el.onclick = () => { closePanel(); openModal(idx); };
+  el.onclick = () => { closePanel(); openModal(itemId); };
   return el;
 }
 
-function buildCatSection(cat, label, indices, data) {
-  const valid = indices.filter(idx => idx >= 0 && idx < data.length);
+function buildCatSection(cat, label, itemIds) {
+  const valid = sortedItemIds(itemIds);
   const section = document.createElement('div');
   section.className = 'cat-section';
 
@@ -1958,8 +2072,8 @@ function buildCatSection(cat, label, indices, data) {
   if (valid.length) {
     const itemsDiv = document.createElement('div');
     itemsDiv.className = 'cat-items';
-    valid.forEach(idx => {
-      const el = buildFavItem(idx, data, cat ? cat.id : null);
+    valid.forEach(itemId => {
+      const el = buildFavItem(itemId, cat ? cat.id : null);
       if (el) itemsDiv.appendChild(el);
     });
     section.appendChild(itemsDiv);
@@ -1969,7 +2083,6 @@ function buildCatSection(cat, label, indices, data) {
 }
 
 function renderPanel() {
-  const data = S.data[S.lang] || [];
   const body = document.getElementById('panelBody');
   body.innerHTML = '';
 
@@ -1988,15 +2101,15 @@ function renderPanel() {
     return;
   }
 
-  const inCatSet = new Set(S.categories.flatMap(c => c.indices));
-  const uncatIdxs = [...S.favorites].filter(idx => !inCatSet.has(idx));
+  const inCatSet = new Set(S.categories.flatMap(c => c.itemIds));
+  const uncatItemIds = sortedItemIds([...S.favorites].filter(itemId => !inCatSet.has(itemId)));
 
-  if (uncatIdxs.length) {
-    body.appendChild(buildCatSection(null, i('uncategorized'), uncatIdxs, data));
+  if (uncatItemIds.length) {
+    body.appendChild(buildCatSection(null, i('uncategorized'), uncatItemIds));
   }
 
   S.categories.forEach(cat => {
-    body.appendChild(buildCatSection(cat, cat.name, cat.indices, data));
+    body.appendChild(buildCatSection(cat, cat.name, cat.itemIds));
   });
 }
 
@@ -2039,6 +2152,10 @@ async function switchLang(lang) {
     catch { document.getElementById('main').innerHTML = `<div class="state-box"><h3>${i('error')}</h3></div>`; return; }
   }
 
+  if (S.shared) S.shared = refsToItemIds(S.shared, lang);
+  normalizeStoredRefs(lang);
+  updateFavBadge();
+  updateSharedBanner();
   S.field = null;
   S.page = 0;
   renderTabs();
@@ -2059,7 +2176,7 @@ async function init() {
   if (p.get('lang') === 'ca') S.lang = 'ca';
   else if (p.get('lang') === 'es') S.lang = 'es';
   const t = p.get('t');
-  if (t) S.shared = t.split(',').map(Number).filter(n => !isNaN(n) && n >= 0);
+  if (t) S.shared = uniqueIds(t.split(','));
   const tname = p.get('tname');
   if (tname) S.sharedName = tname;
 
@@ -2072,6 +2189,9 @@ async function init() {
     document.getElementById('main').innerHTML = `<div class="state-box"><h3>${i('error')}</h3></div>`;
     return;
   }
+  if (S.shared) S.shared = refsToItemIds(S.shared);
+  updateFavBadge();
+  updateSharedBanner();
 
   renderTabs();
   renderCards();
@@ -2272,7 +2392,7 @@ init();
     <span class="footer-sep">·</span>
     <a href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.2.1</span>
+    <span>v0.3.0</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
