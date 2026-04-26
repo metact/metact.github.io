@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -748,6 +748,11 @@
     .fav-tag-btn:hover { background: #eff6ff; border-color: #bfdbfe; color: var(--primary) !important; opacity: 1 !important; }
 
     .cat-picker-wrap { position: relative; }
+    .card-fav-wrap {
+      display: inline-flex;
+      flex-shrink: 0;
+      line-height: 1;
+    }
     .cat-picker {
       position: absolute;
       right: 0; top: calc(100% + 4px);
@@ -874,6 +879,7 @@
       <div class="lang-group">
         <button class="lang-btn" data-lang="es">ES</button>
         <button class="lang-btn" data-lang="ca">CA</button>
+        <button class="lang-btn" data-lang="en">EN</button>
       </div>
       <button class="btn" id="selectBtn">✓ <span id="selectBtnLabel">Seleccionar</span></button>
       <button class="btn" id="favBtn">
@@ -918,7 +924,7 @@
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
           </svg>
         </button>
-        <button class="icon-btn" id="modalCloseBtn">✕</button>
+        <button class="icon-btn" id="modalCloseBtn" title="Cerrar">✕</button>
       </div>
     </div>
     <div class="modal-meta">
@@ -938,7 +944,7 @@
   <div class="side-panel">
     <div class="panel-head">
       <h2 id="panelTitle">Favoritos</h2>
-      <button class="icon-btn" id="panelClose">✕</button>
+      <button class="icon-btn" id="panelClose" title="Cerrar">✕</button>
     </div>
     <div class="panel-body" id="panelBody"></div>
     <div class="panel-foot">
@@ -954,14 +960,19 @@
 <script>
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 
+const LANGS = ['es', 'ca', 'en'];
+const DEFAULT_LANG = 'en';
+
 const CSV = {
   es: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=1081869626&single=true&output=csv',
   ca: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=317882471&single=true&output=csv',
+  en: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=1994643118&single=true&output=csv',
 };
 
 const LOCAL_CSV = {
   es: 'data/metac - es.csv',
   ca: 'data/metac - ca.csv',
+  en: 'data/metac - en.csv',
 };
 
 // Field color palette (8 ámbitos)
@@ -976,20 +987,21 @@ const COLORS = [
   { bg:'#fffbeb', text:'#b45309', border:'#fde68a' },
 ];
 
-// Maps field keywords → color index (works for both ES and CA)
+// Maps field keywords → color index (works for ES, CA and EN)
 const FIELD_MAP = [
-  ['activac','activació'],
-  ['cohes'],
-  ['comunic','creativit'],
-  ['construcció','construccion','coneixement','conocimiento'],
-  ['avaluac','evaluac','formativ','feedback','retroaliment'],
-  ['pensament','pensamiento','crític','crítico','metacog'],
-  ['processament','procesamiento','anàlisi','análisis'],
-  ['resoluc','reptes','retos'],
+  ['activac','activació','activat','prior knowledge'],
+  ['cohes','cooperat'],
+  ['comunic','creativit','creativity'],
+  ['construcció','construccion','coneixement','conocimiento','knowledge construction','knowledge building'],
+  ['avaluac','evaluac','formativ','feedback','retroaliment','assessment'],
+  ['pensament','pensamiento','crític','crítico','critical','metacog'],
+  ['processament','procesamiento','processing','anàlisi','análisis','analysis'],
+  ['resoluc','reptes','retos','problem solving','challenges'],
 ];
 
 const I18N = {
   es: {
+    title:        'Metac',
     sub:          'Metodologías Activas',
     search:       'Buscar técnica, tag, programa o descripción…',
     all:          'Todas',
@@ -1015,6 +1027,7 @@ const I18N = {
     programs:     'Recursos:',
     tags:         'Tags:',
     fields:       'Ámbitos:',
+    favorite:     'Favorito',
     share:        'Compartir enlace',
     close:        'Cerrar',
     copied:       '¡Enlace copiado!',
@@ -1043,8 +1056,17 @@ const I18N = {
     pageNext:     'Siguiente',
     more:         'Ver más',
     less:         'Ver menos',
+    footerProject:'Proyecto en GitHub',
+    footerIssues: 'Sugerencias y problemas',
+    footerContentTitle:'Contenido bajo licencia Creative Commons BY-SA 4.0',
+    footerContent:'Contenido:',
+    footerCodeTitle:'Código fuente bajo licencia AGPLv3',
+    footerCode:   'Código:',
+    footerDbTitle:'Los archivos CSV no pueden ser reproducidos ni redistribuidos sin permiso',
+    footerDb:     'Base de datos CSV: © Juan José de Haro, todos los derechos reservados',
   },
   ca: {
+    title:        'Metac',
     sub:          'Metodologies Actives',
     search:       'Cercar tècnica, tag, programa o descripció…',
     all:          'Totes',
@@ -1070,6 +1092,7 @@ const I18N = {
     programs:     'Recursos:',
     tags:         'Tags:',
     fields:       'Àmbits:',
+    favorite:     'Preferit',
     share:        'Compartir enllaç',
     close:        'Tancar',
     copied:       'Enllaç copiat!',
@@ -1098,15 +1121,88 @@ const I18N = {
     pageNext:     'Següent',
     more:         'Veure més',
     less:         'Veure menys',
+    footerProject:'Projecte a GitHub',
+    footerIssues: 'Suggeriments i problemes',
+    footerContentTitle:'Contingut sota llicència Creative Commons BY-SA 4.0',
+    footerContent:'Contingut:',
+    footerCodeTitle:'Codi font sota llicència AGPLv3',
+    footerCode:   'Codi:',
+    footerDbTitle:'Els fitxers CSV no es poden reproduir ni redistribuir sense permís',
+    footerDb:     'Base de dades CSV: © Juan José de Haro, tots els drets reservats',
+  },
+  en: {
+    title:        'Metac',
+    sub:          'Active Methodologies',
+    search:       'Search technique, tag, resource or description…',
+    all:          'All',
+    favBtn:       'Favorites',
+    favPanel:     'Favorites',
+    shareFavs:    'Share favorites',
+    clearFavs:    'Clear favorites',
+    selectMode:   'Select',
+    selectOff:    'Cancel selection',
+    shareSel:     'Share selection',
+    selectVisible:'Select visible',
+    selectedCount:'selected',
+    clearSearch:  'Clear search',
+    assistant:    'AI assistant',
+    clearConfirm: 'Delete all favorites?',
+    noFavs:       'No favorites yet',
+    noFavsHint:   'Press ⭐ on any technique',
+    noResults:    'No results',
+    noResHint:    'Try different terms',
+    sharedOne:    '📎 Technique shared with you',
+    sharedMany:   '📎 Collection shared with you',
+    exitShared:   'Exit selection',
+    programs:     'Resources:',
+    tags:         'Tags:',
+    fields:       'Fields:',
+    favorite:     'Favorite',
+    share:        'Share link',
+    close:        'Close',
+    copied:       'Link copied!',
+    newCat:       'New category',
+    uncategorized:'Uncategorized',
+    addToCat:     'Categories',
+    shareCat:     'Share',
+    deleteCat:    'Delete category',
+    deleteCatOk:  'Delete this category?\nThe techniques will remain in favorites.',
+    renameCat:    'Rename',
+    catPrompt:    'Category name:',
+    noCatsYet:    'No categories yet',
+    rmFromCat:    'Remove from this category',
+    rmFav:        'Remove from favorites',
+    sharedCat:    '📎 Collection:',
+    favAdded:     'Added to favorites',
+    favRemoved:   'Removed from favorites',
+    loading:      'Loading data…',
+    error:        'Error loading data.',
+    techniques:   'techniques',
+    perPage:      'Show:',
+    pageAll:      'All',
+    pageFirst:    'First',
+    pageLast:     'Last',
+    pagePrev:     'Previous',
+    pageNext:     'Next',
+    more:         'Show more',
+    less:         'Show less',
+    footerProject:'GitHub project',
+    footerIssues: 'Suggestions and issues',
+    footerContentTitle:'Content licensed under Creative Commons BY-SA 4.0',
+    footerContent:'Content:',
+    footerCodeTitle:'Source code licensed under AGPLv3',
+    footerCode:   'Code:',
+    footerDbTitle:'CSV files may not be reproduced or redistributed without permission',
+    footerDb:     'CSV database: © Juan José de Haro, all rights reserved',
   },
 };
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 
 const S = {
-  lang:         'es',
-  data:         { es: null, ca: null },
-  byId:         { es: null, ca: null },
+  lang:         DEFAULT_LANG,
+  data:         { es: null, ca: null, en: null },
+  byId:         { es: null, ca: null, en: null },
   favorites:    new Set(),
   selected:     new Set(),
   selectMode:   false,
@@ -1160,7 +1256,14 @@ function toObjects(raw) {
   return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
     const rawFields = (r[col.fields] || '').split(',').map(s => s.trim()).filter(Boolean);
     const fields = [], inlineProgs = [];
-    rawFields.forEach(f => f.includes('|') ? inlineProgs.push(f) : fields.push(normField(f)));
+    rawFields.forEach(f => {
+      if (f.includes('|')) {
+        inlineProgs.push(f);
+        return;
+      }
+      const field = normField(f);
+      if (field && !fields.includes(field)) fields.push(field);
+    });
     return {
       id:       normalizeId(col.id >= 0 ? r[col.id] : '') || `row_${rowIndex + 1}`,
       name:     (r[col.name] || '').trim(),
@@ -1266,11 +1369,27 @@ function parsePrograms(raw) {
 
 // ─── FIELD UTILS ─────────────────────────────────────────────────────────────
 
-// Fix known typos in ES data
+const FIELD_ALIASES = {
+  'evaluación formativa y retroalimentación': 'Evaluación Formativa y Feedback',
+  'pensamiento crític y metacognición': 'Pensamiento Crítico y Metacognición',
+  'activating prior knowledge': 'Activation of Prior Knowledge',
+  'activation of prior knowledge': 'Activation of Prior Knowledge',
+  'cohesion and cooperation': 'Cohesion and Cooperation',
+  'communication and creativity': 'Communication and Creativity',
+  'critical thinking': 'Critical Thinking and Metacognition',
+  'and metacognition': 'Critical Thinking and Metacognition',
+  'critical thinking and metacognition': 'Critical Thinking and Metacognition',
+  'formative assessment and feedback': 'Formative Assessment and Feedback',
+  'information processing and analysis': 'Information Processing and Analysis',
+  'knowledge building': 'Knowledge Construction',
+  'knowledge construction': 'Knowledge Construction',
+  'problem solving and challenges': 'Problem Solving and Challenges',
+};
+
+// Normalize known field variants so tabs stay stable across languages.
 function normField(f) {
-  return f
-    .replace('Pensamiento Crític y Metacognición', 'Pensamiento Crítico y Metacognición')
-    .replace('Evaluación Formativa y Retroalimentación', 'Evaluación Formativa y Feedback');
+  const value = String(f || '').trim();
+  return FIELD_ALIASES[value.toLowerCase()] || value;
 }
 
 const colorCache = {};
@@ -1391,6 +1510,7 @@ function formatDesc(text) {
 // ─── DATA FETCH ──────────────────────────────────────────────────────────────
 
 async function loadLang(lang) {
+  lang = resolveLang(lang);
   if (S.data[lang]) return;
   let raw;
   try {
@@ -1452,15 +1572,25 @@ function loadCats() {
 
 const LS_LANG = 'metec_lang_v1';
 function saveLang() { localStorage.setItem(LS_LANG, S.lang); }
+function isSupportedLang(lang) { return LANGS.includes(lang); }
+function resolveLang(lang) { return isSupportedLang(lang) ? lang : DEFAULT_LANG; }
 function loadLangPref() {
   const saved = localStorage.getItem(LS_LANG);
-  if (saved === 'es' || saved === 'ca') { S.lang = saved; return; }
-  if (navigator.language.toLowerCase().startsWith('ca')) S.lang = 'ca';
+  if (isSupportedLang(saved)) { S.lang = saved; return; }
+  const browserLang = String((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+  if (browserLang.startsWith('ca')) S.lang = 'ca';
+  else if (browserLang.startsWith('es')) S.lang = 'es';
+  else if (browserLang.startsWith('en')) S.lang = 'en';
+  else S.lang = DEFAULT_LANG;
 }
 
 // ─── I18N ────────────────────────────────────────────────────────────────────
 
-function i(k) { return I18N[S.lang][k] || k; }
+function i(k) {
+  const fallback = I18N[DEFAULT_LANG];
+  const dict = I18N[S.lang] || fallback;
+  return dict[k] || fallback[k] || k;
+}
 
 function updateSearchUI() {
   const input = document.getElementById('searchInput');
@@ -1483,6 +1613,16 @@ function toast(msg) {
 // ─── RENDER: UI STRINGS ──────────────────────────────────────────────────────
 
 function applyI18N() {
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+  const setTitle = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.title = text;
+  };
+
+  document.title = i('title');
   document.getElementById('logoSub').textContent       = i('sub');
   document.getElementById('searchInput').placeholder   = i('search');
   document.getElementById('assistantLinkLabel').textContent = i('assistant');
@@ -1491,9 +1631,23 @@ function applyI18N() {
   document.getElementById('favBtnLabel').textContent   = i('favBtn');
   document.getElementById('panelTitle').textContent    = i('favPanel');
   document.getElementById('clearFavsLabel').textContent = i('clearFavs');
+  document.getElementById('modalFavBtn').title         = i('favorite');
+  document.getElementById('modalShareBtn').title       = i('share');
+  document.getElementById('modalCloseBtn').title       = i('close');
+  document.getElementById('panelClose').title          = i('close');
   document.getElementById('modalCloseBtnFooter').textContent = i('close');
   document.getElementById('exitSharedLabel').textContent = i('exitShared');
   document.documentElement.lang = S.lang;
+  setText('footerProject', i('footerProject'));
+  setText('footerIssues', i('footerIssues'));
+  setTitle('footerContentBadge', i('footerContentTitle'));
+  setText('footerContentLabel', i('footerContent'));
+  setTitle('footerCodeBadge', i('footerCodeTitle'));
+  setText('footerCodeLabel', i('footerCode'));
+  setTitle('footerDbBadge', i('footerDbTitle'));
+  setText('footerDbText', i('footerDb'));
+  const loadingMsg = document.getElementById('loadingMsg');
+  if (loadingMsg) loadingMsg.textContent = i('loading');
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.lang === S.lang));
   updateSearchUI();
@@ -1667,7 +1821,9 @@ function renderCards() {
         <div class="card-name">${esc(item.name)}</div>
         ${progIcon}
         <span class="card-select ${selected ? 'active' : ''}" style="display:${S.selectMode ? 'inline-flex' : 'none'}">✓</span>
-        <button class="fav-star ${fav ? 'active' : ''}" data-id="${esc(id)}">⭐</button>
+        <div class="cat-picker-wrap card-fav-wrap">
+          <button class="fav-star ${fav ? 'active' : ''}" data-id="${esc(id)}">⭐</button>
+        </div>
       </div>
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
       <div class="card-summary">${esc(item.summary)}</div>
@@ -1791,6 +1947,8 @@ function toggleFav(itemId, anchorEl = null) {
   itemId = normalizeId(itemId);
   if (!itemById(itemId)) return;
   const adding = !S.favorites.has(itemId);
+  const fromCardStar = anchorEl && anchorEl.classList.contains('fav-star');
+  const fromModalFav = anchorEl && anchorEl.id === 'modalFavBtn';
 
   if (!adding) {
     S.favorites.delete(itemId);
@@ -1807,7 +1965,15 @@ function toggleFav(itemId, anchorEl = null) {
   if (S.modal !== null)
     document.getElementById('modalFavBtn').classList.toggle('fav-active', S.favorites.has(S.modal));
 
-  if (adding && anchorEl) openCatPicker(itemId, anchorEl);
+  if (adding && anchorEl) {
+    let pickerAnchor = anchorEl;
+    if (fromCardStar) {
+      pickerAnchor = [...document.querySelectorAll('.fav-star')].find(btn => btn.dataset.id === itemId) || anchorEl;
+    } else if (fromModalFav) {
+      pickerAnchor = document.getElementById('modalFavBtn') || anchorEl;
+    }
+    openCatPicker(itemId, pickerAnchor);
+  }
 }
 
 function updateFavBadge() {
@@ -2132,6 +2298,7 @@ function updateSharedBanner() {
 // ─── LANGUAGE SWITCH ─────────────────────────────────────────────────────────
 
 async function switchLang(lang) {
+  lang = resolveLang(lang);
   if (lang === S.lang && S.data[lang]) return;
   clearSelection(false);
   S.lang = lang;
@@ -2173,8 +2340,8 @@ async function init() {
 
   // Read URL params (override saved preference)
   const p = new URLSearchParams(location.search);
-  if (p.get('lang') === 'ca') S.lang = 'ca';
-  else if (p.get('lang') === 'es') S.lang = 'es';
+  const urlLang = p.get('lang');
+  if (p.has('lang')) S.lang = resolveLang(urlLang);
   const t = p.get('t');
   if (t) S.shared = uniqueIds(t.split(','));
   const tname = p.get('tname');
@@ -2388,27 +2555,31 @@ init();
   <div class="footer-row">
     <span>© <a href="https://bilateria.org" target="_blank" rel="noopener noreferrer">Juan José de Haro</a></span>
     <span class="footer-sep">·</span>
-    <a href="https://github.com/metact/metact.github.io" target="_blank" rel="noopener noreferrer">Proyecto en GitHub</a>
+    <a id="footerProject" href="https://github.com/metact/metact.github.io" target="_blank" rel="noopener noreferrer">Proyecto en GitHub</a>
     <span class="footer-sep">·</span>
-    <a href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
+    <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.3.0</span>
+    <span>v0.4.0</span>
   </div>
   <div class="footer-licenses">
-    <span class="footer-badge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
+    <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      Contenido: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+      <span id="footerContentLabel">Contenido:</span> <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
     </span>
-    <span class="footer-badge" title="Código fuente bajo licencia AGPLv3">
+    <span class="footer-badge" id="footerCodeBadge" title="Código fuente bajo licencia AGPLv3">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      Código: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPLv3</a>
+      <span id="footerCodeLabel">Código:</span> <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPLv3</a>
     </span>
-    <span class="footer-badge" title="Los archivos CSV no pueden ser reproducidos ni redistribuidos sin permiso">
+    <span class="footer-badge" id="footerDbBadge" title="Los archivos CSV no pueden ser reproducidos ni redistribuidos sin permiso">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Base de datos CSV: © Juan José de Haro, todos los derechos reservados
+      <span id="footerDbText">Base de datos CSV: © Juan José de Haro, todos los derechos reservados</span>
     </span>
   </div>
 </footer>
+
+<script>
+if (typeof applyI18N === 'function') applyI18N();
+</script>
 
 </body>
 </html>

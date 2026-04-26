@@ -15,14 +15,14 @@
 - **Favoritos** con categorías personalizables, persistentes en el navegador
 - **Compartir** selecciones y colecciones mediante URL
 - **Asistente de IA** (NotebookLM) para consultar dudas sobre las técnicas
-- **Bilingüe**: castellano y catalán
+- **Trilingüe**: castellano, catalán e inglés
 - **Responsive**: funciona en móvil, tablet y escritorio
 
 ## Tecnología
 
 Aplicación de página única (`index.html`) sin dependencias externas, sin proceso de compilación y sin framework. Todo el CSS y el JavaScript está integrado en un único archivo.
 
-Los datos se cargan desde Google Sheets publicado como CSV, con fallback a los archivos locales `data/metac - es.csv` y `data/metac - ca.csv`.
+Los datos se cargan desde Google Sheets publicado como CSV, con fallback a los archivos locales `data/metac - es.csv`, `data/metac - ca.csv` y `data/metac - en.csv`.
 
 Para desarrollar localmente basta con abrir `index.html` en el navegador o servir el directorio:
 
@@ -37,6 +37,7 @@ index.html          # Aplicación completa (HTML + CSS + JS)
 data/
   metac - es.csv    # Datos en castellano
   metac - ca.csv    # Datos en catalán
+  metac - en.csv    # Datos en inglés
 notebooklm-icon.webp
 ```
 
