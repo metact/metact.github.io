@@ -611,6 +611,36 @@
     .program-btn:hover { background: #dbeafe; border-color: #93c5fd; }
     .program-btn svg { flex-shrink: 0; }
 
+    .modal-related {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .modal-related-label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 2px;
+    }
+    .related-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      background: var(--bg);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .12s, border-color .12s;
+    }
+    .related-btn:hover { background: #eff6ff; border-color: #bfdbfe; }
+    [data-theme="dark"] .related-btn:hover { background: #0f1f3d; border-color: #3b82f6; }
+
     .modal-body {
       padding: 20px;
       overflow-y: auto;
@@ -639,6 +669,27 @@
       display: flex;
       justify-content: flex-end;
       gap: 8px;
+    }
+
+    @media print {
+      body > *:not(#printArea) { display: none !important; }
+      #printArea {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 700px !important;
+        margin: 0 auto !important;
+        padding: 24px !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: #1e293b !important;
+      }
+      #printArea h1 { font-size: 1.4rem; margin-bottom: 8px; }
+      #printArea .print-meta { font-size: .85rem; color: #64748b; margin-bottom: 12px; }
+      #printArea .print-summary { font-style: italic; margin-bottom: 16px; color: #475569; }
+      #printArea .print-body { font-size: .92rem; line-height: 1.6; }
+      #printArea .print-body h4 { margin: 12px 0 4px; font-size: .95rem; }
+      #printArea .print-body ol { padding-left: 20px; }
+      #printArea .print-footer { margin-top: 20px; font-size: .75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; }
     }
 
     /* ── Favorites panel ── */
@@ -1038,9 +1089,18 @@
 <div class="overlay" id="modalOverlay">
   <div class="modal" role="dialog" aria-modal="true">
     <div class="modal-head">
+      <button class="icon-btn" id="modalBackBtn" title="Volver" style="display:none;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
       <h2 class="modal-title" id="modalTitle"></h2>
       <div class="modal-head-actions">
         <button class="icon-btn" id="modalFavBtn" title="Favorito">⭐</button>
+        <button class="icon-btn" id="modalCopyBtn" title="Copiar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button class="icon-btn" id="modalPrintBtn" title="Imprimir / PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        </button>
         <button class="icon-btn" id="modalShareBtn" title="Compartir">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
@@ -1056,6 +1116,7 @@
       <div class="modal-tags-row" id="modalTags"></div>
     </div>
     <div class="modal-programs" id="modalPrograms" style="display:none"></div>
+    <div class="modal-related" id="modalRelated" style="display:none"></div>
     <div class="modal-body" id="modalBody"></div>
     <div class="modal-foot">
       <button class="btn" id="modalCloseBtnFooter"></button>
@@ -1361,11 +1422,15 @@ const I18N = {
     sharedMany:   '📎 Colección compartida contigo',
     exitShared:   'Salir de la selección',
     programs:     'Recursos:',
+    related:      'Relacionadas:',
     tags:         'Tags:',
     fields:       'Ámbitos:',
     favorite:     'Favorito',
     share:        'Compartir enlace',
     close:        'Cerrar',
+    printPdf:     'Imprimir / PDF',
+    copyContent:  'Copiar',
+    copied:       '¡Copiado!',
     copied:       '¡Enlace copiado!',
     newCat:       'Nueva categoría',
     uncategorized:'Sin categoría',
@@ -1430,11 +1495,15 @@ const I18N = {
     sharedMany:   '📎 Col·lecció compartida amb tu',
     exitShared:   'Sortir de la selecció',
     programs:     'Recursos:',
+    related:      'Relacionades:',
     tags:         'Tags:',
     fields:       'Àmbits:',
     favorite:     'Preferit',
     share:        'Compartir enllaç',
     close:        'Tancar',
+    printPdf:     'Imprimir / PDF',
+    copyContent:  'Copiar',
+    copied:       'Copiat!',
     copied:       'Enllaç copiat!',
     newCat:       'Nova categoria',
     uncategorized:'Sense categoria',
@@ -1499,11 +1568,15 @@ const I18N = {
     sharedMany:   '📎 Collection shared with you',
     exitShared:   'Exit selection',
     programs:     'Resources:',
+    related:      'Related:',
     tags:         'Tags:',
     fields:       'Fields:',
     favorite:     'Favorite',
     share:        'Share link',
     close:        'Close',
+    printPdf:     'Print / PDF',
+    copyContent:  'Copy',
+    copied:       'Copied!',
     copied:       'Link copied!',
     newCat:       'New category',
     uncategorized:'Uncategorized',
@@ -1555,6 +1628,7 @@ const S = {
   block:        null,
   field:        null,
   modal:        null,
+  modalHistory: [],
   shared:       null,
   sharedName:   null,
   page:         0,
@@ -1597,6 +1671,7 @@ function toObjects(raw, lang = DEFAULT_LANG) {
     program: colIndex(headers, ['program'], hasId ? 5 : 4),
     summary: colIndex(headers, ['abstract', 'resumen', 'resum'], hasId ? 6 : 5),
     block:   colIndex(headers, ['block', 'bloque', 'bloc'], hasId ? 7 : 6),
+    related: colIndex(headers, ['related', 'relacionadas', 'relacionades'], hasId ? 8 : 7),
   };
 
   return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
@@ -1625,6 +1700,7 @@ function toObjects(raw, lang = DEFAULT_LANG) {
       fieldIds,
       programs: [...parsePrograms(r[col.program] || ''), ...parsePrograms(inlineProgs.join(';'))],
       summary:  (r[col.summary] || '').trim(),
+      related:  (r[col.related] || '').split(';').map(x => x.trim()).filter(Boolean),
     };
   });
 }
@@ -2079,6 +2155,8 @@ function applyI18N() {
   document.getElementById('modalCloseBtn').title       = i('close');
   document.getElementById('panelClose').title          = i('close');
   document.getElementById('modalCloseBtnFooter').textContent = i('close');
+  document.getElementById('modalCopyBtn').title  = i('copyContent');
+  document.getElementById('modalPrintBtn').title = i('printPdf');
   document.getElementById('exitSharedLabel').textContent = i('exitShared');
   document.documentElement.lang = S.lang;
   setText('footerProject', i('footerProject'));
@@ -2379,6 +2457,7 @@ function openModal(itemId) {
   if (!item) return;
   S.modal = item.id;
 
+  document.getElementById('modalBackBtn').style.display = S.modalHistory.length ? '' : 'none';
   document.getElementById('modalTitle').textContent = item.name;
   document.getElementById('modalBlock').innerHTML = blockBadgeHTML(item.block);
   document.getElementById('modalBlock').style.display = item.block ? '' : 'none';
@@ -2386,6 +2465,26 @@ function openModal(itemId) {
   document.getElementById('modalTags').innerHTML = item.summary ? esc(item.summary) : '';
   document.getElementById('modalTags').style.display = item.summary ? '' : 'none';
   document.getElementById('modalBody').innerHTML = formatDesc(item.desc);
+
+  // Related techniques
+  const relBox = document.getElementById('modalRelated');
+  const relatedItems = (item.related || [])
+    .filter(id => id !== item.id)
+    .map(id => itemById(id))
+    .filter(Boolean);
+  if (relatedItems.length) {
+    relBox.style.display = 'flex';
+    relBox.innerHTML = `<span class="modal-related-label">${esc(i('related'))}</span>` +
+      relatedItems.map(rel =>
+        `<button class="related-btn" type="button" data-related-id="${esc(rel.id)}">${esc(rel.name)}</button>`
+      ).join('');
+    relBox.querySelectorAll('[data-related-id]').forEach(btn =>
+      btn.addEventListener('click', ev => { ev.stopPropagation(); S.modalHistory.push(item.id); openModal(btn.dataset.relatedId); })
+    );
+  } else {
+    relBox.style.display = 'none';
+    relBox.innerHTML = '';
+  }
 
   // Programs
   const progWrap = document.getElementById('modalPrograms');
@@ -2411,10 +2510,64 @@ function openModal(itemId) {
   document.body.style.overflow = 'hidden';
 }
 
+function printModal() {
+  const item = S.modal ? itemById(S.modal) : null;
+  if (!item) return;
+  let el = document.getElementById('printArea');
+  if (!el) { el = document.createElement('div'); el.id = 'printArea'; document.body.appendChild(el); }
+  const fields = item.fields.length ? item.fields.join(', ') : '';
+  const block  = item.block || '';
+  const meta   = [block, fields].filter(Boolean).join(' · ');
+  el.innerHTML = `
+    <h1>${esc(item.name)}</h1>
+    ${meta ? `<p class="print-meta">${esc(meta)}</p>` : ''}
+    ${item.summary ? `<p class="print-summary">${esc(item.summary)}</p>` : ''}
+    <div class="print-body">${formatDesc(item.desc)}</div>
+    <p class="print-footer">Metac · metact.github.io</p>
+  `;
+  window.print();
+}
+
+function copyModal() {
+  const item = S.modal ? itemById(S.modal) : null;
+  if (!item) return;
+
+  const meta = [item.block, item.fields.join(', ')].filter(Boolean).join(' · ');
+  const html = [
+    `<h2>${esc(item.name)}</h2>`,
+    meta ? `<p><em>${esc(meta)}</em></p>` : '',
+    item.summary ? `<blockquote><p>${esc(item.summary)}</p></blockquote>` : '',
+    item.desc ? formatDesc(item.desc) : '',
+  ].filter(Boolean).join('\n');
+
+  const plain = [
+    item.name,
+    meta,
+    item.summary ? '\n' + item.summary : '',
+    item.desc ? '\n' + item.desc.replace(/## /g, '\n').trim() : '',
+  ].filter(Boolean).join('\n');
+
+  const btn = document.getElementById('modalCopyBtn');
+  const promise = (typeof ClipboardItem !== 'undefined')
+    ? navigator.clipboard.write([new ClipboardItem({
+        'text/html':  new Blob([html],  { type: 'text/html' }),
+        'text/plain': new Blob([plain], { type: 'text/plain' }),
+      })])
+    : navigator.clipboard.writeText(plain);
+
+  promise.then(() => {
+    btn.style.color = 'var(--primary)';
+    const origTitle = btn.title;
+    btn.title = i('copied');
+    setTimeout(() => { btn.style.color = ''; btn.title = origTitle; }, 2000);
+  });
+}
+
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
   S.modal = null;
+  S.modalHistory = [];
 }
 
 // ─── FAVORITES ───────────────────────────────────────────────────────────────
@@ -2903,10 +3056,13 @@ async function init() {
   document.getElementById('panelClose').onclick = closePanel;
   document.getElementById('panelOverlay').onclick = e => { if (e.target === e.currentTarget) closePanel(); };
 
-  document.getElementById('modalCloseBtn').onclick = closeModal;
+  document.getElementById('modalCloseBtn').onclick    = closeModal;
+  document.getElementById('modalCopyBtn').onclick     = copyModal;
+  document.getElementById('modalPrintBtn').onclick    = printModal;
   document.getElementById('modalCloseBtnFooter').onclick = closeModal;
   document.getElementById('modalOverlay').onclick = e => { if (e.target === e.currentTarget) closeModal(); };
 
+  document.getElementById('modalBackBtn').onclick = () => { const prev = S.modalHistory.pop(); if (prev) openModal(prev); };
   document.getElementById('modalFavBtn').onclick = e => { if (S.modal !== null) toggleFav(S.modal, e.currentTarget); };
   document.getElementById('modalShareBtn').onclick = () => { if (S.modal !== null) copy(shareURL([S.modal])); };
 
@@ -3071,7 +3227,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.5.0</span>
+    <span>v0.6.0</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
