@@ -281,6 +281,20 @@
       box-shadow: inset 0 0 0 1px #c2410c;
     }
 
+    /* ── Filters: horizontal scroll on mobile ── */
+    @media (max-width: 640px) {
+      .field-nav-inner,
+      .block-nav-inner {
+        width: calc(100% - 20px);
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .field-nav-inner::-webkit-scrollbar,
+      .block-nav-inner::-webkit-scrollbar { display: none; }
+    }
+
     /* ── Shared banner ── */
     .shared-banner {
       background: #eff6ff;
@@ -930,6 +944,15 @@
       .side-panel { width: 100%; }
       .modal { max-height: 95vh; }
       .overlay { padding: 8px; }
+      .modal-head { padding: 12px 14px 10px; }
+      .modal-title { font-size: 1rem; }
+      .modal-meta { padding: 8px 14px; gap: 5px; }
+      .modal-meta .card-fields { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .modal-meta .card-fields::-webkit-scrollbar { display: none; }
+      .modal-programs,
+      .modal-related { padding: 8px 14px; }
+      .modal-body { padding: 14px; }
+      .modal-foot { padding: 8px 14px; }
       #assistantLinkLabel { display: none; }
       .assistant-link { padding: 7px 10px; }
       #selectBtnLabel { display: none; }
