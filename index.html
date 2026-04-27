@@ -1698,7 +1698,12 @@ function toObjects(raw, lang = DEFAULT_LANG) {
 
   return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
     const rawFields = (r[col.fields] || '').split(',').map(s => s.trim()).filter(Boolean);
-    const block = normalizeBlock(r[col.block] || '', lang);
+    const rawBlocks = (r[col.block] || '').split(';').map(s => s.trim()).filter(Boolean);
+    const blocks = [], blockIds = [];
+    rawBlocks.forEach(b => {
+      const nb = normalizeBlock(b, lang);
+      if (nb.id && !blockIds.includes(nb.id)) { blockIds.push(nb.id); blocks.push(nb.label); }
+    });
     const fields = [], fieldIds = [], inlineProgs = [];
     rawFields.forEach(f => {
       if (f.includes('|')) {
@@ -1716,8 +1721,8 @@ function toObjects(raw, lang = DEFAULT_LANG) {
       name:     (r[col.name] || '').trim(),
       desc:     (r[col.desc] || '').trim(),
       tags:     (r[col.tags] || '').split(',').map(s => s.trim()).filter(Boolean),
-      block:    block.label,
-      blockId:  block.id,
+      blocks,
+      blockIds,
       fields,
       fieldIds,
       programs: [...parsePrograms(r[col.program] || ''), ...parsePrograms(inlineProgs.join(';'))],
@@ -1920,16 +1925,18 @@ function fieldDescription(id, lang = S.lang) {
 
 function blockScopedData() {
   const data = S.data[S.lang] || [];
-  return S.block ? data.filter(item => item.blockId === S.block) : data;
+  return S.block ? data.filter(item => item.blockIds.includes(S.block)) : data;
 }
 
 function allBlocks() {
   const map = new Map();
   (S.data[S.lang] || []).forEach(item => {
-    if (item.blockId && !map.has(item.blockId)) map.set(item.blockId, {
-      id: item.blockId,
-      label: item.block,
-      description: blockDescription(item.blockId),
+    (item.blockIds || []).forEach((id, idx) => {
+      if (!map.has(id)) map.set(id, {
+        id,
+        label: item.blocks[idx],
+        description: blockDescription(id),
+      });
     });
   });
   return [...map.values()]
@@ -2256,7 +2263,7 @@ function filteredData() {
     : data.map((item, idx) => ({ item, id: item.id, idx }));
 
   if (S.block)
-    indexed = indexed.filter(({ item }) => item.blockId === S.block);
+    indexed = indexed.filter(({ item }) => item.blockIds.includes(S.block));
 
   if (S.field)
     indexed = indexed.filter(({ item }) => item.fieldIds.includes(S.field));
@@ -2268,7 +2275,7 @@ function filteredData() {
     norm(item.name).includes(q) ||
     norm(item.desc).includes(q) ||
     norm(item.summary).includes(q) ||
-    norm(item.block).includes(q) ||
+    item.blocks.some(b => norm(b).includes(q)) ||
     item.tags.some(t => norm(t).includes(q)) ||
     item.fields.some(f => norm(f).includes(q)) ||
     item.programs.some(p =>
@@ -2404,7 +2411,7 @@ function renderCards() {
           <button class="fav-star ${fav ? 'active' : ''}" data-id="${esc(id)}">⭐</button>
         </div>
       </div>
-      ${item.block ? `<div class="card-block">${blockBadgeHTML(item.block)}</div>` : ''}
+      ${item.blocks.length ? `<div class="card-block">${item.blocks.map(blockBadgeHTML).join('')}</div>` : ''}
       <div class="card-fields">${item.fields.map(badgeHTML).join('')}</div>
       <div class="card-summary">${esc(item.summary)}</div>
     `;
@@ -2473,8 +2480,8 @@ function openModal(itemId) {
 
   document.getElementById('modalBackBtn').style.display = S.modalHistory.length ? '' : 'none';
   document.getElementById('modalTitle').textContent = item.name;
-  document.getElementById('modalBlock').innerHTML = blockBadgeHTML(item.block);
-  document.getElementById('modalBlock').style.display = item.block ? '' : 'none';
+  document.getElementById('modalBlock').innerHTML = item.blocks.map(blockBadgeHTML).join('');
+  document.getElementById('modalBlock').style.display = item.blocks.length ? '' : 'none';
   document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
   document.getElementById('modalTags').innerHTML = item.summary ? esc(item.summary) : '';
   document.getElementById('modalTags').style.display = item.summary ? '' : 'none';
@@ -2530,7 +2537,7 @@ function printModal() {
   let el = document.getElementById('printArea');
   if (!el) { el = document.createElement('div'); el.id = 'printArea'; document.body.appendChild(el); }
   const fields = item.fields.length ? item.fields.join(', ') : '';
-  const block  = item.block || '';
+  const block  = item.blocks.join(', ');
   const meta   = [block, fields].filter(Boolean).join(' · ');
   el.innerHTML = `
     <h1>${esc(item.name)}</h1>
@@ -2546,7 +2553,7 @@ function copyModal() {
   const item = S.modal ? itemById(S.modal) : null;
   if (!item) return;
 
-  const meta = [item.block, item.fields.join(', ')].filter(Boolean).join(' · ');
+  const meta = [item.blocks.join(', '), item.fields.join(', ')].filter(Boolean).join(' · ');
   const url = techniqueURL(item.id);
   const html = [
     `<h2>${esc(item.name)}</h2>`,
@@ -3244,7 +3251,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.2</span>
+    <span>v0.6.3</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
