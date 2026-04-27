@@ -2153,18 +2153,19 @@ function filteredData() {
   if (S.field)
     indexed = indexed.filter(({ item }) => item.fieldIds.includes(S.field));
 
-  const q = S.search.toLowerCase().trim();
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const q = norm(S.search.trim());
   if (q) indexed = indexed.filter(({ item }) =>
-    item.id.toLowerCase().includes(q) ||
-    item.name.toLowerCase().includes(q) ||
-    item.desc.toLowerCase().includes(q) ||
-    item.summary.toLowerCase().includes(q) ||
-    item.block.toLowerCase().includes(q) ||
-    item.tags.some(t => t.toLowerCase().includes(q)) ||
-    item.fields.some(f => f.toLowerCase().includes(q)) ||
+    norm(item.id).includes(q) ||
+    norm(item.name).includes(q) ||
+    norm(item.desc).includes(q) ||
+    norm(item.summary).includes(q) ||
+    norm(item.block).includes(q) ||
+    item.tags.some(t => norm(t).includes(q)) ||
+    item.fields.some(f => norm(f).includes(q)) ||
     item.programs.some(p =>
-      p.label.toLowerCase().includes(q) ||
-      p.url.toLowerCase().includes(q)
+      norm(p.label).includes(q) ||
+      norm(p.url).includes(q)
     )
   );
 
