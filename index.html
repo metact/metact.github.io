@@ -102,8 +102,10 @@
       border-radius: 50px;
       font-size: .875rem;
       background: var(--bg);
+      color: var(--text);
       transition: border-color .15s, box-shadow .15s;
     }
+    #searchInput::placeholder { color: var(--text-muted); }
     #searchInput:focus {
       outline: none;
       border-color: var(--primary);
@@ -128,7 +130,7 @@
       line-height: 1;
       transition: background .12s, color .12s;
     }
-    .search-clear:hover { background: #e2e8f0; color: var(--text); }
+    .search-clear:hover { background: var(--border); color: var(--text); }
     .search-clear.visible { display: inline-flex; }
     .header-right {
       display: flex;
