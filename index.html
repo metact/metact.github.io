@@ -671,6 +671,8 @@
       gap: 8px;
     }
 
+    #printArea { display: none; }
+
     @media print {
       body > *:not(#printArea) { display: none !important; }
       #printArea {
@@ -2048,6 +2050,12 @@ async function loadLang(lang) {
 
 // ─── SHARING & CLIPBOARD ─────────────────────────────────────────────────────
 
+function techniqueURL(id) {
+  const u = new URL(location.href.split('?')[0]);
+  u.searchParams.set('t', id);
+  return u.toString();
+}
+
 function shareURL(itemIds, name = null) {
   const u = new URL(location.href.split('?')[0]);
   u.searchParams.set('t', sortedItemIds(itemIds).join(','));
@@ -2523,7 +2531,7 @@ function printModal() {
     ${meta ? `<p class="print-meta">${esc(meta)}</p>` : ''}
     ${item.summary ? `<p class="print-summary">${esc(item.summary)}</p>` : ''}
     <div class="print-body">${formatDesc(item.desc)}</div>
-    <p class="print-footer">Metac · metact.github.io</p>
+    <p class="print-footer">Metac · ${techniqueURL(item.id)}</p>
   `;
   window.print();
 }
@@ -2533,11 +2541,13 @@ function copyModal() {
   if (!item) return;
 
   const meta = [item.block, item.fields.join(', ')].filter(Boolean).join(' · ');
+  const url = techniqueURL(item.id);
   const html = [
     `<h2>${esc(item.name)}</h2>`,
     meta ? `<p><em>${esc(meta)}</em></p>` : '',
     item.summary ? `<blockquote><p>${esc(item.summary)}</p></blockquote>` : '',
     item.desc ? formatDesc(item.desc) : '',
+    `<p><a href="${esc(url)}">${esc(url)}</a></p>`,
   ].filter(Boolean).join('\n');
 
   const plain = [
@@ -2545,6 +2555,7 @@ function copyModal() {
     meta,
     item.summary ? '\n' + item.summary : '',
     item.desc ? '\n' + item.desc.replace(/## /g, '\n').trim() : '',
+    '\n' + url,
   ].filter(Boolean).join('\n');
 
   const btn = document.getElementById('modalCopyBtn');
@@ -3227,7 +3238,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.0</span>
+    <span>v0.6.1</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
