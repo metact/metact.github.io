@@ -27,5 +27,25 @@ The repository currently has no commit history, so use a simple convention: shor
 
 Pull requests should include a concise summary, manual test notes, and screenshots or short recordings for visible UI changes. Mention any CSV schema or data-alignment changes explicitly.
 
+## Related techniques
+
+The app supports a final CSV column (index 8) for related techniques. This column must contain stable technique IDs, not translated names.
+
+Expected cell format:
+
+```
+metac_099; metac_045; metac_078
+```
+
+Implementation rules:
+
+- Parse the column into `item.related` (array of ID strings).
+- Use IDs to look up related items through `S.byId[S.lang]`.
+- Display translated names only in the UI.
+- Hide the related block if there are no valid related IDs.
+- Never create relationships from names.
+- Never include the current technique ID as related to itself.
+- Keep the same related IDs across ES, CA and EN.
+
 ## Data & Configuration Notes
 Do not introduce external libraries or a build pipeline unless the repository is intentionally being restructured. If you change local storage keys, URL parameters, or CSV column meanings, document the migration impact in the PR.
