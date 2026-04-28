@@ -1642,6 +1642,7 @@ const S = {
   lang:         DEFAULT_LANG,
   data:         { es: null, ca: null, en: null },
   byId:         { es: null, ca: null, en: null },
+  randomOrder:  new Map(),
   favorites:    new Set(),
   selected:     new Set(),
   selectMode:   false,
@@ -1749,6 +1750,24 @@ function buildIdMap(data) {
     else map.set(item.id, { item, idx });
   });
   return map;
+}
+
+function ensureRandomOrder(data) {
+  const ids = data
+    .map(item => item.id)
+    .filter(id => id && !S.randomOrder.has(id));
+
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+
+  const start = S.randomOrder.size;
+  ids.forEach((id, idx) => S.randomOrder.set(id, start + idx));
+}
+
+function randomRank(itemId) {
+  return S.randomOrder.has(itemId) ? S.randomOrder.get(itemId) : Number.MAX_SAFE_INTEGER;
 }
 
 function rowById(itemId, lang = S.lang) {
@@ -2071,6 +2090,7 @@ async function loadLang(lang) {
     raw = await res.text();
   }
   S.data[lang] = toObjects(raw, lang);
+  ensureRandomOrder(S.data[lang]);
   S.byId[lang] = buildIdMap(S.data[lang]);
   normalizeStoredRefs(lang);
 }
@@ -2284,7 +2304,7 @@ function filteredData() {
     )
   );
 
-  return indexed;
+  return indexed.sort((a, b) => randomRank(a.id) - randomRank(b.id) || a.idx - b.idx);
 }
 
 function clearSelection(render = true) {
