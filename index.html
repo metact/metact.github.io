@@ -329,12 +329,14 @@
       font-size: .8rem;
       color: var(--text-muted);
     }
+    .sort-wrap,
     .per-page-wrap {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       margin-left: 10px;
     }
+    .sort-wrap select,
     .per-page-wrap select {
       padding: 4px 8px;
       border: 1px solid var(--border);
@@ -1470,7 +1472,11 @@ const I18N = {
     favRemoved:   'Eliminado de favoritos',
     loading:      'Cargando datos…',
     error:        'Error al cargar los datos.',
-    techniques:   'recursos metodológicos',
+    techniques:   'recursos',
+    sort:         'Orden:',
+    sortRandom:   'Aleatorio',
+    sortAlpha:    'Alfabético',
+    sortAlphaDesc:'Alfabético inverso',
     perPage:      'Mostrar:',
     pageAll:      'Todas',
     pageFirst:    'Primera',
@@ -1543,7 +1549,11 @@ const I18N = {
     favRemoved:   'Eliminat dels preferits',
     loading:      'Carregant dades…',
     error:        'Error en carregar les dades.',
-    techniques:   'recursos metodològics',
+    techniques:   'recursos',
+    sort:         'Ordre:',
+    sortRandom:   'Aleatori',
+    sortAlpha:    'Alfabètic',
+    sortAlphaDesc:'Alfabètic invers',
     perPage:      'Mostrar:',
     pageAll:      'Totes',
     pageFirst:    'Primera',
@@ -1616,7 +1626,11 @@ const I18N = {
     favRemoved:   'Removed from favorites',
     loading:      'Loading data…',
     error:        'Error loading data.',
-    techniques:   'methodological resources',
+    techniques:   'resources',
+    sort:         'Sort:',
+    sortRandom:   'Random',
+    sortAlpha:    'Alphabetical',
+    sortAlphaDesc:'Reverse alphabetical',
     perPage:      'Show:',
     pageAll:      'All',
     pageFirst:    'First',
@@ -1638,11 +1652,15 @@ const I18N = {
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 
+const DAILY_ORDER_KEY = orderDateKey();
+const SORT_MODES = ['random', 'alpha', 'alphaDesc'];
+const LS_SORT = 'metec_sort_v1';
+
 const S = {
   lang:         DEFAULT_LANG,
   data:         { es: null, ca: null, en: null },
   byId:         { es: null, ca: null, en: null },
-  randomOrder:  new Map(),
+  sortMode:     loadSortMode(),
   favorites:    new Set(),
   selected:     new Set(),
   selectMode:   false,
@@ -1752,22 +1770,36 @@ function buildIdMap(data) {
   return map;
 }
 
-function ensureRandomOrder(data) {
-  const ids = data
-    .map(item => item.id)
-    .filter(id => id && !S.randomOrder.has(id));
-
-  for (let i = ids.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [ids[i], ids[j]] = [ids[j], ids[i]];
-  }
-
-  const start = S.randomOrder.size;
-  ids.forEach((id, idx) => S.randomOrder.set(id, start + idx));
+function orderDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
-function randomRank(itemId) {
-  return S.randomOrder.has(itemId) ? S.randomOrder.get(itemId) : Number.MAX_SAFE_INTEGER;
+function hashString(value) {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i++) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function dailyRank(itemId) {
+  return hashString(`${DAILY_ORDER_KEY}:${normalizeId(itemId)}`);
+}
+
+function sortRows(rows) {
+  return rows.sort((a, b) => {
+    if (S.sortMode === 'alpha' || S.sortMode === 'alphaDesc') {
+      const byName = a.item.name.localeCompare(b.item.name, S.lang, { sensitivity: 'base', numeric: true });
+      if (byName) return S.sortMode === 'alphaDesc' ? -byName : byName;
+      return a.idx - b.idx;
+    }
+
+    return dailyRank(a.id) - dailyRank(b.id) || a.idx - b.idx;
+  });
 }
 
 function rowById(itemId, lang = S.lang) {
@@ -2090,7 +2122,6 @@ async function loadLang(lang) {
     raw = await res.text();
   }
   S.data[lang] = toObjects(raw, lang);
-  ensureRandomOrder(S.data[lang]);
   S.byId[lang] = buildIdMap(S.data[lang]);
   normalizeStoredRefs(lang);
 }
@@ -2148,6 +2179,18 @@ const LS_LANG = 'metec_lang_v1';
 function saveLang() { localStorage.setItem(LS_LANG, S.lang); }
 function isSupportedLang(lang) { return LANGS.includes(lang); }
 function resolveLang(lang) { return isSupportedLang(lang) ? lang : DEFAULT_LANG; }
+function isSupportedSortMode(mode) { return SORT_MODES.includes(mode); }
+function loadSortMode() {
+  try {
+    const saved = localStorage.getItem(LS_SORT);
+    if (isSupportedSortMode(saved)) return saved;
+  } catch {}
+  return 'random';
+}
+function saveSortMode() {
+  try { localStorage.setItem(LS_SORT, S.sortMode); }
+  catch {}
+}
 function loadLangPref() {
   const saved = localStorage.getItem(LS_LANG);
   if (isSupportedLang(saved)) { S.lang = saved; return; }
@@ -2304,7 +2347,7 @@ function filteredData() {
     )
   );
 
-  return indexed.sort((a, b) => randomRank(a.id) - randomRank(b.id) || a.idx - b.idx);
+  return sortRows(indexed);
 }
 
 function clearSelection(render = true) {
@@ -2371,7 +2414,15 @@ function renderCards() {
   bar.className = 'results-bar';
   bar.innerHTML = `
     <p class="results-info">
-      ${total} ${i('techniques')}
+      <strong>${total}</strong> ${i('techniques')}
+      <span class="sort-wrap">
+        <label for="sortSelect">${i('sort')}</label>
+        <select id="sortSelect">
+          <option value="random"    ${S.sortMode==='random'    ?'selected':''}>${i('sortRandom')}</option>
+          <option value="alpha"     ${S.sortMode==='alpha'     ?'selected':''}>${i('sortAlpha')}</option>
+          <option value="alphaDesc" ${S.sortMode==='alphaDesc' ?'selected':''}>${i('sortAlphaDesc')}</option>
+        </select>
+      </span>
       <span class="per-page-wrap">
         <label for="perPageSelect">${i('perPage')}</label>
         <select id="perPageSelect">
@@ -2383,6 +2434,12 @@ function renderCards() {
       </span>
     </p>
   `;
+  bar.querySelector('#sortSelect').onchange = e => {
+    S.sortMode = isSupportedSortMode(e.target.value) ? e.target.value : 'random';
+    S.page = 0;
+    saveSortMode();
+    renderCards();
+  };
   bar.querySelector('#perPageSelect').onchange = e => {
     S.perPage = Number(e.target.value);
     S.page = 0;
@@ -3271,7 +3328,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.3</span>
+    <span>v0.6.4</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
