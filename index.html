@@ -1433,8 +1433,10 @@ const I18N = {
     selectMode:   'Seleccionar',
     selectOff:    'Cancelar selección',
     shareSel:     'Compartir selección',
+    addSelectedFavs:'Añadir a favoritos',
     selectVisible:'Seleccionar visibles',
     selectedCount:'seleccionadas',
+    selectedFavsAdded:'Añadidos a favoritos',
     clearSearch:  'Limpiar búsqueda',
     assistant:    'Asistente de IA',
     clearConfirm: '¿Eliminar todos los favoritos?',
@@ -1510,8 +1512,10 @@ const I18N = {
     selectMode:   'Seleccionar',
     selectOff:    'Cancel·lar selecció',
     shareSel:     'Compartir selecció',
+    addSelectedFavs:'Afegir als preferits',
     selectVisible:'Seleccionar visibles',
     selectedCount:'seleccionades',
+    selectedFavsAdded:'Afegits als preferits',
     clearSearch:  'Netejar cerca',
     assistant:    "Assistent d'IA",
     clearConfirm: 'Eliminar tots els preferits?',
@@ -1587,8 +1591,10 @@ const I18N = {
     selectMode:   'Select',
     selectOff:    'Cancel selection',
     shareSel:     'Share selection',
+    addSelectedFavs:'Add to favorites',
     selectVisible:'Select visible',
     selectedCount:'selected',
+    selectedFavsAdded:'Added to favorites',
     clearSearch:  'Clear search',
     assistant:    'AI assistant',
     clearConfirm: 'Delete all favorites?',
@@ -2454,12 +2460,14 @@ function renderCards() {
       <div class="selection-bar-info">${S.selected.size} ${i('selectedCount')}</div>
       <div class="selection-bar-actions">
         <button class="btn" id="selectVisibleBtn">✓ ${i('selectVisible')}</button>
+        <button class="btn" id="addSelectedFavsBtn">⭐ ${i('addSelectedFavs')}</button>
         <button class="btn btn-primary" id="shareSelectedBtn">🔗 ${i('shareSel')}</button>
         <button class="btn" id="cancelSelectionBtn">✕ ${i('selectOff')}</button>
       </div>
     `;
     main.appendChild(selBar);
     selBar.querySelector('#selectVisibleBtn').onclick = () => selectVisibleCards();
+    selBar.querySelector('#addSelectedFavsBtn').onclick = e => openSelectedCatPicker(e.currentTarget);
     selBar.querySelector('#shareSelectedBtn').onclick = () => {
       if (!S.selected.size) return;
       copy(shareURL([...S.selected]));
@@ -2734,10 +2742,21 @@ function deleteCategory(id) {
   saveCats();
 }
 
-function addToCategory(itemId, catId) {
-  itemId = normalizeId(itemId);
-  const cat = S.categories.find(c => c.id === catId);
-  if (cat && itemById(itemId) && !cat.itemIds.includes(itemId)) { cat.itemIds.push(itemId); saveCats(); }
+function addItemsToFavorites(itemIds) {
+  const validIds = validItemIds(itemIds);
+  let added = 0;
+  validIds.forEach(id => {
+    if (!S.favorites.has(id)) {
+      S.favorites.add(id);
+      added++;
+    }
+  });
+
+  if (added) {
+    saveFavs();
+    updateFavBadge();
+  }
+  return added;
 }
 
 function removeFromCategory(itemId, catId) {
@@ -2758,12 +2777,146 @@ function assignToCategory(itemId, catId = null) {
   saveCats();
 }
 
-function promptNewCategory(addItemId = null) {
+function assignItemsToCategory(itemIds, catId = null) {
+  const validIds = validItemIds(itemIds);
+  if (!validIds.length) return 0;
+
+  addItemsToFavorites(validIds);
+  const idSet = new Set(validIds);
+  S.categories.forEach(cat => {
+    cat.itemIds = cat.itemIds.filter(id => !idSet.has(id));
+  });
+  if (catId) {
+    const target = S.categories.find(cat => cat.id === catId);
+    if (target) {
+      validIds.forEach(id => {
+        if (!target.itemIds.includes(id)) target.itemIds.push(id);
+      });
+    }
+  }
+  saveCats();
+  return validIds.length;
+}
+
+function promptNewCategory(addItemIds = null) {
   const name = prompt(i('catPrompt'));
-  if (!name || !name.trim()) return;
+  if (!name || !name.trim()) return null;
   const cat = createCategory(name.trim());
-  if (addItemId !== null) addToCategory(addItemId, cat.id);
+  if (addItemIds !== null) {
+    const ids = Array.isArray(addItemIds) ? addItemIds : [addItemIds];
+    assignItemsToCategory(ids, cat.id);
+  }
   renderPanel();
+  return cat;
+}
+
+function openSelectedCatPicker(anchorEl) {
+  const itemIds = validItemIds([...S.selected]);
+  if (!itemIds.length) return;
+  openCatPickerForItems(itemIds, anchorEl);
+}
+
+function openCatPickerForItems(itemIds, anchorEl) {
+  const validIds = validItemIds(itemIds);
+  if (!validIds.length) return;
+  if (activePicker) { activePicker.remove(); activePicker = null; }
+
+  const picker = document.createElement('div');
+  picker.className = 'cat-picker';
+  picker.onclick = e => e.stopPropagation();
+  activePicker = picker;
+
+  const title = document.createElement('div');
+  title.className = 'cat-picker-title';
+  title.textContent = i('addToCat');
+  picker.appendChild(title);
+
+  const choose = catId => {
+    assignItemsToCategory(validIds, catId);
+    picker.remove();
+    activePicker = null;
+    toast(i('selectedFavsAdded'));
+    renderPanel();
+    renderCards();
+  };
+
+  const noneRow = document.createElement('div');
+  noneRow.className = 'cat-picker-row';
+  const noneRadio = document.createElement('input');
+  noneRadio.type = 'radio';
+  noneRadio.name = 'cat-selected';
+  noneRadio.onclick = e => e.stopPropagation();
+  const noneLbl = document.createElement('span');
+  noneLbl.textContent = i('uncategorized');
+  noneRow.onclick = e => { e.stopPropagation(); choose(null); };
+  noneRow.appendChild(noneRadio);
+  noneRow.appendChild(noneLbl);
+  picker.appendChild(noneRow);
+
+  if (!S.categories.length) {
+    const none = document.createElement('div');
+    none.className = 'cat-picker-row';
+    none.style.color = 'var(--text-muted)';
+    none.textContent = i('noCatsYet');
+    picker.appendChild(none);
+  } else {
+    S.categories.forEach(cat => {
+      const row = document.createElement('div');
+      row.className = 'cat-picker-row';
+      const cb = document.createElement('input');
+      cb.type = 'radio';
+      cb.name = 'cat-selected';
+      cb.onclick = e => e.stopPropagation();
+      const lbl = document.createElement('span');
+      lbl.textContent = cat.name;
+      row.onclick = e => { e.stopPropagation(); choose(cat.id); };
+      row.appendChild(cb);
+      row.appendChild(lbl);
+      picker.appendChild(row);
+    });
+  }
+
+  const addRow = document.createElement('div');
+  addRow.className = 'cat-picker-add';
+  addRow.innerHTML = '<span>+</span> ' + i('newCat');
+  addRow.onclick = e => {
+    e.stopPropagation();
+    picker.remove();
+    activePicker = null;
+    if (promptNewCategory(validIds)) {
+      toast(i('selectedFavsAdded'));
+      renderCards();
+    }
+  };
+  picker.appendChild(addRow);
+
+  picker.style.position = 'fixed';
+  picker.style.right = 'auto';
+  picker.style.top = '0';
+  picker.style.left = '0';
+  document.body.appendChild(picker);
+
+  const rect = anchorEl.getBoundingClientRect();
+  const margin = 8;
+  const maxLeft = Math.max(margin, window.innerWidth - picker.offsetWidth - margin);
+  const left = Math.min(Math.max(margin, rect.right - picker.offsetWidth), maxLeft);
+  const maxTop = Math.max(margin, window.innerHeight - picker.offsetHeight - margin);
+  const preferredTop = rect.bottom + 6;
+  const fallbackTop = rect.top - picker.offsetHeight - 6;
+  const top = preferredTop <= maxTop ? preferredTop : Math.max(margin, fallbackTop);
+  picker.style.left = `${left}px`;
+  picker.style.top = `${top}px`;
+
+  setTimeout(() => {
+    const close = e => {
+      if (!picker.contains(e.target) && !anchorEl.contains(e.target)) {
+        picker.remove();
+        activePicker = null;
+        document.removeEventListener('click', close);
+      }
+    };
+    document.addEventListener('click', close);
+  }, 0);
 }
 
 function openCatPicker(itemId, anchorEl) {
@@ -3328,7 +3481,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.4</span>
+    <span>v0.6.5</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
