@@ -21,7 +21,15 @@ There are many basic questions, and they can be varied in number and form depend
 
 In a history lesson, the teacher shows a photograph of a factory during the Industrial Revolution and asks: “What do you think is happening in this image?”. A student answers: “It looks as if working conditions were harsh”. The teacher asks the student to justify the interpretation: “What makes you say that?”. The student points to the number of workers crowded together, the lack of natural light and the apparent age of some children.
 
-Based on these responses, the class distinguishes between observations, interpretations and evidence. The routine helps students move beyond simple opinions and support their ideas with specific clues.","evidence, interpretation, critical thinking, metacognition, reflection","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A thinking routine in which students interpret an image, text, object, or situation and justify their response with evidence. It helps develop critical thinking, improve observation skills, substantiate hypotheses, and encourage students to explain the reasoning behind their ideas.",Active Methodologies,metac_099; metac_045; metac_078
+Based on these responses, the class distinguishes between observations, interpretations and evidence. The routine helps students move beyond simple opinions and support their ideas with specific clues.
+
+## Relationship with CER
+
+This routine is related to **Claim, Evidence and Reasoning (CER)** because both ask students to justify ideas with evidence. In both cases, students need to avoid answers based only on opinion and learn to distinguish observation, interpretation and justification.
+
+The main difference is that “What makes you say that?” works as a short observation and interpretation routine: students say what they think about an image, text, object or situation and explain which clues lead them to think so. CER, by contrast, requires a more complete argumentative structure: an explicit claim, selected evidence and reasoning that explains why the evidence supports the claim.
+
+For this reason, “What makes you say that?” is especially useful for starting a conversation, activating observation or making students' interpretations visible. CER is more suitable when the aim is to produce a final response, a scientific explanation, a lab conclusion or an argued text.","evidence, interpretation, critical thinking, metacognition, reflection","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation",,"A thinking routine in which students interpret an image, text, object, or situation and justify their response with evidence. It helps develop critical thinking, improve observation skills, substantiate hypotheses, and encourage students to explain the reasoning behind their ideas.",Active Methodologies,metac_099; metac_045; metac_125
 metac_002,Who's who?,"This activity aims to help students define themselves, not physically, but by focusing on their character, hobbies, or interests.
 
 1. The teacher tells a short story, for example, that they will receive a visit from a famous person and have to write a letter of introduction.
@@ -249,7 +257,7 @@ A methodology in which learning is organized around questions, observations, or 
 - To connect data, explanations, and conclusions.
 
 ## Example
-In biology, students investigate why some seeds germinate better than others. They design a small test with different light or humidity conditions, collect data, and justify their conclusions.","inquiry, questions, hypotheses, research, evidence, scientific thinking","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition",,"A methodology in which learning begins with questions, observations, or problems that students must investigate. It serves to develop scientific thinking, formulate hypotheses, gather evidence, and construct reasoned explanations from data.",Active Methodologies,metac_010; metac_045; metac_034
+In biology, students investigate why some seeds germinate better than others. They design a small test with different light or humidity conditions, collect data, and justify their conclusions.","inquiry, questions, hypotheses, research, evidence, scientific thinking","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition",,"A methodology in which learning begins with questions, observations, or problems that students must investigate. It serves to develop scientific thinking, formulate hypotheses, gather evidence, and construct reasoned explanations from data.",Active Methodologies,metac_010; metac_126; metac_045
 metac_009,Action-Based Learning (ABL),"Action-Based Learning (ABL) is understood as a teaching and learning strategy or methodology based on cooperative work around activities that meet the following criteria: **adequate instrumental and social mediation** and **an intellectual, emotional, and territorial connection**.
 
 Teaching and learning processes are generated through collaborative work, guided by the teacher, around a combination of **contextualized situations, outside the classroom**, and **decontextualized situations, within the classroom**.
@@ -353,7 +361,7 @@ We can also use a simpler structure for the same problem:
 
 1. Hypothesis testing. Students conduct experiments with different groups of plants fertilized with organic or chemical fertilizers and measure their growth each week to verify whether the hypothesis is correct.
 
-2. Results analysis and presentation to the class. Students analyze the collected data and draw conclusions about the effect of different types of fertilizers on plant growth. They then present their research findings to the class clearly and with scientific rigor.","research, scientific method, hypothesis, data, critical thinking, presentation","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students investigate a question or problem following procedures of the scientific method. It serves to formulate hypotheses, analyze data, draw conclusions, and develop critical thinking and rigor in the search for answers.",Active Methodologies,metac_008; metac_011; metac_045
+2. Results analysis and presentation to the class. Students analyze the collected data and draw conclusions about the effect of different types of fertilizers on plant growth. They then present their research findings to the class clearly and with scientific rigor.","research, scientific method, hypothesis, data, critical thinking, presentation","Information Processing and Analysis, Knowledge Building, Problem Solving and Challenges, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"A methodology in which students investigate a question or problem following procedures of the scientific method. It serves to formulate hypotheses, analyze data, draw conclusions, and develop critical thinking and rigor in the search for answers.",Active Methodologies,metac_008; metac_126; metac_011
 metac_011,Laboratory-Based Learning,"This type of learning is based on the fact that if students can observe and manipulate aspects of science firsthand, they will be able to understand and grasp the content better than with other methods. With this model, we give students the opportunity to practice science in the same way as professionals. For this type of learning to be effective, students must understand how the experiment is conducted and why it is worthwhile, in addition to knowing that it will provide them with a deeper understanding of the concept.
 
 ABL can be considered a specific case of the more general approach: Inquiry-Based Learning.
@@ -3302,3 +3310,260 @@ Unlike a competitive debate, a dialogic gathering aims to build shared understan
 In literature, after reading an excerpt from a novel about a character facing a difficult decision, each student selects a sentence they find meaningful. During the gathering, some students comment on the character’s motives, others connect the excerpt with general human experiences and others analyze the language used.
 
 The teacher does not look for a single correct interpretation, but helps the group justify contributions, listen to different points of view and build a richer understanding of the text.","dialogue, gathering, argumentation, active listening, comprehension, participation","Communication and Creativity, Critical Thinking and Metacognition, Information Processing and Analysis, Cohesion and Cooperation",,"Dialogic activity based on a common material. It is used to improve comprehension, argumentation, active listening and shared construction of meaning.",Active Methodologies; Cooperative Learning Organization,metac_090; metac_057; metac_069
+metac_125,"Claim, Evidence and Reasoning (CER)","## Description
+CER, short for *Claim-Evidence-Reasoning*, is an argumentation structure in which students build a complete explanation from three elements: a clear claim, evidence that supports it, and reasoning that connects the evidence to the claim.
+
+It can be used in science, history, economics, philosophy, language arts or any subject where students need to justify an answer. It helps avoid responses based only on opinion and requires students to distinguish what they claim, the data that support it and the explanation that links both.
+
+## Procedure
+1. A question, problem, phenomenon, text, image or data set is presented.
+2. Students formulate a claim or initial answer.
+3. They select relevant evidence: data, observations, quotations, experimental results or information from a source.
+4. They write the reasoning that explains why the evidence supports the claim.
+5. They review whether the claim is precise, whether the evidence is sufficient and whether the reasoning establishes a logical connection.
+6. The response can be shared in pairs or groups to receive feedback and improve the explanation.
+
+## Similarities with “What makes you say that?”
+- Both techniques ask students to justify an idea with evidence.
+- Both help distinguish observations, interpretations and reasons.
+- Both develop critical thinking and prevent unsupported answers.
+- Both can be applied to images, texts, scientific phenomena, social problems or classroom situations.
+
+## Differences from “What makes you say that?”
+- “What makes you say that?” usually starts from an initial interpretation and asks for the clues that support it.
+- CER requires a more complete and explicit structure: claim, evidence and reasoning.
+- CER does not only justify an interpretation; it asks students to explain why the evidence supports the claim.
+- CER is especially useful for scientific explanations, lab conclusions, argued answers or data analysis.
+- “What makes you say that?” works very well as a short observation routine; CER works better as a framework for more complete written or oral explanations.
+
+## Example
+In a biology lab, students observe that some seeds germinated better with water than without water. The question is: “Is water necessary for germination?”.
+
+- **Claim**: Water is necessary for seeds to germinate.
+- **Evidence**: In the group with water, 18 out of 20 seeds germinated, whereas in the group without water none germinated.
+- **Reasoning**: Germination requires the seed to activate its metabolism and rehydrate its tissues. The data show that seeds with water began the process and those without water did not. Therefore, the difference between the two groups supports the claim that water is necessary for germination.","argumentation, evidence, reasoning, critical thinking, scientific explanation, justification, written communication","Thinking Routines, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Communication and Creativity",,"Argumentation structure in which students formulate a claim, select evidence and explain through reasoning why that evidence supports the claim. It helps develop critical thinking, scientific explanation, data analysis and justified responses.",Active Methodologies,metac_126; metac_001; metac_008
+metac_126,Argument-Driven Inquiry (ADI),"## Description
+ADI, short for *Argument-Driven Inquiry*, is an inquiry methodology in which students investigate a question, analyse evidence, build an argument, defend it before other groups, revise their explanation and produce a final report.
+
+Its distinctive feature is that the investigation does not end when data are obtained. Students must turn those data into an argument, submit it to critique, revise their ideas and communicate a better-supported explanation. For this reason, it is especially suitable for laboratory work, data analysis, scientific problems and socioscientific issues.
+
+## Procedure
+1. A task and an investigable guiding question are presented.
+2. Groups design an investigation method or analyse a data set.
+3. They collect, organise and interpret evidence.
+4. They develop a tentative argument with a claim, evidence and justification.
+5. They participate in an argumentation session where they present their argument and answer questions from other groups.
+6. They revise their explanation based on criticism, questions or additional evidence.
+7. They write a final report including the question, method, evidence, argument and revisions made.
+8. They reflect on the quality of the investigation and the argumentation.
+
+## Relevant differences from CER
+- CER is a structure for formulating an argued explanation; ADI is a complete inquiry methodology.
+- CER organises the response into claim, evidence and reasoning; ADI also includes investigation design, data analysis, group discussion, revision and a final report.
+- CER can be used in a short activity; ADI usually takes a sequence of several sessions.
+- CER can be part of ADI as the structure for writing the argument.
+
+## Relevant differences from inquiry-based learning
+- Inquiry-based learning focuses on investigating questions, phenomena or problems; ADI adds an explicit phase of public argumentation and peer critique.
+- In general inquiry, producing an explanation or conclusion may be enough; in ADI the argument must be defended, revised and transformed into a final report.
+- ADI follows a more structured sequence, especially useful when the aim is to teach students how to argue scientifically.
+
+## Example
+In biology, the teacher asks: “Does light affect seed germination?”. Each group designs a small investigation with seeds in light and dark conditions, controls variables such as water and temperature, and records results over several days.
+
+Then each group prepares a tentative argument. For example: “Light is not necessary for initial germination, because a similar number of seeds germinated in both groups”. During the argumentation session, other groups ask whether humidity was properly controlled, whether the number of seeds was sufficient, or whether the group measured only germination or also growth.
+
+Based on these questions, each group revises its explanation and writes a final report. The activity is not limited to obtaining data: it teaches students to defend, question and improve an evidence-based explanation.","inquiry, argumentation, evidence, investigation, scientific thinking, revision, report, scientific communication","Knowledge Building, Information Processing and Analysis, Critical Thinking and Metacognition, Communication and Creativity, Formative Assessment and Feedback, Cohesion and Cooperation",,"Inquiry methodology in which students investigate a question, analyse evidence, build an argument, defend it before other groups, revise their explanation and produce a final report. It helps develop scientific thinking, argumentation, communication and evidence-based revision.",Active Methodologies,metac_125; metac_008; metac_010
+metac_127,"Predict, Observe, Explain (POE)","## Description
+Predict, Observe, Explain (POE) is a technique in which students anticipate what they think will happen in response to a phenomenon, experiment, problem or situation, observe what actually happens and then produce an explanation that compares their prediction with the evidence obtained.
+
+It is especially useful for making prior ideas visible, detecting alternative conceptions and promoting conceptual change. Although it is often used in science, it can also be applied in mathematics, technology, economics, geography or the analysis of social situations when the aim is to test a hypothesis against data, observations or results.
+
+## Procedure
+1. The teacher presents a situation, phenomenon, experiment, graph, problem or case.
+2. Each student predicts what will happen and briefly justifies the prediction.
+3. Observation takes place: experiment, simulation, data analysis, reading of results or case verification.
+4. Students compare what they observed with what they had predicted.
+5. They write an explanation that connects prediction, evidence and the knowledge being studied.
+6. The activity can end with a whole-class discussion to review initial ideas and clarify concepts.
+
+## Objectives
+- Activate prior knowledge and make initial hypotheses explicit.
+- Compare predictions with evidence.
+- Promote conceptual change and revision of ideas.
+- Develop reasoned explanation from observations or data.
+
+## Example
+In biology, the teacher asks: “What will happen if we place a peeled potato in very salty water for one hour?”. Before observing the result, each student predicts whether the potato will gain water, lose water or remain unchanged, and justifies the answer.
+
+The experiment is then carried out. Students observe that the potato loses firmness and mass. They then compare the result with their prediction and explain the process through osmosis: water leaves the cells and moves into the medium with a higher salt concentration. The technique helps students revise intuitive ideas about water movement and build an evidence-based explanation.","prediction, observation, explanation, hypothesis, evidence, conceptual change, scientific thinking","Thinking Routines, Prior Knowledge Activation, Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Formative Assessment and Feedback",,"Technique in which students predict what will happen, observe the result and explain the difference between their prediction and the evidence obtained. It helps activate prior ideas, test hypotheses, detect alternative conceptions and promote conceptual change.",Active Methodologies,metac_045; metac_008; metac_074; metac_099; metac_125; metac_034
+metac_128,Toulmin's Argumentation Model,"## Description
+Toulmin's argumentation model is a tool for analysing and constructing arguments more precisely. It helps students distinguish between the claim being defended, the data that support it, the warrant that connects the data to the claim, the backing for that warrant, qualifiers and possible objections or rebuttals.
+
+It is especially useful when giving a correct answer is not enough and students need to justify a position, evaluate evidence, anticipate counterarguments or defend a conclusion on complex topics. It can be applied in science, philosophy, history, economics, language arts, citizenship or news analysis.
+
+## Procedure
+1. A question, problem, text, case or dilemma that allows argumentation is presented.
+2. Students formulate a claim or thesis.
+3. They identify the data or evidence that support the claim.
+4. They explain the warrant: why those data support the claim.
+5. They add backing if the warrant needs further support.
+6. They include qualifiers such as “probably”, “under these conditions” or “according to the available data”.
+7. They identify possible objections, exceptions or rebuttals.
+8. They revise the argument to make it stronger and more balanced.
+
+## Main elements
+- **Claim**: idea or conclusion being defended.
+- **Data or evidence**: information that supports the claim.
+- **Warrant**: logical connection between the data and the claim.
+- **Backing**: additional support for the warrant.
+- **Qualifier**: degree of certainty or scope of the claim.
+- **Rebuttal**: conditions, exceptions or objections that limit the argument.
+
+## Relationship with CER
+CER is simpler and more direct: claim, evidence and reasoning. Toulmin's model goes further when an argument needs nuance, explicit warrants or consideration of objections. It can therefore be used after CER as an extension for more complex arguments.
+
+## Example
+In economics, students analyse the claim: “Raising the price of high-sugar products can reduce their consumption”.
+
+- **Claim**: A tax on sugary drinks can reduce their consumption.
+- **Data**: If the price increases, some families buy less or look for cheaper alternatives.
+- **Warrant**: Price influences consumption decisions.
+- **Backing**: Demand theory suggests that, for many goods, when price rises, the quantity demanded falls.
+- **Qualifier**: It may reduce consumption, especially if accessible alternatives exist.
+- **Rebuttal**: If demand is very inelastic or the price increase is small, the effect may be limited.
+
+The technique helps students not only defend a position, but also recognise its conditions and limits.","argumentation, Toulmin, evidence, warrants, rebuttal, critical thinking, debate, reasoning","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis, Formative Assessment and Feedback",,"Tool for building and analysing arguments by distinguishing claim, data, warrant, backing, qualifiers and rebuttals. It helps improve argumentation, evaluate evidence, anticipate objections and defend conclusions more precisely.",Active Methodologies; Educational Frameworks,metac_125; metac_126; metac_090; metac_024; metac_042; metac_113; metac_124
+metac_129,Peer Review,"## Description
+Peer review is a formative assessment technique in which students review their classmates' work and provide comments aimed at improvement. It is not just about correcting errors, but about comparing a product with clear criteria and suggesting specific improvements.
+
+It can be used with texts, lab reports, presentations, projects, concept maps, digital products, arguments, portfolios or any task that can be improved through revision. It works best when students have a guide, rubric, checklist or review questions.
+
+## Procedure
+1. The teacher presents the quality criteria or a review guide.
+2. Each student or team submits a draft, initial product or provisional explanation.
+3. Another student or team reviews the work according to the agreed criteria.
+4. The reviewer points out strengths, questions and suggestions for improvement.
+5. The author decides which changes to make and justifies the improvements.
+6. The activity can close with a brief reflection on what changed between the first and final version.
+
+## Objectives
+- Improve the quality of products before final submission.
+- Develop analysis, feedback and self-regulation skills.
+- Make quality criteria visible.
+- Encourage shared responsibility and progressive improvement.
+
+## Practical advice
+- Use clear criteria and focus on a few review aspects at a time.
+- Ask for specific comments, not vague judgements.
+- Keep formative review separate from final grading.
+- Teach students to make respectful and useful suggestions.
+- Give time to revise and improve after receiving feedback.
+
+## Example
+In a language arts activity, each student writes an argumentative text about mobile phone use at school. Before submitting it, students exchange drafts with a classmate. The review focuses on three aspects: clarity of the thesis, use of evidence and presence of a counterargument.
+
+The reviewer identifies one clear idea in the text, one part that is not easy to understand and one specific improvement. The author then revises the text: reformulates the thesis, adds a piece of evidence and improves the counterargument. The technique turns assessment into a real opportunity for improvement before the final version.","peer review, feedback, peer assessment, improvement, rubric, draft, formative assessment","Formative Assessment and Feedback, Critical Thinking and Metacognition, Communication and Creativity, Cohesion and Cooperation, Information Processing and Analysis",,"Formative assessment technique in which students review classmates' work using clear criteria and provide comments to improve it. It helps develop feedback, self-regulation, peer assessment and progressive improvement of products.",Active Methodologies,metac_122; metac_077; metac_044; metac_029; metac_126; metac_124; metac_090
+metac_130,Two Stars and a Wish,"## Description
+Two Stars and a Wish is a simple formative feedback technique. Students review their own work or a classmate's work and provide two positive comments, the stars, and one specific suggestion for improvement, the wish.
+
+It is useful because it balances recognition and improvement. It prevents review from becoming only error correction and helps comments remain brief, understandable and action-oriented.
+
+## Procedure
+1. A task, draft, presentation, product or response is presented.
+2. Students review the work using clear criteria.
+3. They write two stars: two successful or well-resolved aspects.
+4. They write one wish: a specific and achievable improvement.
+5. The author reviews the feedback received and decides which change to apply.
+
+## Example
+After an oral presentation on an environmental problem, a classmate writes: “Star 1: the explanation of the causes was clear. Star 2: the images helped explain the problem. Wish: it would be better to add one piece of data to justify the final proposal”. The group revises the presentation before submitting the final version.","feedback, peer assessment, improvement, review, formative assessment, comments","Formative Assessment and Feedback, Communication and Creativity, Critical Thinking and Metacognition, Cohesion and Cooperation",,"Formative feedback technique in which students identify two positive aspects and one specific improvement. It helps review work in a brief, balanced and improvement-oriented way.",Active Methodologies,metac_129; metac_122; metac_029; metac_096; metac_107
+metac_131,Concept Cartoon,"## Description
+Concept Cartoon is a technique that presents a situation through a cartoon or scene with several characters expressing different ideas about a phenomenon, problem or concept. Students analyse the statements, decide which one they agree with, justify their choice and revise their ideas using evidence.
+
+It is especially useful for detecting alternative conceptions, starting an inquiry or creating cognitive conflict. It can be used in science, mathematics, technology, social studies or ethics.
+
+## Procedure
+1. A cartoon with several characters offering different explanations is shown.
+2. Students identify what each character thinks.
+3. They decide which statement seems most appropriate or propose an alternative.
+4. They justify their choice with reasons, data or examples.
+5. The ideas are compared with an observation, experiment, reading or guided discussion.
+6. Students revise their initial explanation.
+
+## Example
+In physics, a cartoon shows three students talking about a falling ball. One says that heavy objects always fall first, another says that all objects fall the same without air resistance, and another says it depends on shape. The class discusses the ideas, carries out a small experiment or analyses a video and revises its explanations about falling bodies.","cartoon, alternative conceptions, cognitive conflict, hypotheses, evidence, inquiry","Prior Knowledge Activation, Critical Thinking and Metacognition, Knowledge Building, Information Processing and Analysis, Communication and Creativity",,"Technique using cartoons with characters who express different ideas about a phenomenon or concept. It helps detect alternative conceptions, create cognitive conflict and justify explanations with evidence.",Active Methodologies,metac_099; metac_127; metac_045; metac_008; metac_001; metac_125
+metac_132,Frayer Model,"## Description
+The Frayer Model is a graphic organiser for understanding concepts. It is usually divided into four parts: definition, characteristics, examples and non-examples. It helps students clarify the meaning of a term and distinguish it from related or confusing ideas.
+
+It can be used in science, mathematics, language arts, history, economics or any subject with conceptual vocabulary. It is useful when introducing new concepts, reviewing academic vocabulary or checking whether students can distinguish examples from counterexamples.
+
+## Procedure
+1. A key concept is selected.
+2. Students write a definition in their own words.
+3. They add essential characteristics of the concept.
+4. They propose examples that fit the definition.
+5. They propose non-examples and explain why they do not belong to the concept.
+6. The class reviews the organiser to improve precision and understanding.
+
+## Example
+In mathematics, for the concept “function”, students write a definition, identify characteristics such as each input value having a single output value, add examples of functions using tables or graphs, and include non-examples where the same input has two different outputs.","concepts, vocabulary, examples, non-examples, graphic organiser, understanding","Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Communication and Creativity",,"Graphic organiser for working with concepts through definition, characteristics, examples and non-examples. It helps clarify academic vocabulary, distinguish concepts and improve understanding.",Active Methodologies,metac_004; metac_022; metac_063; metac_069; metac_100; metac_103
+metac_133,"Claim, Support, Question","## Description
+Claim, Support, Question is a thinking routine for analysing an idea, text, image, piece of data or explanation. Students formulate a claim, provide support or evidence for it, and end with a question that opens up further analysis.
+
+It is lighter than CER. It does not require a full explanation, but it does require students to justify an idea and keep inquiry open through a relevant question.
+
+## Procedure
+1. A stimulus is presented: text, image, graph, news item, experiment or problem.
+2. Students formulate a claim about what they interpret or conclude.
+3. They add support: data, quotation, observation, example or reason.
+4. They formulate a question that helps continue thinking or investigating.
+5. Responses are shared and the quality of the claims, supports and questions is reviewed.
+
+## Example
+In history, after analysing a graph on urban population, a student writes: “Claim: cities grew significantly during industrialisation. Support: the graph shows a steady increase in urban population between 1850 and 1900. Question: was this growth the same across all social groups or did it affect some more than others?”.","claim, support, question, evidence, critical thinking, inquiry","Thinking Routines, Critical Thinking and Metacognition, Information Processing and Analysis, Knowledge Building, Communication and Creativity",,"Routine in which students formulate a claim, provide support or evidence and ask a question. It helps justify ideas and open new lines of analysis or inquiry.",Active Methodologies,metac_125; metac_001; metac_099; metac_128; metac_090; metac_075
+metac_134,Argument Map,"## Description
+An argument map is a visual technique for representing the structure of an argument. It shows the thesis, supporting reasons, evidence, objections, responses to those objections and the relationships between the parts.
+
+It helps students see whether an argument is well supported, whether evidence is missing, whether there are logical gaps or whether counterarguments need to be considered. It is useful for debates, argumentative writing, news analysis, ethical dilemmas and scientific or social problems.
+
+## Procedure
+1. The main thesis or claim is identified.
+2. Supporting reasons are added.
+3. Evidence is included for each reason.
+4. Objections or counterarguments are represented.
+5. Responses or qualifications are added to address those objections.
+6. The strength of the whole argument is reviewed and improved.
+
+## Example
+In citizenship education, students build a map around the question: “Should mobile phone use be limited at school?”. They place the thesis in the centre, add reasons for and against, evidence related to coexistence or learning, and possible conditions, such as permitted use for specific tasks.","argumentation, map, evidence, objections, counterarguments, critical thinking","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis, Formative Assessment and Feedback",,"Visual technique for representing thesis, reasons, evidence, objections and counterarguments. It helps analyse the strength of an argument and improve texts, debates or justified decisions.",Active Methodologies,metac_128; metac_125; metac_024; metac_090; metac_042; metac_113; metac_124
+metac_135,Reciprocal Teaching,"## Description
+Reciprocal teaching is a reading comprehension technique in which students work on a text through roles or thinking strategies. The most common are summarising, questioning, clarifying and predicting. The aim is for students to learn how to monitor their own comprehension actively.
+
+It can be carried out in small groups, with rotating roles, or through initial modelling by the teacher. It is especially useful with informational, scientific, historical or literary texts that require careful reading.
+
+## Procedure
+1. A text suitable for the group's level is selected.
+2. The teacher models the strategies: summarising, questioning, clarifying and predicting.
+3. Students work by turns or roles within the group.
+4. After each section, one student summarises, another asks questions, another clarifies doubts and another predicts what may come next.
+5. Roles rotate so that everyone practises the different strategies.
+6. The activity closes with a shared synthesis of the text.
+
+## Example
+In biology, the group reads a text about vaccines. One student summarises the first paragraph, another asks a question about the immune response, another clarifies the meaning of “antibody”, and another predicts what will be explained next about immune memory. Reading becomes an active and shared process.","reading comprehension, summary, questions, clarification, prediction, cooperative reading","Information Processing and Analysis, Knowledge Building, Critical Thinking and Metacognition, Cohesion and Cooperation, Communication and Creativity",,"Reading comprehension technique based on summarising, questioning, clarifying and predicting by turns. It helps improve active reading, self-regulation, dialogue and shared understanding of texts.",Active Methodologies; Cooperative Learning Organisation,metac_057; metac_069; metac_078; metac_079; metac_124; metac_090
+metac_136,Structured Controversy with Evidence,"## Description
+Structured controversy with evidence is a cooperative debate technique in which students analyse a controversial issue using sources, data or documented arguments. Unlike a free debate, the discussion is organised so that positions are supported by evidence and students revise their initial stance.
+
+It is closely related to academic controversy, but here the quality of evidence, the distinction between data and opinion, and the final revision of the stance are made explicit.
+
+## Procedure
+1. A controversial question with several reasonable positions is presented.
+2. Students analyse sources or data provided by the teacher or selected using clear criteria.
+3. Each team prepares an initial stance supported by evidence.
+4. Arguments are presented and critical questions are asked.
+5. Teams revise their stance after hearing opposing arguments.
+6. A synthesis is produced, including agreements, disagreements, strong evidence and open questions.
+
+## Example
+In biology and citizenship education, the class debates whether the sale of energy drinks to minors should be limited. Each team analyses data on caffeine, consumption habits, health and freedom of choice. They then defend a stance, listen to objections and write a final synthesis with conditions, limits and evidence.","controversy, evidence, debate, argumentation, sources, critical thinking, synthesis","Critical Thinking and Metacognition, Communication and Creativity, Information Processing and Analysis, Formative Assessment and Feedback, Cohesion and Cooperation",,"Cooperative debate technique in which a controversial issue is analysed using sources and evidence. It helps students argue, distinguish data from opinion, revise stances and produce balanced syntheses.",Active Methodologies; Cooperative Learning Organisation,metac_024; metac_128; metac_125; metac_090; metac_042; metac_129; metac_134
