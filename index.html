@@ -451,6 +451,26 @@
       border: 1px solid transparent;
       letter-spacing: .02em;
     }
+    .field-badge[data-c="0"] { background:#fff7ed; color:#c2410c; border-color:#fed7aa; }
+    .field-badge[data-c="1"] { background:#f0fdf4; color:#15803d; border-color:#bbf7d0; }
+    .field-badge[data-c="2"] { background:#faf5ff; color:#7e22ce; border-color:#e9d5ff; }
+    .field-badge[data-c="3"] { background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+    .field-badge[data-c="4"] { background:#f0fdfa; color:#0f766e; border-color:#99f6e4; }
+    .field-badge[data-c="5"] { background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+    .field-badge[data-c="6"] { background:#eef2ff; color:#4338ca; border-color:#c7d2fe; }
+    .field-badge[data-c="7"] { background:#fffbeb; color:#b45309; border-color:#fde68a; }
+    .field-badge[data-c="8"] { background:#ecfeff; color:#0e7490; border-color:#a5f3fc; }
+    .field-badge[data-c="9"] { background:#fdf2f8; color:#be185d; border-color:#fbcfe8; }
+    [data-theme="dark"] .field-badge[data-c="0"] { background:#431407; color:#fdba74; border-color:#7c2d12; }
+    [data-theme="dark"] .field-badge[data-c="1"] { background:#052e16; color:#86efac; border-color:#14532d; }
+    [data-theme="dark"] .field-badge[data-c="2"] { background:#3b0764; color:#d8b4fe; border-color:#581c87; }
+    [data-theme="dark"] .field-badge[data-c="3"] { background:#1e3a8a; color:#93c5fd; border-color:#1e40af; }
+    [data-theme="dark"] .field-badge[data-c="4"] { background:#134e4a; color:#5eead4; border-color:#0f766e; }
+    [data-theme="dark"] .field-badge[data-c="5"] { background:#450a0a; color:#fca5a5; border-color:#7f1d1d; }
+    [data-theme="dark"] .field-badge[data-c="6"] { background:#312e81; color:#a5b4fc; border-color:#3730a3; }
+    [data-theme="dark"] .field-badge[data-c="7"] { background:#451a03; color:#fcd34d; border-color:#78350f; }
+    [data-theme="dark"] .field-badge[data-c="8"] { background:#083344; color:#67e8f9; border-color:#0e7490; }
+    [data-theme="dark"] .field-badge[data-c="9"] { background:#500724; color:#f9a8d4; border-color:#831843; }
     .block-badge {
       font-size: .68rem;
       font-weight: 800;
@@ -573,13 +593,17 @@
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       background: transparent;
+      color: var(--text);
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem;
-      transition: background .12s;
+      transition: background .12s, border-color .12s;
     }
     .icon-btn:hover { background: var(--bg); }
     .icon-btn.fav-active { color: #f59e0b; border-color: #fcd34d; background: #fffbeb; }
+    [data-theme="dark"] .icon-btn { border-color: #475569; color: #cbd5e1; }
+    [data-theme="dark"] .icon-btn:hover { background: #0f172a; border-color: #64748b; color: #f1f5f9; }
+    [data-theme="dark"] .icon-btn.fav-active { color: #f59e0b; border-color: #fcd34d; background: #1c1108; }
     #modalFavBtn:not(.fav-active) { filter: grayscale(1) opacity(0.35); }
 
     .modal-meta {
@@ -1126,9 +1150,10 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         </button>
         <button class="icon-btn" id="modalShareBtn" title="Compartir">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
           </svg>
         </button>
         <button class="icon-btn" id="modalCloseBtn" title="Cerrar">✕</button>
@@ -1940,22 +1965,22 @@ function normalizeField(value, lang = S.lang) {
 }
 
 const colorCache = {};
-function fieldColor(name) {
-  if (colorCache[name]) return colorCache[name];
+function fieldColorIdx(name) {
+  if (colorCache[name] !== undefined) return colorCache[name];
   const n = canonicalKey(name);
   for (let i = 0; i < FIELD_MAP.length; i++) {
     if (FIELD_MAP[i].some(kw => n.includes(kw))) {
-      return (colorCache[name] = COLORS[i]);
+      return (colorCache[name] = i);
     }
   }
-  // hash fallback
   const h = [...name].reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0);
-  return (colorCache[name] = COLORS[h % COLORS.length]);
+  return (colorCache[name] = h % COLORS.length);
 }
 
+function fieldColor(name) { return COLORS[fieldColorIdx(name)]; }
+
 function badgeHTML(field) {
-  const c = fieldColor(field);
-  return `<span class="field-badge" style="background:${c.bg};color:${c.text};border-color:${c.border}">${esc(field)}</span>`;
+  return `<span class="field-badge" data-c="${fieldColorIdx(field)}">${esc(field)}</span>`;
 }
 
 function blockBadgeHTML(block) {
@@ -3481,7 +3506,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.5</span>
+    <span>v0.6.6</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
