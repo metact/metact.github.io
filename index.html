@@ -2338,6 +2338,10 @@ function sortRows(rows) {
   });
 }
 
+function alphaByLabel(a, b) {
+  return String(a || '').localeCompare(String(b || ''), S.lang, { sensitivity: 'base', numeric: true });
+}
+
 function rowById(itemId, lang = S.lang) {
   return (S.byId[lang] || new Map()).get(normalizeId(itemId)) || null;
 }
@@ -2352,7 +2356,8 @@ function relatedBidirectional(item, lang = S.lang) {
   const data  = S.data[lang] || [];
   const ids = new Set((item.related || []).filter(id => id !== item.id));
   data.forEach(t => { if (t.id !== item.id && (t.related || []).includes(item.id)) ids.add(t.id); });
-  return [...ids].map(id => byId.get(id)?.item).filter(Boolean);
+  return [...ids].map(id => byId.get(id)?.item).filter(Boolean)
+    .sort((a, b) => alphaByLabel(a.name, b.name));
 }
 
 function uniqueIds(ids) {
@@ -3917,7 +3922,7 @@ function initMapBlocks() {
     }
   });
 
-  const blocks = [...blockMap.values()];
+  const blocks = [...blockMap.values()].sort((a, b) => alphaByLabel(a.label, b.label));
   const n = blocks.length;
   const spread = Math.max(160, 60 * Math.sqrt(n));
 
@@ -3940,11 +3945,13 @@ function initMapBlocks() {
 
   mapUpdateInfo();
   mapUpdateBackBtn();
+  updateMapLegend();
 }
 
 function initMapData() {
   MAP.viewMode     = 'techniques';
-  const rows = filteredData().map(r => r.item);
+  const rows = filteredData().map(r => r.item)
+    .sort((a, b) => alphaByLabel(a.name, b.name));
   const idxById = new Map();
 
   // Spread initial positions grouped by block
@@ -4348,6 +4355,20 @@ function updateMapLegend() {
     for (let d = 1; d <= MAP.depth; d++)
       mkEntry(MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)], i('mapDepth') + ' ' + d);
   } else {
+    if (MAP.viewMode === 'blocks') {
+      MAP.nodes
+        .filter(nd => nd.type === 'block' && nd.colorIdx >= 0)
+        .sort((a, b) => alphaByLabel(a.name, b.name))
+        .forEach(nd => {
+          const col = COLORS[nd.colorIdx];
+          const e = document.createElement('div');
+          e.className = 'map-legend-entry';
+          e.innerHTML = `<span class="map-legend-swatch" style="background:${col.bg};border-color:${col.border}"></span><span title="${esc(nd.name)}">${esc(nd.name)}</span>`;
+          body.appendChild(e);
+        });
+      return;
+    }
+
     // Field mode: collect unique fields from current visible nodes
     const seen = new Map(); // colorIdx → fieldName
     MAP.nodes.forEach(nd => {
@@ -4357,7 +4378,7 @@ function updateMapLegend() {
         if (item && item.fields.length > 0) seen.set(nd.colorIdx, item.fields[0]);
       }
     });
-    [...seen.entries()].sort((a, b) => a[0] - b[0]).forEach(([ci, name]) => {
+    [...seen.entries()].sort((a, b) => alphaByLabel(a[1], b[1])).forEach(([ci, name]) => {
       const col = COLORS[ci];
       const e = document.createElement('div');
       e.className = 'map-legend-entry';
@@ -4469,42 +4490,46 @@ function mapShowPanel(idx) {
   const badgesEl = document.getElementById('mapPanelBadges');
   badgesEl.innerHTML = '';
 
-  item.blocks.forEach((bLabel, bi) => {
-    const blockId = item.blockIds[bi];
-    const btn = document.createElement('button');
-    btn.className = 'block-badge map-filter-badge';
-    btn.textContent = bLabel;
-    btn.title = i('mapClickBlock');
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      S.block = blockId; S.field = null; S.page = 0;
-      renderBlockTabs(); renderTabs();
-      mapSelectNode(-1);
-      initMapData();
+  item.blocks
+    .map((label, idx) => ({ label, id: item.blockIds[idx] }))
+    .sort((a, b) => alphaByLabel(a.label, b.label))
+    .forEach(({ label: bLabel, id: blockId }) => {
+      const btn = document.createElement('button');
+      btn.className = 'block-badge map-filter-badge';
+      btn.textContent = bLabel;
+      btn.title = i('mapClickBlock');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        S.block = blockId; S.field = null; S.page = 0;
+        renderBlockTabs(); renderTabs();
+        mapSelectNode(-1);
+        initMapData();
+      });
+      badgesEl.appendChild(btn);
     });
-    badgesEl.appendChild(btn);
-  });
 
-  item.fields.forEach((fLabel, fi) => {
-    const fieldId = item.fieldIds[fi];
-    const ci  = fieldColorIdx(fLabel);
-    const btn = document.createElement('button');
-    btn.className = 'field-badge map-filter-badge';
-    btn.setAttribute('data-c', ci);
-    btn.textContent = fLabel;
-    btn.title = fLabel;
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      // If current block doesn't include this field, clear block filter
-      const fieldsInBlock = allFields().map(f => f.id);
-      if (!fieldsInBlock.includes(fieldId)) { S.block = null; renderBlockTabs(); }
-      S.field = fieldId; S.page = 0;
-      renderTabs();
-      mapSelectNode(-1);
-      initMapData();
+  item.fields
+    .map((label, idx) => ({ label, id: item.fieldIds[idx] }))
+    .sort((a, b) => alphaByLabel(a.label, b.label))
+    .forEach(({ label: fLabel, id: fieldId }) => {
+      const ci  = fieldColorIdx(fLabel);
+      const btn = document.createElement('button');
+      btn.className = 'field-badge map-filter-badge';
+      btn.setAttribute('data-c', ci);
+      btn.textContent = fLabel;
+      btn.title = fLabel;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        // If current block doesn't include this field, clear block filter
+        const fieldsInBlock = allFields().map(f => f.id);
+        if (!fieldsInBlock.includes(fieldId)) { S.block = null; renderBlockTabs(); }
+        S.field = fieldId; S.page = 0;
+        renderTabs();
+        mapSelectNode(-1);
+        initMapData();
+      });
+      badgesEl.appendChild(btn);
     });
-    badgesEl.appendChild(btn);
-  });
 
   // Related chips (navigate within map, bidirectional)
   const relEl   = document.getElementById('mapPanelRelated');
@@ -4568,6 +4593,10 @@ function refreshMap() {
   if (MAP.viewMode === 'blocks') initMapBlocks(); else initMapData();
 }
 
+function shouldOpenMapWithBlocks() {
+  return !S.block && !S.field && !S.shared && !S.search.trim();
+}
+
 function mapShowHint() {
   const b = document.getElementById('mapHintBanner');
   if (!b) return;
@@ -4613,7 +4642,8 @@ function toggleMapView() {
     document.getElementById('selectBtn').style.display = 'none';
     document.getElementById('favBtn').style.display    = 'none';
     mapResizeCanvas();
-    initMapData();
+    if (shouldOpenMapWithBlocks()) initMapBlocks();
+    else initMapData();
     mapShowHint();
     mapStart();
   } else {
