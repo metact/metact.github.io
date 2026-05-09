@@ -1269,6 +1269,69 @@
       margin-bottom: 2px;
     }
     .map-rel-chip { font-size: .75rem; padding: 3px 9px; }
+    .map-legend {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px 10px;
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+      min-width: 130px;
+      max-width: 210px;
+      pointer-events: auto;
+    }
+    .map-legend-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .map-legend-title {
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      flex: 1;
+    }
+    .map-legend-mode-btn {
+      font-size: .64rem;
+      padding: 1px 7px;
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      background: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background .1s;
+    }
+    .map-legend-mode-btn:hover { background: #eff6ff; }
+    [data-theme="dark"] .map-legend-mode-btn:hover { background: #0f1f3d; }
+    .map-legend-entry {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 2px 0;
+      font-size: .72rem;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .map-legend-entry span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .map-legend-swatch {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid;
+    }
     .map-toolbar-sep {
       width: 1px; height: 16px;
       background: var(--border);
@@ -1398,6 +1461,13 @@
 <!-- ═══ MAP VIEW ═══ -->
 <div id="mapView">
   <canvas id="mapCanvas"></canvas>
+  <div class="map-legend" id="mapLegend" style="display:none">
+    <div class="map-legend-head">
+      <span class="map-legend-title" id="mapLegendTitle"></span>
+      <button class="map-legend-mode-btn" id="mapColorModeBtn" style="display:none"></button>
+    </div>
+    <div id="mapLegendBody"></div>
+  </div>
   <div id="mapHintBanner" class="map-hint-banner">
     <div class="map-hint-body">
       <div class="map-hint-row">
@@ -1433,6 +1503,10 @@
       <span class="map-depth-label" id="mapGapLabel">12</span>
       <button class="map-btn" id="mapGapPlus">+</button>
     </div>
+    <div class="map-toolbar-sep"></div>
+    <button class="map-btn" id="mapLegendBtn">
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="12" height="10" rx="2"/><line x1="4" y1="4.5" x2="10" y2="4.5"/><line x1="4" y1="7.5" x2="8" y2="7.5"/></svg>
+    </button>
     <div class="map-toolbar-sep"></div>
     <span class="map-ctrl-label" id="mapZoomShortLabel"></span>
     <button class="map-btn" id="mapZoomIn" title="+">+</button>
@@ -1553,6 +1627,17 @@ const COLORS = [
   { bg:'#ecfeff', text:'#0e7490', border:'#a5f3fc' },
   { bg:'#fdf2f8', text:'#be185d', border:'#fbcfe8' },
 ];
+
+const MAP_DEPTH_COLORS = [
+  { bg:'#dbeafe', text:'#1e40af', border:'#93c5fd' }, // d1 blue
+  { bg:'#ffedd5', text:'#9a3412', border:'#fdba74' }, // d2 orange
+  { bg:'#dcfce7', text:'#166534', border:'#86efac' }, // d3 green
+  { bg:'#f3e8ff', text:'#6b21a8', border:'#d8b4fe' }, // d4 purple
+  { bg:'#fef9c3', text:'#854d0e', border:'#fde047' }, // d5 amber
+  { bg:'#cffafe', text:'#155e75', border:'#67e8f9' }, // d6 cyan
+];
+// Selected node swatch color for legend (depth mode)
+const MAP_SEL_DEPTH_COLOR = { bg:'#e0f2fe', text:'#0369a1', border:'#7dd3fc' };
 
 // Maps field keywords → color index (works for ES, CA and EN)
 const FIELD_MAP = [
@@ -1870,9 +1955,14 @@ const I18N = {
     mapDepthTip:   'Profundidad de relaciones visibles · Selecciona un recurso en el mapa para activarlo',
     mapNoOverlap:  'Sin solapamiento · Los círculos nunca se superponen (el grafo puede quedar más grande)',
     mapGapTip:     'Separación entre recursos',
-    mapDepthShort: 'Nv.',
-    mapGapShort:   'Sep.',
-    mapZoomShort:  'Zoom',
+    mapDepthShort:  'Nv.',
+    mapGapShort:    'Sep.',
+    mapZoomShort:   'Zoom',
+    mapLegend:      'Leyenda',
+    mapLegendTip:   'Mostrar / ocultar leyenda',
+    mapColorField:  'Ámbitos',
+    mapColorDepth:  'Profundidad',
+    mapSelected:    'Seleccionado',
   },
   ca: {
     title:        'Metac — Recursos metodològics per a l’aula',
@@ -1971,9 +2061,14 @@ const I18N = {
     mapDepthTip:   'Profunditat de relacions visibles · Selecciona un recurs al mapa per activar-lo',
     mapNoOverlap:  'Sense solapament · Els cercles mai se superposen (el graf pot quedar més gran)',
     mapGapTip:     'Separació entre recursos',
-    mapDepthShort: 'Nv.',
-    mapGapShort:   'Sep.',
-    mapZoomShort:  'Zoom',
+    mapDepthShort:  'Nv.',
+    mapGapShort:    'Sep.',
+    mapZoomShort:   'Zoom',
+    mapLegend:      'Llegenda',
+    mapLegendTip:   'Mostrar / amagar llegenda',
+    mapColorField:  'Àmbits',
+    mapColorDepth:  'Profunditat',
+    mapSelected:    'Seleccionat',
   },
   en: {
     title:        'Metac — Methodological resources for the classroom',
@@ -2072,9 +2167,14 @@ const I18N = {
     mapDepthTip:   'Depth of visible connections · Select a resource in the map to activate',
     mapNoOverlap:  'No overlap · Circles never overlap (graph may spread wider)',
     mapGapTip:     'Spacing between resources',
-    mapDepthShort: 'Lv.',
-    mapGapShort:   'Gap',
-    mapZoomShort:  'Zoom',
+    mapDepthShort:  'Lv.',
+    mapGapShort:    'Gap',
+    mapZoomShort:   'Zoom',
+    mapLegend:      'Legend',
+    mapLegendTip:   'Show / hide legend',
+    mapColorField:  'Fields',
+    mapColorDepth:  'Depth',
+    mapSelected:    'Selected',
   },
 };
 
@@ -2102,7 +2202,9 @@ const S = {
   sharedName:   null,
   page:         0,
   perPage:      25,
-  mapMode:      false,
+  mapMode:          false,
+  mapColorMode:     localStorage.getItem('metac_map_color_v1') || 'depth',
+  mapLegendVisible: localStorage.getItem('metac_map_legend_v1') !== 'hidden',
 };
 
 // ─── CSV PARSER ──────────────────────────────────────────────────────────────
@@ -2728,6 +2830,12 @@ function applyI18N() {
   if (gsl) gsl.textContent = i('mapGapShort');
   const zsl = document.getElementById('mapZoomShortLabel');
   if (zsl) zsl.textContent = i('mapZoomShort');
+  const legendBtn = document.getElementById('mapLegendBtn');
+  if (legendBtn) {
+    legendBtn.title = i('mapLegendTip');
+    legendBtn.classList.toggle('active', S.mapLegendVisible);
+  }
+  updateMapLegend();
   if (S.mapMode) { mapUpdateInfo(); mapShowHint(); }
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.lang === S.lang));
@@ -3705,14 +3813,14 @@ const MAP = {
   alpha: 1,
   hover: -1,
   selected: -1,
-  selNeighbors: new Set(),
+  selNeighbors: new Map(), // nodeIdx → depth level
   drag: null,
   lastPinchDist: 0,
   lastTapTime: 0,
   viewMode: 'blocks',  // 'blocks' | 'techniques'
   hintShownAt: 0,
   depth: 1,
-  selLevel1: new Set(),
+  selLevel1: new Map(), // nodeIdx → 1 (direct neighbors only)
   gap: 12,
 };
 
@@ -3757,7 +3865,7 @@ function mapHitTest(sx, sy) {
 function initMapBlocks() {
   MAP.viewMode     = 'blocks';
   MAP.selected     = -1;
-  MAP.selNeighbors = new Set();
+  MAP.selNeighbors = new Map();
   MAP.hover        = -1;
   MAP.alpha        = 0.4;
   MAP.camera       = { x: 0, y: 0, scale: 1 };
@@ -3881,10 +3989,11 @@ function initMapData() {
   MAP.camTarget    = null;
   MAP.hover        = -1;
   MAP.selected     = -1;
-  MAP.selNeighbors = new Set();
+  MAP.selNeighbors = new Map();
   mapHidePanel();
   mapUpdateInfo();
   mapUpdateBackBtn();
+  updateMapLegend();
 }
 
 function mapTick() {
@@ -3963,6 +4072,9 @@ function mapDraw() {
   ctx.scale(cam.scale, cam.scale);
   ctx.translate(-cam.x, -cam.y);
 
+  // Color mode: 'depth' or 'field'
+  const effectiveColorMode = (MAP.selected >= 0 && MAP.depth >= 2) ? S.mapColorMode : 'field';
+
   // Edges — two passes: background first, highlighted on top
   const sel  = MAP.selected;
   const hov  = MAP.hover;
@@ -4024,9 +4136,13 @@ function mapDraw() {
     const isHov   = i === hov;
     const dimmed  = sel >= 0 && !isSel && !isNeigh && !nd.ghost;
     const isBlock = nd.type === 'block';
-    const col     = nd.colorIdx >= 0
-      ? COLORS[nd.colorIdx]
-      : { bg: dark ? '#1e293b' : '#f1f5f9', text: '#64748b', border: '#e2e8f0' };
+    let col;
+    if (effectiveColorMode === 'depth' && (isSel || isNeigh) && !isBlock) {
+      if (isSel) col = MAP_SEL_DEPTH_COLOR;
+      else { const d = MAP.selNeighbors.get(i) ?? 1; col = MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)]; }
+    } else {
+      col = nd.colorIdx >= 0 ? COLORS[nd.colorIdx] : { bg: dark ? '#1e293b' : '#f1f5f9', text: '#64748b', border: '#e2e8f0' };
+    }
 
     ctx.globalAlpha = dimmed ? 0.15 : nd.ghost ? 0.55 : 1;
 
@@ -4109,7 +4225,13 @@ function mapDraw() {
     if (!showAllLabels && !hover && !isSel && !isLevel1 && !nd.ghost) return;
     if (dimmed) return;
 
-    const col       = nd.colorIdx >= 0 ? COLORS[nd.colorIdx] : { text: '#64748b', bg: '#f1f5f9', border: '#e2e8f0' };
+    let col;
+    if (effectiveColorMode === 'depth' && (isSel || isNeigh)) {
+      if (isSel) col = MAP_SEL_DEPTH_COLOR;
+      else { const d = MAP.selNeighbors.get(i) ?? 1; col = MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)]; }
+    } else {
+      col = nd.colorIdx >= 0 ? COLORS[nd.colorIdx] : { text: '#64748b', bg: '#f1f5f9', border: '#e2e8f0' };
+    }
     const prominent = hover || isSel;
     const maxChars  = prominent ? 30 : 20;
     const label     = nd.name.length > maxChars ? nd.name.slice(0, maxChars) + '…' : nd.name;
@@ -4188,22 +4310,74 @@ function mapUpdateInfo() {
   }
 }
 
+function updateMapLegend() {
+  const legend  = document.getElementById('mapLegend');
+  const title   = document.getElementById('mapLegendTitle');
+  const body    = document.getElementById('mapLegendBody');
+  const modeBtn = document.getElementById('mapColorModeBtn');
+  if (!legend) return;
+
+  legend.style.display = S.mapLegendVisible && S.mapMode ? '' : 'none';
+  if (!S.mapLegendVisible || !S.mapMode) return;
+
+  const canSwitch    = MAP.selected >= 0 && MAP.depth >= 2;
+  const effectiveMode = canSwitch ? S.mapColorMode : 'field';
+
+  if (modeBtn) {
+    modeBtn.style.display = canSwitch ? '' : 'none';
+    modeBtn.textContent   = effectiveMode === 'depth' ? i('mapColorField') : i('mapColorDepth');
+  }
+  if (title) title.textContent = effectiveMode === 'depth' ? i('mapColorDepth') : i('mapColorField');
+  if (!body) return;
+  body.innerHTML = '';
+
+  if (effectiveMode === 'depth' && MAP.selected >= 0) {
+    const mkEntry = (col, label) => {
+      const e = document.createElement('div');
+      e.className = 'map-legend-entry';
+      e.innerHTML = `<span class="map-legend-swatch" style="background:${col.bg};border-color:${col.border}"></span><span>${esc(label)}</span>`;
+      body.appendChild(e);
+    };
+    mkEntry(MAP_SEL_DEPTH_COLOR, i('mapSelected'));
+    for (let d = 1; d <= MAP.depth; d++)
+      mkEntry(MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)], i('mapDepth') + ' ' + d);
+  } else {
+    // Field mode: collect unique fields from current visible nodes
+    const seen = new Map(); // colorIdx → fieldName
+    MAP.nodes.forEach(nd => {
+      if (nd.ghost || nd.type === 'block' || nd.colorIdx < 0) return;
+      if (!seen.has(nd.colorIdx)) {
+        const item = itemById(nd.id);
+        if (item && item.fields.length > 0) seen.set(nd.colorIdx, item.fields[0]);
+      }
+    });
+    [...seen.entries()].sort((a, b) => a[0] - b[0]).forEach(([ci, name]) => {
+      const col = COLORS[ci];
+      const e = document.createElement('div');
+      e.className = 'map-legend-entry';
+      e.innerHTML = `<span class="map-legend-swatch" style="background:${col.bg};border-color:${col.border}"></span><span title="${esc(name)}">${esc(name)}</span>`;
+      body.appendChild(e);
+    });
+  }
+}
+
 function mapBuildNeighbors(rootIdx, depth) {
-  const visited = new Set([rootIdx]);
+  const depthMap = new Map(); // nodeIdx → depth level
+  depthMap.set(rootIdx, 0);
   let frontier = [rootIdx];
-  for (let d = 0; d < depth; d++) {
+  for (let d = 1; d <= depth; d++) {
     const next = [];
     frontier.forEach(ni => {
       MAP.edges.forEach(({ a, b }) => {
-        if (a === ni && !visited.has(b)) { visited.add(b); next.push(b); }
-        if (b === ni && !visited.has(a)) { visited.add(a); next.push(a); }
+        const other = a === ni ? b : b === ni ? a : -1;
+        if (other >= 0 && !depthMap.has(other)) { depthMap.set(other, d); next.push(other); }
       });
     });
     frontier = next;
     if (!frontier.length) break;
   }
-  visited.delete(rootIdx);
-  return visited;
+  depthMap.delete(rootIdx);
+  return depthMap;
 }
 
 function mapSetDepth(d) {
@@ -4220,6 +4394,7 @@ function mapSetDepth(d) {
   if (minus) minus.disabled = MAP.depth <= 1;
   if (plus)  plus.disabled  = MAP.depth >= MAX;
   MAP.alpha = Math.max(MAP.alpha, 0.05);
+  updateMapLegend();
 }
 
 function mapRemoveGhosts() {
@@ -4232,7 +4407,7 @@ function mapRemoveGhosts() {
 function mapSelectNode(idx) {
   mapRemoveGhosts();
   MAP.selected     = idx;
-  MAP.selNeighbors = new Set();
+  MAP.selNeighbors = new Map();
   if (idx < 0) { mapHidePanel(); return; }
 
   const nd   = MAP.nodes[idx];
@@ -4272,6 +4447,7 @@ function mapSelectNode(idx) {
 
   MAP.camTarget = { x: nd.x, y: nd.y, scale: Math.max(MAP.camera.scale, 0.9) };
   mapShowPanel(idx);
+  updateMapLegend();
 }
 
 function mapShowPanel(idx) {
@@ -4373,7 +4549,8 @@ function mapHidePanel() {
   document.getElementById('mapNodePanel').classList.remove('visible');
   const depthGroup = document.getElementById('mapToolbarDepth');
   if (depthGroup) depthGroup.classList.add('inactive');
-  MAP.selLevel1 = new Set();
+  MAP.selLevel1 = new Map();
+  updateMapLegend();
   const minus = document.getElementById('mapDepthMinus');
   const plus  = document.getElementById('mapDepthPlus');
   if (minus) minus.disabled = true;
@@ -4775,6 +4952,21 @@ async function init() {
   document.getElementById('mapPanelClose').onclick = () => { mapSelectNode(-1); };
   document.getElementById('mapDepthMinus').addEventListener('click', e => { e.stopPropagation(); mapSetDepth(MAP.depth - 1); });
   document.getElementById('mapDepthPlus').addEventListener('click',  e => { e.stopPropagation(); mapSetDepth(MAP.depth + 1); });
+
+  document.getElementById('mapLegendBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    S.mapLegendVisible = !S.mapLegendVisible;
+    localStorage.setItem('metac_map_legend_v1', S.mapLegendVisible ? 'shown' : 'hidden');
+    document.getElementById('mapLegendBtn').classList.toggle('active', S.mapLegendVisible);
+    updateMapLegend();
+  });
+
+  document.getElementById('mapColorModeBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    S.mapColorMode = S.mapColorMode === 'depth' ? 'field' : 'depth';
+    localStorage.setItem('metac_map_color_v1', S.mapColorMode);
+    updateMapLegend();
+  });
   mapSetupEvents();
 
   document.getElementById('selectBtn').onclick = toggleSelectMode;
@@ -4954,7 +5146,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.8</span>
+    <span>v1.0.0</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
