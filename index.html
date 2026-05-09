@@ -2575,9 +2575,11 @@ function esc(s) {
 }
 
 function inlineFormat(raw) {
-  return esc(raw)
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return raw.split(/<br\s*\/?>/i)
+    .map(part => esc(part)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>'))
+    .join('<br>');
 }
 
 function formatDesc(text) {
