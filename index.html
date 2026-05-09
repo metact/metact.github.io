@@ -1132,6 +1132,8 @@
       line-height: 1;
     }
     .map-btn:hover { background: var(--bg); }
+    .map-btn.active { background: #eff6ff; border-color: var(--primary); color: var(--primary); }
+    [data-theme="dark"] .map-btn.active { background: #0f1f3d; border-color: #3b82f6; color: #60a5fa; }
     #mapTooltip {
       position: fixed;
       background: var(--surface);
@@ -1267,16 +1269,27 @@
       margin-bottom: 2px;
     }
     .map-rel-chip { font-size: .75rem; padding: 3px 9px; }
+    .map-toolbar-sep {
+      width: 1px; height: 16px;
+      background: var(--border);
+      flex-shrink: 0;
+      margin: 0 4px;
+    }
     .map-toolbar-depth {
       display: flex;
       align-items: center;
       gap: 3px;
-      border-left: 1px solid var(--border);
-      padding-left: 8px;
       transition: opacity .15s;
     }
     .map-toolbar-depth.inactive { opacity: 0.35; }
     .map-toolbar-depth.inactive .map-btn { pointer-events: none; cursor: default; }
+    .map-ctrl-label {
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-right: 1px;
+    }
     .map-depth-label {
       font-size: .75rem;
       font-weight: 700;
@@ -1406,12 +1419,22 @@
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <span class="map-toolbar-info" id="mapInfo"></span>
-    <span class="map-toolbar-hint" id="mapHint"></span>
+    <div class="map-toolbar-sep"></div>
     <div class="map-toolbar-depth inactive" id="mapToolbarDepth">
+      <span class="map-ctrl-label" id="mapDepthShortLabel"></span>
       <button class="map-btn" id="mapDepthMinus" disabled>−</button>
       <span class="map-depth-label" id="mapDepthLabel">1</span>
       <button class="map-btn" id="mapDepthPlus" disabled>+</button>
     </div>
+    <div class="map-toolbar-sep"></div>
+    <div class="map-toolbar-depth" id="mapGapGroup">
+      <span class="map-ctrl-label" id="mapGapShortLabel"></span>
+      <button class="map-btn" id="mapGapMinus">−</button>
+      <span class="map-depth-label" id="mapGapLabel">12</span>
+      <button class="map-btn" id="mapGapPlus">+</button>
+    </div>
+    <div class="map-toolbar-sep"></div>
+    <span class="map-ctrl-label" id="mapZoomShortLabel"></span>
     <button class="map-btn" id="mapZoomIn" title="+">+</button>
     <button class="map-btn" id="mapZoomOut" title="−">−</button>
     <button class="map-btn" id="mapResetBtn" title="Reset">
@@ -1845,6 +1868,11 @@ const I18N = {
     mapViewClose:  'Volver a tarjetas',
     mapDepth:      'Nivel',
     mapDepthTip:   'Profundidad de relaciones visibles · Selecciona un recurso en el mapa para activarlo',
+    mapNoOverlap:  'Sin solapamiento · Los círculos nunca se superponen (el grafo puede quedar más grande)',
+    mapGapTip:     'Separación entre recursos',
+    mapDepthShort: 'Nv.',
+    mapGapShort:   'Sep.',
+    mapZoomShort:  'Zoom',
   },
   ca: {
     title:        'Metac — Recursos metodològics per a l’aula',
@@ -1941,6 +1969,11 @@ const I18N = {
     mapViewClose:  'Tornar a targetes',
     mapDepth:      'Nivell',
     mapDepthTip:   'Profunditat de relacions visibles · Selecciona un recurs al mapa per activar-lo',
+    mapNoOverlap:  'Sense solapament · Els cercles mai se superposen (el graf pot quedar més gran)',
+    mapGapTip:     'Separació entre recursos',
+    mapDepthShort: 'Nv.',
+    mapGapShort:   'Sep.',
+    mapZoomShort:  'Zoom',
   },
   en: {
     title:        'Metac — Methodological resources for the classroom',
@@ -2037,6 +2070,11 @@ const I18N = {
     mapViewClose:  'Back to cards',
     mapDepth:      'Level',
     mapDepthTip:   'Depth of visible connections · Select a resource in the map to activate',
+    mapNoOverlap:  'No overlap · Circles never overlap (graph may spread wider)',
+    mapGapTip:     'Spacing between resources',
+    mapDepthShort: 'Lv.',
+    mapGapShort:   'Gap',
+    mapZoomShort:  'Zoom',
   },
 };
 
@@ -2680,6 +2718,16 @@ function applyI18N() {
     document.getElementById('mapDepthLabel').title = depthTip;
     document.getElementById('mapDepthPlus').title  = depthTip;
   }
+  const gapTip = i('mapGapTip');
+  ['mapGapGroup','mapGapMinus','mapGapLabel','mapGapPlus'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.title = gapTip;
+  });
+  const dsl = document.getElementById('mapDepthShortLabel');
+  if (dsl) dsl.textContent = i('mapDepthShort');
+  const gsl = document.getElementById('mapGapShortLabel');
+  if (gsl) gsl.textContent = i('mapGapShort');
+  const zsl = document.getElementById('mapZoomShortLabel');
+  if (zsl) zsl.textContent = i('mapZoomShort');
   if (S.mapMode) { mapUpdateInfo(); mapShowHint(); }
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.lang === S.lang));
@@ -3665,6 +3713,7 @@ const MAP = {
   hintShownAt: 0,
   depth: 1,
   selLevel1: new Set(),
+  gap: 12,
 };
 
 const MAP_REPULSION  = 6000;
@@ -3866,6 +3915,24 @@ function mapTick() {
     na.vx += ux * f; na.vy += uy * f;
     nb.vx -= ux * f; nb.vy -= uy * f;
   });
+
+  // Collision separation (O(n²))
+  {
+    for (let i = 0; i < n; i++) {
+      for (let j = i + 1; j < n; j++) {
+        const ni = nodes[i], nj = nodes[j];
+        const dx = nj.x - ni.x, dy = nj.y - ni.y;
+        const d2 = dx * dx + dy * dy || 0.01;
+        const minD = ni.r + nj.r + MAP.gap;
+        if (d2 < minD * minD) {
+          const d   = Math.sqrt(d2);
+          const push = (minD - d) / d * 0.55;
+          ni.vx -= dx * push; ni.vy -= dy * push;
+          nj.vx += dx * push; nj.vy += dy * push;
+        }
+      }
+    }
+  }
 
   // Gravity toward center
   nodes.forEach(nd => {
@@ -4118,9 +4185,6 @@ function mapUpdateInfo() {
     } else {
       el.textContent = `${MAP.nodes.length} ${i('mapNodes')}`;
     }
-  }
-  if (hint) {
-    hint.textContent = MAP.viewMode === 'blocks' ? i('mapClickBlock') : i('mapZoomHint');
   }
 }
 
@@ -4689,6 +4753,20 @@ async function init() {
   document.getElementById('mapZoomIn').onclick    = () => { MAP.camera.scale = Math.min(6, MAP.camera.scale * 1.25); };
   document.getElementById('mapZoomOut').onclick   = () => { MAP.camera.scale = Math.max(0.12, MAP.camera.scale / 1.25); };
   document.getElementById('mapResetBtn').onclick  = () => { if (MAP.viewMode === 'blocks') initMapBlocks(); else initMapData(); };
+  const gapLabel = document.getElementById('mapGapLabel');
+  const gapMinus = document.getElementById('mapGapMinus');
+  const gapPlus  = document.getElementById('mapGapPlus');
+  const GAP_MIN = 0, GAP_MAX = 48, GAP_STEP = 4;
+
+  function updateGapUI() {
+    if (gapLabel) gapLabel.textContent = MAP.gap;
+    if (gapMinus) gapMinus.disabled = MAP.gap <= GAP_MIN;
+    if (gapPlus)  gapPlus.disabled  = MAP.gap >= GAP_MAX;
+  }
+
+  if (gapMinus) gapMinus.onclick = () => { MAP.gap = Math.max(GAP_MIN, MAP.gap - GAP_STEP); updateGapUI(); MAP.alpha = Math.max(MAP.alpha, 0.6); };
+  if (gapPlus)  gapPlus.onclick  = () => { MAP.gap = Math.min(GAP_MAX, MAP.gap + GAP_STEP); updateGapUI(); MAP.alpha = Math.max(MAP.alpha, 0.6); };
+  updateGapUI();
   document.getElementById('mapBackBtn').onclick   = () => {
     S.block = null; S.field = null; S.page = 0;
     renderBlockTabs(); renderTabs();
@@ -4876,7 +4954,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v0.6.7</span>
+    <span>v0.6.8</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
