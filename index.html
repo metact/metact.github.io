@@ -586,7 +586,9 @@
       align-items: flex-start;
       gap: 10px;
     }
-    .modal-title { font-size: 1.2rem; font-weight: 800; flex: 1; line-height: 1.3; }
+    .modal-title-wrap { flex: 1; min-width: 0; }
+    .modal-title { font-size: 1.2rem; font-weight: 800; line-height: 1.3; }
+    .modal-id { font-size: .75rem; color: var(--text-muted); margin-top: 2px; }
     .modal-head-actions { display: flex; gap: 6px; flex-shrink: 0; }
     .icon-btn {
       width: 34px; height: 34px;
@@ -1545,7 +1547,10 @@
       <button class="icon-btn" id="modalBackBtn" title="Volver" style="display:none;flex-shrink:0">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
-      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-title-wrap">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-id" id="modalId"></div>
+      </div>
       <div class="modal-head-actions">
         <button class="icon-btn" id="modalFavBtn" title="Favorito">⭐</button>
         <button class="icon-btn" id="modalCopyBtn" title="Copiar">
@@ -3130,6 +3135,7 @@ function openModal(itemId) {
 
   document.getElementById('modalBackBtn').style.display = S.modalHistory.length ? '' : 'none';
   document.getElementById('modalTitle').textContent = item.name;
+  document.getElementById('modalId').textContent = 'ID: ' + item.id;
   document.getElementById('modalBlock').innerHTML = item.blocks.map(blockBadgeHTML).join('');
   document.getElementById('modalBlock').style.display = item.blocks.length ? '' : 'none';
   document.getElementById('modalFields').innerHTML = item.fields.map(badgeHTML).join('');
@@ -3821,7 +3827,7 @@ const MAP = {
   hintShownAt: 0,
   depth: 1,
   selLevel1: new Map(), // nodeIdx → 1 (direct neighbors only)
-  gap: 12,
+  gap: 20,
 };
 
 const MAP_REPULSION  = 6000;
@@ -4604,6 +4610,8 @@ function toggleMapView() {
     mainEl.style.display  = 'none';
     btn.classList.add('active');
     document.getElementById('mapViewBtnLabel').textContent = i('mapViewClose');
+    document.getElementById('selectBtn').style.display = 'none';
+    document.getElementById('favBtn').style.display    = 'none';
     mapResizeCanvas();
     initMapData();
     mapShowHint();
@@ -4614,6 +4622,8 @@ function toggleMapView() {
     mainEl.style.display  = '';
     btn.classList.remove('active');
     document.getElementById('mapViewBtnLabel').textContent = i('mapView');
+    document.getElementById('selectBtn').style.display = '';
+    document.getElementById('favBtn').style.display    = '';
     renderCards();
   }
 }
@@ -5146,7 +5156,7 @@ init();
     <span class="footer-sep">·</span>
     <a id="footerIssues" href="https://github.com/metact/metact.github.io/issues" target="_blank" rel="noopener noreferrer">Sugerencias y problemas</a>
     <span class="footer-sep">·</span>
-    <span>v1.0.0</span>
+    <span>v1.0.1</span>
   </div>
   <div class="footer-licenses">
     <span class="footer-badge" id="footerContentBadge" title="Contenido bajo licencia Creative Commons BY-SA 4.0">
