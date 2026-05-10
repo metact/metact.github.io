@@ -1968,6 +1968,7 @@ const I18N = {
     mapColorField:  'Ámbitos',
     mapColorDepth:  'Profundidad',
     mapColorBlock:  'Bloque',
+    mapColorTip:    'Cambiar modo de color',
     mapSelected:    'Seleccionado',
   },
   ca: {
@@ -2075,6 +2076,7 @@ const I18N = {
     mapColorField:  'Àmbits',
     mapColorDepth:  'Profunditat',
     mapColorBlock:  'Bloc',
+    mapColorTip:    'Canviar mode de color',
     mapSelected:    'Seleccionat',
   },
   en: {
@@ -2182,6 +2184,7 @@ const I18N = {
     mapColorField:  'Fields',
     mapColorDepth:  'Depth',
     mapColorBlock:  'Block',
+    mapColorTip:    'Change color mode',
     mapSelected:    'Selected',
   },
 };
@@ -4360,7 +4363,8 @@ function updateMapLegend() {
 
   if (modeBtn) {
     modeBtn.style.display = MAP.viewMode === 'techniques' ? '' : 'none';
-    modeBtn.textContent   = modeLabel[nextMode];
+    modeBtn.textContent   = `Color: ${modeLabel[effectiveMode]} →`;
+    modeBtn.title         = i('mapColorTip');
   }
   if (title) title.textContent = modeLabel[effectiveMode];
   if (!body) return;
