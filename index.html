@@ -1347,6 +1347,11 @@
     .map-color-dropdown-item:hover { background: var(--bg); }
     .map-color-dropdown-item.active { color: var(--primary); font-weight: 600; }
     .map-color-dropdown-check { width: 12px; flex-shrink: 0; font-size: .7rem; }
+    .map-color-label {
+      font-size: .64rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
     .map-legend-entry {
       display: flex;
       align-items: center;
@@ -1499,7 +1504,8 @@
   <div class="map-legend" id="mapLegend" style="display:none">
     <div class="map-legend-head">
       <span class="map-legend-title" id="mapLegendTitle"></span>
-      <div style="position:relative">
+      <div style="position:relative;display:flex;align-items:center;gap:5px">
+        <span class="map-color-label" id="mapColorLabel" style="display:none"></span>
         <button class="map-legend-mode-btn" id="mapColorModeBtn" style="display:none"></button>
         <div class="map-color-dropdown" id="mapColorDropdown" style="display:none"></div>
       </div>
@@ -2005,6 +2011,7 @@ const I18N = {
     mapColorDepth:  'Profundidad',
     mapColorBlock:  'Bloque',
     mapColorTip:    'Cambiar modo de color',
+    mapColorLabel:  'Elige color:',
     mapSelected:    'Seleccionado',
   },
   ca: {
@@ -2113,6 +2120,7 @@ const I18N = {
     mapColorDepth:  'Profunditat',
     mapColorBlock:  'Bloc',
     mapColorTip:    'Canviar mode de color',
+    mapColorLabel:  'Tria color:',
     mapSelected:    'Seleccionat',
   },
   en: {
@@ -2221,6 +2229,7 @@ const I18N = {
     mapColorDepth:  'Depth',
     mapColorBlock:  'Block',
     mapColorTip:    'Change color mode',
+    mapColorLabel:  'Color by:',
     mapSelected:    'Selected',
   },
 };
@@ -4400,9 +4409,12 @@ function updateMapLegend() {
   const modeOrder = ['field', 'block', 'depth'];
   const modeLabel = { field: i('mapColorField'), block: i('mapColorBlock'), depth: i('mapColorDepth') };
 
-  const dropdown = document.getElementById('mapColorDropdown');
+  const dropdown  = document.getElementById('mapColorDropdown');
+  const colorLabel = document.getElementById('mapColorLabel');
+  const showBtn = MAP.viewMode === 'techniques';
+  if (colorLabel) { colorLabel.style.display = showBtn ? '' : 'none'; colorLabel.textContent = i('mapColorLabel'); }
   if (modeBtn) {
-    modeBtn.style.display = MAP.viewMode === 'techniques' ? '' : 'none';
+    modeBtn.style.display = showBtn ? '' : 'none';
     modeBtn.innerHTML     = `${esc(modeLabel[effectiveMode])} <span style="font-size:.6rem">▾</span>`;
     modeBtn.title         = i('mapColorTip');
   }
