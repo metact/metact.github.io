@@ -1302,7 +1302,7 @@
     }
     .map-legend-mode-btn {
       font-size: .64rem;
-      padding: 1px 7px;
+      padding: 1px 7px 1px 8px;
       border: 1px solid var(--primary);
       border-radius: 50px;
       background: none;
@@ -1311,9 +1311,42 @@
       font-family: inherit;
       white-space: nowrap;
       transition: background .1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
     }
     .map-legend-mode-btn:hover { background: #eff6ff; }
     [data-theme="dark"] .map-legend-mode-btn:hover { background: #0f1f3d; }
+    .map-color-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+      z-index: 100;
+      min-width: 130px;
+      overflow: hidden;
+    }
+    .map-color-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      font-size: .75rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: background .1s;
+      font-family: inherit;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .map-color-dropdown-item:hover { background: var(--bg); }
+    .map-color-dropdown-item.active { color: var(--primary); font-weight: 600; }
+    .map-color-dropdown-check { width: 12px; flex-shrink: 0; font-size: .7rem; }
     .map-legend-entry {
       display: flex;
       align-items: center;
@@ -1466,7 +1499,10 @@
   <div class="map-legend" id="mapLegend" style="display:none">
     <div class="map-legend-head">
       <span class="map-legend-title" id="mapLegendTitle"></span>
-      <button class="map-legend-mode-btn" id="mapColorModeBtn" style="display:none"></button>
+      <div style="position:relative">
+        <button class="map-legend-mode-btn" id="mapColorModeBtn" style="display:none"></button>
+        <div class="map-color-dropdown" id="mapColorDropdown" style="display:none"></div>
+      </div>
     </div>
     <div id="mapLegendBody"></div>
   </div>
@@ -4358,13 +4394,30 @@ function updateMapLegend() {
   const effectiveMode = (S.mapColorMode === 'depth' && !hasSelection) ? 'field' : S.mapColorMode;
 
   const modeOrder = ['field', 'block', 'depth'];
-  const nextMode  = modeOrder[(modeOrder.indexOf(S.mapColorMode) + 1) % modeOrder.length];
   const modeLabel = { field: i('mapColorField'), block: i('mapColorBlock'), depth: i('mapColorDepth') };
 
+  const dropdown = document.getElementById('mapColorDropdown');
   if (modeBtn) {
     modeBtn.style.display = MAP.viewMode === 'techniques' ? '' : 'none';
-    modeBtn.textContent   = `Color: ${modeLabel[effectiveMode]} →`;
+    modeBtn.innerHTML     = `${esc(modeLabel[effectiveMode])} <span style="font-size:.6rem">▾</span>`;
     modeBtn.title         = i('mapColorTip');
+  }
+  if (dropdown) {
+    dropdown.innerHTML = modeOrder.map(m => `
+      <button class="map-color-dropdown-item${S.mapColorMode === m ? ' active' : ''}" data-mode="${m}">
+        <span class="map-color-dropdown-check">${S.mapColorMode === m ? '✓' : ''}</span>
+        ${esc(modeLabel[m])}
+      </button>
+    `).join('');
+    dropdown.querySelectorAll('[data-mode]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        S.mapColorMode = btn.dataset.mode;
+        localStorage.setItem('metac_map_color_v1', S.mapColorMode);
+        dropdown.style.display = 'none';
+        updateMapLegend();
+      });
+    });
   }
   if (title) title.textContent = modeLabel[effectiveMode];
   if (!body) return;
@@ -5047,10 +5100,12 @@ async function init() {
 
   document.getElementById('mapColorModeBtn').addEventListener('click', e => {
     e.stopPropagation();
-    const modeOrder = ['field', 'block', 'depth'];
-    S.mapColorMode = modeOrder[(modeOrder.indexOf(S.mapColorMode) + 1) % modeOrder.length];
-    localStorage.setItem('metac_map_color_v1', S.mapColorMode);
-    updateMapLegend();
+    const dd = document.getElementById('mapColorDropdown');
+    if (dd) dd.style.display = dd.style.display === 'none' ? '' : 'none';
+  });
+  document.addEventListener('click', () => {
+    const dd = document.getElementById('mapColorDropdown');
+    if (dd) dd.style.display = 'none';
   });
   mapSetupEvents();
 
