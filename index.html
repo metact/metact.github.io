@@ -4138,7 +4138,7 @@ function mapDraw() {
   ctx.translate(-cam.x, -cam.y);
 
   // Color mode: 'depth', 'field', or 'block'. 'depth' requires a selected node.
-  const effectiveColorMode = (S.mapColorMode === 'depth' && !(MAP.selected >= 0 && MAP.depth >= 2)) ? 'field' : S.mapColorMode;
+  const effectiveColorMode = S.mapColorMode;
 
   // Edges — two passes: background first, highlighted on top
   const sel  = MAP.selected;
@@ -4390,8 +4390,12 @@ function updateMapLegend() {
   if (!S.mapLegendVisible || !S.mapMode) return;
 
   const hasSelection = MAP.selected >= 0 && MAP.depth >= 2;
-  // 'depth' only makes sense when a node is selected; otherwise fall back to 'field'
-  const effectiveMode = (S.mapColorMode === 'depth' && !hasSelection) ? 'field' : S.mapColorMode;
+  // 'depth' only makes sense when a node is selected; reset to 'field' if not applicable
+  if (S.mapColorMode === 'depth' && !hasSelection) {
+    S.mapColorMode = 'field';
+    localStorage.setItem('metac_map_color_v1', S.mapColorMode);
+  }
+  const effectiveMode = S.mapColorMode;
 
   const modeOrder = ['field', 'block', 'depth'];
   const modeLabel = { field: i('mapColorField'), block: i('mapColorBlock'), depth: i('mapColorDepth') };
@@ -4403,9 +4407,10 @@ function updateMapLegend() {
     modeBtn.title         = i('mapColorTip');
   }
   if (dropdown) {
-    dropdown.innerHTML = modeOrder.map(m => `
-      <button class="map-color-dropdown-item${S.mapColorMode === m ? ' active' : ''}" data-mode="${m}">
-        <span class="map-color-dropdown-check">${S.mapColorMode === m ? '✓' : ''}</span>
+    const availableModes = hasSelection ? modeOrder : modeOrder.filter(m => m !== 'depth');
+    dropdown.innerHTML = availableModes.map(m => `
+      <button class="map-color-dropdown-item${effectiveMode === m ? ' active' : ''}" data-mode="${m}">
+        <span class="map-color-dropdown-check">${effectiveMode === m ? '✓' : ''}</span>
         ${esc(modeLabel[m])}
       </button>
     `).join('');
