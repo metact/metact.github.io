@@ -1967,6 +1967,7 @@ const I18N = {
     mapLegendTip:   'Mostrar / ocultar leyenda',
     mapColorField:  'Ámbitos',
     mapColorDepth:  'Profundidad',
+    mapColorBlock:  'Bloque',
     mapSelected:    'Seleccionado',
   },
   ca: {
@@ -2073,6 +2074,7 @@ const I18N = {
     mapLegendTip:   'Mostrar / amagar llegenda',
     mapColorField:  'Àmbits',
     mapColorDepth:  'Profunditat',
+    mapColorBlock:  'Bloc',
     mapSelected:    'Seleccionat',
   },
   en: {
@@ -2179,6 +2181,7 @@ const I18N = {
     mapLegendTip:   'Show / hide legend',
     mapColorField:  'Fields',
     mapColorDepth:  'Depth',
+    mapColorBlock:  'Block',
     mapSelected:    'Selected',
   },
 };
@@ -2496,6 +2499,13 @@ function fieldColorIdx(name) {
 }
 
 function fieldColor(name) { return COLORS[fieldColorIdx(name)]; }
+
+function blockColorIdxById(blockId) {
+  const idx = BLOCK_DEFS.findIndex(b => b.id === blockId);
+  if (idx >= 0) return idx % COLORS.length;
+  const h = [...blockId].reduce((a, c) => (a * 31 + c.charCodeAt(0)) & 0xffff, 0);
+  return h % COLORS.length;
+}
 
 function badgeHTML(field) {
   return `<span class="field-badge" data-c="${fieldColorIdx(field)}">${esc(field)}</span>`;
@@ -3979,6 +3989,7 @@ function initMapData() {
       vx: 0, vy: 0,
       r: 10,
       colorIdx: item.fieldIds.length > 0 ? fieldColorIdx(item.fields[0]) : -1,
+      blockColorIdx: item.blockIds.length > 0 ? blockColorIdxById(item.blockIds[0]) : -1,
     };
   });
 
@@ -4087,8 +4098,8 @@ function mapDraw() {
   ctx.scale(cam.scale, cam.scale);
   ctx.translate(-cam.x, -cam.y);
 
-  // Color mode: 'depth' or 'field'
-  const effectiveColorMode = (MAP.selected >= 0 && MAP.depth >= 2) ? S.mapColorMode : 'field';
+  // Color mode: 'depth', 'field', or 'block'. 'depth' requires a selected node.
+  const effectiveColorMode = (S.mapColorMode === 'depth' && !(MAP.selected >= 0 && MAP.depth >= 2)) ? 'field' : S.mapColorMode;
 
   // Edges — two passes: background first, highlighted on top
   const sel  = MAP.selected;
@@ -4155,6 +4166,8 @@ function mapDraw() {
     if (effectiveColorMode === 'depth' && (isSel || isNeigh) && !isBlock) {
       if (isSel) col = MAP_SEL_DEPTH_COLOR;
       else { const d = MAP.selNeighbors.get(i) ?? 1; col = MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)]; }
+    } else if (effectiveColorMode === 'block' && !isBlock) {
+      col = nd.blockColorIdx >= 0 ? COLORS[nd.blockColorIdx] : { bg: dark ? '#1e293b' : '#f1f5f9', text: '#64748b', border: '#e2e8f0' };
     } else {
       col = nd.colorIdx >= 0 ? COLORS[nd.colorIdx] : { bg: dark ? '#1e293b' : '#f1f5f9', text: '#64748b', border: '#e2e8f0' };
     }
@@ -4244,6 +4257,8 @@ function mapDraw() {
     if (effectiveColorMode === 'depth' && (isSel || isNeigh)) {
       if (isSel) col = MAP_SEL_DEPTH_COLOR;
       else { const d = MAP.selNeighbors.get(i) ?? 1; col = MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)]; }
+    } else if (effectiveColorMode === 'block' && nd.type !== 'block') {
+      col = nd.blockColorIdx >= 0 ? COLORS[nd.blockColorIdx] : { text: '#64748b', bg: '#f1f5f9', border: '#e2e8f0' };
     } else {
       col = nd.colorIdx >= 0 ? COLORS[nd.colorIdx] : { text: '#64748b', bg: '#f1f5f9', border: '#e2e8f0' };
     }
@@ -4335,14 +4350,19 @@ function updateMapLegend() {
   legend.style.display = S.mapLegendVisible && S.mapMode ? '' : 'none';
   if (!S.mapLegendVisible || !S.mapMode) return;
 
-  const canSwitch    = MAP.selected >= 0 && MAP.depth >= 2;
-  const effectiveMode = canSwitch ? S.mapColorMode : 'field';
+  const hasSelection = MAP.selected >= 0 && MAP.depth >= 2;
+  // 'depth' only makes sense when a node is selected; otherwise fall back to 'field'
+  const effectiveMode = (S.mapColorMode === 'depth' && !hasSelection) ? 'field' : S.mapColorMode;
+
+  const modeOrder = ['field', 'block', 'depth'];
+  const nextMode  = modeOrder[(modeOrder.indexOf(S.mapColorMode) + 1) % modeOrder.length];
+  const modeLabel = { field: i('mapColorField'), block: i('mapColorBlock'), depth: i('mapColorDepth') };
 
   if (modeBtn) {
-    modeBtn.style.display = canSwitch ? '' : 'none';
-    modeBtn.textContent   = effectiveMode === 'depth' ? i('mapColorField') : i('mapColorDepth');
+    modeBtn.style.display = MAP.viewMode === 'techniques' ? '' : 'none';
+    modeBtn.textContent   = modeLabel[nextMode];
   }
-  if (title) title.textContent = effectiveMode === 'depth' ? i('mapColorDepth') : i('mapColorField');
+  if (title) title.textContent = modeLabel[effectiveMode];
   if (!body) return;
   body.innerHTML = '';
 
@@ -4356,6 +4376,23 @@ function updateMapLegend() {
     mkEntry(MAP_SEL_DEPTH_COLOR, i('mapSelected'));
     for (let d = 1; d <= MAP.depth; d++)
       mkEntry(MAP_DEPTH_COLORS[Math.min(d - 1, MAP_DEPTH_COLORS.length - 1)], i('mapDepth') + ' ' + d);
+  } else if (effectiveMode === 'block') {
+    // Block mode: one entry per unique block present in visible nodes
+    const seen = new Map(); // blockColorIdx → blockLabel
+    MAP.nodes.forEach(nd => {
+      if (nd.ghost || nd.type === 'block' || nd.blockColorIdx < 0) return;
+      if (!seen.has(nd.blockColorIdx)) {
+        const item = itemById(nd.id);
+        if (item && item.blocks.length > 0) seen.set(nd.blockColorIdx, item.blocks[0]);
+      }
+    });
+    [...seen.entries()].sort((a, b) => alphaByLabel(a[1], b[1])).forEach(([ci, name]) => {
+      const col = COLORS[ci];
+      const e = document.createElement('div');
+      e.className = 'map-legend-entry';
+      e.innerHTML = `<span class="map-legend-swatch" style="background:${col.bg};border-color:${col.border}"></span><span title="${esc(name)}">${esc(name)}</span>`;
+      body.appendChild(e);
+    });
   } else {
     if (MAP.viewMode === 'blocks') {
       MAP.nodes
@@ -4463,6 +4500,7 @@ function mapSelectNode(idx) {
         vx: 0, vy: 0,
         r: 9,
         colorIdx: rel.fieldIds.length > 0 ? fieldColorIdx(rel.fields[0]) : -1,
+        blockColorIdx: rel.blockIds.length > 0 ? blockColorIdxById(rel.blockIds[0]) : -1,
         ghost: true,
       });
       MAP.edges.push({ a: idx, b: gi, ghost: true });
@@ -5005,7 +5043,8 @@ async function init() {
 
   document.getElementById('mapColorModeBtn').addEventListener('click', e => {
     e.stopPropagation();
-    S.mapColorMode = S.mapColorMode === 'depth' ? 'field' : 'depth';
+    const modeOrder = ['field', 'block', 'depth'];
+    S.mapColorMode = modeOrder[(modeOrder.indexOf(S.mapColorMode) + 1) % modeOrder.length];
     localStorage.setItem('metac_map_color_v1', S.mapColorMode);
     updateMapLegend();
   });
