@@ -4399,11 +4399,6 @@ function updateMapLegend() {
   if (!S.mapLegendVisible || !S.mapMode) return;
 
   const hasSelection = MAP.selected >= 0 && MAP.depth >= 2;
-  // 'depth' only makes sense when a node is selected; reset to 'field' if not applicable
-  if (S.mapColorMode === 'depth' && !hasSelection) {
-    S.mapColorMode = 'field';
-    localStorage.setItem('metac_map_color_v1', S.mapColorMode);
-  }
   const effectiveMode = S.mapColorMode;
 
   const modeOrder = ['field', 'block', 'depth'];
@@ -4526,6 +4521,10 @@ function mapSetDepth(d) {
   if (MAP.selected >= 0) {
     MAP.selLevel1    = mapBuildNeighbors(MAP.selected, 1);
     MAP.selNeighbors = mapBuildNeighbors(MAP.selected, MAP.depth);
+    if (MAP.depth >= 2) {
+      S.mapColorMode = 'depth';
+      localStorage.setItem('metac_map_color_v1', S.mapColorMode);
+    }
   }
   const label = document.getElementById('mapDepthLabel');
   const minus = document.getElementById('mapDepthMinus');
@@ -4586,6 +4585,10 @@ function mapSelectNode(idx) {
   // Full neighbor set at current depth (depth persists between selections)
   MAP.selNeighbors = mapBuildNeighbors(idx, MAP.depth);
 
+  if (MAP.depth >= 2) {
+    S.mapColorMode = 'depth';
+    localStorage.setItem('metac_map_color_v1', S.mapColorMode);
+  }
   MAP.camTarget = { x: nd.x, y: nd.y, scale: Math.max(MAP.camera.scale, 0.9) };
   mapShowPanel(idx);
   updateMapLegend();
