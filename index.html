@@ -985,6 +985,17 @@
       .assistant-link { padding: 7px 10px; }
       #selectBtnLabel { display: none; }
       #favBtnLabel { display: none; }
+      .header-inner { gap: 8px; }
+      .search-wrap { min-width: 0; }
+      .header-right {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
+      }
+      .header-right::-webkit-scrollbar { display: none; }
     }
 
     /* ── Theme toggle button ── */
@@ -2011,7 +2022,7 @@ const I18N = {
     mapColorDepth:  'Profundidad',
     mapColorBlock:  'Bloque',
     mapColorTip:    'Cambiar modo de color',
-    mapColorLabel:  'Elige color:',
+    mapColorLabel:  'Color por:',
     mapSelected:    'Seleccionado',
   },
   ca: {
@@ -2120,7 +2131,7 @@ const I18N = {
     mapColorDepth:  'Profunditat',
     mapColorBlock:  'Bloc',
     mapColorTip:    'Canviar mode de color',
-    mapColorLabel:  'Tria color:',
+    mapColorLabel:  'Color per:',
     mapSelected:    'Seleccionat',
   },
   en: {
@@ -4431,7 +4442,7 @@ function updateMapLegend() {
       });
     });
   }
-  if (title) title.textContent = modeLabel[effectiveMode];
+  if (title) { title.textContent = showBtn ? '' : modeLabel[effectiveMode]; }
   if (!body) return;
   body.innerHTML = '';
 
