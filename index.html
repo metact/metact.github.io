@@ -1231,6 +1231,7 @@
       right: 16px;
       top: 16px;
       width: 280px;
+      max-width: calc(100% - 32px);
       max-height: calc(100% - 100px);
       background: var(--surface);
       border: 1px solid var(--border);
@@ -1242,24 +1243,57 @@
       overflow: hidden;
     }
     .map-node-panel.visible { display: flex; }
+    .map-node-panel.is-dragging { box-shadow: 0 18px 32px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.08); }
+    .map-node-panel.collapsed {
+      max-height: none;
+    }
     .map-panel-head {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 6px;
       padding: 14px 14px 8px;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
     }
+    .map-node-panel.collapsed .map-panel-head {
+      padding: 8px 10px;
+    }
+    .map-node-panel.is-dragging .map-panel-head { cursor: grabbing; }
     .map-panel-name {
       flex: 1;
       font-size: .92rem;
       font-weight: 700;
       color: var(--text);
       line-height: 1.3;
+      min-width: 0;
     }
-    .map-panel-close { flex-shrink: 0; }
+    .map-node-panel.collapsed .map-panel-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: .84rem;
+    }
+    .map-panel-close,
+    .map-panel-toggle,
+    .map-panel-compact-open {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+    }
+    .map-panel-compact-open { display: none; }
+    .map-node-panel.collapsed .map-panel-compact-open { display: flex; }
+    .map-node-panel.collapsed .map-panel-scroll,
+    .map-node-panel.collapsed .map-panel-foot {
+      display: none;
+    }
     .map-panel-scroll {
       flex: 1;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       min-height: 0;
+      touch-action: pan-y;
     }
     .map-panel-badges {
       padding: 0 14px 8px;
@@ -1303,13 +1337,18 @@
       max-width: 210px;
       pointer-events: auto;
     }
+    .map-legend.is-dragging { box-shadow: var(--shadow-lg); }
     .map-legend-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
       margin-bottom: 6px;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
     }
+    .map-legend.is-dragging .map-legend-head { cursor: grabbing; }
     .map-legend-title {
       font-size: .68rem;
       font-weight: 700;
@@ -1440,6 +1479,56 @@
       box-shadow: 0 2px 6px rgba(0,0,0,.12);
     }
     .map-filter-badge:active { transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .map-toolbar {
+        left: 8px;
+        right: 8px;
+        bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        transform: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        border-radius: 14px;
+        padding: 6px;
+        max-width: calc(100vw - 16px);
+      }
+      .map-toolbar-info {
+        width: 100%;
+        padding-right: 0;
+        text-align: center;
+        font-size: .68rem;
+        line-height: 1.1;
+        order: -1;
+      }
+      .map-toolbar-sep,
+      #mapGapShortLabel,
+      #mapZoomShortLabel {
+        display: none;
+      }
+      .map-toolbar-depth {
+        gap: 2px;
+      }
+      .map-btn {
+        width: 26px;
+        height: 26px;
+      }
+      #mapZoomLevel {
+        min-width: 30px !important;
+        margin: 0 1px;
+        font-size: .68rem;
+      }
+      .map-node-panel {
+        position: absolute;
+        top: auto;
+        bottom: 70px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+        max-height: 42vh;
+        z-index: 1000;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1557,9 +1646,6 @@
     </div>
   </div>
   <div class="map-toolbar">
-    <button class="map-btn map-back-btn" id="mapBackBtn" style="display:none" title="Volver a bloques">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
     <span class="map-toolbar-info" id="mapInfo"></span>
     <div class="map-toolbar-sep"></div>
     <div class="map-toolbar-depth" id="mapGapGroup">
@@ -1591,6 +1677,10 @@
   <div id="mapNodePanel" class="map-node-panel">
     <div class="map-panel-head">
       <div class="map-panel-name" id="mapPanelName"></div>
+      <button class="icon-btn map-panel-compact-open" id="mapPanelOpenCompact">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+      </button>
+      <button class="icon-btn map-panel-toggle" id="mapPanelToggle">+</button>
       <button class="icon-btn map-panel-close" id="mapPanelClose">✕</button>
     </div>
     <div class="map-panel-scroll">
@@ -2017,9 +2107,10 @@ const I18N = {
     mapZoomOut:   'Alejar',
     mapZoomHint:   'Acerca para ver los nombres · Pasa el cursor para detalles',
     mapOpenFicha:  'Abrir ficha',
+    mapPanelExpand:'Ampliar ficha',
+    mapPanelCollapse:'Contraer ficha',
     mapBlocks:     'bloques',
     mapClickBlock: 'Pulsa un bloque para explorar sus recursos',
-    mapBackBlocks: 'Volver a bloques',
     mapHint1:      'Usa las pestañas de arriba para filtrar por bloque o ámbito y explorar un grupo de recursos',
     mapHint2:      'Haz clic en un recurso para seleccionarlo y ver sus relaciones y detalles',
     mapHint3:      'Pulsa "Abrir ficha" para ver el recurso completo · Arrastra para mover · Rueda del ratón para zoom',
@@ -2127,9 +2218,10 @@ const I18N = {
     mapZoomOut:   'Allunyar',
     mapZoomHint:   'Apropa per veure els noms · Passa el cursor per als detalls',
     mapOpenFicha:  'Obrir fitxa',
+    mapPanelExpand:'Ampliar fitxa',
+    mapPanelCollapse:'Contraure fitxa',
     mapBlocks:     'blocs',
     mapClickBlock: 'Prem un bloc per explorar els seus recursos',
-    mapBackBlocks: 'Tornar als blocs',
     mapHint1:      'Usa les pestanyes de dalt per filtrar per bloc o àmbit i explorar un grup de recursos',
     mapHint2:      'Fes clic en un recurs per seleccionar-lo i veure les seves relacions i detalls',
     mapHint3:      'Prem "Obrir fitxa" per veure el recurs complet · Arrossega per moure · Roda del ratolí per fer zoom',
@@ -2237,9 +2329,10 @@ const I18N = {
     mapZoomOut:   'Zoom out',
     mapZoomHint:   'Zoom in to see names · Hover for details',
     mapOpenFicha:  'Open card',
+    mapPanelExpand:'Expand card',
+    mapPanelCollapse:'Collapse card',
     mapBlocks:     'blocks',
     mapClickBlock: 'Click a block to explore its resources',
-    mapBackBlocks: 'Back to blocks',
     mapHint1:      'Use the tabs above to filter by block or field and explore a group of resources',
     mapHint2:      'Click on a resource to select it and see its relationships and details',
     mapHint3:      'Press "Open card" to view the full resource · Drag to pan · Mouse wheel to zoom',
@@ -2908,6 +3001,7 @@ function applyI18N() {
   if (loadingMsg) loadingMsg.textContent = i('loading');
   setText('mapViewBtnLabel', S.mapMode ? i('mapViewClose') : i('mapView'));
   setText('mapOpenBtnLabel', i('mapOpenFicha'));
+  setTitle('mapPanelOpenCompact', i('mapOpenFicha'));
   const mapViewBtn = document.getElementById('mapViewBtn');
   if (mapViewBtn) mapViewBtn.title = i('mapViewHint');
   const depthGroup = document.getElementById('mapToolbarDepth');
@@ -2935,6 +3029,7 @@ function applyI18N() {
     legendBtn.title = i('mapLegendTip');
     legendBtn.classList.toggle('active', S.mapLegendVisible);
   }
+  mapApplyPanelCollapsed();
   updateMapLegend();
   if (S.mapMode) { mapUpdateInfo(); mapShowHint(); }
   document.querySelectorAll('.lang-btn').forEach(b =>
@@ -3924,6 +4019,12 @@ const MAP = {
   selLevel1: new Map(), // nodeIdx → 1 (direct neighbors only)
   gap: 50,
   _prevColorMode: null,
+  panelPos: null,
+  panelDrag: null,
+  panelCollapsed: false,
+  panelCollapseManual: false,
+  legendPos: null,
+  legendDrag: null,
 };
 
 const MAP_REPULSION  = 6000;
@@ -3994,6 +4095,129 @@ function mapHitTest(sx, sy) {
     if ((sx - s.x) ** 2 + (sy - s.y) ** 2 <= r * r) return i;
   }
   return -1;
+}
+
+function mapPanelMargin() {
+  return window.matchMedia('(max-width: 600px)').matches ? 12 : 16;
+}
+
+function mapPanelBottomClear() {
+  const toolbar = document.querySelector('.map-toolbar');
+  return toolbar ? toolbar.offsetHeight + 32 : 60;
+}
+
+function mapPreparePanelForPositioning() {
+  const panel = document.getElementById('mapNodePanel');
+  const view  = document.getElementById('mapView');
+  if (!panel || !view) return false;
+  const margin   = mapPanelMargin();
+  const viewRect = view.getBoundingClientRect();
+  const maxWidth = Math.max(160, viewRect.width - margin * 2);
+  const isMobile = window.matchMedia('(max-width: 600px)').matches;
+  const targetWidth = MAP.panelCollapsed
+    ? Math.min(isMobile ? 320 : 280, maxWidth)
+    : isMobile ? maxWidth : 280;
+  panel.style.width  = Math.min(targetWidth, maxWidth) + 'px';
+  panel.style.right  = 'auto';
+  panel.style.bottom = 'auto';
+  return true;
+}
+
+function mapClampPanelPosition(left, top) {
+  const panel = document.getElementById('mapNodePanel');
+  const view  = document.getElementById('mapView');
+  if (!panel || !view) return { left: 0, top: 0 };
+  const margin   = mapPanelMargin();
+  const viewRect = view.getBoundingClientRect();
+  const rect     = panel.getBoundingClientRect();
+  const maxLeft  = Math.max(margin, viewRect.width - rect.width - margin);
+  const maxTop   = Math.max(margin, viewRect.height - rect.height - mapPanelBottomClear());
+  return {
+    left: Math.min(Math.max(left, margin), maxLeft),
+    top:  Math.min(Math.max(top,  margin), maxTop),
+  };
+}
+
+function mapMovePanelTo(left, top, remember = true) {
+  const panel = document.getElementById('mapNodePanel');
+  if (!panel || !mapPreparePanelForPositioning()) return null;
+  const pos = mapClampPanelPosition(left, top);
+  panel.style.left = pos.left + 'px';
+  panel.style.top  = pos.top  + 'px';
+  if (remember) MAP.panelPos = pos;
+  return pos;
+}
+
+function mapDefaultPanelPosition(idx) {
+  const panel = document.getElementById('mapNodePanel');
+  const view  = document.getElementById('mapView');
+  if (!panel || !view) return { left: 16, top: 16 };
+
+  const viewRect = view.getBoundingClientRect();
+  const rect     = panel.getBoundingClientRect();
+  const margin   = mapPanelMargin();
+  const nd       = MAP.nodes[idx];
+  let sx = viewRect.width / 2;
+  let sy = viewRect.height / 2;
+
+  if (nd) {
+    const dpr = window.devicePixelRatio || 1;
+    const p   = mapWorldToScreen(nd.x, nd.y);
+    sx = p.x / dpr;
+    sy = p.y / dpr;
+  }
+
+  const gap = 24;
+  let left;
+  let top;
+  if (window.matchMedia('(max-width: 600px)').matches) {
+    left = margin;
+    top  = sy > viewRect.height / 2 ? sy - rect.height - gap : sy + gap;
+  } else {
+    left = viewRect.width - rect.width - margin;
+    top  = sy - rect.height / 2;
+  }
+  return mapClampPanelPosition(left, top);
+}
+
+function mapPlacePanel(idx) {
+  if (!mapPreparePanelForPositioning()) return;
+  const pos = MAP.panelPos ? mapClampPanelPosition(MAP.panelPos.left, MAP.panelPos.top) : mapDefaultPanelPosition(idx);
+  mapMovePanelTo(pos.left, pos.top, Boolean(MAP.panelPos));
+}
+
+function mapClampLegendPosition(left, top) {
+  const legend = document.getElementById('mapLegend');
+  const view   = document.getElementById('mapView');
+  if (!legend || !view) return { left: 10, top: 10 };
+  const margin   = window.matchMedia('(max-width: 600px)').matches ? 8 : 10;
+  const viewRect = view.getBoundingClientRect();
+  const rect     = legend.getBoundingClientRect();
+  const maxLeft  = Math.max(margin, viewRect.width - rect.width - margin);
+  const maxTop   = Math.max(margin, viewRect.height - rect.height - mapPanelBottomClear());
+  return {
+    left: Math.min(Math.max(left, margin), maxLeft),
+    top:  Math.min(Math.max(top,  margin), maxTop),
+  };
+}
+
+function mapMoveLegendTo(left, top, remember = true) {
+  const legend = document.getElementById('mapLegend');
+  if (!legend) return null;
+  legend.style.right  = 'auto';
+  legend.style.bottom = 'auto';
+  const pos = mapClampLegendPosition(left, top);
+  legend.style.left = pos.left + 'px';
+  legend.style.top  = pos.top  + 'px';
+  if (remember) MAP.legendPos = pos;
+  return pos;
+}
+
+function mapPlaceLegend() {
+  const legend = document.getElementById('mapLegend');
+  if (!legend || legend.style.display === 'none') return;
+  const pos = MAP.legendPos || { left: 10, top: 10 };
+  mapMoveLegendTo(pos.left, pos.top, Boolean(MAP.legendPos));
 }
 
 function initMapBlocks() {
@@ -4067,7 +4291,6 @@ function initMapBlocks() {
   MAP.edges = [];
 
   mapUpdateInfo();
-  mapUpdateBackBtn();
   updateMapLegend();
 }
 
@@ -4129,7 +4352,6 @@ function initMapData() {
   MAP.selNeighbors = new Map();
   mapHidePanel();
   mapUpdateInfo();
-  mapUpdateBackBtn();
   updateMapLegend();
 }
 
@@ -4540,6 +4762,7 @@ function updateMapLegend() {
           e.innerHTML = `<span class="map-legend-swatch" style="background:${col.bg};border-color:${col.border}"></span><span title="${esc(nd.name)}">${esc(nd.name)}</span>`;
           body.appendChild(e);
         });
+      mapPlaceLegend();
       return;
     }
 
@@ -4560,6 +4783,7 @@ function updateMapLegend() {
       body.appendChild(e);
     });
   }
+  mapPlaceLegend();
 }
 
 function mapBuildNeighbors(rootIdx, depth) {
@@ -4758,11 +4982,17 @@ function mapShowPanel(idx) {
   if (!S.mapLegendVisible) { MAP._legendWasHidden = true; S.mapLegendVisible = true; updateMapLegend(); }
 
   document.getElementById('mapOpenBtn').onclick = () => openModal(nd.id);
+  document.getElementById('mapPanelOpenCompact').onclick = () => openModal(nd.id);
   document.getElementById('mapNodePanel').classList.add('visible');
+  if (!MAP.panelCollapseManual) MAP.panelCollapsed = mapShouldAutoCollapsePanel();
+  mapApplyPanelCollapsed();
+  mapPlacePanel(idx);
 }
 
 function mapHidePanel() {
-  document.getElementById('mapNodePanel').classList.remove('visible');
+  document.getElementById('mapNodePanel').classList.remove('visible', 'is-dragging');
+  MAP.panelDrag = null;
+  const cv = mapCanvas(); if (cv) cv.style.pointerEvents = '';
   const depthGroup = document.getElementById('mapToolbarDepth');
   if (depthGroup) depthGroup.style.display = 'none';
   // Restore legend visibility if it was auto-shown
@@ -4798,11 +5028,140 @@ function mapHideHint() {
   document.getElementById('mapHintBanner')?.classList.add('hidden');
 }
 
-function mapUpdateBackBtn() {
-  const btn = document.getElementById('mapBackBtn');
-  if (!btn) return;
-  btn.style.display = MAP.viewMode === 'techniques' ? '' : 'none';
-  btn.title = i('mapBackBlocks');
+function mapApplyPanelCollapsed() {
+  const panel = document.getElementById('mapNodePanel');
+  const toggle = document.getElementById('mapPanelToggle');
+  if (!panel || !toggle) return;
+  panel.classList.toggle('collapsed', MAP.panelCollapsed);
+  toggle.textContent = MAP.panelCollapsed ? '+' : '−';
+  toggle.title = MAP.panelCollapsed ? i('mapPanelExpand') : i('mapPanelCollapse');
+}
+
+function mapSetPanelCollapsed(collapsed) {
+  MAP.panelCollapsed = collapsed;
+  MAP.panelCollapseManual = true;
+  mapApplyPanelCollapsed();
+  if (document.getElementById('mapNodePanel')?.classList.contains('visible')) mapPlacePanel(MAP.selected);
+}
+
+function mapShouldAutoCollapsePanel() {
+  const panel = document.getElementById('mapNodePanel');
+  const view  = document.getElementById('mapView');
+  if (!panel || !view || !window.matchMedia('(max-width: 600px)').matches) return false;
+
+  const savedCollapsed = MAP.panelCollapsed;
+  const savedClass = panel.classList.contains('collapsed');
+  MAP.panelCollapsed = false;
+  panel.classList.remove('collapsed');
+  mapPreparePanelForPositioning();
+
+  const panelRect = panel.getBoundingClientRect();
+  const viewRect  = view.getBoundingClientRect();
+  const shouldCollapse = viewRect.height < 620 || panelRect.height > viewRect.height * 0.34;
+
+  MAP.panelCollapsed = savedCollapsed;
+  panel.classList.toggle('collapsed', savedClass);
+  return shouldCollapse;
+}
+
+function mapSetupLegendDrag() {
+  const legend = document.getElementById('mapLegend');
+  const head   = legend?.querySelector('.map-legend-head');
+  const view   = document.getElementById('mapView');
+  if (!legend || !head || !view || head._mapDragAttached) return;
+  head._mapDragAttached = true;
+
+  head.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('button, a, input, select, textarea')) return;
+    if (legend.style.display === 'none') return;
+
+    const legendRect = legend.getBoundingClientRect();
+    const viewRect   = view.getBoundingClientRect();
+    const pos = mapMoveLegendTo(legendRect.left - viewRect.left, legendRect.top - viewRect.top, true);
+    if (!pos) return;
+
+    MAP.legendDrag = {
+      pointerId: e.pointerId,
+      x0: e.clientX,
+      y0: e.clientY,
+      left0: pos.left,
+      top0: pos.top,
+    };
+    legend.classList.add('is-dragging');
+    head.setPointerCapture?.(e.pointerId);
+    document.getElementById('mapTooltip').style.display = 'none';
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  head.addEventListener('pointermove', e => {
+    const drag = MAP.legendDrag;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    mapMoveLegendTo(drag.left0 + e.clientX - drag.x0, drag.top0 + e.clientY - drag.y0, true);
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  const finishDrag = e => {
+    const drag = MAP.legendDrag;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    MAP.legendDrag = null;
+    legend.classList.remove('is-dragging');
+    e.stopPropagation();
+  };
+  head.addEventListener('pointerup', finishDrag);
+  head.addEventListener('pointercancel', finishDrag);
+}
+
+function mapSetupPanelDrag() {
+  const panel = document.getElementById('mapNodePanel');
+  const head  = panel?.querySelector('.map-panel-head');
+  const view  = document.getElementById('mapView');
+  if (!panel || !head || !view || head._mapDragAttached) return;
+  head._mapDragAttached = true;
+
+  head.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('button, a, input, select, textarea')) return;
+    if (!panel.classList.contains('visible')) return;
+
+    const panelRect = panel.getBoundingClientRect();
+    const viewRect  = view.getBoundingClientRect();
+    const pos = mapMovePanelTo(panelRect.left - viewRect.left, panelRect.top - viewRect.top, true);
+    if (!pos) return;
+
+    MAP.panelDrag = {
+      pointerId: e.pointerId,
+      x0: e.clientX,
+      y0: e.clientY,
+      left0: pos.left,
+      top0: pos.top,
+    };
+    panel.classList.add('is-dragging');
+    head.setPointerCapture?.(e.pointerId);
+    document.getElementById('mapTooltip').style.display = 'none';
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  head.addEventListener('pointermove', e => {
+    const drag = MAP.panelDrag;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    mapMovePanelTo(drag.left0 + e.clientX - drag.x0, drag.top0 + e.clientY - drag.y0, true);
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  const finishDrag = e => {
+    const drag = MAP.panelDrag;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    MAP.panelDrag = null;
+    panel.classList.remove('is-dragging');
+    e.stopPropagation();
+  };
+  head.addEventListener('pointerup', finishDrag);
+  head.addEventListener('pointercancel', finishDrag);
 }
 
 function toggleMapView() {
@@ -5083,6 +5442,14 @@ function mapSetupEvents() {
                  + (banner?.classList.contains('visible') ? (banner.offsetHeight || 0) : 0);
     document.getElementById('mapView').style.top = topPx + 'px';
     mapResizeCanvas();
+    if (document.getElementById('mapNodePanel')?.classList.contains('visible')) {
+      if (!MAP.panelCollapseManual) {
+        MAP.panelCollapsed = mapShouldAutoCollapsePanel();
+        mapApplyPanelCollapsed();
+      }
+      mapPlacePanel(MAP.selected);
+    }
+    mapPlaceLegend();
   });
 
   // ── Theme change: redraw ────────────────────────────────────────────────────
@@ -5174,12 +5541,19 @@ async function init() {
   if (gapMinus) gapMinus.onclick = () => { MAP.gap = Math.max(GAP_MIN, MAP.gap - GAP_STEP); updateGapUI(); MAP.alpha = Math.max(MAP.alpha, 0.6); };
   if (gapPlus)  gapPlus.onclick  = () => { MAP.gap = Math.min(GAP_MAX, MAP.gap + GAP_STEP); updateGapUI(); MAP.alpha = Math.max(MAP.alpha, 0.6); };
   updateGapUI();
-  document.getElementById('mapBackBtn').onclick   = () => {
-    S.block = null; S.field = null; S.page = 0;
-    renderBlockTabs(); renderTabs();
-    initMapBlocks();
-  };
   document.getElementById('mapPanelClose').onclick = () => { mapSelectNode(-1); };
+  document.getElementById('mapPanelToggle').onclick = e => {
+    e.stopPropagation();
+    mapSetPanelCollapsed(!MAP.panelCollapsed);
+  };
+  mapSetupPanelDrag();
+  mapSetupLegendDrag();
+  // Allow touch-scroll inside panel without canvas intercepting events
+  const panelScroll = document.querySelector('.map-panel-scroll');
+  if (panelScroll) {
+    panelScroll.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+    panelScroll.addEventListener('touchmove',  e => e.stopPropagation(), { passive: true });
+  }
   document.getElementById('mapDepthMinus').addEventListener('click', e => { e.stopPropagation(); mapSetDepth(MAP.depth - 1); });
   document.getElementById('mapDepthPlus').addEventListener('click',  e => { e.stopPropagation(); mapSetDepth(MAP.depth + 1); });
 
