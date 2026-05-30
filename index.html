@@ -1764,16 +1764,10 @@
 const LANGS = ['es', 'ca', 'en'];
 const DEFAULT_LANG = 'en';
 
-const CSV = {
-  es: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=1081869626&single=true&output=csv',
-  ca: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=317882471&single=true&output=csv',
-  en: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOI5RE_eTTjYBpakdhkvI186EAdSTgQkzut2j7yKtx4pPI3XDdih0rwNxzrvSr8Rzc_x5IcKhFOo9X/pub?gid=1994643118&single=true&output=csv',
-};
-
-const LOCAL_CSV = {
-  es: 'data/metac - es.csv',
-  ca: 'data/metac - ca.csv',
-  en: 'data/metac - en.csv',
+const LOCAL_JSON = {
+  es: 'data/metac-es.json',
+  ca: 'data/metac-ca.json',
+  en: 'data/metac-en.json',
 };
 
 // Field color palette
@@ -2096,8 +2090,8 @@ const I18N = {
     footerContent:'Contenido:',
     footerCodeTitle:'Código fuente bajo licencia AGPLv3',
     footerCode:   'Código:',
-    footerDbTitle:'Los archivos CSV no pueden ser reproducidos ni redistribuidos sin permiso',
-    footerDb:     'Base de datos CSV: © Juan José de Haro, todos los derechos reservados',
+    footerDbTitle:'Los datos no pueden ser reproducidos ni redistribuidos sin permiso',
+    footerDb:     'Base de datos: © Juan José de Haro, todos los derechos reservados',
     mapView:      'Mapa',
     mapViewHint:  'Mapa de relaciones',
     mapReset:     'Restablecer vista',
@@ -2207,8 +2201,8 @@ const I18N = {
     footerContent:'Contingut:',
     footerCodeTitle:'Codi font sota llicència AGPLv3',
     footerCode:   'Codi:',
-    footerDbTitle:'Els fitxers CSV no es poden reproduir ni redistribuir sense permís',
-    footerDb:     'Base de dades CSV: © Juan José de Haro, tots els drets reservats',
+    footerDbTitle:'Les dades no es poden reproduir ni redistribuir sense permís',
+    footerDb:     'Base de dades: © Juan José de Haro, tots els drets reservats',
     mapView:      'Mapa',
     mapViewHint:  'Mapa de relacions',
     mapReset:     'Restablir vista',
@@ -2318,8 +2312,8 @@ const I18N = {
     footerContent:'Content:',
     footerCodeTitle:'Source code licensed under AGPLv3',
     footerCode:   'Code:',
-    footerDbTitle:'CSV files may not be reproduced or redistributed without permission',
-    footerDb:     'CSV database: © Juan José de Haro, all rights reserved',
+    footerDbTitle:'Data may not be reproduced or redistributed without permission',
+    footerDb:     'Database: © Juan José de Haro, all rights reserved',
     mapView:      'Map',
     mapViewHint:  'Relationship map',
     mapReset:     'Reset view',
@@ -2384,84 +2378,38 @@ const S = {
   mapLegendVisible: localStorage.getItem('metac_map_legend_v1') !== 'hidden',
 };
 
-// ─── CSV PARSER ──────────────────────────────────────────────────────────────
+// ─── JSON LOADER ─────────────────────────────────────────────────────────────
 
-function parseCSV(raw) {
-  const rows = [];
-  let row = [], cell = '', inQ = false;
-  for (let i = 0; i < raw.length; i++) {
-    const c = raw[i];
-    if (c === '"') {
-      if (inQ && raw[i + 1] === '"') { cell += '"'; i++; }
-      else inQ = !inQ;
-    } else if (c === ',' && !inQ) {
-      row.push(cell); cell = '';
-    } else if (c === '\n' && !inQ) {
-      row.push(cell); rows.push(row); row = []; cell = '';
-    } else if (c !== '\r') {
-      cell += c;
-    }
-  }
-  if (cell || row.length) { row.push(cell); rows.push(row); }
-  return rows;
-}
-
-function toObjects(raw, lang = DEFAULT_LANG) {
-  const rows = parseCSV(raw);
-  if (rows.length < 2) return [];
-  const headers = rows[0].map(h => h.trim().toLowerCase());
-  const hasId = headers.includes('id');
-  const col = {
-    id:      colIndex(headers, ['id'], hasId ? 0 : -1),
-    name:    colIndex(headers, ['technique'], hasId ? 1 : 0),
-    desc:    colIndex(headers, ['description'], hasId ? 2 : 1),
-    tags:    colIndex(headers, ['tags'], hasId ? 3 : 2),
-    fields:  colIndex(headers, ['fields'], hasId ? 4 : 3),
-    program: colIndex(headers, ['program'], hasId ? 5 : 4),
-    summary: colIndex(headers, ['abstract', 'resumen', 'resum'], hasId ? 6 : 5),
-    block:   colIndex(headers, ['block', 'bloque', 'bloc'], hasId ? 7 : 6),
-    related: colIndex(headers, ['related', 'relacionadas', 'relacionades'], hasId ? 8 : 7),
-  };
-
-  return rows.slice(1).filter(r => r[col.name] && r[col.name].trim()).map((r, rowIndex) => {
-    const rawFields = (r[col.fields] || '').split(',').map(s => s.trim()).filter(Boolean);
-    const rawBlocks = (r[col.block] || '').split(';').map(s => s.trim()).filter(Boolean);
+function fromJSON(items, lang = DEFAULT_LANG) {
+  return items.filter(item => item.name).map((item, rowIndex) => {
+    const fields = [], fieldIds = [];
+    (item.fields || []).forEach(f => {
+      const norm = normalizeField(f, lang);
+      if (norm.id && !fieldIds.includes(norm.id)) {
+        fieldIds.push(norm.id);
+        fields.push(norm.label);
+      }
+    });
     const blocks = [], blockIds = [];
-    rawBlocks.forEach(b => {
-      const nb = normalizeBlock(b, lang);
-      if (nb.id && !blockIds.includes(nb.id)) { blockIds.push(nb.id); blocks.push(nb.label); }
-    });
-    const fields = [], fieldIds = [], inlineProgs = [];
-    rawFields.forEach(f => {
-      if (f.includes('|')) {
-        inlineProgs.push(f);
-        return;
-      }
-      const field = normalizeField(f, lang);
-      if (field.id && !fieldIds.includes(field.id)) {
-        fieldIds.push(field.id);
-        fields.push(field.label);
-      }
-    });
+    if (item.block) {
+      const nb = normalizeBlock(item.block, lang);
+      if (nb.id) { blockIds.push(nb.id); blocks.push(nb.label); }
+    }
     return {
-      id:       normalizeId(col.id >= 0 ? r[col.id] : '') || `row_${rowIndex + 1}`,
-      name:     (r[col.name] || '').trim(),
-      desc:     (r[col.desc] || '').trim(),
-      tags:     (r[col.tags] || '').split(',').map(s => s.trim()).filter(Boolean),
+      id:       normalizeId(item.id) || `row_${rowIndex + 1}`,
+      name:     item.name || '',
+      desc:     item.desc || '',
+      tags:     item.tags || [],
       blocks,
       blockIds,
       fields,
       fieldIds,
-      programs: [...parsePrograms(r[col.program] || ''), ...parsePrograms(inlineProgs.join(';'))],
-      summary:  (r[col.summary] || '').trim(),
-      related:  (r[col.related] || '').split(';').map(x => x.trim()).filter(Boolean),
+      programs: item.programs || [],
+      summary:  item.summary || '',
+      related:  item.related || [],
+      eval_ids: item.eval_ids || [],
     };
   });
-}
-
-function colIndex(headers, names, fallback) {
-  const idx = names.map(n => headers.indexOf(n)).find(i => i !== -1);
-  return idx === undefined ? fallback : idx;
 }
 
 function normalizeId(value) {
@@ -2843,17 +2791,10 @@ function formatDesc(text) {
 async function loadLang(lang) {
   lang = resolveLang(lang);
   if (S.data[lang]) return;
-  let raw;
-  try {
-    const res = await fetch(CSV[lang]);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    raw = await res.text();
-  } catch {
-    const res = await fetch(LOCAL_CSV[lang]);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    raw = await res.text();
-  }
-  S.data[lang] = toObjects(raw, lang);
+  const res = await fetch(LOCAL_JSON[lang]);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const items = await res.json();
+  S.data[lang] = fromJSON(items, lang);
   S.byId[lang] = buildIdMap(S.data[lang]);
   normalizeStoredRefs(lang);
 }
